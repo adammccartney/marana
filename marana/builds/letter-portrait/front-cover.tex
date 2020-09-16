@@ -1,0 +1,66 @@
+\documentclass[11pt]{report}
+\usepackage[T1]{fontenc}
+\usepackage[papersize={8.5in, 11.0in}]{geometry}
+\usepackage{tikz}
+\usepackage{xltxtra,fontspec,xunicode}
+\usetikzlibrary{calc}
+
+%\defaultfontfeatures{Scale=MatchLowercase}
+%\setromanfont[Numbers=Uppercase]{Didot}
+\newlength{\drop}
+\pagenumbering{gobble}
+\parindent=0pt
+
+\begin{document}
+    \begin{titlepage}
+
+        \begin{tikzpicture}[remember picture, overlay]
+            \draw[line width = 1.6pt]
+                ($(current page.north west) + (1.0in,-1.0in)$)
+                rectangle
+                ($(current page.south east) + (-1.0in,1.0in)$);
+            \draw[line width = 0.4pt]
+                ($(current page.north west) + (1in,-1in) + (2.8pt,-2.8pt)$)
+                rectangle
+                ($(current page.south east) + (-1in,1in) + (-2.8pt,2.8pt)$);
+        \end{tikzpicture}
+
+
+        \drop=0.1\textheight
+        \centering
+
+        \vspace*{2\baselineskip}
+
+        \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
+        \rule{\textwidth}{0.4pt}\\[\baselineskip]
+        {
+            \fontsize{3cm}{1em}\selectfont
+            Fonn machnaimh
+        }
+        \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+        \rule{\textwidth}{1.6pt}\\[\baselineskip]
+
+        \vspace*{2\baselineskip}
+
+        {
+            \itshape
+           for orchestra 
+        }
+        \\
+        {
+            \Large
+            Adam Mc Cartney
+            \par
+        }
+
+        \vspace*{2\baselineskip}
+
+        {
+            \Large
+            2020
+        }
+
+        \vfill
+
+    \end{titlepage}
+\end{document}
