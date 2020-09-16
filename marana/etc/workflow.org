@@ -1,11 +1,11 @@
-* Fonn machnaimh for Orchestra
+* marana for Orchestra
 
 ** Score config
 
 *** DONE Rename score 
-
+         + created a renaming script in ~/code/scripts
 *** DONE Setup remote repo
-
+         + git@github:adammccartney/marana.git
 *** DONE Create score template
     
 *** DONE Test build score template
@@ -23,7 +23,8 @@
 *** DONE Setup segments
 
 *** TODO for all segments write: ./segment_$X/definition.py outline
-
+         + Compare rill segments 
+         + write simple script to generate all definitions for each segment
 *** TODO Setup material directory 
 
 *** DONE Setup tools directory

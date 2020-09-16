@@ -1,10 +1,10 @@
 import copy
 import abjad
-import rill
+import marana
 
 
-import rill.tools.FuzzyHarmony as FuzzyHarmony
-from rill.tools.PhraseMaker import PhraseStream as PhraseStream
+import marana.tools.FuzzyHarmony as FuzzyHarmony
+from marana.tools.PhraseMaker import PhraseStream as PhraseStream
 
 def get_pitch_classes(pitch_segment):
     if isinstance(pitch_segment, abjad.PitchSegment):
@@ -28,7 +28,7 @@ def make_diads(fuzzy_harmonies, interval_doubling=None):
     Harmonizes with lookup table 
     Returns a list of tuples
     """
-    from rill.materials.pitch.definition import diatonic_register_lookup
+    from marana.materials.pitch.definition import diatonic_register_lookup
 
     harmonized_melodies = []
     if interval_doubling == None:
@@ -68,7 +68,7 @@ def make_augmented_stream(progression):
 def scale_range_double_octave(semitones):
     """takes a semitones val and fits to double octave range
     WARNING: currently all octaves are getting wrapped to unisons
-    this is no problem for rill, as they are being used to lookup
+    this is no problem for marana, as they are being used to lookup
     shortname values for harmonies
     """
     if (semitones >= -12) and (semitones <= 12):
@@ -119,7 +119,7 @@ def transpose(fuzzy_harmonies, t_interval=0):
     returns a new list of related objects
     based on an interval argument
     """
-    from rill.materials.pitch.definition import transposition_lookup
+    from marana.materials.pitch.definition import transposition_lookup
     
     wrapped_t_interval = wrap_transposition(t_interval)
     harmony_shortname_lookup = transposition_lookup[wrapped_t_interval]
@@ -310,8 +310,8 @@ if __name__ == '__main__':
 
     # Test copy function in transpose() on FuzzyHarmony object
 
-    harmony = rill.FuzzyHarmony('bf_ii', abjad.PitchSegment("ef' g' bf' c''"))
-    second_harmony = rill.FuzzyHarmony('g_v', abjad.PitchSegment("g' b' d' f'"))
+    harmony = marana.FuzzyHarmony('bf_ii', abjad.PitchSegment("ef' g' bf' c''"))
+    second_harmony = marana.FuzzyHarmony('g_v', abjad.PitchSegment("g' b' d' f'"))
     copied_harmony = copy.deepcopy(harmony)
     copied_second = copy.deepcopy(second_harmony)
     harmonies = [harmony, second_harmony]
@@ -351,7 +351,7 @@ if __name__ == '__main__':
     diad = make_decimo_diad(any_pitch)
     print("Diad: ", diad)
 
-    from rill.tools.FuzzyHarmony import Diad as Diad
+    from marana.tools.FuzzyHarmony import Diad as Diad
 
     d_first_oct = abjad.NamedPitch("d'")
     decimo = make_decimo_diad(d_first_oct)

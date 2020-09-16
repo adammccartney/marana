@@ -56,7 +56,7 @@ instruments = abjad.OrderedDict(
             ),
         (
             "trombone 1",
-            abjad.Trombone(
+            abjad.TenorTrombone(
                 markup=mccartney.markups.instrument("Trombone 1"),
                 short_markup=mccartney.markups.short_instrument("trb.1"),
                 ),
