@@ -22,7 +22,7 @@
 
 *** DONE Setup segments
 
-*** TODO for all segments write: ./segment_$X/definition.py outline
+*** DONE for all segments write: ./segment_$X/definition.py outline
          + Compare rill segments 
          + write simple script to generate all definitions for each segment
 *** TODO Setup material directory 
