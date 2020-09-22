@@ -156,7 +156,7 @@ class ScoreTemplate(object):
             name="trumpet1",
             tag=tag,
         )
-        abjad.annotatez(
+        abjad.annotate(
             trumpet_staff,
             "default_instrument",
             marana.instruments["trumpet 1"],
