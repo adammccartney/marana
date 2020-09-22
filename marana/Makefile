@@ -17,6 +17,11 @@ segments:
 	make segment_E
 	make segment_F
 	make segment_G
+	make segment_H
+	make segment_I
+	make segment_J
+	make segment_K
+	make segment_L
 
 segment_A:
 	python ./segments/segment_A/definition.py
@@ -39,4 +44,17 @@ segment_F:
 segment_G:
 	python ./segments/segment_G/definition.py
 
+segment_H:
+	python ./segments/segment_H/definition.py
 
+segment_I:
+	python ./segments/segment_I/definition.py
+
+segment_J:
+	python ./segments/segment_J/definition.py
+
+segment_K:
+	python ./segments/segment_K/definition.py
+
+segment_L:
+	python ./segments/segment_L/definition.py
