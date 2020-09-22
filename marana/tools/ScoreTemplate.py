@@ -156,7 +156,7 @@ class ScoreTemplate(object):
             name="trumpet1",
             tag=tag,
         )
-        abjad.annotate(
+        abjad.annotatez(
             trumpet_staff,
             "default_instrument",
             marana.instruments["trumpet 1"],
@@ -342,7 +342,7 @@ class ScoreTemplate(object):
                 'cello', force_quotes=True)
 
 
-        ## Doublebass
+        ## Doubleobass
         markup_voice = abjad.Voice(name="doublebass_Markup_Voice", tag=tag)
         music_voice = abjad.Voice(name="doublebass_Music_Voice", tag=tag)
         dynamics_voice = abjad.Voice(name="doublebass_Dynamics_Voice", tag=tag)
