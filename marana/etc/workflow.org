@@ -25,16 +25,25 @@
 *** DONE for all segments write: ./segment_$X/definition.py outline
          + Compare rill segments 
          + write simple script to generate all definitions for each segment
-*** TODO Setup material directory 
-
 *** DONE Setup tools directory
 
 *** DONE Build tracer
-Tracer is building, ableit with slightly wonkey segment builds
+    Tracer is building, ableit with slightly wonkey segment builds
 
-*** TODO Find out why parts are not building
+*** DONE Find out why parts are not building
+there is no definition in the
+"marana/builds/letter-portrait/parts.ily" file 
 
-*** TODO Modify script to build all segments
+Need to run three scripts to build score: 
+1. generate illustrations
+2. copy illustrations to build dir
+3. make in "/builds/$score"
+
+*** DONE Modify script to build all segments
+
+*** TODO Configure stylesheet
+*** TODO Setup material directory 
+*** TODO Sort out score margins & instrument names 
 
 ** Composition 
 
