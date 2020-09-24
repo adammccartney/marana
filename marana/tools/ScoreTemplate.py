@@ -1,7 +1,7 @@
 import abjad
 import marana
 
-class ScoreTemplate(object):
+class ScoreTemplate(abjad.ScoreTemplate):
     """
     Makes a simple score template for symphony orchestra 
     """
@@ -319,7 +319,6 @@ class ScoreTemplate(object):
         abjad.setting(viola_staff).midi_instrument = abjad.scheme.Scheme(
                 'viola', force_quotes=True)
 
-
         ## Cello
         markup_voice = abjad.Voice(name="cello1_Markup_Voice", tag=tag)
         music_voice = abjad.Voice(name="cello1_Music_Voice", tag=tag)
@@ -393,7 +392,7 @@ class ScoreTemplate(object):
         
         ## String Staff Group
         string_staff_group = abjad.StaffGroup(
-                [violinOne_staff, violinTwo_staff, viola_staff, doublebass_staff],
+                [violinOne_staff, violinTwo_staff, viola_staff, cello_staff, doublebass_staff],
                 simultaneous=True,
                 lilypond_type="StaffGroup",
                 name="String_Staff_Group",

@@ -29,8 +29,12 @@
 
 *** DONE Setup tools directory
 
-*** TODO Build tracer
+*** DONE Build tracer
+Tracer is building, ableit with slightly wonkey segment builds
 
+*** TODO Find out why parts are not building
+
+*** TODO Modify script to build all segments
 
 ** Composition 
 

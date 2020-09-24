@@ -258,6 +258,13 @@ rhythm_definition.markup = []
 #------------------------------------------------#
 rhythm_definition = segment_maker.define_rhythm()
 rhythm_definition.instrument_name = "violin1"
+rhythm_definition.notes = [
+        ("r1"),
+        ("r1"),
+        ("r1"),
+        ("r1"),
+        ("r1"),
+]
 
 rhythm_definition.dynamics = []
 
