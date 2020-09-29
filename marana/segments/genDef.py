@@ -41,7 +41,7 @@ segment_maker = marana.SegmentMaker(
                                 segment_name='segment_{segment_name}',
                                 rehearsal_mark={rehearsal_mark},
                                 tempo=((1, 4), 50),
-                                time_signatures=[(4, 4)] * 5,
+                                time_signatures=[(4, 4) + (3, 4) * 2 + (4, 4) + (3, 4) * 2],
                                 )
 
 segment_maker.metronome_marks = [
@@ -67,15 +67,21 @@ rhythm_definition.instrument_name = "flute1"
 
 rhythm_definition.notes = [
         ("r1"),
+        ("r2."),
+        ("r2."),
         ("r1"),
-        ("r1"),
-        ("r1"),
-        ("r1"),
+        ("r2."),
+        ("r2."),
 ]
 
 rhythm_definition.dynamics = []
 
-rhythm_definition.markup = []
+rhythm_definition.markup = [
+        (0, marana.markup.time_signature("4/4"),
+        (1, marana.markup.time_signature("3/4"),
+        (3, marana.markup.time_signatures("4/4"),
+        (4, marana.markup.time_signature("3/4"),
+]
 
 
 # Oboe
@@ -85,15 +91,21 @@ rhythm_definition.instrument_name = "oboe1"
 
 rhythm_definition.notes = [
         ("r1"),
+        ("r2."),
+        ("r2."),
         ("r1"),
-        ("r1"),
-        ("r1"),
-        ("r1"),
+        ("r2."),
+        ("r2."),
 ]
 
 rhythm_definition.dynamics = []
 
-rhythm_definition.markup = []
+rhythm_definition.markup = [
+        (0, marana.markup.time_signature("4/4"),
+        (1, marana.markup.time_signature("3/4"),
+        (3, marana.markup.time_signatures("4/4"),
+        (4, marana.markup.time_signature("3/4"),
+]
 
 
 # Bbclarinet
@@ -103,34 +115,46 @@ rhythm_definition.instrument_name = "Bbclarinet1"
 
 rhythm_definition.notes = [
         ("r1"),
+        ("r2."),
+        ("r2."),
         ("r1"),
-        ("r1"),
-        ("r1"),
-        ("r1"),
+        ("r2."),
+        ("r2."),
 ]
 
 rhythm_definition.dynamics = []
 
-rhythm_definition.markup = []
-                
+rhythm_definition.markup = [
+        (0, marana.markup.time_signature("4/4"),
+        (1, marana.markup.time_signature("3/4"),
+        (3, marana.markup.time_signatures("4/4"),
+        (4, marana.markup.time_signature("3/4"),
+]
+
+
 
 # bassoon  
 #------------------------------------------------#
 rhythm_definition = segment_maker.define_rhythm()
 rhythm_definition.instrument_name = "bassoon1"
 
-
 rhythm_definition.notes = [
         ("r1"),
+        ("r2."),
+        ("r2."),
         ("r1"),
-        ("r1"),
-        ("r1"),
-        ("r1"),
+        ("r2."),
+        ("r2."),
 ]
+
 rhythm_definition.dynamics = []
 
-rhythm_definition.markup = []
-
+rhythm_definition.markup = [
+        (0, marana.markup.time_signature("4/4"),
+        (1, marana.markup.time_signature("3/4"),
+        (3, marana.markup.time_signatures("4/4"),
+        (4, marana.markup.time_signature("3/4"),
+]
 
 # -------------- Brass ---------------------------/
 # fhorn1  
@@ -139,17 +163,24 @@ rhythm_definition = segment_maker.define_rhythm()
 rhythm_definition.instrument_name = "fhorn1"
 
 
-
 rhythm_definition.notes = [
         ("r1"),
+        ("r2."),
+        ("r2."),
         ("r1"),
-        ("r1"),
-        ("r1"),
-        ("r1"),
+        ("r2."),
+        ("r2."),
 ]
+
 rhythm_definition.dynamics = []
 
-rhythm_definition.markup = []
+rhythm_definition.markup = [
+        (0, marana.markup.time_signature("4/4"),
+        (1, marana.markup.time_signature("3/4"),
+        (3, marana.markup.time_signatures("4/4"),
+        (4, marana.markup.time_signature("3/4"),
+]
+
 
 # fhorn3  
 #------------------------------------------------#
@@ -157,17 +188,23 @@ rhythm_definition = segment_maker.define_rhythm()
 rhythm_definition.instrument_name = "fhorn3"
 
 
-
 rhythm_definition.notes = [
         ("r1"),
+        ("r2."),
+        ("r2."),
         ("r1"),
-        ("r1"),
-        ("r1"),
-        ("r1"),
+        ("r2."),
+        ("r2."),
 ]
+
 rhythm_definition.dynamics = []
 
-rhythm_definition.markup = []
+rhythm_definition.markup = [
+        (0, marana.markup.time_signature("4/4"),
+        (1, marana.markup.time_signature("3/4"),
+        (3, marana.markup.time_signatures("4/4"),
+        (4, marana.markup.time_signature("3/4"),
+]
 
 # trumpet1 
 #------------------------------------------------#
@@ -177,33 +214,44 @@ rhythm_definition.instrument_name = "trumpet1"
 
 rhythm_definition.notes = [
         ("r1"),
+        ("r2."),
+        ("r2."),
         ("r1"),
-        ("r1"),
-        ("r1"),
-        ("r1"),
+        ("r2."),
+        ("r2."),
 ]
 
 rhythm_definition.dynamics = []
 
-rhythm_definition.markup = []
-
+rhythm_definition.markup = [
+        (0, marana.markup.time_signature("4/4"),
+        (1, marana.markup.time_signature("3/4"),
+        (3, marana.markup.time_signatures("4/4"),
+        (4, marana.markup.time_signature("3/4"),
+]
 # trombone1  
 #------------------------------------------------#
 rhythm_definition = segment_maker.define_rhythm()
 rhythm_definition.instrument_name = "trombone1"
 
 
-
 rhythm_definition.notes = [
         ("r1"),
+        ("r2."),
+        ("r2."),
         ("r1"),
-        ("r1"),
-        ("r1"),
-        ("r1"),
+        ("r2."),
+        ("r2."),
 ]
+
 rhythm_definition.dynamics = []
 
-rhythm_definition.markup = []
+rhythm_definition.markup = [
+        (0, marana.markup.time_signature("4/4"),
+        (1, marana.markup.time_signature("3/4"),
+        (3, marana.markup.time_signatures("4/4"),
+        (4, marana.markup.time_signature("3/4"),
+]
 
 
 ###################################################
@@ -213,17 +261,23 @@ rhythm_definition.markup = []
 rhythm_definition = segment_maker.define_rhythm()
 rhythm_definition.instrument_name = "timpani1"
 
-
 rhythm_definition.notes = [
         ("r1"),
+        ("r2."),
+        ("r2."),
         ("r1"),
-        ("r1"),
-        ("r1"),
-        ("r1"),
+        ("r2."),
+        ("r2."),
 ]
+
 rhythm_definition.dynamics = []
 
-rhythm_definition.markup = []
+rhythm_definition.markup = [
+        (0, marana.markup.time_signature("4/4"),
+        (1, marana.markup.time_signature("3/4"),
+        (3, marana.markup.time_signatures("4/4"),
+        (4, marana.markup.time_signature("3/4"),
+]
 
 # vibraphone 
 #------------------------------------------------#
@@ -232,15 +286,21 @@ rhythm_definition.instrument_name = "vibraphone"
 
 rhythm_definition.notes = [
         ("r1"),
+        ("r2."),
+        ("r2."),
         ("r1"),
-        ("r1"),
-        ("r1"),
-        ("r1"),
+        ("r2."),
+        ("r2."),
 ]
+
 rhythm_definition.dynamics = []
 
-rhythm_definition.markup = []
-
+rhythm_definition.markup = [
+        (0, marana.markup.time_signature("4/4"),
+        (1, marana.markup.time_signature("3/4"),
+        (3, marana.markup.time_signatures("4/4"),
+        (4, marana.markup.time_signature("3/4"),
+]
 
 # harp 
 #------------------------------------------------#
@@ -249,14 +309,21 @@ rhythm_definition.instrument_name = "harp"
 
 rhythm_definition.notes = [
         ("r1"),
+        ("r2."),
+        ("r2."),
         ("r1"),
-        ("r1"),
-        ("r1"),
-        ("r1"),
+        ("r2."),
+        ("r2."),
 ]
+
 rhythm_definition.dynamics = []
 
-rhythm_definition.markup = []
+rhythm_definition.markup = [
+        (0, marana.markup.time_signature("4/4"),
+        (1, marana.markup.time_signature("3/4"),
+        (3, marana.markup.time_signatures("4/4"),
+        (4, marana.markup.time_signature("3/4"),
+]
 
 ###################################################
 #----------------Strings -------------------------/
@@ -264,32 +331,50 @@ rhythm_definition.markup = []
 #------------------------------------------------#
 rhythm_definition = segment_maker.define_rhythm()
 rhythm_definition.instrument_name = "violin1"
+
+
 rhythm_definition.notes = [
         ("r1"),
+        ("r2."),
+        ("r2."),
         ("r1"),
-        ("r1"),
-        ("r1"),
-        ("r1"),
+        ("r2."),
+        ("r2."),
 ]
 
 rhythm_definition.dynamics = []
 
-rhythm_definition.markup = []
+rhythm_definition.markup = [
+        (0, marana.markup.time_signature("4/4"),
+        (1, marana.markup.time_signature("3/4"),
+        (3, marana.markup.time_signatures("4/4"),
+        (4, marana.markup.time_signature("3/4"),
+]
 
 # violin2  
 #------------------------------------------------#
 rhythm_definition = segment_maker.define_rhythm()
 rhythm_definition.instrument_name = "violin2"
+
+
 rhythm_definition.notes = [
         ("r1"),
+        ("r2."),
+        ("r2."),
         ("r1"),
-        ("r1"),
-        ("r1"),
-        ("r1"),
+        ("r2."),
+        ("r2."),
 ]
+
 rhythm_definition.dynamics = []
 
-rhythm_definition.markup = []
+rhythm_definition.markup = [
+        (0, marana.markup.time_signature("4/4"),
+        (1, marana.markup.time_signature("3/4"),
+        (3, marana.markup.time_signatures("4/4"),
+        (4, marana.markup.time_signature("3/4"),
+]
+
 
 # viola  
 #------------------------------------------------#
@@ -298,14 +383,21 @@ rhythm_definition.instrument_name = "viola1"
 
 rhythm_definition.notes = [
         ("r1"),
+        ("r2."),
+        ("r2."),
         ("r1"),
-        ("r1"),
-        ("r1"),
-        ("r1"),
+        ("r2."),
+        ("r2."),
 ]
+
 rhythm_definition.dynamics = []
 
-rhythm_definition.markup = []
+rhythm_definition.markup = [
+        (0, marana.markup.time_signature("4/4"),
+        (1, marana.markup.time_signature("3/4"),
+        (3, marana.markup.time_signatures("4/4"),
+        (4, marana.markup.time_signature("3/4"),
+]
 
 # cello
 #------------------------------------------------#
@@ -314,14 +406,21 @@ rhythm_definition.instrument_name = "cello1"
 
 rhythm_definition.notes = [
         ("r1"),
+        ("r2."),
+        ("r2."),
         ("r1"),
-        ("r1"),
-        ("r1"),
-        ("r1"),
+        ("r2."),
+        ("r2."),
 ]
+
 rhythm_definition.dynamics = []
 
-rhythm_definition.markup = []
+rhythm_definition.markup = [
+        (0, marana.markup.time_signature("4/4"),
+        (1, marana.markup.time_signature("3/4"),
+        (3, marana.markup.time_signatures("4/4"),
+        (4, marana.markup.time_signature("3/4"),
+]
 
 # doublebass 
 #------------------------------------------------#
@@ -330,15 +429,21 @@ rhythm_definition.instrument_name = "doublebass"
  
 rhythm_definition.notes = [
         ("r1"),
+        ("r2."),
+        ("r2."),
         ("r1"),
-        ("r1"),
-        ("r1"),
-        ("r1"),
+        ("r2."),
+        ("r2."),
 ]
+
 rhythm_definition.dynamics = []
 
-rhythm_definition.markup = []
-
+rhythm_definition.markup = [
+        (0, marana.markup.time_signature("4/4"),
+        (1, marana.markup.time_signature("3/4"),
+        (3, marana.markup.time_signatures("4/4"),
+        (4, marana.markup.time_signature("3/4"),
+]
 
 
 # ---------------------------------------RUN SEGMENT

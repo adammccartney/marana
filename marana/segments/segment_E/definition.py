@@ -35,7 +35,7 @@ segment_maker = marana.SegmentMaker(
                                 segment_name='segment_E',
                                 rehearsal_mark=5,
                                 tempo=((1, 4), 50),
-                                time_signatures=[(4, 4)] * 5,
+                                time_signatures=[(4, 4) + (3, 4) * 2 + (4, 4) + (3, 4) * 2],
                                 )
 
 segment_maker.metronome_marks = [
