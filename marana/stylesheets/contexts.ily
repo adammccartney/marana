@@ -7,7 +7,7 @@
         \type Engraver_group
         \consists Script_engraver
         \consists Text_engraver
-        \consists \alternateTextSpannerEngraver
+        %\consists \alternateTextSpannerEngraver
 
         \override TextScript.font-size = 6
 

@@ -10,9 +10,9 @@ class ScoreTemplate(abjad.ScoreTemplate):
 
     __documentation_section__ = None
 
-    _always_make_global_rests = False
+    _always_make_global_rests = True
 
-    _global_rests_in_topmost_staff = False
+    _global_rests_in_topmost_staff = True
     
     def __init__(self):
         super(ScoreTemplate, self).__init__()
@@ -465,7 +465,7 @@ class ScoreTemplate(abjad.ScoreTemplate):
         )
         global_context = abjad.Context(
             [global_skips, global_rests],
-            lilypond_type="TimeSignatureContext",
+            lilypond_type="GlobalContext",
             simultaneous=True,
             name="Global_Context",
             tag=tag,
