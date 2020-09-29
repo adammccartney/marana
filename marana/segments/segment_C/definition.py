@@ -35,12 +35,14 @@ segment_maker = marana.SegmentMaker(
                                 segment_name='segment_C',
                                 rehearsal_mark=3,
                                 tempo=((1, 4), 50),
-                                time_signatures=[(4, 4) + (3, 4) * 2 + (4, 4) + (3, 4) * 2],
                                 )
 
 segment_maker.metronome_marks = [
         (0, marana.metronome_marks['50'], 5),
         ]
+
+time_signatures= [(4, 4)] + [(3, 4)] + [(3, 4)] + [(4, 4)] + [(3, 4)] + [(3,4)]
+maker.time_signatures = time_signatures
 
 #-----------------/________________________
 # Pitch Material /  Constants for section /

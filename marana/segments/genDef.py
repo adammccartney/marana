@@ -48,7 +48,7 @@ segment_maker.metronome_marks = [
         ]
 
 time_signatures= [(4, 4)] + [(3, 4)] + [(3, 4)] + [(4, 4)] + [(3, 4)] + [(3,4)]
-maker.time_signatures = time_signatures
+segment_maker.time_signatures = time_signatures
 
 #-----------------/________________________
 # Pitch Material /  Constants for section /
