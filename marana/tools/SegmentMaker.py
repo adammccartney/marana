@@ -235,7 +235,7 @@ class RhythmDefinition(object):
                 abjad.attach(copied_indicator, component)
         return component
 
-class SegmentMaker(object):
+class SegmentMaker(abjad.SegmentMaker):
     """Segment Maker definition for marana
     makes a persistent section of the score.
     """
