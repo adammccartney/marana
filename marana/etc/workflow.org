@@ -45,9 +45,14 @@ Need to run three scripts to build score:
 *** TODO Setup material directory 
 *** TODO Sort out score margins & instrument names 
 
+
 ** Composition 
 
 *** Time structure
+*v1.1*
+    + 4/4, 3/4, 3/4, 4/4, 3/4, 3/4
+
+*v1.0*
     + Total duration should be approximately 5 mins
     + Segments are going to be (4/4 * 5) long, at tempo 1/4 = 52
     + Therefor, roughly 3 segments per block (long minute)
@@ -55,5 +60,9 @@ Need to run three scripts to build score:
     + segment names: {A, B, ..., K, L}
 
 *** Material distribution
++ 9 chords, divided across 3 sections
++ 2 melodies based on chord tones
++ see sketches for more details
 
 *** Orchestration 
++ see sketch

@@ -418,12 +418,12 @@ class SegmentMaker(abjad.SegmentMaker):
             abjad.attach(time_signature, skip, context="Score")
             skips.append(skip)
         context.extend(skips)
-        context = self._score["Global_Rests"]
-        rests = []
-        for item in self.time_signatures:
-            rest = abjad.MultimeasureRest(1, multiplier=item)
-            rests.append(rest)
-        context.extend(rests)
+        #context = self._score["Global_Rests"]
+        #rests = []
+        #for item in self.time_signatures:
+        #    rest = abjad.MultimeasureRest(1, multiplier=item)
+        #    rests.append(rest)
+        #context.extend(rests)
 
     def _make_lilypond_file(self):
         path = "../../stylesheets/stylesheet.ily"

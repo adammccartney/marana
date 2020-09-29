@@ -17,17 +17,8 @@
         markFormatter = #format-mark-box-alphabet                              %! marana.ScoreTemplate.__call__()
     }                                                                          %! marana.ScoreTemplate.__call__()
     <<                                                                         %! marana.ScoreTemplate.__call__()
-        \context GlobalContext = "Global_Context"                              %! abjad.ScoreTemplate._make_global_context()
+        \context TimeSignatureContext = "Global_Context"                       %! abjad.ScoreTemplate._make_global_context()
         <<                                                                     %! abjad.ScoreTemplate._make_global_context()
-            \context GlobalRests = "Global_Rests"                              %! abjad.ScoreTemplate._make_global_context()
-            {                                                                  %! abjad.ScoreTemplate._make_global_context()
-                R1 * 1
-                R1 * 3/4
-                R1 * 3/4
-                R1 * 1
-                R1 * 3/4
-                R1 * 3/4
-            }                                                                  %! abjad.ScoreTemplate._make_global_context()
             \context GlobalSkips = "Global_Skips"                              %! abjad.ScoreTemplate._make_global_context()
             {                                                                  %! abjad.ScoreTemplate._make_global_context()
                 \time 4/4
