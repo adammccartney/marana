@@ -457,14 +457,14 @@ class ScoreTemplate(abjad.ScoreTemplate):
     def _make_global_context(self):
         site = "abjad.ScoreTemplate._make_global_context()"
         tag = abjad.Tag(site)
-        #global_rests = abjad.Context(
-        #    lilypond_type="GlobalRests", name="Global_Rests", tag=tag,
-        #)
+        global_rests = abjad.Context(
+            lilypond_type="GlobalRests", name="Global_Rests", tag=tag,
+        )
         global_skips = abjad.Context(
             lilypond_type="GlobalSkips", name="Global_Skips", tag=tag,
         )
         global_context = abjad.Context(
-            [global_skips],
+            [global_skips, global_rests],
             lilypond_type="TimeSignatureContext",
             simultaneous=True,
             name="Global_Context",

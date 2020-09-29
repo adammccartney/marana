@@ -34,6 +34,15 @@
                 \time 3/4
                 s1 * 3/4
             }                                                                  %! abjad.ScoreTemplate._make_global_context()
+            \context GlobalRests = "Global_Rests"                              %! abjad.ScoreTemplate._make_global_context()
+            {                                                                  %! abjad.ScoreTemplate._make_global_context()
+                R1 * 1
+                R1 * 3/4
+                R1 * 3/4
+                R1 * 1
+                R1 * 3/4
+                R1 * 3/4
+            }                                                                  %! abjad.ScoreTemplate._make_global_context()
         >>                                                                     %! abjad.ScoreTemplate._make_global_context()
         \context MusicContext = "Music_Context"                                %! marana.ScoreTemplate.__call__()
         <<                                                                     %! marana.ScoreTemplate.__call__()
