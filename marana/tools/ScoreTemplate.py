@@ -5,7 +5,36 @@ class ScoreTemplate(abjad.ScoreTemplate):
     """
     Makes a simple score template for symphony orchestra 
     """
+
+    ### CLASS VARIABLES ###
+
+    __documentation_section__ = None
+
+    _always_make_global_rests = True
+
+    _global_rests_in_topmost_staff = True
     
+    def __init__(self):
+        super(ScoreTemplate, self).__init__()
+        self.voice_abbreviations.update(
+            {"fl1": "flute1_Music_Voice",
+             "ob1": "oboe1_Music_Voice",
+             "Bbcl1": "Bbclarinet1_Music_Voice",
+             "bsn1": "bassoon1_Music_Voice",
+             "hrn1": "fhorn1_Music_Voice",
+             "hrn3": "fhorn3_Music_Voice",
+             "trp1": "trumpet1_Music_Voice",
+             "trb1": "trombone1_Music_Voice",
+             "tmp1": "timpani1_Music_Voice",
+             "hrp": "harp_Music_Voice",
+             "vln1": "violin1_Music_Voice",
+             "vln2": "violin2_Music_Voice",
+             "vla1": "viola1_Music_Voice",
+             "vlc1": "cello1_Music_Voice",
+             "db": "doublebass_Music_Voice",
+             }
+            )
+
     ### SPECIAL METHODS ###
 
     def __call__(self) -> abjad.Score:
@@ -16,7 +45,7 @@ class ScoreTemplate(abjad.ScoreTemplate):
         tag = abjad.Tag(site)
 
         # GLOBAL CONTEXT
-        #global_context = self._make_global_context()
+        global_context = self._make_global_context()
 
         # Woodwind
         ## Flutes

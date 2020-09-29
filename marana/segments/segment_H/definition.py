@@ -71,10 +71,10 @@ rhythm_definition.notes = [
 rhythm_definition.dynamics = []
 
 rhythm_definition.markup = [
-        (0, marana.markup.time_signature("4/4")),
-        (1, marana.markup.time_signature("3/4")),
-        (3, marana.markup.time_signatures("4/4")),
-        (4, marana.markup.time_signature("3/4")),
+        (0, marana.time_signature("4/4")),
+        (1, marana.time_signature("3/4")),
+        (3, marana.time_signature("4/4")),
+        (4, marana.time_signature("3/4")),
 ]
 
 
@@ -95,10 +95,10 @@ rhythm_definition.notes = [
 rhythm_definition.dynamics = []
 
 rhythm_definition.markup = [
-        (0, marana.markup.time_signature("4/4")),
-        (1, marana.markup.time_signature("3/4")),
-        (3, marana.markup.time_signatures("4/4")),
-        (4, marana.markup.time_signature("3/4")),
+        (0, marana.time_signature("4/4")),
+        (1, marana.time_signature("3/4")),
+        (3, marana.time_signature("4/4")),
+        (4, marana.time_signature("3/4")),
 ]
 
 
@@ -119,10 +119,10 @@ rhythm_definition.notes = [
 rhythm_definition.dynamics = []
 
 rhythm_definition.markup = [
-        (0, marana.markup.time_signature("4/4")),
-        (1, marana.markup.time_signature("3/4")),
-        (3, marana.markup.time_signatures("4/4")),
-        (4, marana.markup.time_signature("3/4")),
+        (0, marana.time_signature("4/4")),
+        (1, marana.time_signature("3/4")),
+        (3, marana.time_signature("4/4")),
+        (4, marana.time_signature("3/4")),
 ]
 
 
@@ -144,10 +144,10 @@ rhythm_definition.notes = [
 rhythm_definition.dynamics = []
 
 rhythm_definition.markup = [
-        (0, marana.markup.time_signature("4/4")),
-        (1, marana.markup.time_signature("3/4")),
-        (3, marana.markup.time_signatures("4/4")),
-        (4, marana.markup.time_signature("3/4")),
+        (0, marana.time_signature("4/4")),
+        (1, marana.time_signature("3/4")),
+        (3, marana.time_signature("4/4")),
+        (4, marana.time_signature("3/4")),
 ]
 
 # -------------- Brass ---------------------------/
@@ -169,10 +169,10 @@ rhythm_definition.notes = [
 rhythm_definition.dynamics = []
 
 rhythm_definition.markup = [
-        (0, marana.markup.time_signature("4/4")),
-        (1, marana.markup.time_signature("3/4")),
-        (3, marana.markup.time_signatures("4/4")),
-        (4, marana.markup.time_signature("3/4")),
+        (0, marana.time_signature("4/4")),
+        (1, marana.time_signature("3/4")),
+        (3, marana.time_signature("4/4")),
+        (4, marana.time_signature("3/4")),
 ]
 
 
@@ -194,10 +194,10 @@ rhythm_definition.notes = [
 rhythm_definition.dynamics = []
 
 rhythm_definition.markup = [
-        (0, marana.markup.time_signature("4/4")),
-        (1, marana.markup.time_signature("3/4")),
-        (3, marana.markup.time_signatures("4/4")),
-        (4, marana.markup.time_signature("3/4")),
+        (0, marana.time_signature("4/4")),
+        (1, marana.time_signature("3/4")),
+        (3, marana.time_signature("4/4")),
+        (4, marana.time_signature("3/4")),
 ]
 
 # trumpet1 
@@ -218,10 +218,10 @@ rhythm_definition.notes = [
 rhythm_definition.dynamics = []
 
 rhythm_definition.markup = [
-        (0, marana.markup.time_signature("4/4")),
-        (1, marana.markup.time_signature("3/4")),
-        (3, marana.markup.time_signatures("4/4")),
-        (4, marana.markup.time_signature("3/4")),
+        (0, marana.time_signature("4/4")),
+        (1, marana.time_signature("3/4")),
+        (3, marana.time_signature("4/4")),
+        (4, marana.time_signature("3/4")),
 ]
 # trombone1  
 #------------------------------------------------#
@@ -241,10 +241,10 @@ rhythm_definition.notes = [
 rhythm_definition.dynamics = []
 
 rhythm_definition.markup = [
-        (0, marana.markup.time_signature("4/4")),
-        (1, marana.markup.time_signature("3/4")),
-        (3, marana.markup.time_signatures("4/4")),
-        (4, marana.markup.time_signature("3/4")),
+        (0, marana.time_signature("4/4")),
+        (1, marana.time_signature("3/4")),
+        (3, marana.time_signature("4/4")),
+        (4, marana.time_signature("3/4")),
 ]
 
 
@@ -267,10 +267,10 @@ rhythm_definition.notes = [
 rhythm_definition.dynamics = []
 
 rhythm_definition.markup = [
-        (0, marana.markup.time_signature("4/4")),
-        (1, marana.markup.time_signature("3/4")),
-        (3, marana.markup.time_signatures("4/4")),
-        (4, marana.markup.time_signature("3/4")),
+        (0, marana.time_signature("4/4")),
+        (1, marana.time_signature("3/4")),
+        (3, marana.time_signature("4/4")),
+        (4, marana.time_signature("3/4")),
 ]
 
 # vibraphone 
@@ -290,10 +290,10 @@ rhythm_definition.notes = [
 rhythm_definition.dynamics = []
 
 rhythm_definition.markup = [
-        (0, marana.markup.time_signature("4/4")),
-        (1, marana.markup.time_signature("3/4")),
-        (3, marana.markup.time_signatures("4/4")),
-        (4, marana.markup.time_signature("3/4")),
+        (0, marana.time_signature("4/4")),
+        (1, marana.time_signature("3/4")),
+        (3, marana.time_signature("4/4")),
+        (4, marana.time_signature("3/4")),
 ]
 
 # harp 
@@ -313,10 +313,10 @@ rhythm_definition.notes = [
 rhythm_definition.dynamics = []
 
 rhythm_definition.markup = [
-        (0, marana.markup.time_signature("4/4")),
-        (1, marana.markup.time_signature("3/4")),
-        (3, marana.markup.time_signatures("4/4")),
-        (4, marana.markup.time_signature("3/4")),
+        (0, marana.time_signature("4/4")),
+        (1, marana.time_signature("3/4")),
+        (3, marana.time_signature("4/4")),
+        (4, marana.time_signature("3/4")),
 ]
 
 ###################################################
@@ -339,10 +339,10 @@ rhythm_definition.notes = [
 rhythm_definition.dynamics = []
 
 rhythm_definition.markup = [
-        (0, marana.markup.time_signature("4/4")),
-        (1, marana.markup.time_signature("3/4")),
-        (3, marana.markup.time_signatures("4/4")),
-        (4, marana.markup.time_signature("3/4")),
+        (0, marana.time_signature("4/4")),
+        (1, marana.time_signature("3/4")),
+        (3, marana.time_signature("4/4")),
+        (4, marana.time_signature("3/4")),
 ]
 
 # violin2  
@@ -363,10 +363,10 @@ rhythm_definition.notes = [
 rhythm_definition.dynamics = []
 
 rhythm_definition.markup = [
-        (0, marana.markup.time_signature("4/4")),
-        (1, marana.markup.time_signature("3/4")),
-        (3, marana.markup.time_signatures("4/4")),
-        (4, marana.markup.time_signature("3/4")),
+        (0, marana.time_signature("4/4")),
+        (1, marana.time_signature("3/4")),
+        (3, marana.time_signature("4/4")),
+        (4, marana.time_signature("3/4")),
 ]
 
 
@@ -387,10 +387,10 @@ rhythm_definition.notes = [
 rhythm_definition.dynamics = []
 
 rhythm_definition.markup = [
-        (0, marana.markup.time_signature("4/4")),
-        (1, marana.markup.time_signature("3/4")),
-        (3, marana.markup.time_signatures("4/4")),
-        (4, marana.markup.time_signature("3/4")),
+        (0, marana.time_signature("4/4")),
+        (1, marana.time_signature("3/4")),
+        (3, marana.time_signature("4/4")),
+        (4, marana.time_signature("3/4")),
 ]
 
 # cello
@@ -410,10 +410,10 @@ rhythm_definition.notes = [
 rhythm_definition.dynamics = []
 
 rhythm_definition.markup = [
-        (0, marana.markup.time_signature("4/4")),
-        (1, marana.markup.time_signature("3/4")),
-        (3, marana.markup.time_signatures("4/4")),
-        (4, marana.markup.time_signature("3/4")),
+        (0, marana.time_signature("4/4")),
+        (1, marana.time_signature("3/4")),
+        (3, marana.time_signature("4/4")),
+        (4, marana.time_signature("3/4")),
 ]
 
 # doublebass 
@@ -433,10 +433,10 @@ rhythm_definition.notes = [
 rhythm_definition.dynamics = []
 
 rhythm_definition.markup = [
-        (0, marana.markup.time_signature("4/4")),
-        (1, marana.markup.time_signature("3/4")),
-        (3, marana.markup.time_signatures("4/4")),
-        (4, marana.markup.time_signature("3/4")),
+        (0, marana.time_signature("4/4")),
+        (1, marana.time_signature("3/4")),
+        (3, marana.time_signature("4/4")),
+        (4, marana.time_signature("3/4")),
 ]
 
 
