@@ -10,9 +10,9 @@ class ScoreTemplate(abjad.ScoreTemplate):
 
     __documentation_section__ = None
 
-    _always_make_global_rests = True
+    _always_make_global_rests = False
 
-    _global_rests_in_topmost_staff = True
+    _global_rests_in_topmost_staff = False
     
     def __init__(self):
         super(ScoreTemplate, self).__init__()

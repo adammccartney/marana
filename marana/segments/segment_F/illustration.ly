@@ -17,6 +17,33 @@
         markFormatter = #format-mark-box-alphabet                              %! marana.ScoreTemplate.__call__()
     }                                                                          %! marana.ScoreTemplate.__call__()
     <<                                                                         %! marana.ScoreTemplate.__call__()
+        \context GlobalContext = "Global_Context"                              %! abjad.ScoreTemplate._make_global_context()
+        <<                                                                     %! abjad.ScoreTemplate._make_global_context()
+            \context GlobalRests = "Global_Rests"                              %! abjad.ScoreTemplate._make_global_context()
+            {                                                                  %! abjad.ScoreTemplate._make_global_context()
+                R1 * 1
+                R1 * 3/4
+                R1 * 3/4
+                R1 * 1
+                R1 * 3/4
+                R1 * 3/4
+            }                                                                  %! abjad.ScoreTemplate._make_global_context()
+            \context GlobalSkips = "Global_Skips"                              %! abjad.ScoreTemplate._make_global_context()
+            {                                                                  %! abjad.ScoreTemplate._make_global_context()
+                \time 4/4
+                s1 * 1
+                \time 3/4
+                s1 * 3/4
+                \time 3/4
+                s1 * 3/4
+                \time 4/4
+                s1 * 1
+                \time 3/4
+                s1 * 3/4
+                \time 3/4
+                s1 * 3/4
+            }                                                                  %! abjad.ScoreTemplate._make_global_context()
+        >>                                                                     %! abjad.ScoreTemplate._make_global_context()
         \context MusicContext = "Music_Context"                                %! marana.ScoreTemplate.__call__()
         <<                                                                     %! marana.ScoreTemplate.__call__()
             \context StaffGroup = "Woodwind_Staff_Group"                       %! marana.ScoreTemplate.__call__()
@@ -31,28 +58,31 @@
                     \context Voice = "flute1_Markup_Voice"                     %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \stopTextSpan
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "flute1_Music_Voice"                      %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         \mark #6
                         r1
+                        r2.
+                        r2.
                         r1
-                        r1
-                        r1
-                        r1
+                        r2.
+                        r2.
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "flute1_Dynamics_Voice"                   %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \!
                     }                                                          %! marana.ScoreTemplate.__call__()
                 >>                                                             %! marana.ScoreTemplate.__call__()
@@ -66,28 +96,31 @@
                     \context Voice = "oboe1_Markup_Voice"                      %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \stopTextSpan
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "oboe1_Music_Voice"                       %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         \mark #6
                         r1
+                        r2.
+                        r2.
                         r1
-                        r1
-                        r1
-                        r1
+                        r2.
+                        r2.
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "oboe1_Dynamics_Voice"                    %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \!
                     }                                                          %! marana.ScoreTemplate.__call__()
                 >>                                                             %! marana.ScoreTemplate.__call__()
@@ -101,28 +134,31 @@
                     \context Voice = "Bbclarinet1_Markup_Voice"                %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \stopTextSpan
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "Bbclarinet1_Music_Voice"                 %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         \mark #6
                         r1
+                        r2.
+                        r2.
                         r1
-                        r1
-                        r1
-                        r1
+                        r2.
+                        r2.
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "Bbclarinet1_Dynamics_Voice"              %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \!
                     }                                                          %! marana.ScoreTemplate.__call__()
                 >>                                                             %! marana.ScoreTemplate.__call__()
@@ -136,28 +172,31 @@
                     \context Voice = "bassoon1_Markup_Voice"                   %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \stopTextSpan
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "bassoon1_Music_Voice"                    %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         \mark #6
                         r1
+                        r2.
+                        r2.
                         r1
-                        r1
-                        r1
-                        r1
+                        r2.
+                        r2.
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "bassoon1_Dynamics_Voice"                 %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \!
                     }                                                          %! marana.ScoreTemplate.__call__()
                 >>                                                             %! marana.ScoreTemplate.__call__()
@@ -174,28 +213,31 @@
                     \context Voice = "fhorn1_Markup_Voice"                     %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \stopTextSpan
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "fhorn1_Music_Voice"                      %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         \mark #6
                         r1
+                        r2.
+                        r2.
                         r1
-                        r1
-                        r1
-                        r1
+                        r2.
+                        r2.
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "fhorn1_Dynamics_Voice"                   %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \!
                     }                                                          %! marana.ScoreTemplate.__call__()
                 >>                                                             %! marana.ScoreTemplate.__call__()
@@ -209,28 +251,31 @@
                     \context Voice = "fhorn3_Markup_Voice"                     %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \stopTextSpan
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "fhorn3_Music_Voice"                      %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         \mark #6
                         r1
+                        r2.
+                        r2.
                         r1
-                        r1
-                        r1
-                        r1
+                        r2.
+                        r2.
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "fhorn3_Dynamics_Voice"                   %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \!
                     }                                                          %! marana.ScoreTemplate.__call__()
                 >>                                                             %! marana.ScoreTemplate.__call__()
@@ -244,28 +289,31 @@
                     \context Voice = "trumpet1_Markup_Voice"                   %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \stopTextSpan
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "trumpet1_Music_Voice"                    %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         \mark #6
                         r1
+                        r2.
+                        r2.
                         r1
-                        r1
-                        r1
-                        r1
+                        r2.
+                        r2.
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "trumpet1_Dynamics_Voice"                 %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \!
                     }                                                          %! marana.ScoreTemplate.__call__()
                 >>                                                             %! marana.ScoreTemplate.__call__()
@@ -279,28 +327,31 @@
                     \context Voice = "trombone1_Markup_Voice"                  %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \stopTextSpan
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "trombone1_Music_Voice"                   %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         \mark #6
                         r1
+                        r2.
+                        r2.
                         r1
-                        r1
-                        r1
-                        r1
+                        r2.
+                        r2.
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "trombone1_Dynamics_Voice"                %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \!
                     }                                                          %! marana.ScoreTemplate.__call__()
                 >>                                                             %! marana.ScoreTemplate.__call__()
@@ -317,28 +368,31 @@
                     \context Voice = "timpani1_Markup_Voice"                   %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \stopTextSpan
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "timpani1_Music_Voice"                    %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         \mark #6
                         r1
+                        r2.
+                        r2.
                         r1
-                        r1
-                        r1
-                        r1
+                        r2.
+                        r2.
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "timpani1_Dynamics_Voice"                 %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \!
                     }                                                          %! marana.ScoreTemplate.__call__()
                 >>                                                             %! marana.ScoreTemplate.__call__()
@@ -352,28 +406,31 @@
                     \context Voice = "vibraphone_Markup_Voice"                 %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \stopTextSpan
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "vibraphone_Music_Voice"                  %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         \mark #6
                         r1
+                        r2.
+                        r2.
                         r1
-                        r1
-                        r1
-                        r1
+                        r2.
+                        r2.
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "vibraphone_Dynamics_Voice"               %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \!
                     }                                                          %! marana.ScoreTemplate.__call__()
                 >>                                                             %! marana.ScoreTemplate.__call__()
@@ -388,28 +445,31 @@
                 \context Voice = "harp_Markup_Voice"                           %! marana.ScoreTemplate.__call__()
                 {                                                              %! marana.ScoreTemplate.__call__()
                     s1 * 1/1
+                    s1 * 3/4
+                    s1 * 3/4
                     s1 * 1/1
-                    s1 * 1/1
-                    s1 * 1/1
-                    s1 * 1/1
+                    s1 * 3/4
+                    s1 * 3/4
                     \stopTextSpan
                 }                                                              %! marana.ScoreTemplate.__call__()
                 \context Voice = "harp_Music_Voice"                            %! marana.ScoreTemplate.__call__()
                 {                                                              %! marana.ScoreTemplate.__call__()
                     \mark #6
                     r1
+                    r2.
+                    r2.
                     r1
-                    r1
-                    r1
-                    r1
+                    r2.
+                    r2.
                 }                                                              %! marana.ScoreTemplate.__call__()
                 \context Voice = "harp_Dynamics_Voice"                         %! marana.ScoreTemplate.__call__()
                 {                                                              %! marana.ScoreTemplate.__call__()
                     s1 * 1/1
+                    s1 * 3/4
+                    s1 * 3/4
                     s1 * 1/1
-                    s1 * 1/1
-                    s1 * 1/1
-                    s1 * 1/1
+                    s1 * 3/4
+                    s1 * 3/4
                     \!
                 }                                                              %! marana.ScoreTemplate.__call__()
             >>                                                                 %! marana.ScoreTemplate.__call__()
@@ -425,28 +485,31 @@
                     \context Voice = "violin1_Markup_Voice"                    %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \stopTextSpan
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "violin1_Music_Voice"                     %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         \mark #6
                         r1
+                        r2.
+                        r2.
                         r1
-                        r1
-                        r1
-                        r1
+                        r2.
+                        r2.
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "violin1_Dynamics_Voice"                  %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \!
                     }                                                          %! marana.ScoreTemplate.__call__()
                 >>                                                             %! marana.ScoreTemplate.__call__()
@@ -460,28 +523,31 @@
                     \context Voice = "violin2_Markup_Voice"                    %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \stopTextSpan
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "violin2_Music_Voice"                     %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         \mark #6
                         r1
+                        r2.
+                        r2.
                         r1
-                        r1
-                        r1
-                        r1
+                        r2.
+                        r2.
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "violin2_Dynamics_Voice"                  %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \!
                     }                                                          %! marana.ScoreTemplate.__call__()
                 >>                                                             %! marana.ScoreTemplate.__call__()
@@ -495,28 +561,31 @@
                     \context Voice = "viola1_Markup_Voice"                     %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \stopTextSpan
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "viola1_Music_Voice"                      %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         \mark #6
                         r1
+                        r2.
+                        r2.
                         r1
-                        r1
-                        r1
-                        r1
+                        r2.
+                        r2.
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "viola1_Dynamics_Voice"                   %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \!
                     }                                                          %! marana.ScoreTemplate.__call__()
                 >>                                                             %! marana.ScoreTemplate.__call__()
@@ -530,28 +599,31 @@
                     \context Voice = "cello1_Markup_Voice"                     %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \stopTextSpan
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "cello1_Music_Voice"                      %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         \mark #6
                         r1
+                        r2.
+                        r2.
                         r1
-                        r1
-                        r1
-                        r1
+                        r2.
+                        r2.
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "cello1_Dynamics_Voice"                   %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \!
                     }                                                          %! marana.ScoreTemplate.__call__()
                 >>                                                             %! marana.ScoreTemplate.__call__()
@@ -565,28 +637,31 @@
                     \context Voice = "doublebass_Markup_Voice"                 %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \stopTextSpan
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "doublebass_Music_Voice"                  %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         \mark #6
                         r1
+                        r2.
+                        r2.
                         r1
-                        r1
-                        r1
-                        r1
+                        r2.
+                        r2.
                     }                                                          %! marana.ScoreTemplate.__call__()
                     \context Voice = "doublebass_Dynamics_Voice"               %! marana.ScoreTemplate.__call__()
                     {                                                          %! marana.ScoreTemplate.__call__()
                         s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
-                        s1 * 1/1
+                        s1 * 3/4
+                        s1 * 3/4
                         \!
                     }                                                          %! marana.ScoreTemplate.__call__()
                 >>                                                             %! marana.ScoreTemplate.__call__()
