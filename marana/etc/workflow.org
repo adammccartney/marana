@@ -1,7 +1,8 @@
 * marana for Orchestra
 
-** Score config
+* Score config
 
+** Structure & Templates
 *** DONE Rename score 
          + created a renaming script in ~/code/scripts
 *** DONE Setup remote repo
@@ -42,27 +43,64 @@ Need to run three scripts to build score:
 *** DONE Modify script to build all segments
 
 *** TODO Configure stylesheet
-*** TODO Setup material directory 
 *** TODO Sort out score margins & instrument names 
 
 
-** Composition 
 
-*** Time structure
-*v1.1*
-    + 4/4, 3/4, 3/4, 4/4, 3/4, 3/4
 
-*v1.0*
+
+
+** Material
+
+*** TODO Orchestrate chords
+Figure out mixtures that suit the following dynamics: 
+
+ + /ppp/: almost all air noise from the winds, w/muted strings
+ + /pp/ : pizzicato muted strings, single voiced winds 
+ + /p/  : pizz. muted strings, sfp winds/brass and single
+ + /mp/ : pizz. strings no mutes, sfp brass and single voiced wwinds
+ + /f/  : "pizz rhythms" now sfp on winds/brass, bowed strings
+ + /ff/ : following the same pattern as above, dropping back to /mp/
+   model and rising to a full /ff/ tutti at the points in the phrase
+   where the melody and chords coalesce
+
+
+*** TODO Orchestrate Melodies
+General Plan is to take a melody composed using chord tones and
+suspensions:
++ 3 x "A" melodies 
++ 3 x "B" melodies
+
+I'm going to use a simple tiered pitch (organ stops) to create
+doubling and give the melody some variations and shape
+
+
+*** TODO Make diads for trills
+
+* Composition 
+
+** Time structure
+*** v1.1
+
+time signatures = [(4,4)] + [(3,4)] + [(3,4)] + [(4,4)] + [(3,4)] + [(3,4)] 
+
+harmonic rhythm = [(7,4)] + [(7,4)] + [(6, 4)]
+
+Melody has *three harmonies per phrase*
+
+*** v1.0
     + Total duration should be approximately 5 mins
     + Segments are going to be (4/4 * 5) long, at tempo 1/4 = 52
     + Therefor, roughly 3 segments per block (long minute)
     + (3 * 4) = 12 segments in total
     + segment names: {A, B, ..., K, L}
 
-*** Material distribution
+** Material distribution
 + 9 chords, divided across 3 sections
 + 2 melodies based on chord tones
 + see sketches for more details
 
-*** Orchestration 
+** Orchestration 
 + see sketch
+
+ 

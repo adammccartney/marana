@@ -1,0 +1,180 @@
+% Created 2020-09-30 Wed 10:35
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{adam}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={adam},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.3 (Org mode 9.3.8)}, 
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+\section{marana for Orchestra}
+\label{sec:org8f78d0e}
+
+\section{Score config}
+\label{sec:org388cfac}
+
+\subsection{Structure \& Templates}
+\label{sec:org8746cfe}
+\subsubsection{{\bfseries\sffamily DONE} Rename score}
+\label{sec:org50300dd}
+\begin{itemize}
+\item created a renaming script in \textasciitilde{}/code/scripts
+\end{itemize}
+\subsubsection{{\bfseries\sffamily DONE} Setup remote repo}
+\label{sec:org61cc636}
+\begin{itemize}
+\item git@github:adammccartney/marana.git
+\end{itemize}
+\subsubsection{{\bfseries\sffamily DONE} Create score template}
+\label{sec:org2c0a0b7}
+
+\subsubsection{{\bfseries\sffamily DONE} Test build score template}
+\label{sec:org54e9e8f}
+Template rendering as expected to an "abjad.f" block. Took a
+little bit of tweaking to get this running as expected in
+emacs. It seems like your need to select workon virtual
+environment \{x\} from the menu in order for the python interpreter
+to work correctly (i.e. to import packages as expected)
+
+\subsubsection{{\bfseries\sffamily DONE} Import makefiles}
+\label{sec:org57caa8e}
+Also copied in the letter-portrait directory
+
+\subsubsection{{\bfseries\sffamily DONE} Setup score build frontend (*.tex in builds)}
+\label{sec:org2bb4980}
+
+\subsubsection{{\bfseries\sffamily DONE} Setup segments}
+\label{sec:orga2d05ed}
+
+\subsubsection{{\bfseries\sffamily DONE} for all segments write: ./segment\_\$X/definition.py outline}
+\label{sec:orgb9ff4f0}
+\begin{itemize}
+\item Compare rill segments
+\item write simple script to generate all definitions for each segment
+\end{itemize}
+\subsubsection{{\bfseries\sffamily DONE} Setup tools directory}
+\label{sec:orgc8ccea2}
+
+\subsubsection{{\bfseries\sffamily DONE} Build tracer}
+\label{sec:org46d46b8}
+Tracer is building, ableit with slightly wonkey segment builds
+
+\subsubsection{{\bfseries\sffamily DONE} Find out why parts are not building}
+\label{sec:org7c41a37}
+there is no definition in the
+"marana/builds/letter-portrait/parts.ily" file 
+
+Need to run three scripts to build score: 
+\begin{enumerate}
+\item generate illustrations
+\item copy illustrations to build dir
+\item make in "/builds/\$score"
+\end{enumerate}
+
+\subsubsection{{\bfseries\sffamily DONE} Modify script to build all segments}
+\label{sec:org03bbbdb}
+
+\subsubsection{{\bfseries\sffamily TODO} Configure stylesheet}
+\label{sec:org5af1005}
+\subsubsection{{\bfseries\sffamily TODO} Sort out score margins \& instrument names}
+\label{sec:org9932c40}
+
+
+
+
+
+
+\subsection{Material}
+\label{sec:orgfed430c}
+
+\subsubsection{{\bfseries\sffamily TODO} Orchestrate chords}
+\label{sec:orgafa9622}
+Figure out mixtures that suit the following dynamics: 
+
+\begin{itemize}
+\item \emph{ppp}: almost all air noise from the winds, w/muted strings
+\item \emph{pp} : pizzicato muted strings, single voiced winds
+\item \emph{p}  : pizz. muted strings, sfp winds/brass and single
+\item \emph{mp} : pizz. strings no mutes, sfp brass and single voiced wwinds
+\item \emph{f}  : "pizz rhythms" now sfp on winds/brass, bowed strings
+\item \emph{ff} : following the same pattern as above, dropping back to \emph{mp}
+model and rising to a full \emph{ff} tutti at the points in the phrase
+where the melody and chords coalesce
+\end{itemize}
+
+
+\subsubsection{{\bfseries\sffamily TODO} Orchestrate Melodies}
+\label{sec:orgf46643e}
+General Plan is to take a melody composed using chord tones and
+suspensions:
+\begin{itemize}
+\item 3 x "A" melodies
+\item 3 x "B" melodies
+\end{itemize}
+
+I'm going to use a simple tiered pitch (organ stops) to create
+doubling and give the melody some variations and shape
+
+
+\subsubsection{{\bfseries\sffamily TODO} Make diads for trills}
+\label{sec:org1054fa0}
+
+\section{Composition}
+\label{sec:orga43523f}
+
+\subsection{Time structure}
+\label{sec:org37047e6}
+\subsubsection{v1.1}
+\label{sec:orga98a7c6}
+
+time signatures = [(4,4)] + [(3,4)] + [(3,4)] + [(4,4)] + [(3,4)] + [(3,4)] 
+
+harmonic rhythm = [(7,4)] + [(7,4)] + [(6, 4)]
+
+Melody has \textbf{three harmonies per phrase}
+
+\subsubsection{v1.0}
+\label{sec:orgfcf0549}
+\begin{itemize}
+\item Total duration should be approximately 5 mins
+\item Segments are going to be (4/4 * 5) long, at tempo 1/4 = 52
+\item Therefor, roughly 3 segments per block (long minute)
+\item (3 * 4) = 12 segments in total
+\item segment names: \{A, B, \ldots{}, K, L\}
+\end{itemize}
+
+\subsection{Material distribution}
+\label{sec:orgd06486c}
+\begin{itemize}
+\item 9 chords, divided across 3 sections
+\item 2 melodies based on chord tones
+\item see sketches for more details
+\end{itemize}
+
+\subsection{Orchestration}
+\label{sec:orgc911eca}
+\begin{itemize}
+\item see sketch
+\end{itemize}
+\end{document}
