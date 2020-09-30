@@ -136,20 +136,40 @@ chord_voice = abjad.OrderedDict([
 melody_voice = abjad.OrderedDict([
     ("blue", abjad.OrderedDict([
         ("p1", abjad.OrderedDict([
-            (1, abjad.PitchSegment("e c fs as a cs")),
-            (2, abjad.PitchSegment("e' c' fs' as' a' cs'")),
-            (3, abjad.PitchSegment("b' g' cs' f' e' gs'")),
-            (4, abjad.PitchSegment("e'' c'' fs'' as'' a'' cs''")),
-            (5, abjad.PitchSegment("gs'' e'' as'' d''' cs''' f''")),
-            (6, abjad.PitchSegment("b'' g'' cs'' f'' e'' gs''")),
-            (8, abjad.PitchSegment("e''' c''' fs''' as''' a''' cs'''")),
-            (10, abjad.PitchSegment("gs''' e''' as''' d'''' cs'''' f'''")),
+            (1, abjad.PitchSegment("e c fs as a d")),
+            (2, abjad.PitchSegment("e' c' fs' as' a' d'")),
+            (3, abjad.PitchSegment("b' g' cs' f' e' as'")),
+            (4, abjad.PitchSegment("e'' c'' fs'' as'' a'' ds''")),
+            (5, abjad.PitchSegment("gs'' e'' as'' d''' cs''' g''")),
+            (6, abjad.PitchSegment("b'' g'' cs'' f'' e'' as''")),
+            (8, abjad.PitchSegment("e''' c''' fs''' as''' a''' ds'''")),
+            (10, abjad.PitchSegment("gs''' e''' as''' d'''' cs'''' g'''")),
             ])
         ),
-
-
+        ("p2", abjad.OrderedDict([
+            (1, abjad.PitchSegment("d a, d e gs fs a")),
+            ])
+        ),
+        ("p3", abjad.OrderedDict([
+            (1, abjad.PitchSegment("a f c' ef f g")),
+            ])
+         ),
+    ])),
+    ("green", abjad.OrderedDict([
+        ("p1", abjad.OrderedDict([
+            (1, abjad.PitchSegment("g g' as cs' ds' e' a'")),
+            ])
+         ),
+        ("p2", abjad.OrderedDict([
+            (1, abjad.PitchSegment("a a' gs b cs' gs' cs'")),
+            ])
+         ),
+        ("p3", abjad.OrderedDict([
+            (1, abjad.PitchSegment("cs cs' ef g a g c")),
+        ])
+         ),
     ])
-     ])
+])
 
 
 tremolo_voice = abjad.OrderedDict([
