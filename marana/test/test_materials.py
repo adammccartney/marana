@@ -117,3 +117,40 @@ def test_black_tremolo():
     assert black_tremolo_p2 == segment_2
     assert black_tremolo_p3 == segment_3
 
+def test_blue_melodies():
+    blue_melody_p1_1 = marana.melodyVoices["blue"]["p1"][1]
+    blue_melody_p1_2 = marana.melodyVoices["blue"]["p1"][2]
+    blue_melody_p1_3 = marana.melodyVoices["blue"]["p1"][3]
+    segment_1_1 = abjad.PitchSegment("e c fs as a d")
+    segment_1_2 = abjad.PitchSegment("e' c' fs' as' a' d'")
+    segment_1_3 = abjad.PitchSegment("b' g' cs'' es'' e'' a'")
+    assert blue_melody_p1_1 == segment_1_1
+    assert blue_melody_p1_2 == segment_1_2
+    assert blue_melody_p1_3 == segment_1_3
+    blue_melody_p2_4 = marana.melodyVoices["blue"]["p2"][4]
+    segment_2_4 = abjad.PitchSegment("d'' a' d'' e'' gs'' fs'' a''")
+    assert blue_melody_p2_4 == segment_2_4
+    blue_melody_p3_5 = marana.melodyVoices["blue"]["p3"][5]
+    segment_3_5 = abjad.PitchSegment("cs''' a'' e''' g'' fs'' b''")
+    assert blue_melody_p3_5 == segment_3_5
+
+
+def test_green_melodies():
+    green_melody_p1_6 = marana.melodyVoices["green"]["p1"][6]
+    green_melody_p1_8 = marana.melodyVoices["green"]["p1"][8]
+    green_melody_p1_10 = marana.melodyVoices["green"]["p1"][10]
+    segment_1_6 = abjad.PitchSegment("d''' d'''' es''' gs''' as''' b''' e''''")
+    segment_1_8 = abjad.PitchSegment("g''' g'''' as''' cs'''' ds'''' e'''' a''''")
+    segment_1_10 = abjad.PitchSegment("b''' b'''' css'''' es'''' fss'''' gs'''' cs'''''")
+    assert green_melody_p1_6 == segment_1_6
+    assert green_melody_p1_8 == segment_1_8
+    assert green_melody_p1_10 == segment_1_10
+    green_melody_p2_1 = marana.melodyVoices["green"]["p2"][1]
+    segment_2_1 = abjad.PitchSegment("a a' gs b cs' gs' cs'")
+    assert green_melody_p2_1 == segment_2_1
+    green_melody_p3_2 = marana.melodyVoices["green"]["p3"][2]
+    segment_3_2 = abjad.PitchSegment("cs' cs'' ef' g' a' g' c'")
+    assert green_melody_p3_2 == segment_3_2
+
+
+ 

@@ -138,37 +138,72 @@ melody_voice = abjad.OrderedDict([
         ("p1", abjad.OrderedDict([
             (1, abjad.PitchSegment("e c fs as a d")),
             (2, abjad.PitchSegment("e' c' fs' as' a' d'")),
-            (3, abjad.PitchSegment("b' g' cs' f' e' as'")),
-            (4, abjad.PitchSegment("e'' c'' fs'' as'' a'' ds''")),
-            (5, abjad.PitchSegment("gs'' e'' as'' d''' cs''' g''")),
-            (6, abjad.PitchSegment("b'' g'' cs'' f'' e'' as''")),
-            (8, abjad.PitchSegment("e''' c''' fs''' as''' a''' ds'''")),
-            (10, abjad.PitchSegment("gs''' e''' as''' d'''' cs'''' g'''")),
+            (3, abjad.PitchSegment("b' g' cs'' es'' e'' a'")),
+            (4, abjad.PitchSegment("e'' c'' fs'' as'' a'' d''")),
+            (5, abjad.PitchSegment("gs'' e'' as'' css''' cs''' fs''")),
+            (6, abjad.PitchSegment("b'' g'' cs''' es''' e''' a''")),
+            (8, abjad.PitchSegment("e''' c''' fs''' as''' a''' d'''")),
+            (10, abjad.PitchSegment("gs''' e''' as''' css'''' cs'''' fs'''")),
             ])
-        ),
+         ),
         ("p2", abjad.OrderedDict([
             (1, abjad.PitchSegment("d a, d e gs fs a")),
+            (2, abjad.PitchSegment("d' a d' e' gs' fs' a'")),
+            (3, abjad.PitchSegment("a' e' a' b' ds'' cs'' e''")),
+            (4, abjad.PitchSegment("d'' a' d'' e'' gs'' fs'' a''")),
+            (5, abjad.PitchSegment("fs'' cs'' fs'' gs'' bs'' as'' cs'''")),
+            (6, abjad.PitchSegment("a'' e'' a'' b'' ds''' cs''' e'''")),
+            (8, abjad.PitchSegment("d''' a'' d''' e''' gs''' fs''' a'''")),
+            (10, abjad.PitchSegment("fs''' cs''' fs''' gs''' bs''' as''' cs''''")),
             ])
-        ),
+         ),
         ("p3", abjad.OrderedDict([
-            (1, abjad.PitchSegment("a f c' ef f g")),
+            (1, abjad.PitchSegment("a f c' ef d g")),
+            (2, abjad.PitchSegment("a' f' c'' ef' d' g'")),
+            (3, abjad.PitchSegment("e'' c'' g'' bf' a'' d''")),
+            (4, abjad.PitchSegment("a'' f'' c''' ef'' d'' g''")),
+            (5, abjad.PitchSegment("cs''' a'' e''' g'' fs'' b''")),
+            (6, abjad.PitchSegment("e''' c''' g''' bf'' a''' d'''")),
+            (8, abjad.PitchSegment("a''' f''' c'''' ef''' d''' g'''")),
+            (10, abjad.PitchSegment("cs'''' a''' e'''' g''' fs''' b'''")),
             ])
          ),
     ])),
     ("green", abjad.OrderedDict([
         ("p1", abjad.OrderedDict([
             (1, abjad.PitchSegment("g g' as cs' ds' e' a'")),
+            (2, abjad.PitchSegment("g' g'' as' cs'' ds'' e'' a''")),
+            (3, abjad.PitchSegment("d'' d''' es'' gs'' as'' b'' e'''")),
+            (4, abjad.PitchSegment("g'' g''' as'' cs''' ds''' e''' a'''")),
+            (5, abjad.PitchSegment("b'' b''' css''' es''' fss''' gs''' cs''''")),
+            (6, abjad.PitchSegment("d''' d'''' es''' gs''' as''' b''' e''''")),
+            (8, abjad.PitchSegment("g''' g'''' as''' cs'''' ds'''' e'''' a''''")),
+            (10, abjad.PitchSegment("b''' b'''' css'''' es'''' fss'''' gs'''' cs'''''")),
             ])
          ),
         ("p2", abjad.OrderedDict([
             (1, abjad.PitchSegment("a a' gs b cs' gs' cs'")),
+            (2, abjad.PitchSegment("a' a'' gs' b' cs'' gs'' cs''")),
+            (3, abjad.PitchSegment("e'' e''' ds'' fs'' gs'' ds''' gs''")),
+            (4, abjad.PitchSegment("a'' a''' gs'' b'' cs''' gs''' cs'''")),
+            (5, abjad.PitchSegment("cs''' cs'''' bs'' ds''' es''' bs''' es'''")),
+            (6, abjad.PitchSegment("e''' e'''' ds''' fs''' gs''' ds'''' gs'''")),
+            (8, abjad.PitchSegment("a''' a'''' gs''' b''' cs'''' gs'''' cs''''")),
+            (10, abjad.PitchSegment("cs'''' cs''''' bs''' ds'''' es'''' bs'''' es''''")),
             ])
          ),
         ("p3", abjad.OrderedDict([
             (1, abjad.PitchSegment("cs cs' ef g a g c")),
-        ])
+            (2, abjad.PitchSegment("cs' cs'' ef' g' a' g' c'")),
+            (3, abjad.PitchSegment("gs' gs'' bf' d'' e'' d'' g'")),
+            (4, abjad.PitchSegment("cs'' cs''' ef'' g'' a'' g'' c''")),
+            (5, abjad.PitchSegment("es'' es''' g'' b'' cs''' b'' e''")),
+            (6, abjad.PitchSegment("gs'' gs''' bf'' d''' e''' d''' g''")),
+            (8, abjad.PitchSegment("cs''' cs'''' ef''' g''' a''' g''' c'''")),
+            (10, abjad.PitchSegment("es''' es'''' g''' b''' cs'''' b''' e'''")),
+            ])
          ),
-    ])
+    ])),
 ])
 
 

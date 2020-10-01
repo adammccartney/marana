@@ -42,7 +42,8 @@ Need to run three scripts to build score:
 
 *** DONE Modify script to build all segments
 
-*** TODO Configure stylesheet
+*** DONE Configure stylesheet
+    
 *** TODO Sort out score margins & instrument names 
 
 
@@ -51,6 +52,36 @@ Need to run three scripts to build score:
 
 
 ** Material
+
+*** DONE Define pitch material
+
+#+BEGIN_SRC
+
+colors red, blue, green, black
+chordVoices: 
+("color" : dict {
+  octave_number: pitches
+})
+
+melodyVoices:
+("color": dict {
+    "phrase": dict {
+        harmonic_number: pitches
+        }
+    }
+)
+
+with colors blue and green
+tremoloVoices:
+("color": dict {
+    octave_number: dict {
+        "phrase": pitches
+        }
+    }
+)
+
+#+END_SRC
+
 
 *** TODO Orchestrate chords
 Figure out mixtures that suit the following dynamics: 
@@ -76,6 +107,9 @@ doubling and give the melody some variations and shape
 
 
 *** TODO Make diads for trills
+Have briefly reviewed the diad methods from rill,
+these are quite specific to that piece
+
 
 * Composition 
 
