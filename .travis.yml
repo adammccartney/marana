@@ -10,6 +10,7 @@ before_install:
 
 install:
     - pip install abjad 
+    - pip install abjad-ext-rmakers
     - pip install -e .
 
 script:
