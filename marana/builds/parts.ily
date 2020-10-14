@@ -5,7 +5,7 @@
     }
     \score {
         \keepWithTag #'(fluteOne)
-        \include "../segments.ily"
+        \include "./segments.ily"
     }
 }
 
@@ -16,7 +16,7 @@
     }
     \score {
         \keepWithTag #'(oboeOne)
-        \include "../segments.ily"
+        \include "./segments.ily"
     }
 }
 
@@ -27,7 +27,7 @@
     }
     \score {
         \keepWithTag #'(BbclarinetOne)
-        \include "../segments.ily"
+        \include "./segments.ily"
     }
 }
 
@@ -39,7 +39,7 @@
     }
     \score {
         \keepWithTag #'(bassoonOne)
-        \include "../segments.ily"
+        \include "./segments.ily"
     }
 }
 
@@ -51,7 +51,7 @@
     }
     \score {
         \keepWithTag #'(fhornOne)
-        \include "../segments.ily"
+        \include "./segments.ily"
     }
 }
 
@@ -63,7 +63,7 @@
     }
     \score {
         \keepWithTag #'(fhornThree)
-        \include "../segments.ily"
+        \include "./segments.ily"
     }
 }
 
@@ -75,7 +75,7 @@
     }
     \score {
         \keepWithTag #'(trumpetOne)
-        \include "../segments.ily"
+        \include "./segments.ily"
     }
 }
 
@@ -87,7 +87,7 @@
     }
     \score {
         \keepWithTag #'(tromboneOne)
-        \include "../segments.ily"
+        \include "./segments.ily"
     }
 }
 
@@ -99,7 +99,7 @@
     }
     \score {
         \keepWithTag #'(timpaniOne)
-        \include "../segments.ily"
+        \include "./segments.ily"
     }
 }
 
@@ -111,7 +111,7 @@
     }
     \score {
         \keepWithTag #'(vibraphone)
-        \include "../segments.ily"
+        \include "./segments.ily"
     }
 }
 
@@ -123,7 +123,7 @@
     }
     \score {
         \keepWithTag #'(harp)
-        \include "../segments.ily"
+        \include "./segments.ily"
     }
 }
 
@@ -135,7 +135,7 @@
     }
     \score {
         \keepWithTag #'(violinOne)
-        \include "../segments.ily"
+        \include "./segments.ily"
     }
 }
 
@@ -147,7 +147,7 @@
     }
     \score {
         \keepWithTag #'(violinTwo)
-        \include "../segments.ily"
+        \include "./segments.ily"
     }
 }
 
@@ -159,7 +159,7 @@
     }
     \score {
         \keepWithTag #'(violaOne)
-        \include "../segments.ily"
+        \include "./segments.ily"
     }
 }
 
@@ -171,7 +171,7 @@
     }
     \score {
         \keepWithTag #'(celloOne)
-        \include "../segments.ily"
+        \include "./segments.ily"
     }
 }
 
@@ -183,7 +183,7 @@
     }
     \score {
         \keepWithTag #'(doublebassOne)
-        \include "../segments.ily"
+        \include "./segments.ily"
     }
 }
 
