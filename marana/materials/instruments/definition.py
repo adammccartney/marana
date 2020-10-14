@@ -1,6 +1,6 @@
 import abjad
 
-import markups as markups
+from . import markups as markups
 
 instruments = abjad.OrderedDict(
     [
