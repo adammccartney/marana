@@ -14,7 +14,6 @@ install:
 
 script:
     - py.test -xrf ./marana
-    - python ./marana/test/test_materials.py
 
 notifications:
     email: false
