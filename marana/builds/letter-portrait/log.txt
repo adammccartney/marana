@@ -1,0 +1,853 @@
+make front-cover
+make[1]: Entering directory '/home/adam/Scores/marana/marana/builds/letter-portrait'
+xelatex front-cover.tex
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/Debian) (preloaded format=xelatex)
+ restricted \write18 enabled.
+entering extended mode
+(./front-cover.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-09-24>
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/share/texmf/tex/latex/lm/t1lmr.fd))
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/pgf.revision.tex)))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/xetex.def)))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-xetex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvipdfmx.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f))))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex)) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex))
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex)))
+(/usr/share/texlive/texmf-dist/tex/xelatex/xltxtra/xltxtra.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifxetex.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-xetex.def))
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse-generic.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+(/usr/share/texlive/texmf-dist/tex/latex/realscripts/realscripts.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/metalogo/metalogo.sty))
+(/usr/share/texlive/texmf-dist/tex/xelatex/xunicode/xunicode.sty
+(/usr/share/texmf/tex/latex/tipa/t3enc.def))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarycalc.code.tex)
+No file front-cover.aux.
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/share/texmf/tex/latex/tipa/t3cmr.fd)
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+ABD: EveryShipout initializing macros [1] (./front-cover.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )
+Output written on front-cover.pdf (1 page).
+Transcript written on front-cover.log.
+xelatex front-cover.tex
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/Debian) (preloaded format=xelatex)
+ restricted \write18 enabled.
+entering extended mode
+(./front-cover.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-09-24>
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/share/texmf/tex/latex/lm/t1lmr.fd))
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/pgf.revision.tex)))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/xetex.def)))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-xetex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvipdfmx.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f))))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex)) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex))
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex)))
+(/usr/share/texlive/texmf-dist/tex/xelatex/xltxtra/xltxtra.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifxetex.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-xetex.def))
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse-generic.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+(/usr/share/texlive/texmf-dist/tex/latex/realscripts/realscripts.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/metalogo/metalogo.sty))
+(/usr/share/texlive/texmf-dist/tex/xelatex/xunicode/xunicode.sty
+(/usr/share/texmf/tex/latex/tipa/t3enc.def))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarycalc.code.tex) (./front-cover.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/share/texmf/tex/latex/tipa/t3cmr.fd)
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+ABD: EveryShipout initializing macros [1] (./front-cover.aux) )
+Output written on front-cover.pdf (1 page).
+Transcript written on front-cover.log.
+make[1]: Leaving directory '/home/adam/Scores/marana/marana/builds/letter-portrait'
+make preface
+make[1]: Entering directory '/home/adam/Scores/marana/marana/builds/letter-portrait'
+xelatex preface.tex
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/Debian) (preloaded format=xelatex)
+ restricted \write18 enabled.
+entering extended mode
+(./preface.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-09-24>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/share/texmf/tex/latex/lm/t1lmr.fd))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+
+Package inputenc Warning: inputenc package ignored with utf8 based engines.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/import/import.sty)
+(/usr/share/texlive/texmf-dist/tex/xelatex/xltxtra/xltxtra.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifxetex.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-xetex.def))
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse-generic.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+(/usr/share/texlive/texmf-dist/tex/latex/realscripts/realscripts.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/metalogo/metalogo.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/xetex.def)))))
+(/usr/share/texlive/texmf-dist/tex/xelatex/xunicode/xunicode.sty
+*** you should *not* be loading the inputenc package
+*** XeTeX expects the source to be in UTF8 encoding
+*** some features of other encodings may conflict, resulting in poor output.
+(/usr/share/texmf/tex/latex/tipa/t3enc.def))
+(/usr/share/texlive/texmf-dist/tex/latex/textpos/textpos.sty
+Package: textpos 2019/04/15 1.9.1, absolute positioning of text on the page
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty)
+Grid set 16 x 16 = 38.39343pt x 49.68562pt
+TextBlockOrigin set to 0pt x 0pt
+) (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/nopageno/nopageno.sty)
+Grid set 23 x 24 = 23.5663pt x 31.61812pt
+TextBlockOrigin set to 0.5in x  0.25in
+No file preface.aux.
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/share/texmf/tex/latex/tipa/t3cmr.fd)
+*** you should *not* be loading the inputenc package
+*** XeTeX expects the source to be in UTF8 encoding
+*** some features of other encodings may conflict, resulting in poor output.
+ABD: EveryShipout initializing macros
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+[1] (./preface.aux) )
+Output written on preface.pdf (1 page).
+Transcript written on preface.log.
+xelatex preface.tex
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/Debian) (preloaded format=xelatex)
+ restricted \write18 enabled.
+entering extended mode
+(./preface.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-09-24>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/share/texmf/tex/latex/lm/t1lmr.fd))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+
+Package inputenc Warning: inputenc package ignored with utf8 based engines.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/import/import.sty)
+(/usr/share/texlive/texmf-dist/tex/xelatex/xltxtra/xltxtra.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifxetex.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-xetex.def))
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse-generic.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+(/usr/share/texlive/texmf-dist/tex/latex/realscripts/realscripts.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/metalogo/metalogo.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/xetex.def)))))
+(/usr/share/texlive/texmf-dist/tex/xelatex/xunicode/xunicode.sty
+*** you should *not* be loading the inputenc package
+*** XeTeX expects the source to be in UTF8 encoding
+*** some features of other encodings may conflict, resulting in poor output.
+(/usr/share/texmf/tex/latex/tipa/t3enc.def))
+(/usr/share/texlive/texmf-dist/tex/latex/textpos/textpos.sty
+Package: textpos 2019/04/15 1.9.1, absolute positioning of text on the page
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty)
+Grid set 16 x 16 = 38.39343pt x 49.68562pt
+TextBlockOrigin set to 0pt x 0pt
+) (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/nopageno/nopageno.sty)
+Grid set 23 x 24 = 23.5663pt x 31.61812pt
+TextBlockOrigin set to 0.5in x  0.25in
+(./preface.aux) (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/share/texmf/tex/latex/tipa/t3cmr.fd)
+*** you should *not* be loading the inputenc package
+*** XeTeX expects the source to be in UTF8 encoding
+*** some features of other encodings may conflict, resulting in poor output.
+ABD: EveryShipout initializing macros
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+[1] (./preface.aux) )
+Output written on preface.pdf (1 page).
+Transcript written on preface.log.
+make[1]: Leaving directory '/home/adam/Scores/marana/marana/builds/letter-portrait'
+make music
+make[1]: Entering directory '/home/adam/Scores/marana/marana/builds/letter-portrait'
+lilypond music.ly
+make[1]: Leaving directory '/home/adam/Scores/marana/marana/builds/letter-portrait'
+make back-cover
+make[1]: Entering directory '/home/adam/Scores/marana/marana/builds/letter-portrait'
+xelatex back-cover.tex
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/Debian) (preloaded format=xelatex)
+ restricted \write18 enabled.
+entering extended mode
+(./back-cover.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-09-24>
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+
+Package inputenc Warning: inputenc package ignored with utf8 based engines.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/eurosym/eurosym.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/pgf.revision.tex)))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/xetex.def)))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-xetex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvipdfmx.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f))))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex)) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex))
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex)))
+(/usr/share/texlive/texmf-dist/tex/xelatex/xltxtra/xltxtra.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifxetex.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-xetex.def))
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse-generic.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+(/usr/share/texlive/texmf-dist/tex/latex/realscripts/realscripts.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/metalogo/metalogo.sty))
+(/usr/share/texlive/texmf-dist/tex/xelatex/xunicode/xunicode.sty
+*** you should *not* be loading the inputenc package
+*** XeTeX expects the source to be in UTF8 encoding
+*** some features of other encodings may conflict, resulting in poor output.
+(/usr/share/texmf/tex/latex/tipa/t3enc.def))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarycalc.code.tex)
+No file back-cover.aux.
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/share/texmf/tex/latex/tipa/t3cmr.fd)
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+ABD: EveryShipout initializing macros
+*** you should *not* be loading the inputenc package
+*** XeTeX expects the source to be in UTF8 encoding
+*** some features of other encodings may conflict, resulting in poor output.
+[1] (./back-cover.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )
+Output written on back-cover.pdf (1 page).
+Transcript written on back-cover.log.
+xelatex back-cover.tex
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/Debian) (preloaded format=xelatex)
+ restricted \write18 enabled.
+entering extended mode
+(./back-cover.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-09-24>
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+
+Package inputenc Warning: inputenc package ignored with utf8 based engines.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/eurosym/eurosym.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/pgf.revision.tex)))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/xetex.def)))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-xetex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvipdfmx.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f))))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex)) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex))
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex)))
+(/usr/share/texlive/texmf-dist/tex/xelatex/xltxtra/xltxtra.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifxetex.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-xetex.def))
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse-generic.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+(/usr/share/texlive/texmf-dist/tex/latex/realscripts/realscripts.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/metalogo/metalogo.sty))
+(/usr/share/texlive/texmf-dist/tex/xelatex/xunicode/xunicode.sty
+*** you should *not* be loading the inputenc package
+*** XeTeX expects the source to be in UTF8 encoding
+*** some features of other encodings may conflict, resulting in poor output.
+(/usr/share/texmf/tex/latex/tipa/t3enc.def))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarycalc.code.tex) (./back-cover.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/share/texmf/tex/latex/tipa/t3cmr.fd)
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+ABD: EveryShipout initializing macros
+*** you should *not* be loading the inputenc package
+*** XeTeX expects the source to be in UTF8 encoding
+*** some features of other encodings may conflict, resulting in poor output.
+[1] (./back-cover.aux) )
+Output written on back-cover.pdf (1 page).
+Transcript written on back-cover.log.
+make[1]: Leaving directory '/home/adam/Scores/marana/marana/builds/letter-portrait'
+make score
+make[1]: Entering directory '/home/adam/Scores/marana/marana/builds/letter-portrait'
+xelatex score.tex
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/Debian) (preloaded format=xelatex)
+ restricted \write18 enabled.
+entering extended mode
+(./score.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-09-24>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+(/usr/share/texlive/texmf-dist/tex/generic/atbegshi/atbegshi.sty
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/xetex.def)))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/ppxetex.def))
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-xetex.def)
+No file score.aux.
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd)
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+(/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty)) [1] [2] [3]
+[4] [5] [6] [7] [8] [9] [10] [11] (./score.aux) )
+Output written on score.pdf (11 pages).
+Transcript written on score.log.
+xelatex score.tex
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/Debian) (preloaded format=xelatex)
+ restricted \write18 enabled.
+entering extended mode
+(./score.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-09-24>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+(/usr/share/texlive/texmf-dist/tex/generic/atbegshi/atbegshi.sty
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/xetex.def)))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/ppxetex.def))
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-xetex.def)
+(./score.aux) (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd)
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+(/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty)) [1] [2] [3]
+[4] [5] [6] [7] [8] [9] [10] [11] (./score.aux) )
+Output written on score.pdf (11 pages).
+Transcript written on score.log.
+make[1]: Leaving directory '/home/adam/Scores/marana/marana/builds/letter-portrait'
+make parts
+make[1]: Entering directory '/home/adam/Scores/marana/marana/builds/letter-portrait'
+lilypond parts.ly
+make[1]: Leaving directory '/home/adam/Scores/marana/marana/builds/letter-portrait'
+make clean
+make[1]: Entering directory '/home/adam/Scores/marana/marana/builds/letter-portrait'
+rm -f *.log
+rm -f *.aux
+make[1]: Leaving directory '/home/adam/Scores/marana/marana/builds/letter-portrait'
