@@ -9,8 +9,7 @@ before_install:
     - pip install --upgrade pip
 
 install:
-    - pip install --allow-external abjad --allow-unverified abjad -e git://github.com/Abjad/abjad.git#egg=abjad
-    - pip install --allow-external ide --allow-unverified ide -e git://github.com/Abjad/ide.git#egg=ide
+    - pip install abjad 
     - pip install -e .
 
 script:
