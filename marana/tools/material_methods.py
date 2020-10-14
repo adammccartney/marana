@@ -3,7 +3,7 @@ import abjad
 import marana
 
 
-import marana.tools.FuzzyHarmony as FuzzyHarmony
+from marana.tools.FuzzyHarmony import FuzzyHarmony as FuzzyHarmony
 from marana.tools.PhraseMaker import PhraseStream as PhraseStream
 
 def get_pitch_classes(pitch_segment):
