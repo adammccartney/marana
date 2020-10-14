@@ -4,7 +4,6 @@ import pathlib
 import abjad
 import copy
 import marana
-import mccartney 
 
 from abjadext import rmakers
 
