@@ -13,9 +13,8 @@ install:
     - pip install -e .
 
 script:
-    - ajv doctest -x ./marana
     - py.test -xrf ./marana
-    - python ./marana/test/test_segments.py
+    - python ./marana/test/test_materials.py
 
 notifications:
     email: false
