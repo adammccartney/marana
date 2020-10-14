@@ -3,7 +3,7 @@
 #(set-default-paper-size "letter" 'portrait)
 #(set-global-staff-size 12)
 
-\include "/home/adam/mccartney/mccartney/lilypond/mccartney.ily"
+\include "mccartney.ily"
 \include "contexts.ily"
 \include "markups.ily"
 
