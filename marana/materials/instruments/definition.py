@@ -1,6 +1,6 @@
 import abjad
 
-from . import markups as markups
+from marana.materials.instruments import markups as markups
 
 instruments = abjad.OrderedDict(
     [
@@ -122,3 +122,9 @@ instruments = abjad.OrderedDict(
             ),
         ]
     )
+
+if __name__ == '__main__':
+    for key, item in instruments.items():
+        print(key, item)
+
+
