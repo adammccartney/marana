@@ -1,12 +1,12 @@
 import abjad
 import pytest
 
-from .parser import (Partial,
-                     PartialType, 
-                     PitchFunAttrs, 
-                     PitchFunction, 
-                     PitchFunType,
-                     res_partial_pseg)
+from material.parser import (Partial,
+                             PartialType, 
+                             PitchFunAttrs, 
+                             PitchFunction, 
+                             PitchFunType,
+                             res_partial_pseg)
 
 
 def test_partial_type_values_are_correct():

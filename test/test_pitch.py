@@ -5,7 +5,7 @@
 import abjad
 import pytest
 
-from .pitch import ( make_pitch_tuples, 
+from material.pitch import ( make_pitch_tuples, 
                     make_pitchclass_segments,
                     make_pitch_segments,
                     PitchTuple, 
