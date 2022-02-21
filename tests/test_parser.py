@@ -136,14 +136,12 @@ def test_resolve_pitch_for_partial(cattrs):
     res_seg = resolve_pitch(cattrs)
     assert res_seg == abjad.PitchSegment("g''")
 
-
 @pytest.fixture
 def d_min():
     return ChordTone("d f a", 1)
 
 def test_chord_tone_resolution_is_ok(d_min):
     assert d_min.pcseg == abjad.PitchClassSegment("f")
-
 
 @pytest.fixture
 def fattrs():
