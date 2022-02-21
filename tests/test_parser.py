@@ -4,9 +4,8 @@ import pytest
 from material.parser import (Partial,
                              PartialType, 
                              PitchFunAttrs, 
-                             PitchFunction, 
                              PitchFunType,
-                             res_partial_pseg)
+                             resolve_pitch)
 
 
 def test_partial_type_values_are_correct():
@@ -83,7 +82,7 @@ def f_sevenths():
     sevenths.append(Partial("f", PartialType.F14))
     return sevenths
 
-def test_partial_understands_thirds(f_sevenths):
+def test_partial_understands_sevenths(f_sevenths):
     for s in f_sevenths:
         assert s.pcseg == abjad.PitchClassSegment("dqs")
 
@@ -132,7 +131,7 @@ def cattrs():
     attrs = PitchFunAttrs(PitchFunType.PARTIAL, ("c", PartialType.F3), 5)
     return attrs
 
-def test_resolve_pitch_segment(cattrs):
-    res_seg = res_partial_pseg(cattrs.args, cattrs.octave)
+def test_resolve_pitch(cattrs):
+    res_seg = resolve_pitch(cattrs)
     assert res_seg == abjad.PitchSegment("g''")
 

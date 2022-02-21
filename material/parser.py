@@ -1,12 +1,24 @@
 #!/usr/bin/python3
 
 # marana/modules/bass_segmentA.py
+from abc import ABC, abstractmethod
 import math
 from enum import Enum, auto
 
 from .pitch import (PitchTuple, make_pitch_tuples, strip, make_pitch_segments)
 
-import abjad
+from abjad import PitchClassSegment, PitchSegment
+
+class Pitch(ABC):
+
+    @property
+    @abstractmethod
+    def pcseg(self):
+        pass
+
+    @abstractmethod
+    def resolve(self):
+        pass
 
 
 class PartialType(Enum):
@@ -32,7 +44,7 @@ class PartialType(Enum):
     F19 = auto()
     F20 = auto()
 
-class Partial:
+class Partial(Pitch):
     """  
     initialized with a partialtype and pitchclass, a partial maintains one internal member -
     offset - this allows to perform a transposition on the pitchclass
@@ -40,11 +52,14 @@ class Partial:
     root
     """
     def __init__(self, root, partialtype=PartialType.F1):
-        self.pitchclass = abjad.PitchClassSegment(root)
+        self.pitchclass = PitchClassSegment(root)
         self.partialtype = partialtype
-        self.pcseg = self.transpose()
 
-    def transpose(self):
+    @property
+    def pcseg(self) -> PitchClassSegment: 
+        return self.resolve()
+
+    def resolve(self):
         if (math.log2(self.partialtype.value) % 2 in {0.0, 1.0}):  # octaves
             return self.pitchclass.transpose(0)
         elif (self.partialtype.value in {3, 6, 12}):  # fifths
@@ -82,27 +97,29 @@ class PitchFunAttrs:
         self.octave = octave
         self.args = self.resolve_args()
 
-    def resolve_args(self):
+    def resolve_args(self) -> Pitch:
         if (self.funtype == PitchFunType.PARTIAL):
             return Partial(self.init_args[0], self.init_args[1])
         elif (self.funtype == PitchFunType.HARMONY):
-            pass
+            return Partial("c")
+        else:
+            return Partial("c")
 
-class PitchFunction:
-    def __init__(self, funtype: PitchFunType, attributes: PitchFunAttrs):
-        self.funtype = funtype
-        self.attributes = attributes
-
-def res_partial_pseg(partial: Partial, octave: int, direction="vert"):
+def resolve_pitch(attrs: PitchFunAttrs, direction="vert"):
     """
-    resolve partial pitch segment
+    Resolves 
     """
-    if direction == "vert":
-        res = partial.pcseg.voice_vertically(octave)
-    elif direction == "horiz":
-        res = partial.pcseg.voice_horizontally(octave)
-    else:
-        raise ValueError("Direction not recognized, options: vert | horiz")
+    if (attrs.funtype == PitchFunType.PARTIAL):
+        partial = attrs.args   #TODO: find out how silence static analysis
+        pcseg = partial.pcseg
+        if (direction == "vert"):
+            res = pcseg.voice_vertically(attrs.octave)
+        elif (direction == "horiz"):
+            res = pcseg.voice_horizontally(attrs.octave)
+        else:
+            raise ValueError("Direction not recognized, options: vert | horiz")
+    elif (attrs.funtype == PitchFunType.HARMONY):
+        pass
     return res 
 
 
