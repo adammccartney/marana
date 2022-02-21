@@ -1,7 +1,8 @@
 import abjad
 import pytest
 
-from material.parser import (Partial,
+from material.parser import (ChordTone,
+                             Partial,
                              PartialType, 
                              PitchFunAttrs, 
                              PitchFunType,
@@ -131,7 +132,25 @@ def cattrs():
     attrs = PitchFunAttrs(PitchFunType.PARTIAL, ("c", PartialType.F3), 5)
     return attrs
 
-def test_resolve_pitch(cattrs):
+def test_resolve_pitch_for_partial(cattrs):
     res_seg = resolve_pitch(cattrs)
     assert res_seg == abjad.PitchSegment("g''")
+
+
+@pytest.fixture
+def d_min():
+    return ChordTone("d f a", 1)
+
+def test_chord_tone_resolution_is_ok(d_min):
+    assert d_min.pcseg == abjad.PitchClassSegment("f")
+
+
+@pytest.fixture
+def fattrs():
+    attrs = PitchFunAttrs(PitchFunType.CHORDTONE, ("f a c", 1), 5)
+    return attrs
+
+def test_resolve_pitch_for_chord_tone(fattrs):
+    res_seg = resolve_pitch(fattrs)
+    assert res_seg == abjad.PitchSegment("a''")
 

@@ -48,10 +48,14 @@ class Partial(Pitch):
     """  
     Concrete instance of a pitch
     partial refers to the fact that the object is intended to represent a
-    partial of the harmonic series (music)
+    partial of the harmonic series
+    initialized with a partialtype and pitchclass, a partial maintains one internal member -
+    offset - this allows to perform a transposition on the pitchclass
+    Keyword arg is supplied for the default partial type - default reverts to
+    root
     """
     def __init__(self, root, partialtype=PartialType.F1):
-        self.rootseg = PitchClassSegment(root)
+        self.pitchclass = PitchClassSegment(root)
         self.partialtype = partialtype
 
     @property
@@ -60,73 +64,31 @@ class Partial(Pitch):
 
     def resolve(self):
         if (math.log2(self.partialtype.value) % 2 in {0.0, 1.0}):  # octaves
-            return self.rootseg.transpose(0)
+            return self.pitchclass.transpose(0)
         elif (self.partialtype.value in {3, 6, 12}):  # fifths
-            return self.rootseg.transpose(7)
+            return self.pitchclass.transpose(7)
         elif (self.partialtype.value in {5, 10, 20}): # major third
-            return self.rootseg.transpose(4)
+            return self.pitchclass.transpose(4)
         elif (self.partialtype.value in {7, 14}):
-            return self.rootseg.transpose(9.5)
+            return self.pitchclass.transpose(9.5)
         elif (self.partialtype.value in {9, 18}):
-            return self.rootseg.transpose(2)
+            return self.pitchclass.transpose(2)
         elif (self.partialtype.value in {11}):
-            return self.rootseg.transpose(5.5)
+            return self.pitchclass.transpose(5.5)
         elif (self.partialtype.value in {13}):
-            return self.rootseg.transpose(8.5)
+            return self.pitchclass.transpose(8.5)
         elif (self.partialtype.value in {15}):
-            return self.rootseg.transpose(11)
+            return self.pitchclass.transpose(11)
         elif (self.partialtype.value in {17}):
-            return self.rootseg.transpose(1)
+            return self.pitchclass.transpose(1)
         elif (self.partialtype.value in {19}):
-            return self.rootseg.transpose(3)
+            return self.pitchclass.transpose(3)
         else:
             raise ValueError("PartialType not recognized")
 
-class Harmony:
-    """
-    harmony refers to the fact taht the object is intended to represent a
-    (triadic / tetradic) harmony
-    """
-    def __init__(self, pseg: PitchClassSegment):
-        self.pseg = PitchSegment
-
-    @property
-    def pseg(self):
-        return self.pseg
-
-    @pseg.setter
-    def pseg(self, pseg: PitchSegment):
-        self.pseg = pseg
-
-    def resolve(self):
-        pass
-
-
-class ChordTone(Pitch):
-    """
-    concrete instance of a pitch
-    so called because chord tone is one of the tones that makes up a chord 
-    """
-    def __init__(self, harmony: str, selector: int):
-        self.rootseg = PitchClassSegment(harmony)
-        self.selector = selector
-
-    @property
-    def pcseg(self) -> PitchClassSegment:
-        return self.resolve()
-
-    def resolve(self):
-        if (0 < self.selector) and (self.selector < len(self.rootseg)):
-            named_pitch_class = self.rootseg[self.selector]
-            return PitchClassSegment(str(named_pitch_class))
-        else:
-            raise IndexError("Requested index out of range")
-
-
 class PitchFunType(Enum):
     PARTIAL = auto()
-    CHORDTONE = auto()
-
+    HARMONY = auto()
 
 class PitchFunAttrs:
     """
@@ -141,42 +103,44 @@ class PitchFunAttrs:
     def resolve_args(self) -> Pitch:
         if (self.funtype == PitchFunType.PARTIAL):
             return Partial(self.init_args[0], self.init_args[1])
-        elif (self.funtype == PitchFunType.CHORDTONE):
-            return ChordTone(self.init_args[0], self.init_args[1])
+        elif (self.funtype == PitchFunType.HARMONY):
+            return Partial("c")
         else:
-            raise ValueError("Unknown pitch function type requested")
-
+            return Partial("c")
 
 def resolve_pitch(attrs: PitchFunAttrs, direction="vert"):
     """
-    resolves a pitchclass segment by voicing in a particular octave,
-    direction specifies the resolution order for the voicing
-    from abjad docs:
-    voice_horizontally
-        Voices segment with each pitch as close to the previous pitch as
-        possible.
-    voice_vertically
-        Voices segment with each pitch higher than the previous.
+    Resolves 
     """
     if (attrs.funtype == PitchFunType.PARTIAL):
-        pitch = attrs.args   
-    elif (attrs.funtype == PitchFunType.CHORDTONE):
-        pitch = attrs.args
-    else:
-        raise ValueError("No pitch defined")
-    pcseg = pitch.pcseg
-    if (direction == "vert"):
-        res = pcseg.voice_vertically(attrs.octave)
-    elif (direction == "horiz"):
-        res = pcseg.voice_horizontally(attrs.octave)
-    else:
-        raise ValueError("Direction not recognized, options: vert | horiz")
+        partial = attrs.args   #TODO: find out how silence static analysis
+        pcseg = partial.pcseg
+        if (direction == "vert"):
+            res = pcseg.voice_vertically(attrs.octave)
+        elif (direction == "horiz"):
+            res = pcseg.voice_horizontally(attrs.octave)
+        else:
+            raise ValueError("Direction not recognized, options: vert | horiz")
+    elif (attrs.funtype == PitchFunType.HARMONY):
+        pass
     return res 
+
+
+#def interpret_pitch_function(pitchfun: PitchFunction, direction="vert"):
+#
+#        if (pitchfun.funtype == PitchFunType.PARTIAL):
+#            partial_pitch_class = Partial(pitchfun.attributes.args)
+#            octave = pitchfun.attributes.octave
+#            # resolve the partial pitchclass
+#            # resolve the octave
+#            # return a pitchsegment
+#            pass
+#
 
 
 if __name__ == '__main__':
     ########################################################################
-    # data 
+    # DATA 
     ########################################################################
     HARMONIES = ["<e g a>",
                 "<ef gf a>",
