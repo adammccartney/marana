@@ -34,7 +34,7 @@ def strip(chord: str) -> str:
     return chord
 
 
-def make_pitch_segments(pitch_tuples: list[PitchTuple]):
+def make_pitch_segments(pitch_tuples: list[PitchTuple]) -> list[PitchTuple]:
     """
     iterate over a list of pitch tuples, upgrades the content of each pitch
     tuple from basic lilypond strings to abjad PitchSegments
@@ -45,7 +45,7 @@ def make_pitch_segments(pitch_tuples: list[PitchTuple]):
     psegs = [PitchTuple(p[0], p[1]) for p in pairs]
     return psegs
 
-def make_pitchclass_segments(pitch_tuples: list[PitchTuple]):
+def make_pitchclass_segments(pitch_tuples: list[PitchTuple]) -> list[PitchTuple]:
     """
     iterate over a list of pitch tuples, upgrades the content of each pitch
     tuple from basic lilypond strings to abjad PitchClassSegments

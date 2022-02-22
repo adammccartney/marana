@@ -1,16 +1,23 @@
+# marana/materials/parser.py
 #!/usr/bin/python3
+"""
+This module that provides a simple parser to parse 'modular expressions'
+a modular expression is an invented term that refers to a specific style of
+musical idea
 
-# marana/modules/bass_segmentA.py
+    basically, what we want to try here is to load an instruction that causes a
+    parse operation and returns a voice with structured pitch data
+"""
+
 from abc import ABC, abstractmethod
-import math
 from enum import Enum, auto
-
-from .pitch import (PitchTuple, make_pitch_tuples, strip, make_pitch_segments)
 
 from abjad import PitchClassSegment, PitchSegment
 
-class Pitch(ABC):
+from material.pitch import (PitchTuple)
 
+class Pitch(ABC):
+    "virtual class for representing pitch objects"
     @property
     @abstractmethod
     def pcseg(self):
@@ -22,27 +29,14 @@ class Pitch(ABC):
 
 
 class PartialType(Enum):
-    # given an overt  one partial
-    F1 = 1
-    F2 = auto() 
-    F3 = auto() 
-    F4 = auto() 
-    F5 = auto() 
-    F6 = auto() 
-    F7 = auto() 
-    F8 = auto() 
-    F9 = auto()
-    F10 = auto()
-    F11 = auto()
-    F12 = auto()
-    F13 = auto()
-    F14 = auto()
-    F15 = auto()
-    F16 = auto()
-    F17 = auto()
-    F18 = auto()
-    F19 = auto()
-    F20 = auto()
+    "partials of the harmonic series (music)"
+    F1 = 1; F2 = auto(); F3 = auto() 
+    F4 = auto(); F5 = auto(); F6 = auto() 
+    F7 = auto(); F8 = auto(); F9 = auto()
+    F10 = auto(); F11 = auto(); F12 = auto()
+    F13 = auto(); F14 = auto(); F15 = auto()
+    F16 = auto(); F17 = auto(); F18 = auto()
+    F19 = auto(); F20 = auto()
 
 class Partial(Pitch):
     """  
@@ -59,7 +53,7 @@ class Partial(Pitch):
         return self.resolve()
 
     def resolve(self):
-        if (math.log2(self.partialtype.value) % 2 in {0.0, 1.0}):  # octaves
+        if (self.partialtype.value in {2, 4, 8, 16}):  # octaves
             return self.rootseg.transpose(0)
         elif (self.partialtype.value in {3, 6, 12}):  # fifths
             return self.rootseg.transpose(7)
@@ -79,28 +73,8 @@ class Partial(Pitch):
             return self.rootseg.transpose(1)
         elif (self.partialtype.value in {19}):
             return self.rootseg.transpose(3)
-        else:
-            raise ValueError("PartialType not recognized")
-
-class Harmony:
-    """
-    harmony refers to the fact taht the object is intended to represent a
-    (triadic / tetradic) harmony
-    """
-    def __init__(self, pseg: PitchClassSegment):
-        self.pseg = PitchSegment
-
-    @property
-    def pseg(self):
-        return self.pseg
-
-    @pseg.setter
-    def pseg(self, pseg: PitchSegment):
-        self.pseg = pseg
-
-    def resolve(self):
-        pass
-
+        else: # default simply returns existing root
+            return self.rootseg 
 
 class ChordTone(Pitch):
     """
@@ -124,6 +98,7 @@ class ChordTone(Pitch):
 
 
 class PitchFunType(Enum):
+    "Pitch function type"
     PARTIAL = auto()
     CHORDTONE = auto()
 
@@ -158,64 +133,73 @@ def resolve_pitch(attrs: PitchFunAttrs, direction="vert"):
     voice_vertically
         Voices segment with each pitch higher than the previous.
     """
+    pitch = None
     if (attrs.funtype == PitchFunType.PARTIAL):
         pitch = attrs.args   
-    elif (attrs.funtype == PitchFunType.CHORDTONE):
+    if (attrs.funtype == PitchFunType.CHORDTONE):
         pitch = attrs.args
-    else:
-        raise ValueError("No pitch defined")
+    assert pitch is not None, "pitch should be bound"
     pcseg = pitch.pcseg
+    assert isinstance(pcseg, PitchClassSegment), "pcseg should be instance PitchClassSegment"
+    res = None
+    assert direction in {"vert", "horiz"}, "direction should be vert or horiz"
     if (direction == "vert"):
         res = pcseg.voice_vertically(attrs.octave)
     elif (direction == "horiz"):
         res = pcseg.voice_horizontally(attrs.octave)
-    else:
-        raise ValueError("Direction not recognized, options: vert | horiz")
+    assert res is not None, "res should be bound"
+    assert isinstance(res, PitchSegment), "res should be instance PitchSegment"
     return res 
 
 
-if __name__ == '__main__':
-    ########################################################################
-    # data 
-    ########################################################################
-    HARMONIES = ["<e g a>",
-                "<ef gf a>",
-                "<df f a>",
-                "<df gf bf>",
-                "<df gf bf>"]
-
-    ROOTS = ["c", "d", "ef", "f", "gf", "a", "bf", "c", "df", "ef"]
-    PTUPS = make_pitch_tuples(ROOTS, HARMONIES)
-    PSEGS = make_pitch_segments(PTUPS)
-    ########################################################################
+def parse_args(args: tuple, pitchclass_data_segments: list[PitchTuple]):
     """
-    basically, what we want to try here is to load an instruction that causes a
-    parse operation and returns a voice with structured pitch data
-
-    i.e. 
-    voice = (pitch_function(pitch_segment_data))
-
-    ({token_type: partial,
-      attributes: {args: (root), octave: 4}},
-     {token_type: harm,
-      attributes: {args: (2), octave: 4}}),
-    ({token_type: partial,
-      attributes: (root), octave: 4}},
-     {token_type: harm,
-      attributes: {args: (2), octave: 4}})
-
-    my_pitches = parse_pitch_set([["<(getpart [pitch: root, 4] (getharm(2), 4)>"],
-                                  ["<(getpart(root), 4) (getharm(2), 4)>"],
-                                  ["<(getpart(root), 4) (getharm(1), 4)>"]]) 
-
-    returns 
-    [[["<c' a'>"], ["<g' a'>"], ["<c'' g'>"]],
-     [["<d' a'>"], ["<g' a'>"], ["<d'' g'>"]]
-     ...
-    ]
+    resolves the attrs['args'] by looking up their values in the data segment
     """
+    tones = None
+    harmonies = [pcseg.harmony for pcseg in pitchclass_data_segments]
+    roots = [pcseg.root for pcseg in pitchclass_data_segments]
+    if (len(args) == 1): # chordtone selector
+        i = args[0]
+        tones = [ChordTone(h, i) for h in harmonies]
+    if (len(args) == 2): # root, partial pair
+        p = args[1]
+        tones = [Partial(r, p) for r in roots]
+    assert tones is not None
+    return tones
 
-    import abjad
-    myseg = abjad.PitchClassSegment("c")
-    g = myseg.transpose(7)
+def parse_pitch_attrs(attrs: dict, pitch_data: list[PitchTuple]):
+    """
+    parse the attributes of pitch selector
+    """
+    args = attrs['args']
+    octave = attrs['octave']
+
+def parse_pselector(pselector: tuple):
+    """
+    takes a tuple of pitch selectors and resolves to pitches, returns a
+    tuple of lilypond pitch strings
+    """
+    num_items = len(pselector)
+    for ps in pselector:
+        if ps["token_type"] == "partial":
+            print("resolve the args as partial")
+        if ps["token_type"] == "chordtone":
+            print("resolve the args as chord tone")
+    return num_items
+
+
+def parse_input(input: tuple):  # returns a flat array of lilypond pitch strings
+    num_items = len(input)
+    for n in input:
+        for k in n:
+            pselector_tup = None
+            voicing_flag = None
+            if k == "selector":
+                pselector_tup = n[k]
+            if k == "voicing":
+                voicing_flag = n[k]
+    return num_items
+
+
 
