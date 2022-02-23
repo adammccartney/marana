@@ -4,7 +4,7 @@ import pytest
 from abc import ABC
 
 from material.parser import (ChordTone,
-                             parse_args,
+                             select_pitchfunattrs,
                              parse_input,
                              parse_pselector,
                              Partial,
@@ -280,10 +280,52 @@ def pcsegs(ptups):
     """returns a list of pitchclass segments"""
     return make_pitchclass_segments(ptups)
 
-def test_parse_args_forms_list(pcsegs):
+def test_select_pitchfunattrs_forms_list(pcsegs):
     """Test that parse args returns a well formed list"""
-    tones = parse_args((1,), pcsegs)
+    octave = 4
+    tones = select_pitchfunattrs((1,), octave, pcsegs)
     assert len(tones) == 10
 
 
+#def test_select_pitchfunattrs_selects_chordtone(pcsegs):
+#    """
+#    the function returns a list of ChordTones, 
+#    singular chord tones selected from an
+#    array of harmonies
+#    """
+#    pitchfunattrs = select_pitchfunattrs((1,), pcsegs)
+#    assert isinstance(pitchfunattrs[0], PitchFunAttrs) 
 
+
+#@pytest.fixture
+#def eminsus4():
+#    """eminor chordtone object with selector at index 1"""
+#    return ChordTone("e g a", 1) 
+#
+#def test_select_pitchfunattrs_selects_chordtone(pcsegs, eminsus4):
+#    """
+#    the parse args function returns a list of ChordTones, 
+#    singular chord tones selected from an
+#    array of harmonies
+#    """
+#    tones = select_pitchfunattrs((1,), pcsegs)
+#    assert isinstance(tones[0], ChordTone)
+#    assert tones[0].selector == eminsus4.selector
+#    assert tones[0].pcseg == eminsus4.pcseg
+#
+#@pytest.fixture
+#def c_third_partial():
+#    """fixture for creating the third partial above an ef"""
+#    return Partial("c", PartialType.F3) 
+#
+#def test_select_pitchfunattrs(pcsegs, c_third_partial):
+#    """
+#    checks that the partials being returned from our list are well formed and
+#    of the correct type
+#    """
+#    tones = select_pitchfunattrs(("root", PartialType.F3), pcsegs)
+#    assert isinstance(tones[0], Partial)
+#    assert tones[0].pcseg == c_third_partial.pcseg
+#
+#
+#

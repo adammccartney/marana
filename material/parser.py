@@ -7,6 +7,19 @@ musical idea
 
     basically, what we want to try here is to load an instruction that causes a
     parse operation and returns a voice with structured pitch data
+
+    The data is queried using lists of selectors
+
+     [(token_type: partial,
+      attributes: {args: (root), octave: 4}},
+     {token_type: harm,
+      attributes: {args: (2), octave: 4}}),
+
+    ({token_type: partial,
+      attributes: (root), octave: 4}},
+     {token_type: harm,
+      attributes: {args: (2), octave: 4}})]
+
 """
 
 from abc import ABC, abstractmethod
@@ -106,6 +119,11 @@ class PitchFunType(Enum):
 class PitchFunAttrs:
     """
     pitch function attributes
+    members: 
+        funtype
+        init_args
+        octave
+        args -> after resolution, will return a Pitch object
     """
     def __init__(self, funtype: PitchFunType, args: tuple, octave: int):
         self.funtype = funtype
@@ -152,28 +170,41 @@ def resolve_pitch(attrs: PitchFunAttrs, direction="vert"):
     return res 
 
 
-def parse_args(args: tuple, pitchclass_data_segments: list[PitchTuple]):
+def select_pitchfunattrs(args: tuple, octave, pitchclass_data_segments: list[PitchTuple]):
     """
     resolves the attrs['args'] by looking up their values in the data segment
+    returns a list of ChordTone or Partial objects
     """
-    tones = None
+    pfuntype = None
+    pfunattrs = None
     harmonies = [pcseg.harmony for pcseg in pitchclass_data_segments]
     roots = [pcseg.root for pcseg in pitchclass_data_segments]
-    if (len(args) == 1): # chordtone selector
-        i = args[0]
-        tones = [ChordTone(h, i) for h in harmonies]
-    if (len(args) == 2): # root, partial pair
-        p = args[1]
-        tones = [Partial(r, p) for r in roots]
-    assert tones is not None
-    return tones
+    if (isinstance(args[0], int)): # chordtone selector
+        pfuntype = PitchFunType.CHORDTONE
+        pfunattrs = [PitchFunAttrs(pfuntype, args, octave) for _ in harmonies]
+    if (args[0] == "root"): # root, partial pair
+        pfuntype = PitchFunType.PARTIAL
+        pfunattrs = [PitchFunAttrs(pfuntype, args, octave) for _ in roots]
+    assert pfunattrs is not None
+    assert pfuntype is not None
+    return  pfunattrs
 
-def parse_pitch_attrs(attrs: dict, pitch_data: list[PitchTuple]):
+
+def parse_pitch_attrs(attrs: dict, pitchclass_data: list[PitchTuple]):
     """
     parse the attributes of pitch selector
+    attributes are:
+        args: the args specify what type of Pitch object will be formed
+        octave: the octave specifies what octave the pitch will be voices at
+
+    returns an array of PitchSegments
     """
     args = attrs['args']
     octave = attrs['octave']
+    pfunattrs = select_pitchfunattrs(args, octave, pitchclass_data)
+    return pfunattrs
+
+
 
 def parse_pselector(pselector: tuple):
     """
@@ -200,6 +231,3 @@ def parse_input(input: tuple):  # returns a flat array of lilypond pitch strings
             if k == "voicing":
                 voicing_flag = n[k]
     return num_items
-
-
-
