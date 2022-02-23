@@ -29,6 +29,8 @@ from abjad import PitchClassSegment, PitchSegment
 
 from material.pitch import (PitchTuple)
 
+from collections import namedtuple
+
 class Pitch(ABC):
     "virtual class for representing pitch objects"
     @property
@@ -140,70 +142,110 @@ class PitchFunAttrs:
             raise ValueError("Unknown pitch function type requested")
 
 
-def resolve_pitch(attrs: PitchFunAttrs, direction="vert"):
+class OctaveVoicing:
     """
-    resolves a pitchclass segment by voicing in a particular octave,
-    direction specifies the resolution order for the voicing
-    from abjad docs:
-    voice_horizontally
-        Voices segment with each pitch as close to the previous pitch as
-        possible.
-    voice_vertically
-        Voices segment with each pitch higher than the previous.
+    simple dataclass for making objects that know how to voice a pitchclass
+    members:
+        octave: int
+        order: str
+    order refers to the order of resolution (see
+            abjad.PitchClassSegment notes on voice_horizontally etc.)
     """
-    pitch = None
-    if (attrs.funtype == PitchFunType.PARTIAL):
-        pitch = attrs.args   
-    if (attrs.funtype == PitchFunType.CHORDTONE):
-        pitch = attrs.args
-    assert pitch is not None, "pitch should be bound"
-    pcseg = pitch.pcseg
-    assert isinstance(pcseg, PitchClassSegment), "pcseg should be instance PitchClassSegment"
-    res = None
-    assert direction in {"vert", "horiz"}, "direction should be vert or horiz"
-    if (direction == "vert"):
-        res = pcseg.voice_vertically(attrs.octave)
-    elif (direction == "horiz"):
-        res = pcseg.voice_horizontally(attrs.octave)
-    assert res is not None, "res should be bound"
-    assert isinstance(res, PitchSegment), "res should be instance PitchSegment"
-    return res 
+    def __init__(self, octave: int, order="vert"):
+        self.octave = octave
+        self.order = order 
 
 
-def select_pitchfunattrs(args: tuple, octave, pitchclass_data_segments: list[PitchTuple]):
+def make_octave_voicings(octaves: list[int], orders: list[str]):
     """
-    resolves the attrs['args'] by looking up their values in the data segment
-    returns a list of ChordTone or Partial objects
+    Simple wrapper function to simply zip two lists of equal length, making an
+    octave voicing 
     """
-    pfuntype = None
-    pfunattrs = None
+    assert len(octaves) == len(orders), "Lists must be of equal length"
+    tups = list(zip(octaves, orders))
+    ovoicings = [OctaveVoicing(o[0], o[1]) for o in tups] 
+    return ovoicings
+
+ 
+def parse_args(args: tuple, pitchclass_data_segments: list[PitchTuple]):
+    """
+    extractor function 
+    arguments in the tuple are generic selectors for either PARTIAL or
+    CHORDTONE type objects. What is returned is a list comprehension whose
+    contents is a list of Pitch objects
+    """
+    tones = None
     harmonies = [pcseg.harmony for pcseg in pitchclass_data_segments]
     roots = [pcseg.root for pcseg in pitchclass_data_segments]
-    if (isinstance(args[0], int)): # chordtone selector
-        pfuntype = PitchFunType.CHORDTONE
-        pfunattrs = [PitchFunAttrs(pfuntype, args, octave) for _ in harmonies]
-    if (args[0] == "root"): # root, partial pair
-        pfuntype = PitchFunType.PARTIAL
-        pfunattrs = [PitchFunAttrs(pfuntype, args, octave) for _ in roots]
-    assert pfunattrs is not None
-    assert pfuntype is not None
-    return  pfunattrs
+    if (len(args) == 1): # chordtone selector
+        i = args[0]
+        tones = [ChordTone(h, i) for h in harmonies]
+    if (len(args) == 2): # root, partial pair
+        p = args[1]
+        tones = [Partial(r, p) for r in roots]
+    assert tones is not None
+    return tones
+
+
+def resolve_pitch(pitchclass, ovoicing: OctaveVoicing):
+    """
+    pitchclass: Partial|ChordTone
+    ovoicing is a list of octave voicings
+
+    returns a PitchSegment
+
+    """
+    pcseg = pitchclass.pcseg
+    assert isinstance(pcseg, PitchClassSegment), "pcseg should be instance PitchClassSegment"
+    order = ovoicing.order
+    octave = ovoicing.octave
+    ret = None
+    assert order in {"vert", "horiz"}, "direction should be vert or horiz"
+    if (order == "vert"):
+        ret = pcseg.voice_vertically(octave)
+    elif (order == "horiz"):
+        ret = pcseg.voice_horizontally(octave)
+    assert ret is not None, "res should be bound"
+    assert isinstance(ret, PitchSegment), "res should be instance PitchSegment"
+    return ret 
+
+
+def voice_pitchclasses(pitchclasses, ovoicings: list[OctaveVoicing]):
+    """
+    takes a list of pitchclasses and a list of OctaveVoicings, voices the pitchclasses
+    according to the members of the OctaveVoicing  
+
+    arguments: pitchclasses: list[Partial] | list[ChordTone]
+
+    returns a list of voiced PitchSegments
+    """
+    pitch_segments = []
+    for p in pitchclasses:
+        print(p, "\n")
+    for (pc, ov) in zip(pitchclasses, ovoicings):
+        pitch_segment = resolve_pitch(pc, ov)
+        pitch_segments.append(pitch_segment)
+    return pitch_segments
 
 
 def parse_pitch_attrs(attrs: dict, pitchclass_data: list[PitchTuple]):
     """
     parse the attributes of pitch selector
     attributes are:
-        args: the args specify what type of Pitch object will be formed
+        pitch_selector_args: the args specify what type of Pitch object will be formed
         octave: the octave specifies what octave the pitch will be voices at
 
     returns an array of PitchSegments
     """
-    args = attrs['args']
+    pitchclass_selector_args = attrs['args']
+    pitchclasses = parse_args(pitchclass_selector_args, pitchclass_data) 
     octave = attrs['octave']
-    pfunattrs = select_pitchfunattrs(args, octave, pitchclass_data)
-    return pfunattrs
-
+    octaves = [octave] * len(pitchclasses)  # we want to zip these later
+    order = attrs['order']
+    orders = [order] * len(pitchclasses)    # same here
+    ovoicings = make_octave_voicings(octaves, orders)
+    voiced_pitches = voice_pitchclasses(pitchclasses, ovoicings)
+    return voiced_pitches
 
 
 def parse_pselector(pselector: tuple):

@@ -164,6 +164,25 @@ def test_pitchfunattrs_raises():
 
 
 @pytest.fixture
+def mbad_attrs():
+    return PitchFunAttrs(PitchFunType.PARTIAL, ("a", PartialType.F3), 4)
+
+def test_resolve_pitch_raises(mbad_attrs):
+    """
+    tests that resolve pitch raises a ValueError if no pitch is defined
+    """
+    with pytest.raises(AssertionError) as excinfo:
+        resolve_pitch(mbad_attrs, direction="bad")
+    exception_msg = excinfo.value.args[0]
+    assert exception_msg == "direction should be vert or horiz"
+
+def test_resolve_pitch_horiz(mbad_attrs):
+    """tests that horizontal resoultion works"""
+    res_seg = resolve_pitch(mbad_attrs, direction="horiz")
+    assert res_seg == abjad.PitchSegment("e'")
+
+
+@pytest.fixture
 def input():
     return (({ 'selector': ({'token_type': "partial",
                         'attributes': {'args': ("root"), 'octave': 4}},
@@ -232,6 +251,16 @@ def test_parse_args_forms_list(pcsegs):
     assert len(tones) == 10
 
 
+def test_parse_args_selects_chordtone(pcsegs):
+    """
+    the function returns a list of ChordTones, 
+    singular chord tones selected from an
+    array of harmonies
+    """
+    pitchfunattrs = parse_args((1,), pcsegs)
+    assert isinstance(pitchfunattrs[0], PitchFunAttrs) 
+
+
 @pytest.fixture
 def eminsus4():
     """eminor chordtone object with selector at index 1"""
@@ -285,13 +314,13 @@ def ovoicings():
     orders = ["horiz"] * 10
     return make_octave_voicings(octaves, orders)
 
-#def test_voice_pitchclasses(pcsegs, ovoicings):
-#    """
-#    check that this function returns a healthy list of
-#    abjad.PitchSegments
-#    """
-#    psegs = voice_pitchclasses(pcsegs, ovoicings)
-#    assert isinstance(psegs[0], abjad.PitchSegment)
+def test_voice_pitchclasses(pcsegs, ovoicings):
+    """
+    check that this function returns a healthy list of
+    abjad.PitchSegments
+    """
+    psegs = voice_pitchclasses(pcsegs, ovoicings)
+    assert isinstance(psegs[0], abjad.PitchSegment)
 
 
 
@@ -305,7 +334,7 @@ def omiddle():
 
 def test_resolve_pitch_for_partial(d_thirdpartial, omiddle):
     res_seg = resolve_pitch(d_thirdpartial, omiddle)
-    assert res_seg == abjad.PitchSegment("a'")
+    assert res_seg == abjad.PitchSegment("g'")
 
 
 #@pytest.fixture
@@ -337,23 +366,4 @@ def test_resolve_pitch_for_partial(d_thirdpartial, omiddle):
 #    exception_msg = excinfo.value.args[0]
 #    assert exception_msg == "Requested index out of range"
 #
-
-#@pytest.fixture
-#def mbad_attrs():
-#    return PitchFunAttrs(PitchFunType.PARTIAL, ("a", PartialType.F3), 4)
-#
-#def test_resolve_pitch_raises(mbad_attrs):
-#    """
-#    tests that resolve pitch raises a ValueError if no pitch is defined
-#    """
-#    with pytest.raises(AssertionError) as excinfo:
-#        resolve_pitch(mbad_attrs, direction="bad")
-#    exception_msg = excinfo.value.args[0]
-#    assert exception_msg == "direction should be vert or horiz"
-#
-#def test_resolve_pitch_horiz(mbad_attrs):
-#    """tests that horizontal resoultion works"""
-#    res_seg = resolve_pitch(mbad_attrs, direction="horiz")
-#    assert res_seg == abjad.PitchSegment("e'")
-
 
