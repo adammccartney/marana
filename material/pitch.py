@@ -3,12 +3,16 @@
 # marana/modules/pitch.py: routines for shaping pitch content
 
 from abjad import PitchClassSegment, PitchSegment
+from collections import namedtuple
 
 class PitchTuple:
     """Simple dataclass for handling pairs of pitch material"""
     def __init__(self, root, harmony):
         self.root = root
         self.harmony = harmony 
+
+PcSegTuple = namedtuple("PcSegTuple", ["root", "harmony"])
+PitchSegTuple = namedtuple("PitchSegTuple", ["root", "harmony"])
 
 def make_pitch_tuples(roots: list, harmonies: list) -> list[PitchTuple]:
     """
@@ -45,7 +49,7 @@ def make_pitch_segments(pitch_tuples: list[PitchTuple]) -> list[PitchTuple]:
     psegs = [PitchTuple(p[0], p[1]) for p in pairs]
     return psegs
 
-def make_pitchclass_segments(pitch_tuples: list[PitchTuple]) -> list[PitchTuple]:
+def make_pitchclass_segments(pitch_tuples: list[PitchTuple]) -> list[PcSegTuple]:
     """
     iterate over a list of pitch tuples, upgrades the content of each pitch
     tuple from basic lilypond strings to abjad PitchClassSegments
@@ -53,7 +57,7 @@ def make_pitchclass_segments(pitch_tuples: list[PitchTuple]) -> list[PitchTuple]
     root_segs = [PitchClassSegment(p.root) for p in pitch_tuples]
     harm_segs = [PitchClassSegment(strip(p.harmony)) for p in pitch_tuples]
     pairs = list(zip(root_segs, harm_segs))
-    pcsegs = [PitchTuple(p[0], p[1]) for p in pairs]
+    pcsegs = [PcSegTuple(p[0], p[1]) for p in pairs]
     return pcsegs
 
 

@@ -8,6 +8,7 @@ import pytest
 from material.pitch import ( make_pitch_tuples, 
                     make_pitchclass_segments,
                     make_pitch_segments,
+                    PitchSegTuple,
                     PitchTuple, 
                     strip )
 

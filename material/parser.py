@@ -25,9 +25,9 @@ musical idea
 from abc import ABC, abstractmethod
 from enum import Enum, auto
 
-from abjad import PitchClassSegment, PitchSegment
+from abjad import PitchClassSegment, PitchClassSegment, PitchSegment
 
-from material.pitch import (PitchTuple)
+from material.pitch import (PitchTuple, PitchSegTuple)
 
 from collections import namedtuple
 
@@ -113,13 +113,13 @@ class ChordTone(Pitch):
 
 
 class PitchFunType(Enum):
-    "Pitch function type"
+    "Pitch function type  "
     PARTIAL = auto()
     CHORDTONE = auto()
 
 
 class PitchFunAttrs:
-    """
+    """ 
     pitch function attributes
     members: 
         funtype
@@ -187,7 +187,7 @@ def parse_args(args: tuple, pitchclass_data_segments: list[PitchTuple]):
     return tones
 
 
-def resolve_pitch(pitchclass, ovoicing: OctaveVoicing):
+def resolve_pitch(pcseg: PitchClassSegment, ovoicing: OctaveVoicing):
     """
     pitchclass: Partial|ChordTone
     ovoicing is a list of octave voicings
@@ -195,8 +195,6 @@ def resolve_pitch(pitchclass, ovoicing: OctaveVoicing):
     returns a PitchSegment
 
     """
-    pcseg = pitchclass.pcseg
-    assert isinstance(pcseg, PitchClassSegment), "pcseg should be instance PitchClassSegment"
     order = ovoicing.order
     octave = ovoicing.octave
     ret = None
@@ -210,7 +208,7 @@ def resolve_pitch(pitchclass, ovoicing: OctaveVoicing):
     return ret 
 
 
-def voice_pitchclasses(pitchclasses, ovoicings: list[OctaveVoicing]):
+def voice_pitchclasses(pitchclasses, ovoicings: list[OctaveVoicing]) -> list[PitchSegTuple]:
     """
     takes a list of pitchclasses and a list of OctaveVoicings, voices the pitchclasses
     according to the members of the OctaveVoicing  
@@ -220,13 +218,12 @@ def voice_pitchclasses(pitchclasses, ovoicings: list[OctaveVoicing]):
     returns a list of voiced PitchSegments
     """
     pitch_segments = []
-    for p in pitchclasses:
-        print(p, "\n")
     for (pc, ov) in zip(pitchclasses, ovoicings):
-        pitch_segment = resolve_pitch(pc, ov)
-        pitch_segments.append(pitch_segment)
+        root_pseg = resolve_pitch(pc.root, ov)
+        harmony_pseg = resolve_pitch(pc.harmony, ov)
+        psegtuple = PitchSegTuple(root_pseg, harmony_pseg)
+        pitch_segments.append(psegtuple)
     return pitch_segments
-
 
 def parse_pitch_attrs(attrs: dict, pitchclass_data: list[PitchTuple]):
     """

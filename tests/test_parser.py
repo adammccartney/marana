@@ -19,7 +19,8 @@ from material.parser import (ChordTone,
                              )
 
 
-from material.pitch import (PitchTuple, 
+from material.pitch import (PcSegTuple,
+                            PitchTuple, 
                             make_pitch_tuples, 
                             make_pitch_segments,
                             make_pitchclass_segments,
@@ -220,6 +221,15 @@ def ptups(pdata):
     """returns a list of pitchtuples"""
     return make_pitch_tuples(pdata[0], pdata[1])
 
+
+def test_make_pitchclass_segments(ptups):
+    """
+    returns a list of pitchclass segments given a list of pitch tuples
+    """
+    pcsegs = make_pitchclass_segments(ptups)
+    assert isinstance(pcsegs[0], PcSegTuple)
+
+
 @pytest.fixture
 def pcsegs(ptups):
     """returns a list of pitchclass segments"""
@@ -227,7 +237,6 @@ def pcsegs(ptups):
 
 def test_parse_args_forms_list(pcsegs):
     """Test that parse args returns a well formed list"""
-    octave = 4
     tones = parse_args((1,), pcsegs)
     assert len(tones) == 10
 
@@ -304,56 +313,45 @@ def omiddle():
     return OctaveVoicing(4, "vert")
 
 def test_resolve_pitch_for_partial(d_thirdpartial, omiddle):
-    res_seg = resolve_pitch(d_thirdpartial, omiddle)
+    res_seg = resolve_pitch(d_thirdpartial.pcseg, omiddle)
+    assert isinstance(res_seg, abjad.PitchSegment) 
     assert res_seg == abjad.PitchSegment("a'")
 
 
-#@pytest.fixture
-#def d_min():
-#    return ChordTone("d f a", 1)
-#
-#def test_chord_tone_resolution_is_ok(d_min):
-#    assert d_min.pcseg == abjad.PitchClassSegment("f")
-#
-#@pytest.fixture
-#def fattrs():
-#    attrs = PitchFunAttrs(PitchFunType.CHORDTONE, ("f a c", 1), 5)
-#    return attrs
-#
-#def test_resolve_pitch_for_chord_tone(fattrs):
-#    res_seg = resolve_pitch(fattrs)
-#    assert res_seg == abjad.PitchSegment("a''")
-#
-#
-#@pytest.fixture
-#def bad_attrs():
-#    attrs = PitchFunAttrs(PitchFunType.CHORDTONE, ("a b c", 4), 3)
-#    return attrs
-#
-#def test_chordtone_raises(bad_attrs):
-#    """Test ChordTone raises index error when asked for a tone out of range""" 
-#    with pytest.raises(IndexError) as excinfo:
-#        resolve_pitch(bad_attrs)
-#    exception_msg = excinfo.value.args[0]
-#    assert exception_msg == "Requested index out of range"
-#
 
-#@pytest.fixture
-#def mbad_attrs():
-#    return PitchFunAttrs(PitchFunType.PARTIAL, ("a", PartialType.F3), 4)
-#
-#def test_resolve_pitch_raises(mbad_attrs):
-#    """
-#    tests that resolve pitch raises a ValueError if no pitch is defined
-#    """
-#    with pytest.raises(AssertionError) as excinfo:
-#        resolve_pitch(mbad_attrs, direction="bad")
-#    exception_msg = excinfo.value.args[0]
-#    assert exception_msg == "direction should be vert or horiz"
-#
-#def test_resolve_pitch_horiz(mbad_attrs):
-#    """tests that horizontal resoultion works"""
-#    res_seg = resolve_pitch(mbad_attrs, direction="horiz")
-#    assert res_seg == abjad.PitchSegment("e'")
+def test_voice_pitchclasses(pcsegs, ovoicings):
+    """
+    uses the two fixtures, pcsegs and ovoicings to run a test 
+    """
+    assert len(pcsegs) == len(ovoicings)
+    print(pcsegs[0])
+    pitch_segments = voice_pitchclasses(pcsegs, ovoicings)
+    assert len(pitch_segments) == len(pcsegs)
+    [print(p) for p in pitch_segments]
 
+@pytest.fixture
+def d_min():
+    """fixture for a dminor chord, selector at index 1"""
+    return ChordTone("d f a", 1)
 
+def test_chord_tone_resolution_is_ok(d_min):
+    """
+    check that the the resolution method of the ChordTone class selects the
+    correct chord tone
+    """
+    assert d_min.pcseg == abjad.PitchClassSegment("f")
+
+@pytest.fixture
+def fattrs():
+    """fixture for testing pitch function attributes"""
+    attrs = PitchFunAttrs(PitchFunType.CHORDTONE, ("f a c", 1), 5)
+    return attrs
+
+def test_resolve_pitch_for_chord_tone(fattrs, omiddle):
+    """
+    pitch function attributes are useful for passing to resolve pitch
+    function
+    """
+    pcseg = fattrs.args.pcseg
+    res_seg = resolve_pitch(pcseg, omiddle)
+    assert res_seg == abjad.PitchSegment("a'")
