@@ -8,6 +8,10 @@ from collections import namedtuple
 from abc import ABC, abstractmethod
 from enum import Enum, auto
 
+class PitchToken(Enum):
+    PARTIAL = auto()
+    CHORDTONE = auto()
+
 class PitchTuple:
     """Simple dataclass for handling pairs of pitch material"""
     def __init__(self, root, harmony):
@@ -78,7 +82,7 @@ class Pitch(ABC):
 
 
 class PartialType(Enum):
-    "partials of the harmonic series (music)"
+    "partials of   the harmonic series (music)"
     F1 = 1; F2 = auto(); F3 = auto() 
     F4 = auto(); F5 = auto(); F6 = auto() 
     F7 = auto(); F8 = auto(); F9 = auto()
@@ -145,13 +149,6 @@ class ChordTone(Pitch):
         else:
             raise IndexError("Requested index out of range")
 
-
-class PitchFunType(Enum):
-    "Pitch function type  "
-    PARTIAL = auto()
-    CHORDTONE = auto()
-
-
 class PitchFunAttrs:
     """ 
     pitch function attributes
@@ -161,16 +158,16 @@ class PitchFunAttrs:
         octave
         args -> after resolution, will return a Pitch object
     """
-    def __init__(self, funtype: PitchFunType, args: tuple, octave: int):
+    def __init__(self, funtype: PitchToken, args: tuple, octave: int):
         self.funtype = funtype
         self.init_args = args
         self.octave = octave
         self.args = self.resolve_args()
 
     def resolve_args(self) -> Pitch:
-        if (self.funtype == PitchFunType.PARTIAL):
+        if (self.funtype == PitchToken.PARTIAL):
             return Partial(self.init_args[0], self.init_args[1])
-        elif (self.funtype == PitchFunType.CHORDTONE):
+        elif (self.funtype == PitchToken.CHORDTONE):
             return ChordTone(self.init_args[0], self.init_args[1])
         else:
             raise ValueError("Unknown pitch function type requested")
@@ -188,5 +185,42 @@ class OctaveVoicing:
     def __init__(self, octave: int, order="vert"):
         self.octave = octave
         self.order = order 
+
+
+class PitchQuery:
+    """
+    A pitch query is a simple struct for holding information used to interpret
+    pitch data in a structured way.
+
+    attributes:
+        pitchtype
+        resolution (this is partial num or selector index)
+        voicing
+    """
+    def __init__(self, ptype: str, resolution: int, voicing: OctaveVoicing):
+        self.checkptype(ptype)
+        self.resolution = resolution
+        self.voicing = voicing
+
+    def checkptype(self, ptype: str):
+        if ptype not in {"partial", "chordtone"}:
+            raise ValueError("Unknown pitch type")
+        if ptype == "partial":
+            self.ptype = PitchToken.PARTIAL
+        if ptype == "chordtone":
+            self.ptype = PitchToken.CHORDTONE
+
+
+class PitchData:
+    """
+    Another simple structure used for storing pitch data
+
+    attributes:
+        roots
+        harmonies
+    """
+    def __init__(self, roots, harmonies):
+        self.roots = roots
+        self.harmonies = harmonies
 
 

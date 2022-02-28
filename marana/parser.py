@@ -36,8 +36,14 @@ from abjad import PitchClassSegment, PitchClassSegment, PitchSegment
 from marana.pitch import (Partial, 
                           ChordTone, 
                           OctaveVoicing, 
+                          PartialType,
+                          PcSegTuple,
+                          PitchData,
                           PitchSegTuple,
-                          PitchTuple) 
+                          PitchToken,
+                          PitchQuery,
+                          make_pitch_tuples,
+                          make_pitchclass_segments) 
 
 
 def make_octave_voicings(octaves: list[int], orders: list[str]):
@@ -51,22 +57,23 @@ def make_octave_voicings(octaves: list[int], orders: list[str]):
     return ovoicings
 
  
-def parse_args(args: tuple, pitchclass_data_segments: list[PitchTuple]):
+def parse_args(ptype: PitchToken, resolver: int, pitchclass_data_segments: list[PcSegTuple]):
     """
     extractor function 
     arguments in the tuple are generic selectors for either PARTIAL or
     CHORDTONE type objects. What is returned is a list comprehension whose
     contents is a list of Pitch objects
+
+    TODO: this could be improved slightly
     """
     tones = None
     harmonies = [pcseg.harmony for pcseg in pitchclass_data_segments]
     roots = [pcseg.root for pcseg in pitchclass_data_segments]
-    if (len(args) == 1): # chordtone selector
-        i = args[0]
-        tones = [ChordTone(h, i) for h in harmonies]
-    if (len(args) == 2): # root, partial pair
-        p = args[1]
-        tones = [Partial(r, p) for r in roots]
+    if ptype == PitchToken.PARTIAL:
+        pnum = PartialType(resolver)
+        tones = [Partial(r, pnum) for r in roots]
+    if ptype == PitchToken.CHORDTONE:
+        tones = [ChordTone(h, resolver) for h in harmonies]
     assert tones is not None
     return tones
 
@@ -109,49 +116,30 @@ def voice_pitchclasses(pitchclasses, ovoicings: list[OctaveVoicing]) -> list[Pit
         pitch_segments.append(psegtuple)
     return pitch_segments
 
-def parse_pitch_attrs(attrs: dict, pitchclass_data: list[PitchTuple]):
-    """
-    parse the attributes of pitch selector
-    attributes are:
-        pitch_selector_args: the args specify what type of Pitch object will be formed
-        octave: the octave specifies what octave the pitch will be voices at
-        order: the order in which the pitches will be resolved within the octave
 
-    returns an array of PitchSegments
+def resolve_pitchselector(pquery: PitchQuery, pdata: PitchData):
     """
-    pitchclass_selector_args = attrs['args']
-    pitchclasses = parse_args(pitchclass_selector_args, pitchclass_data) 
-    octave = attrs['octave']
-    octaves = [octave] * len(pitchclasses)  # we want to zip these later
-    order = attrs['order']
-    orders = [order] * len(pitchclasses)    # same here
+    the arguments here are a pitch query and a pitch data object
+
+    function returns an array of pitch segments 
+    i.e. it resolves the pitch classes it parses in the first part 
+    of the query according to the octave and resolution order
+
+    this function is designed that we set up these two objects in a string at
+    the level of main.py (pass them in via file for instance). This string is
+    interpreted by calling python's exec function
+    """
+    roots = pdata.roots
+    harmonies = pdata.harmonies
+    pitchtuples = make_pitch_tuples(roots, harmonies)
+    pcsegs = make_pitchclass_segments(pitchtuples)
+    pitchclasses = parse_args(pquery.type, pquery.resolution, pcsegs) 
+    seqlen = len(pitchclasses)
+    octave = pquery.voicing.octave
+    order = pquery.voicing.order
+    octaves = [octave] * seqlen 
+    orders = [order] * seqlen
     ovoicings = make_octave_voicings(octaves, orders)
     voiced_pitches = voice_pitchclasses(pitchclasses, ovoicings)
+    # make selections
     return voiced_pitches
-
-
-def parse_pselector(pselector: tuple):
-    """
-    takes a tuple of pitch selectors and resolves to pitches, returns a
-    tuple of lilypond pitch strings
-    """
-    num_items = len(pselector)
-    for ps in pselector:
-        if ps["token_type"] == "partial":
-            print("resolve the args as partial")
-        if ps["token_type"] == "chordtone":
-            print("resolve the args as chord tone")
-    return num_items
-
-
-def parse_input(input: tuple):  # returns a flat array of lilypond pitch strings
-    num_items = len(input)
-    for n in input:
-        for k in n:
-            pselector_tup = None
-            voicing_flag = None
-            if k == "selector":
-                pselector_tup = n[k]
-            if k == "voicing":
-                voicing_flag = n[k]
-    return num_items

@@ -3,8 +3,6 @@ import pytest
 
 from marana.parser import (make_octave_voicings,
                            parse_args,
-                           parse_input,
-                           parse_pselector,
                            resolve_pitch, 
                            voice_pitchclasses)
 
@@ -14,8 +12,10 @@ from marana.pitch import (ChordTone,
                           OctaveVoicing,
                           Partial,
                           PartialType, 
+                          PitchData,
                           PitchFunAttrs, 
-                          PitchFunType,
+                          PitchQuery,
+                          PitchToken,
                           make_pitch_tuples, 
                           make_pitchclass_segments)
 
@@ -148,50 +148,12 @@ def test_partial_returns_correct_default(par_default):
 def test_pitchfunattrs_raises():
     """
     Tests that PitchFunAttrs raises value error when it does not know how to
-    resolve the PitchFunType
+    resolve the PitchToken
     """
     with pytest.raises(ValueError) as excinfo:
-        PitchFunAttrs(PitchFunType, ("a b c", 1), 4)
+        PitchFunAttrs(PitchToken, ("a b c", 1), 4)
     exception_msg = excinfo.value.args[0]
     assert exception_msg == "Unknown pitch function type requested"
-
-
-@pytest.fixture
-def input():
-    return (({ 'selector': ({'token_type': "partial",
-                        'attributes': {'args': ("root"), 'octave': 4}},
-                       {'token_type': "chordtone",
-                        'attributes': {'args': (2), 'octave': 4}}),
-               'voicing': 'vert'}),
-            ({ 'selector': ({'token_type': "partial",
-                       'attributes': ("root"), 'octave': 4},
-                      {'token_type': "chordtone",
-                       'attributes': {'args': (2), 'octave': 4}}),
-               'voicing': 'horiz' }))
-
-def test_parse_input_reads_tree(input):
-    assert parse_input(input) == 2
-
-
-@pytest.fixture
-def pselector():
-    return ({'token_type': "partial",
-                        'attributes': {'args': ("root"), 'octave': 4}},
-                       {'token_type': "chordtone",
-                        'attributes': {'args': (2), 'octave': 4}})
-
-
-def test_parse_pselector(pselector):
-    """pselector is correct type"""
-    assert parse_pselector(pselector) == 2
-
-
-def test_parse_pselector_reads_dict(pselector):
-    """dictionary keys are correct"""
-    for ps in pselector:
-        for k in ps.keys():
-            assert k in {"token_type", "attributes"}
-
 
 @pytest.fixture
 def pdata():
@@ -229,7 +191,7 @@ def pcsegs(ptups):
 
 def test_parse_args_forms_list(pcsegs):
     """Test that parse args returns a well formed list"""
-    tones = parse_args((1,), pcsegs)
+    tones = parse_args(PitchToken.PARTIAL, 3, pcsegs)
     assert len(tones) == 10
 
 
@@ -244,7 +206,7 @@ def test_parse_args_selects_chordtone(pcsegs, eminsus4):
     singular chord tones selected from an
     array of harmonies
     """
-    tones = parse_args((1,), pcsegs)
+    tones = parse_args(PitchToken.CHORDTONE, 1, pcsegs)
     assert isinstance(tones[0], ChordTone)
     assert tones[0].selector == eminsus4.selector
     assert tones[0].pcseg == eminsus4.pcseg
@@ -259,7 +221,7 @@ def test_parse_args(pcsegs, c_third_partial):
     checks that the partials being returned from our list are well formed and
     of the correct type
     """
-    tones = parse_args(("root", PartialType.F3), pcsegs)
+    tones = parse_args(PitchToken.PARTIAL, 3, pcsegs)
     assert isinstance(tones[0], Partial)
     assert tones[0].pcseg == c_third_partial.pcseg
 
@@ -334,7 +296,7 @@ def test_chord_tone_resolution_is_ok(d_min):
 @pytest.fixture
 def fattrs():
     """fixture for testing pitch function attributes"""
-    attrs = PitchFunAttrs(PitchFunType.CHORDTONE, ("f a c", 1), 5)
+    attrs = PitchFunAttrs(PitchToken.CHORDTONE, ("f a c", 1), 5)
     return attrs
 
 def test_resolve_pitch_for_chord_tone(fattrs, omiddle):
@@ -345,3 +307,32 @@ def test_resolve_pitch_for_chord_tone(fattrs, omiddle):
     pcseg = fattrs.args.pcseg
     res_seg = resolve_pitch(pcseg, omiddle)
     assert res_seg == abjad.PitchSegment("a'")
+
+
+@pytest.fixture
+def my_single_pquery():
+    """
+    this is the type of structure that our queries could use
+    """
+    myvoicing = OctaveVoicing(4, "horiz")
+    return PitchQuery("chordtone", 1, myvoicing)
+
+@pytest.fixture
+def my_pitch_data():
+    """
+    pretty much the same as above, but now using a small class to structure the
+    data
+    """
+    #######################################################################
+    # data 
+    #######################################################################
+    harmonies = ["<e g a>",
+                "<ef gf a>",
+                "<df f a>",
+                "<df gf bf>",
+                "<df gf bf>"]
+    roots = ["c", "d", "ef", "f", "gf", "a", "bf", "c", "df", "ef"]
+    return PitchData(roots, harmonies)
+
+
+
