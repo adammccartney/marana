@@ -1,4 +1,4 @@
-# marana/materials/parser.py
+# marana/parser.py
 #!/usr/bin/python3
 """
 This module that provides a simple parser to parse 'modular expressions'
@@ -10,150 +10,34 @@ musical idea
 
     The data is queried using lists of selectors
 
-     [(token_type: partial,
-      attributes: {args: (root), octave: 4}},
-     {token_type: harm,
-      attributes: {args: (2), octave: 4}}),
+     [({token_type: partial,
+        attributes: {args: (root), octave: 4}},
+       {token_type: harm,
+        attributes: {args: (2), octave: 4}}),
 
     ({token_type: partial,
       attributes: (root), octave: 4}},
      {token_type: harm,
       attributes: {args: (2), octave: 4}})]
 
+
+A pitch query is made up of a list of one or more objects with the following
+structure: 
+
+     [({pitch_type: partial,
+        attributes: {resolver: (root), 
+                     voice_selector: { octave: int, 
+                                       resolver: str }}})]
+
 """
 
-from abc import ABC, abstractmethod
-from enum import Enum, auto
 
 from abjad import PitchClassSegment, PitchClassSegment, PitchSegment
-
-from material.pitch import (PitchTuple, PitchSegTuple)
-
-from collections import namedtuple
-
-class Pitch(ABC):
-    "virtual class for representing pitch objects"
-    @property
-    @abstractmethod
-    def pcseg(self):
-        pass
-
-    @abstractmethod
-    def resolve(self):
-        pass
-
-
-class PartialType(Enum):
-    "partials of the harmonic series (music)"
-    F1 = 1; F2 = auto(); F3 = auto() 
-    F4 = auto(); F5 = auto(); F6 = auto() 
-    F7 = auto(); F8 = auto(); F9 = auto()
-    F10 = auto(); F11 = auto(); F12 = auto()
-    F13 = auto(); F14 = auto(); F15 = auto()
-    F16 = auto(); F17 = auto(); F18 = auto()
-    F19 = auto(); F20 = auto()
-
-class Partial(Pitch):
-    """  
-    Concrete instance of a pitch
-    partial refers to the fact that the object is intended to represent a
-    partial of the harmonic series (music)
-    """
-    def __init__(self, root, partialtype=PartialType.F1):
-        self.rootseg = PitchClassSegment(root)
-        self.partialtype = partialtype
-
-    @property
-    def pcseg(self) -> PitchClassSegment: 
-        return self.resolve()
-
-    def resolve(self):
-        if (self.partialtype.value in {2, 4, 8, 16}):  # octaves
-            return self.rootseg.transpose(0)
-        elif (self.partialtype.value in {3, 6, 12}):  # fifths
-            return self.rootseg.transpose(7)
-        elif (self.partialtype.value in {5, 10, 20}): # major third
-            return self.rootseg.transpose(4)
-        elif (self.partialtype.value in {7, 14}):
-            return self.rootseg.transpose(9.5)
-        elif (self.partialtype.value in {9, 18}):
-            return self.rootseg.transpose(2)
-        elif (self.partialtype.value in {11}):
-            return self.rootseg.transpose(5.5)
-        elif (self.partialtype.value in {13}):
-            return self.rootseg.transpose(8.5)
-        elif (self.partialtype.value in {15}):
-            return self.rootseg.transpose(11)
-        elif (self.partialtype.value in {17}):
-            return self.rootseg.transpose(1)
-        elif (self.partialtype.value in {19}):
-            return self.rootseg.transpose(3)
-        else: # default simply returns existing root
-            return self.rootseg 
-
-class ChordTone(Pitch):
-    """
-    concrete instance of a pitch
-    so called because chord tone is one of the tones that makes up a chord 
-    """
-    def __init__(self, harmony: str, selector: int):
-        self.rootseg = PitchClassSegment(harmony)
-        self.selector = selector
-
-    @property
-    def pcseg(self) -> PitchClassSegment:
-        return self.resolve()
-
-    def resolve(self):
-        if (0 < self.selector) and (self.selector < len(self.rootseg)):
-            named_pitch_class = self.rootseg[self.selector]
-            return PitchClassSegment(str(named_pitch_class))
-        else:
-            raise IndexError("Requested index out of range")
-
-
-class PitchFunType(Enum):
-    "Pitch function type  "
-    PARTIAL = auto()
-    CHORDTONE = auto()
-
-
-class PitchFunAttrs:
-    """ 
-    pitch function attributes
-    members: 
-        funtype
-        init_args
-        octave
-        args -> after resolution, will return a Pitch object
-    """
-    def __init__(self, funtype: PitchFunType, args: tuple, octave: int):
-        self.funtype = funtype
-        self.init_args = args
-        self.octave = octave
-        self.args = self.resolve_args()
-
-    def resolve_args(self) -> Pitch:
-        if (self.funtype == PitchFunType.PARTIAL):
-            return Partial(self.init_args[0], self.init_args[1])
-        elif (self.funtype == PitchFunType.CHORDTONE):
-            return ChordTone(self.init_args[0], self.init_args[1])
-        else:
-            raise ValueError("Unknown pitch function type requested")
-
-
-class OctaveVoicing:
-    """
-    simple dataclass for making objects that know how to voice a pitchclass
-    members:
-        octave: int
-        order: str
-    order refers to the order of resolution (see
-            abjad.PitchClassSegment notes on voice_horizontally etc.)
-    """
-    def __init__(self, octave: int, order="vert"):
-        self.octave = octave
-        self.order = order 
+from marana.pitch import (Partial, 
+                          ChordTone, 
+                          OctaveVoicing, 
+                          PitchSegTuple,
+                          PitchTuple) 
 
 
 def make_octave_voicings(octaves: list[int], orders: list[str]):
@@ -231,6 +115,7 @@ def parse_pitch_attrs(attrs: dict, pitchclass_data: list[PitchTuple]):
     attributes are:
         pitch_selector_args: the args specify what type of Pitch object will be formed
         octave: the octave specifies what octave the pitch will be voices at
+        order: the order in which the pitches will be resolved within the octave
 
     returns an array of PitchSegments
     """

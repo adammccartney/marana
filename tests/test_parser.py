@@ -1,31 +1,23 @@
 import abjad
 import pytest
 
-from abc import ABC
-
-from material.parser import (ChordTone, 
-                             make_octave_voicings,
-                             OctaveVoicing,
-                             parse_args,
-                             parse_input,
-                             parse_pselector,
-                             Partial,
-                             PartialType, 
-                             Pitch,
-                             PitchFunAttrs, 
-                             PitchFunType,
-                             resolve_pitch, 
-                             voice_pitchclasses,
-                             )
+from marana.parser import (make_octave_voicings,
+                           parse_args,
+                           parse_input,
+                           parse_pselector,
+                           resolve_pitch, 
+                           voice_pitchclasses)
 
 
-from material.pitch import (PcSegTuple,
-                            PitchTuple, 
-                            make_pitch_tuples, 
-                            make_pitch_segments,
-                            make_pitchclass_segments,
-                            strip,
-                            )
+from marana.pitch import (ChordTone, 
+                          PcSegTuple,
+                          OctaveVoicing,
+                          Partial,
+                          PartialType, 
+                          PitchFunAttrs, 
+                          PitchFunType,
+                          make_pitch_tuples, 
+                          make_pitchclass_segments)
 
 
 def test_partial_type_values_are_correct():
@@ -324,10 +316,8 @@ def test_voice_pitchclasses(pcsegs, ovoicings):
     uses the two fixtures, pcsegs and ovoicings to run a test 
     """
     assert len(pcsegs) == len(ovoicings)
-    print(pcsegs[0])
     pitch_segments = voice_pitchclasses(pcsegs, ovoicings)
     assert len(pitch_segments) == len(pcsegs)
-    [print(p) for p in pitch_segments]
 
 @pytest.fixture
 def d_min():
