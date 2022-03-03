@@ -132,7 +132,6 @@ def resolve_pitchselector(pquery: PitchQuery, pdata: PitchData):
     pitchtuples = make_pitch_tuples(roots, harmonies)
     pcsegs = make_pitchclass_segments(pitchtuples)
     pitchclasses = parse_args(pquery.ptype, pquery.resolution, pcsegs) 
-    print(pitchclasses)
     seqlen = len(pitchclasses)
     octave = pquery.voicing.octave
     order = pquery.voicing.order
