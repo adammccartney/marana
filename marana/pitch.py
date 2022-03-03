@@ -46,7 +46,7 @@ def strip(chord: str) -> str:
 
 
 def make_pitch_segments(pitch_tuples: list[PitchTuple]) -> list[PitchTuple]:
-    """
+    """  
     iterate over a list of pitch tuples, upgrades the content of each pitch
     tuple from basic lilypond strings to abjad PitchSegments
     """
@@ -219,8 +219,6 @@ class PitchData:
         roots
         harmonies
     """
-    def __init__(self, roots, harmonies):
+    def __init__(self, roots: list, harmonies: list):
         self.roots = roots
         self.harmonies = harmonies
-
-

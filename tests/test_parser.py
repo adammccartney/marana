@@ -4,6 +4,7 @@ import pytest
 from marana.parser import (make_octave_voicings,
                            parse_args,
                            resolve_pitch, 
+                           resolve_pitchselector,
                            voice_pitchclasses)
 
 
@@ -180,18 +181,18 @@ def test_make_pitchclass_segments(ptups):
     """
     returns a list of pitchclass segments given a list of pitch tuples
     """
-    pcsegs = make_pitchclass_segments(ptups)
-    assert isinstance(pcsegs[0], PcSegTuple)
+    pcdatasegs = make_pitchclass_segments(ptups)
+    assert isinstance(pcdatasegs[0], PcSegTuple)
 
 
 @pytest.fixture
-def pcsegs(ptups):
+def pcdatasegs(ptups):
     """returns a list of pitchclass segments"""
     return make_pitchclass_segments(ptups)
 
-def test_parse_args_forms_list(pcsegs):
+def test_parse_args_forms_list(pcdatasegs):
     """Test that parse args returns a well formed list"""
-    tones = parse_args(PitchToken.PARTIAL, 3, pcsegs)
+    tones = parse_args(PitchToken.PARTIAL, 3, pcdatasegs)
     assert len(tones) == 10
 
 
@@ -200,13 +201,13 @@ def eminsus4():
     """eminor chordtone object with selector at index 1"""
     return ChordTone("e g a", 1) 
 
-def test_parse_args_selects_chordtone(pcsegs, eminsus4):
+def test_parse_args_selects_chordtone(pcdatasegs, eminsus4):
     """
     the parse args function returns a list of ChordTones, 
     singular chord tones selected from an
     array of harmonies
     """
-    tones = parse_args(PitchToken.CHORDTONE, 1, pcsegs)
+    tones = parse_args(PitchToken.CHORDTONE, 1, pcdatasegs)
     assert isinstance(tones[0], ChordTone)
     assert tones[0].selector == eminsus4.selector
     assert tones[0].pcseg == eminsus4.pcseg
@@ -216,12 +217,12 @@ def c_third_partial():
     """fixture for creating the third partial above an ef"""
     return Partial("c", PartialType.F3) 
 
-def test_parse_args(pcsegs, c_third_partial):
+def test_parse_args(pcdatasegs, c_third_partial):
     """
     checks that the partials being returned from our list are well formed and
     of the correct type
     """
-    tones = parse_args(PitchToken.PARTIAL, 3, pcsegs)
+    tones = parse_args(PitchToken.PARTIAL, 3, pcdatasegs)
     assert isinstance(tones[0], Partial)
     assert tones[0].pcseg == c_third_partial.pcseg
 
@@ -248,16 +249,6 @@ def ovoicings():
     orders = ["horiz"] * 10
     return make_octave_voicings(octaves, orders)
 
-#def test_voice_pitchclasses(pcsegs, ovoicings):
-#    """
-#    check that this function returns a healthy list of
-#    abjad.PitchSegments
-#    """
-#    psegs = voice_pitchclasses(pcsegs, ovoicings)
-#    assert isinstance(psegs[0], abjad.PitchSegment)
-
-
-
 @pytest.fixture
 def d_thirdpartial():
     return Partial("d", PartialType.F3)
@@ -271,15 +262,6 @@ def test_resolve_pitch_for_partial(d_thirdpartial, omiddle):
     assert isinstance(res_seg, abjad.PitchSegment) 
     assert res_seg == abjad.PitchSegment("a'")
 
-
-
-def test_voice_pitchclasses(pcsegs, ovoicings):
-    """
-    uses the two fixtures, pcsegs and ovoicings to run a test 
-    """
-    assert len(pcsegs) == len(ovoicings)
-    pitch_segments = voice_pitchclasses(pcsegs, ovoicings)
-    assert len(pitch_segments) == len(pcsegs)
 
 @pytest.fixture
 def d_min():
@@ -311,7 +293,7 @@ def test_resolve_pitch_for_chord_tone(fattrs, omiddle):
 
 @pytest.fixture
 def my_single_pquery():
-    """
+    """  
     this is the type of structure that our queries could use
     """
     myvoicing = OctaveVoicing(4, "horiz")
@@ -335,4 +317,31 @@ def my_pitch_data():
     return PitchData(roots, harmonies)
 
 
+def test_resolve_pitchselector_returns_chordtones(my_single_pquery, my_pitch_data):
+    """
+    currently this function is essentially returning nearly a full set of
+    possible pitches from a query
+    """
+    pitch_segments = resolve_pitchselector(my_single_pquery, my_pitch_data)
+    assert len(pitch_segments) == len(my_pitch_data.roots)
+    assert isinstance(pitch_segments[0], abjad.PitchSegment)
+    assert pitch_segments[0] == abjad.PitchSegment("g'")
 
+@pytest.fixture
+def my_partial_pquery():
+    """
+    construct a query that will be used to construct a set of harmonic
+    overtones
+    """
+    myvoicing = OctaveVoicing(5, "horiz")
+    return PitchQuery("partial", 5, myvoicing)
+
+
+def test_resolve_pitchselector_returns_partials(my_partial_pquery,
+        my_pitch_data):
+    """
+    this tests that our query works as expected when trying to form a set of
+    partials over a given range of pitch class data segments
+    """
+    voiced_pitches = resolve_pitchselector(my_partial_pquery, my_pitch_data)
+    assert voiced_pitches[2] == abjad.PitchSegment("g''")

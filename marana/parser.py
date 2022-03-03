@@ -106,14 +106,12 @@ def voice_pitchclasses(pitchclasses, ovoicings: list[OctaveVoicing]) -> list[Pit
 
     arguments: pitchclasses: list[Partial] | list[ChordTone]
 
-    returns a list of voiced PitchSegments
+    returns a list of voiced PitchSegments tuples
     """
     pitch_segments = []
     for (pc, ov) in zip(pitchclasses, ovoicings):
-        root_pseg = resolve_pitch(pc.root, ov)
-        harmony_pseg = resolve_pitch(pc.harmony, ov)
-        psegtuple = PitchSegTuple(root_pseg, harmony_pseg)
-        pitch_segments.append(psegtuple)
+        pitch_segment = resolve_pitch(pc.pcseg, ov)
+        pitch_segments.append(pitch_segment) 
     return pitch_segments
 
 
@@ -133,7 +131,8 @@ def resolve_pitchselector(pquery: PitchQuery, pdata: PitchData):
     harmonies = pdata.harmonies
     pitchtuples = make_pitch_tuples(roots, harmonies)
     pcsegs = make_pitchclass_segments(pitchtuples)
-    pitchclasses = parse_args(pquery.type, pquery.resolution, pcsegs) 
+    pitchclasses = parse_args(pquery.ptype, pquery.resolution, pcsegs) 
+    print(pitchclasses)
     seqlen = len(pitchclasses)
     octave = pquery.voicing.octave
     order = pquery.voicing.order
@@ -141,5 +140,4 @@ def resolve_pitchselector(pquery: PitchQuery, pdata: PitchData):
     orders = [order] * seqlen
     ovoicings = make_octave_voicings(octaves, orders)
     voiced_pitches = voice_pitchclasses(pitchclasses, ovoicings)
-    # make selections
     return voiced_pitches
