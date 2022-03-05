@@ -6,9 +6,10 @@ the fusion module contains helper functions for binding pitch and rhythm
 """
 import pytest
 
-from abjadext.rmakers import Talea
-from abjad import CyclicTuple, Duration, LeafMaker
+from abjadext.rmakers import rmakers
+from abjad import Container, CyclicTuple, Duration, LeafMaker
 
+from marana.fusion import make_basic_rhythm
 from marana.parser import resolve_pitchselector
 from marana.pitch import PitchData, PitchQuery, OctaveVoicing
 
@@ -40,8 +41,8 @@ def my_pitch_data():
 
 
 @pytest.fixture
-def voiced_pitches(my_single_pquery, my_pitch_data):
-    return resolve_pitchselector(my_single_pquery, my_pitch_data)
+def voiced_pitches(bsn_pquery, my_pitch_data):
+    return resolve_pitchselector(bsn_pquery, my_pitch_data)
 
 @pytest.fixture
 def cyclic_tuple(voiced_pitches):
@@ -50,13 +51,17 @@ def cyclic_tuple(voiced_pitches):
 
 @pytest.fixture
 def bsn_talea():
-    return Talea([-1, 3, -1, 3, -1, 3], 4)
+    return rmakers.Talea(counts=[-1, 3, -1, 3, -1, 3], denominator=4)
 
 @pytest.fixture
 def time_signature_pairs():
     return [(4, 4), (4, 4), (4, 4)]
 
 
-def test_make_basic_rhythm(cyclic_tuple, time_signature_pairs):
+def test_make_basic_rhythm(bsn_talea, cyclic_tuple, time_signature_pairs):
     #maker = LeafMaker
     total_duration = sum(Duration(pair) for pair in time_signature_pairs)
+    basic_music = make_basic_rhythm(time_signature_pairs, counts=bsn_talea.counts,
+            denominator=bsn_talea.denominator) 
+    assert isinstance(basic_music, Container) 
+
