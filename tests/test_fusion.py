@@ -64,4 +64,3 @@ def test_make_basic_rhythm(bsn_talea, cyclic_tuple, time_signature_pairs):
     basic_music = make_basic_rhythm(time_signature_pairs, counts=bsn_talea.counts,
             denominator=bsn_talea.denominator) 
     assert isinstance(basic_music, Container) 
-
