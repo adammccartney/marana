@@ -5,11 +5,11 @@
 import abjad
 import pytest
 
-from .pitch import ( make_pitch_tuples, 
-                    make_pitchclass_segments,
-                    make_pitch_segments,
-                    PitchTuple, 
-                    strip )
+from marana.pitch import (make_pitch_tuples, 
+                          make_pitchclass_segments,
+                          make_pitch_segments,
+                          PitchTuple, 
+                          strip)
 
 @pytest.fixture
 def harmonies():
