@@ -1,0 +1,8 @@
+[flake8]
+exclude = 
+    .git, 
+    __pycache__, 
+    src/marana/main.py, 
+    src/marana/example.py,
+    src/marana/interpreter.py 
+
