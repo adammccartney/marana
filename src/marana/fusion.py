@@ -2,9 +2,11 @@
 """
 marana.fusion module geared primarily toward the fusion of pitch and rhythm
 """
-
-from abjad import Container, Duration, LeafMaker, NamedPitch
+import abjad
+from abjad import Container, CyclicTuple, Duration, LeafMaker, NamedPitch
 from abjadext.rmakers import rmakers
+
+from marana.pitch import PitchSegTuple
 
 def make_basic_rhythm(time_signature_pairs, counts, denominator):
     """
@@ -43,6 +45,25 @@ def make_basic_rhythm(time_signature_pairs, counts, denominator):
         current_duration += leaf_duration
         talea_index += 1
     music = Container(all_leaves)
+    return music
+
+
+def add_pitches(music: Container, pitches: PitchSegTuple) -> Container:
+    """
+    attaches pitches to points in the music where a pitch should sound
+    does not attach to rests
+
+    arguments: as hinted above,
+
+    returns an abjad Container
+    """
+    pitches = CyclicTuple(pitches)
+    pitch_index = 0
+    for logical_tie in abjad.iterate.logical_ties(music, pitched=True):
+        pitch = pitches[pitch_index]
+        for note in logical_tie:
+            note.written_pitch = pitch[0]
+        pitch_index = pitch_index + 1
     return music
 
 

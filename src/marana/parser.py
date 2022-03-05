@@ -115,7 +115,7 @@ def voice_pitchclasses(pitchclasses, ovoicings: list[OctaveVoicing]) -> list[Pit
     return pitch_segments
 
 
-def resolve_pitchselector(pquery: PitchQuery, pdata: PitchData):
+def resolve_pitchselector(pquery: PitchQuery, pdata: PitchData) -> list[PitchSegTuple]:
     """
     the arguments here are a pitch query and a pitch data object
 
@@ -126,6 +126,8 @@ def resolve_pitchselector(pquery: PitchQuery, pdata: PitchData):
     this function is designed that we set up these two objects in a string at
     the level of main.py (pass them in via file for instance). This string is
     interpreted by calling python's exec function
+
+    returns a namedtuple("PitchSegTuple", ["root", "harmony"])
     """
     roots = pdata.roots
     harmonies = pdata.harmonies
