@@ -193,7 +193,7 @@ class PitchQuery:
     pitch data in a structured way.
 
     attributes:
-        pitchtype
+        ptype (pitchtype)
         resolution (this is partial num or selector index)
         voicing
     """

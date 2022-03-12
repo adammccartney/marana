@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
 """
-test_fusion.py: suite of tests for marana.fusion 
-the fusion module contains helper functions for binding pitch and rhythm
+test_isorhythm.py: suite of tests for marana.isorhythm 
+the isorhythm module contains helper functions for binding pitch and rhythm
 """
 import pytest
 
@@ -10,9 +10,10 @@ import abjad
 from abjadext.rmakers import rmakers
 from abjad import Container, CyclicTuple, Duration, LeafMaker
 
-from marana.fusion import add_pitches, make_basic_rhythm
-from marana.parser import resolve_pitchselector
+from marana.isorhythm import add_pitches, make_basic_rhythm
+from marana.parser import resolve_pitchselector, resolve_rhythmselector
 from marana.pitch import PitchData, PitchQuery, OctaveVoicing
+from marana.rhythm import RhythmData, RhythmToken, RhythmQuery
 
 
 @pytest.fixture
@@ -76,7 +77,7 @@ def time_signature_pairs():
 
 
 def test_make_basic_rhythm(bsn_talea, time_signature_pairs):
-    """
+    """  
     simple test that shows make basic rhythm returns a usable container
     """
     basic_music = make_basic_rhythm(time_signature_pairs, counts=bsn_talea.counts,
@@ -91,7 +92,7 @@ def test_make_basic_rhythm(bsn_talea, time_signature_pairs):
 
 @pytest.fixture
 def music(bsn_talea, time_signature_pairs):
-    """
+    """  
     more or less wraps the previous test into a fixture
     """
     return make_basic_rhythm(time_signature_pairs, counts=bsn_talea.counts,
@@ -109,3 +110,52 @@ def test_make_pitches_returns_container(music, voiced_pitches):
     assert str(new_music[3]) == "d2." 
     assert str(new_music[4]) == "r4"
     assert str(new_music[5]) == "ef2." 
+
+
+
+@pytest.fixture
+def myrquery():
+    """
+    simple test fixture for making sure our marana.rhythm.rquery forms
+    correctly
+    """
+    rquery = RhythmQuery("talea")
+    return rquery
+
+@pytest.fixture
+def myrdata():
+    """
+    same as above, essentially a wrapper class for pulling together attributes
+    that will be used to resolve rhythm queries 
+    """
+    mycounts = [-1, 3] * 3
+    tspairs = [(4, 4)] * 3
+    rdata = RhythmData(counts=mycounts, denominator=4,
+                       time_signature_pairs=tspairs) 
+    return rdata
+
+
+def test_resolve_rhythmselector_builds_for_known_tokens(myrquery, myrdata):
+    """
+    checks that our resolution routine for forming rhytms works okay,
+    this is essentially a wrapper for make_basic_rhythm
+    """
+    container = resolve_rhythmselector(myrquery, myrdata)
+    assert isinstance(container, Container) 
+    assert str(container[1]) == "c'2."
+    assert str(container[2]) == "r4"
+    assert str(container[3]) == "c'2."
+    assert str(container[3]) == "c'2." 
+    assert str(container[4]) == "r4"
+    assert str(container[5]) == "c'2." 
+
+@pytest.mark.xfail
+def test_resolve_rhythmselector_fails_on_uknown(myrquery, myrdata):
+    """
+    Should throw an error if asked to resolve a query for unkown token
+    """
+    myrquery.rtype = "unknown"
+    container = resolve_rhythmselector(myrquery, myrdata)
+    assert isinstance(container, Container)
+
+

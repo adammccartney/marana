@@ -32,7 +32,8 @@ structure:
 """
 
 
-from abjad import PitchClassSegment, PitchClassSegment, PitchSegment
+from abjad import Container, PitchClassSegment, PitchClassSegment, PitchSegment
+from marana.isorhythm import make_basic_rhythm
 from marana.pitch import (Partial, 
                           ChordTone, 
                           OctaveVoicing, 
@@ -44,6 +45,7 @@ from marana.pitch import (Partial,
                           PitchQuery,
                           make_pitch_tuples,
                           make_pitchclass_segments) 
+from marana.rhythm import (RhythmData, RhythmToken, RhythmQuery)
 
 
 def make_octave_voicings(octaves: list[int], orders: list[str]):
@@ -142,3 +144,20 @@ def resolve_pitchselector(pquery: PitchQuery, pdata: PitchData) -> list[PitchSeg
     ovoicings = make_octave_voicings(octaves, orders)
     voiced_pitches = voice_pitchclasses(pitchclasses, ovoicings)
     return voiced_pitches
+
+
+def resolve_rhythmselector(rquery: RhythmQuery, rdata: RhythmData) -> Container:
+    """
+    Simple resolution method, uses a rhythmquery and rhythm data to form an
+    rmakers object. 
+
+    returns an object from abjadext.rmakers
+    """
+    res = None
+    if (rquery.rtype == RhythmToken.TALEA):
+        res = make_basic_rhythm(rdata.time_signature_pairs,
+                                counts=rdata.counts, denominator=rdata.denominator)
+    assert res is not None, "Error: no interpretation, please define rquery.rtype"
+    return res
+
+

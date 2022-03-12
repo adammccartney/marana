@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-marana.fusion module geared primarily toward the fusion of pitch and rhythm
+marana.isorhythm module geared primarily toward the isorhythm of pitch and rhythm
 """
 import abjad
 from abjad import Container, CyclicTuple, Duration, LeafMaker, NamedPitch
@@ -57,10 +57,10 @@ def add_pitches(music: Container, pitches: PitchSegTuple) -> Container:
 
     returns an abjad Container
     """
-    pitches = CyclicTuple(pitches)
+    npitches = CyclicTuple(pitches)
     pitch_index = 0
     for logical_tie in abjad.iterate.logical_ties(music, pitched=True):
-        pitch = pitches[pitch_index]
+        pitch = npitches[pitch_index]
         for note in logical_tie:
             note.written_pitch = pitch[0]
         pitch_index = pitch_index + 1
