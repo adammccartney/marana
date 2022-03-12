@@ -31,17 +31,15 @@ avoided that any approach to writing music will be highly colored by the
 composer's own particular experience and the ways that they have come to
 contemplate and imagine the music itself.  
 
-## structure of this repository
+## usage
 
-I haven't really decided how to structure this repo yet. I've tried out a
-couple of different approaches in the past. I'm starting to get an idea of what
-works, so it's probably safe to mention a few general outlines: the functionality 
-of the library is very much shaped by the I/O model that I use myself while writing 
-music. This typically begins with some harmonic/melodic sketches on the piano, that 
-map out the regions of sound to explore and then couple these with some sort of
-rhythmic structure and finally dynamic. The input therefor is simply lilypond
-strings representing pitch classes and typically some sequences of real numbers to
-represent rhythm.
+The way I propose to use this library for the time being is to keep the
+specific scripts used for creating a lilypond score separate - basically they
+would be organized one per (instrumental) voice.
 
-## pitch queries and pitch data
+If you want to see an example of what I mean, there is a makefile included with
+this repository that creates an example score. To generate a `score.pdf` simple
+run:
+
+```make``
 

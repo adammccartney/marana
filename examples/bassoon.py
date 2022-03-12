@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-examples/basoon.py: an example of how we would script a real bassoon voice
+examples/bassoon.py: an example of how we would script a real bassoon voice
 using the marana library
 """
 from marana.attachments import attach_dynamic_at_index
@@ -90,7 +90,7 @@ def printf(container, name):
 
     """
     fstr = strip_container(container)
-    print(f"basoon_{name} = ", fstr)
+    print(f"bassoon_{name} = ", fstr)
 
 def outputf(music_containers):
     """
