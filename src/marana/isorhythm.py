@@ -65,5 +65,3 @@ def add_pitches(music: Container, pitches: PitchSegTuple) -> Container:
             note.written_pitch = pitch[0]
         pitch_index = pitch_index + 1
     return music
-
-

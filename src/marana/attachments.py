@@ -2,7 +2,7 @@
 """
 marana.attachments: methods for handling attachments of dynamic and markup info 
 """
-from abjad import attach, hairpin, Container, Dynamic
+from abjad import attach, hairpin, Container, Dynamic, Tie
 
 
 def attach_dynamic_at_index(container: Container, dynamic: str, index: int) -> None:
@@ -23,3 +23,13 @@ def attach_hairpin(container: Container, descriptor: str) -> None:
     modifies the contents of container
     """
     hairpin(descriptor, container[:])
+
+
+def attach_tie(container: Container, index: int) -> None:
+    """
+    Attaches a tie to the container at index
+
+    modifies the contents of container
+    """
+    tie = Tie()
+    attach(tie, container[index])
