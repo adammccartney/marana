@@ -1,5 +1,5 @@
 SHELL := /usr/bin/bash
-PYTHON := ../venv/bin/python3
+PYTHON := ../../venv/bin/python3
 
 INSTRUMENTS_DIR := instruments
 SCORE_DIR := score
