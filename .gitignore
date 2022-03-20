@@ -148,4 +148,4 @@ cython_debug/
 
 
 build/
-morch/
+./morch/
