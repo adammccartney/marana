@@ -33,13 +33,46 @@ contemplate and imagine the music itself.
 
 ## usage
 
-The way I propose to use this library for the time being is to keep the
-specific scripts used for creating a lilypond score separate - basically they
-would be organized one per (instrumental) voice.
+To use the main branch of this repository as a python library:
 
-If you want to see an example of what I mean, there is a makefile included with
-this repository that creates an example score. To generate a `score.pdf` simple
-run:
+```
+git clone git@github.com:adammccartney/marana
+cd marana
+```
 
-```make``
+Create a virtual environment
+```
+python3 -m venv venv
+source ./venv/bin/activate
+```
 
+Install the package
+```
+(venv) pip install -e .
+(venv) pip install -r requirements.txt
+```
+
+
+## examples
+
+If you are like me and rejoice at the thought of an over engineered project,
+read on to see how to build the examples. 
+
+After a few years of working with lilypond and abjad, I've developed my own
+fairly opinionated approach to how I want to work with both of these tools. 
+
++ keep lilypond music data and abjad functions seperate 
++ retain a clean interface to abjad incase the api changes
+
+
+I keep any work that relates to a specific score in a separate branch in the
+repo - at the moment, this means the `score-morch` branch. It is possible to
+build the examples by running the following commands:
+
+```
+> cd marana
+> git worktree add --track -b score-morch ./examples origin/score-morch  
+> cd examples
+> make brass
+> open build/brass-sketch.pdf
+```
