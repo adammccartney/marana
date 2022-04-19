@@ -4,10 +4,10 @@
 
 %% hrnOneTwo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-hrnOneTwo_resp_aa =  {r2 r8 bf'8 - \staccato d''8 bf'8}
-hrnOneTwo_resp_ab =  {f'2 - \tenuto r8 bf'8 - \staccato g''8 bf'8}
-hrnOneTwo_resp_ba =  {f'2 - \tenuto r8 bf'8 - \staccato a'8 bf'8}
-hrnOneTwo_resp_bb =  {c''2 - \tenuto r8 f'8 - \staccato bf'8 c''8}
+hrnOneTwo_resp_aa =  {r2 r8 bf'8 - \staccato r8 bf'8}
+hrnOneTwo_resp_ab =  {f'2 - \tenuto r8 bf'8 - \staccato r8 bf'8}
+hrnOneTwo_resp_ba =  {f'2 - \tenuto r8 bf'8 - \staccato r8 bf'8}
+hrnOneTwo_resp_bb =  {c''2 - \tenuto r8 f'8 - \staccato r8 c''8}
 hrnOneTwo_resp_bc =  {d''2 - \tenuto r2}
 hrnOneTwo_chorus_aa =  {r4 \times 2/3 { ef'8  ef'8  ef'8 } \times 2/3 { ef'8  ef'8  ef'8 } \times 2/3 { ef'8  ef'8  ef'8 }}
 hrnOneTwo_chorus_ab =  {\times 2/3 { ef'8  ef'8  ef'8 } \times 2/3 { ef'8  ef'8  ef'8 } \times 2/3 { d'8  d'8  d'8 } \times 2/3 { d'8  d'8  d'8 }}
@@ -33,10 +33,10 @@ hrnOneTwo_verseOne = {
 
 %% hrnThreeFour
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-hrnThreeFour_resp_aa =  {r2 r8 bf8 - \staccato d'8 bf8}
-hrnThreeFour_resp_ab =  {f2 - \tenuto r8 bf8 - \staccato g'8 bf8}
-hrnThreeFour_resp_ba =  {f2 - \tenuto r8 bf8 - \staccato a8 bf8}
-hrnThreeFour_resp_bb =  {c'2 - \tenuto r8 f8 - \staccato bf8 c'8}
+hrnThreeFour_resp_aa =  {r2 r8 bf8 - \staccato r8 bf8}
+hrnThreeFour_resp_ab =  {f2 - \tenuto r8 bf8 - \staccato r8 bf8}
+hrnThreeFour_resp_ba =  {f2 - \tenuto r8 bf8 - \staccato r8 bf8}
+hrnThreeFour_resp_bb =  {c'2 - \tenuto r8 f8 - \staccato r8 c'8}
 hrnThreeFour_resp_bc =  {d'2 - \tenuto r2}
 hrnThreeFour_chorus_aa =  {r4 \times 2/3 { ef8  ef8  ef8 } \times 2/3 { ef8  ef8  ef8 } \times 2/3 { ef8  ef8  ef8 }}
 hrnThreeFour_chorus_ab =  {\times 2/3 { ef8  ef8  ef8 } \times 2/3 { ef8  ef8  ef8 } \times 2/3 { d8  d8  d8 } \times 2/3 { d8  d8  d8 }}
@@ -62,10 +62,10 @@ hrnThreeFour_verseOne = {
 
 %% trpOneTwo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-trpOneTwo_call_aa =  {r8 bf'8 - \staccato d''8 bf'8 f'2 - \tenuto}
-trpOneTwo_call_ab =  {r8 bf'8 - \staccato g'8 bf'8 f'2 - \tenuto}
-trpOneTwo_call_ba =  {r8 bf'8 - \staccato a'8 bf'8 c''2 - \tenuto}
-trpOneTwo_call_bb =  {r8 f'8 - \staccato bf'8 c''8 d''2 - \tenuto}
+trpOneTwo_call_aa =  {r8 r8 d''8 - \staccato r8 f'2 - \tenuto}
+trpOneTwo_call_ab =  {r8 r8 g'8 - \staccato r8 f'2 - \tenuto}
+trpOneTwo_call_ba =  {r8 r8 a'8 - \staccato r8 c''2 - \tenuto}
+trpOneTwo_call_bb =  {r8 r8 bf'8 - \staccato r8 d''2 - \tenuto}
 trpOneTwo_call_bc =  {r1}
 trpOneTwo_chorus_aa =  {r8 d''8 - \staccato ef''16 - \staccato ef''16 - \staccato ef''16 - \staccato ef''16 - \staccato ef''16 - \staccato ef''16 - \staccato ef''16 - \staccato ef''16 - \staccato ef''16 - \staccato ef''16 - \staccato ef''16 - \staccato ef''16 - \staccato}
 trpOneTwo_chorus_ab =  {ef''16 - \staccato ef''16 - \staccato ef''16 - \staccato ef''16 - \staccato d''16 - \staccato d''16 - \staccato d''16 - \staccato d''16 - \staccato d''16 - \staccato d''16 - \staccato d''16 - \staccato d''16 - \staccato d''16 - \staccato d''16 - \staccato c''16 - \staccato c''16 - \staccato}
@@ -91,10 +91,10 @@ trpOneTwo_verseOne = {
 
 %% trpThree
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-trpThree_call_aa =  {r8 bf8 - \staccato d'8 bf8 f2 - \tenuto}
-trpThree_call_ab =  {r8 bf8 - \staccato g8 bf8 f2 - \tenuto}
-trpThree_call_ba =  {r8 bf8 - \staccato a8 bf8 c'2 - \tenuto}
-trpThree_call_bb =  {r8 f8 - \staccato bf8 c'8 d'2 - \tenuto}
+trpThree_call_aa =  {r8 r8 d'8 - \staccato r8 f2 - \tenuto}
+trpThree_call_ab =  {r8 r8 g8 - \staccato r8 f2 - \tenuto}
+trpThree_call_ba =  {r8 r8 a8 - \staccato r8 c'2 - \tenuto}
+trpThree_call_bb =  {r8 r8 bf8 - \staccato r8 d'2 - \tenuto}
 trpThree_call_bc =  {r1}
 trpThree_chorus_aa =  {r8 d'8 - \staccato ef'16 - \staccato ef'16 - \staccato ef'16 - \staccato ef'16 - \staccato ef'16 - \staccato ef'16 - \staccato ef'16 - \staccato ef'16 - \staccato ef'16 - \staccato ef'16 - \staccato ef'16 - \staccato ef'16 - \staccato}
 trpThree_chorus_ab =  {ef'16 - \staccato ef'16 - \staccato ef'16 - \staccato ef'16 - \staccato d'16 - \staccato d'16 - \staccato d'16 - \staccato d'16 - \staccato d'16 - \staccato d'16 - \staccato d'16 - \staccato d'16 - \staccato d'16 - \staccato d'16 - \staccato c'16 - \staccato c'16 - \staccato}
@@ -120,10 +120,10 @@ trpThree_verseOne = {
 
 %% trbOneTwo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-trbOneTwo_call_aa =  {r8 bf8 - \staccato d'8 bf8 f2 - \tenuto}
-trbOneTwo_call_ab =  {r8 bf8 - \staccato g8 bf8 f2 - \tenuto}
-trbOneTwo_call_ba =  {r8 bf8 - \staccato a8 bf8 c'2 - \tenuto}
-trbOneTwo_call_bb =  {r8 f8 - \staccato bf8 c'8 d'2 - \tenuto}
+trbOneTwo_call_aa =  {r8 r8 d'8 - \staccato r8 f2 - \tenuto}
+trbOneTwo_call_ab =  {r8 r8 g8 - \staccato r8 f2 - \tenuto}
+trbOneTwo_call_ba =  {r8 r8 a8 - \staccato r8 c'2 - \tenuto}
+trbOneTwo_call_bb =  {r8 r8 bf8 - \staccato r8 d'2 - \tenuto}
 trbOneTwo_call_bc =  {r1}
 trbOneTwo_chorus_eights_aa =  {r8 d'8 - \staccato ef'8 - \staccato ef'8 - \staccato ef'8 - \staccato ef'8 - \staccato ef'8 - \staccato ef'8 - \staccato}
 trbOneTwo_chorus_eights_ab =  {ef'8 - \staccato ef'8 - \staccato d'8 - \staccato d'8 - \staccato d'8 - \staccato d'8 - \staccato d'8 - \staccato c'8 - \staccato}
@@ -149,10 +149,10 @@ trbOneTwo_verseOne = {
 
 %% btrb
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-btrb_call_aa_octvb =  {r8 bf,8 - \staccato d8 bf,8 f,2 - \tenuto}
-btrb_call_ab_octvb =  {r8 bf,8 - \staccato g,8 bf,8 f,2 - \tenuto}
-btrb_call_ba_octvb =  {r8 bf,8 - \staccato a,8 bf,8 c2 - \tenuto}
-btrb_call_bb_octvb =  {r8 f,8 - \staccato bf,8 c8 d2 - \tenuto}
+btrb_call_aa_octvb =  {r8 r8 d8 - \staccato r8 f,2 - \tenuto}
+btrb_call_ab_octvb =  {r8 r8 g,8 - \staccato r8 f,2 - \tenuto}
+btrb_call_ba_octvb =  {r8 r8 a,8 - \staccato r8 c2 - \tenuto}
+btrb_call_bb_octvb =  {r8 r8 bf,8 - \staccato r8 d2 - \tenuto}
 btrb_call_bc_octvb =  {r1}
 btrb_chorus_eights_aa =  {r8 d8 - \staccato ef8 - \staccato ef8 - \staccato ef8 - \staccato ef8 - \staccato ef8 - \staccato ef8 - \staccato}
 btrb_chorus_eights_ab =  {ef8 - \staccato ef8 - \staccato d8 - \staccato d8 - \staccato d8 - \staccato d8 - \staccato d8 - \staccato c8 - \staccato}
@@ -178,10 +178,10 @@ btrb_verseOne = {
 
 %% tuba
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-tuba_resp_aa =  {r2 r8 bf,8 - \staccato d8 bf,8}
-tuba_resp_ab =  {f,2 - \tenuto r8 bf,8 - \staccato g8 bf,8}
-tuba_resp_ba =  {f,2 - \tenuto r8 bf,8 - \staccato a,8 bf,8}
-tuba_resp_bb =  {c2 - \tenuto r8 f,8 - \staccato bf,8 c8}
+tuba_resp_aa =  {r2 r8 bf,8 - \staccato r8 bf,8}
+tuba_resp_ab =  {f,2 - \tenuto r8 bf,8 - \staccato r8 bf,8}
+tuba_resp_ba =  {f,2 - \tenuto r8 bf,8 - \staccato r8 bf,8}
+tuba_resp_bb =  {c2 - \tenuto r8 f,8 - \staccato r8 c8}
 tuba_resp_bc =  {d2 - \tenuto r2}
 tuba_chorus_aa =  {r4 \times 2/3 { ef8  ef8  ef8 } \times 2/3 { ef8  ef8  ef8 } \times 2/3 { ef8  ef8  ef8 }}
 tuba_chorus_ab =  {\times 2/3 { ef8  ef8  ef8 } \times 2/3 { ef8  ef8  ef8 } \times 2/3 { d8  d8  d8 } \times 2/3 { d8  d8  d8 }}

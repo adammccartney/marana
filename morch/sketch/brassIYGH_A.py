@@ -1,32 +1,49 @@
 #!/usr/bin/python3
 
 """
-brass.py: script to generate a sketch for brass for the score morch (marana for
-          orchestra). This script writes to stdout.
+brassIYGH_A.py: script to generate a segment for the brass
 
-usage: python brass.py > brass.ly
-
+usage: python3 brassIYGH_A.py > brassIYGH_A.ly
 """
-
 import abjad
 from marana.tools import strip_voice
 from collections import namedtuple
 from typing import Callable
 
+from maprests import mapRests
+
+CALLS = ["r8 bf8 d'8-. bf8 f2--",
+         "r8 bf8 g8-. bf8 f2--",
+         "r8 bf8 a8-. bf8 c'2--",
+         "r8 f8 bf8-. c'8 d'2--",
+         "r1"]
+
+RESPS = ["r2 r8 bf8-. d'8 bf8",
+         "f2-- r8 bf8-. g'8 bf8", 
+         "f2-- r8 bf8-. a8 bf8",
+         "c'2-- r8 f8-. bf8 c'8", 
+         "d'2-- r2"]
+
+idx_odd = [1, 3]
+idx_even = [0, 2, 4]
+
+rested_calls = mapRests(idx_odd, CALLS)
+rested_resps = mapRests(idx_odd, RESPS)
+
 IYGH_PHRASES = {
     #######################################################################
     # data 
     #######################################################################
-    "call_aa": "r8 bf8-. d'8 bf8 f2--",
-    "call_ab": "r8 bf8-. g8 bf8 f2--",
-    "call_ba": "r8 bf8-. a8 bf8 c'2--",
-    "call_bb": "r8 f8-. bf8 c'8 d'2--",
-    "call_bc": "r1",
-    "resp_aa": "r2 r8 bf8-. d'8 bf8",
-    "resp_ab": "f2-- r8 bf8-. g'8 bf8", 
-    "resp_ba": "f2-- r8 bf8-. a8 bf8",
-    "resp_bb": "c'2-- r8 f8-. bf8 c'8", 
-    "resp_bc": "d'2-- r2", 
+    "call_aa": rested_calls[0],
+    "call_ab": rested_calls[1], 
+    "call_ba": rested_calls[2],
+    "call_bb": rested_calls[3],
+    "call_bc": rested_calls[4],
+    "resp_aa": rested_resps[0],
+    "resp_ab": rested_resps[1], 
+    "resp_ba": rested_resps[2],
+    "resp_bb": rested_resps[3], 
+    "resp_bc": rested_resps[4], 
     "chorus_aa": "r8 d'8-. ef'16-. ef'-. ef'-. ef'-. ef'16-. ef'-. ef'-. ef'-. ef'16-. ef'-. ef'-. ef'-.",
     "chorus_ab": "ef'16-. ef'-. ef'-. ef'-. d'16-. d'-. d'-. d'-. d'16-. d'-. d'-. d'-. d'16-. d'-. c'-. c'-.",
     "chorus_ac": "bf16-. bf-. d'8 d'4 d'4 c'4 ~",
