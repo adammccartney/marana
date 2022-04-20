@@ -8,10 +8,7 @@ usage: python brass.py > brass.ly
 
 """
 
-import abjad
-from marana.tools import strip_voice
-from collections import namedtuple
-from typing import Callable
+from marana.tools import ( create_voice, outputheader, generate_chunk )
 
 IYGH_PHRASES = {
     #######################################################################
@@ -47,15 +44,6 @@ IYGH_PHRASES = {
                              \\tuplet 3/2 {d'8 d' d'} \\tuplet 3/2 {ef'8 ef' ef'}""",
     "chorus_triplets_ae": """\\tuplet 3/2 {f'8 f' f'} \\tuplet 3/2 {f'8 f' f'} f'2""",
 }
-
-def create_voice(phrase: str, offset: int):
-    """
-    will create a new voice that is a tranposition of the old voice at an
-    offset of n semitones
-    """
-    voice = abjad.Voice(phrase)
-    abjad.mutate.transpose(voice, offset)
-    return voice
 
 def get_brass_section() -> dict:
     """  
@@ -213,81 +201,6 @@ def get_brass_section() -> dict:
                 }
             }
     return brass
-
-
-NamedVoice = namedtuple("NamedVoice", ['voice', 'name', 'parent'])
-
-def get_named_voices(group: dict, instrument: str) -> list[NamedVoice]:
-    """
-    returns a list of NamedVoice tuples 
-    """
-    voices = group[instrument] 
-    keys = voices.keys()
-    names = [instrument + "_" + k for k in keys]
-    namedvoices = []
-    for k, n in zip(keys, names):
-        namedvoice = NamedVoice(voices[k], n, instrument)
-        namedvoices.append(namedvoice)
-    return namedvoices
-
-
-def printf(voice, name):
-    """
-    prints a voice with name
-    """
-    fstr = strip_voice(voice)
-    print(f"{name} = ", fstr)
-
-
-def outputheader():
-    print("\\version \"2.22.0\"")
-    print("\\language \"english\"")
-
-
-def outputf(namedvoices: list[NamedVoice]) -> None:
-    """
-    outputs the lilypond voices for segment
-    writes to stdout
-    """
-    print("\n")
-    print(f"%% {namedvoices[0].parent}")
-    print("%%" * 28)
-
-    for nv in namedvoices:
-        printf(nv.voice, nv.name)
-
-
-def output_aggregate_voice(namedvoices: list[NamedVoice], segment: str) -> None:
-    """
-    creates a context voice for the voices in the namedvoices list
-    writes the format string to stdout
-    """
-    print("\n")
-    parent = namedvoices[0].parent
-    padding = " " * 4
-    print(f"{parent}_{segment} = {{")
-    for nv in namedvoices:
-        print(f"{padding}\\{nv.name}")
-    print("}")
-    print("%%" * 28)
-
-
-def generate_chunk(sectionGetter: Callable[[], dict] , 
-                   instruments: list[str], 
-                   segment: str) -> None:
-    """
-    Wrapper function,
-    first gets an instrumental section (a tree of instruments and the music
-    they play), then iterates over the array of instrument names and creates
-    lilypond musical output based on the values stored in the section tree
-
-    writes to stdout
-    """
-    section = sectionGetter()
-    for i in instruments:
-        nvoice = get_named_voices(section, i)
-        outputf(nvoice)
-        output_aggregate_voice(nvoice, segment)
 
 
 if __name__ == '__main__':
