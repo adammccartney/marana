@@ -1,7 +1,7 @@
 \version "2.22.0"
 \language "english"
 
-\include "brass.ly"
+\include "./segments/brass.ly"
 
 instrument = ""
 \book {

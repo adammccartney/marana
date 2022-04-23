@@ -5,50 +5,50 @@ INSTRUMENTS_DIR := instruments
 SCORE_DIR := score
 SRC_DIR := src
 SKETCH_DIR := sketch
-
-SOURCES  := $(wildcard $(SRC_DIR)/*.py)
-SKETCHES := $(addprefix $(SKETCH_DIR)/, $(notdir $(SOURCES:.py=.ly)))
-
 BUILD_DIR := build
+SEGMENTS_DIR := $(BUILD_DIR)/segments
 
-default: $(BUILD_DIR)/score.pdf
+SOURCES         := $(wildcard $(SRC_DIR)/*.py)
+SCORE_TEMPLATES := $(wildcard $(SCORE_DIR)/*.ly)
+SKETCHES        := $(addprefix $(SKETCH_DIR)/, $(notdir $(SOURCES:.py=.ly)))
 
-brass: $(BUILD_DIR)/brass-sketch.pdf
+default: scores
+setup: sketches copy_score_templates copy_segments 
 
-$(BUILD_DIR)/score.pdf: bassoon_voice copy_score
-	@ lilypond -o $(BUILD_DIR)/score $(BUILD_DIR)/score.ly
-
-# Copy lilypond score to build_dir 
-copy_score: 
-	@ mkdir -p $(BUILD_DIR)
-	@ cp $(SCORE_DIR)/score.ly $(BUILD_DIR)
-
-bassoon_voice: 
-	@ mkdir -p $(BUILD_DIR)
-	@ $(PYTHON) $(INSTRUMENTS_DIR)/bassoon.py > $(BUILD_DIR)/bassoon.ly
-
-$(BUILD_DIR)/brass-sketch.pdf: setup_brass
-	@ mkdir -p $(BUILD_DIR)
-	@ lilypond -o $(BUILD_DIR)/brass-sketch $(BUILD_DIR)/iygh-score.ly
-
-setup_brass: $(SKETCH_DIR)/brass.ly 
-	@ mkdir -p $(BUILD_DIR)
-	@ cp $(SKETCH_DIR)/brass.ly $(BUILD_DIR)
-	@ cp $(SCORE_DIR)/iygh-score.ly $(BUILD_DIR)
-
-
+# Compile components ##########################################################
+#
 sketches: $(SKETCHES)
-
 # compile sketches
 $(SKETCH_DIR)/%.ly: $(SRC_DIR)/%.py
 	@ printf "%8s %-40s %s\n" $(PYTHON) $<
 	@ mkdir -p $(SKETCH_DIR)
 	@ $(PYTHON) $< > $@
 
-clean:
+# Link step ###################################################################
+# 
+#
+SCORES          := $(addprefix $(BUILD_DIR)/, $(notdir $(SCORE_TEMPLATES:.ly=)))
+scores: setup $(SCORES)
+# link the sketches (segments) to the scores
+$(BUILD_DIR)/%: $(BUILD_DIR)/%.ly
+	@ printf "%8s %-40s %s\n" lilypond $<
+	@ lilypond -o $@ $<
+
+# Setup scripts ##############################################################
+# Copy lilypond score to build_dir 
+copy_score_templates: build_dirs
+	@ $(foreach score,$(SCORE_TEMPLATES),$(shell cp $(score) ./build/))
+
+copy_segments: build_dirs
+	@ $(foreach sketch,$(SKETCHES),$(shell cp $(sketch) ./build/segments/))
+
+build_dirs:
+	@ mkdir -p build build/segments
+
+clean: clean_sketches
 	rm -rf $(BUILD_DIR) 
 
 clean_sketches:
 	rm -rf $(SKETCH_DIR)
 
-.PHONY: default clean
+.PHONY: clean setup scores sketches

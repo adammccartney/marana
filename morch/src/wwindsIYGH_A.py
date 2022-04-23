@@ -65,7 +65,7 @@ IYGH_PHRASES = {
     }
 
 def get_wwind_section() -> dict:
-    """  
+    """    
     creates a dictionary of woodwind voices 
     """
     call_aa = create_voice(IYGH_PHRASES["call_aa"], 0) # call aa

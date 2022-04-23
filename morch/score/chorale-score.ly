@@ -1,7 +1,7 @@
 \version "2.22.0"
 \language "english"
 
-\include "bassoon.ly"
+\include "./segments/wwindChorale.ly"
 
 instrument = ""
 \book {
@@ -33,25 +33,85 @@ instrument = ""
   
   \score {
 <<
-\new Staff <<
-  \new Voice \absolute {
-    \clef "bass"
-    \bassoon_a
-    \bassoon_b
-    \bassoon_c
-    \bassoon_d
-    \bassoon_e
-    \bassoon_f
-    \bassoon_g
-    \bassoon_h
-    \bassoon_i
-    \bassoon_j
-  }
->>
+
+\new StaffGroup << %% wwinds
+
+  \new Staff \with {
+    instrumentName = #"Flute 1, 2"
+    shortInstrumentName = #"Fl. 1,2"
+    midiInstrument = #"flute"
+  } <<
+    \accidentalStyle modern-cautionary 
+    \clef "treble"
+    \time 4/4
+    \new Voice { 
+      \voiceOne {
+      \flOne_segment_chorale 
+      } % end of flute Voice one notes
+    } % end of flute voice one 
+    \new Voice {
+      \voiceTwo {
+        \override Voice.DynamicText.stencil = ##f
+        \flTwo_segment_chorale
+      } % end of flute two voice notes
+    } % end of flute voice two
+  >> %% end of flute staff
+
+  \new Staff \with {
+    instrumentName = #"Oboe 1"
+    shortInstrumentName = #"Ob. 1"
+    midiInstrument = #"oboe"
+  } <<
+    \accidentalStyle modern-cautionary 
+    \time 4/4
+    \clef "treble"
+  \new Voice {
+    \obOne_segment_chorale
+  } %% end of oboe notes
+>> %% end of oboe staff
+
+
+  \new Staff \with {
+    instrumentName = #"Oboe 2"
+    shortInstrumentName = #"Ob. 2"
+    midiInstrument = #"oboe"
+  } <<
+    \accidentalStyle modern-cautionary 
+    \time 4/4
+    \clef "treble"
+  \new Voice {
+    \obTwo_segment_chorale
+  } %% end of oboe notes
+>> %% end of oboe two staff
+
+
+
+  \new Staff \with {
+    instrumentName = #"Clarinet in Bb 1, 2"
+    shortInstrumentName = #"Cl. 1,2"
+    midiInstrument = #"clarinet"
+  } <<
+    \accidentalStyle modern-cautionary 
+    \time 4/4
+    \clef "treble"
+  \new Voice {
+    \voiceOne {
+      \clOne_segment_chorale 
+    } % end of clarinet one notes
+  } % end of clarinet 1, 2 voice one
+  \new Voice {
+    \voiceTwo {
+      \override Voice.DynamicText.stencil = ##f
+      \clTwo_segment_chorale
+    } % end of clarinet two notes
+  } % end of clarinet 1, 2 voice two
+  >> %% wwind 
+>> %% staff group
+
 >> % score
 
 
-	\header {piece = ""}
+	\header {piece = "marana brass sketch (22) iygh"}
 	
 	
 	\layout {
@@ -92,7 +152,7 @@ instrument = ""
           \Voice                            % voice
           \consists "Staff_performer"      %  
                    }
-	  \tempo 4 = 100} 
+	  \tempo 4 = 60} 
                     }
   }
   
