@@ -51,7 +51,7 @@ SEQ_ONE = [8, 4, 4, 2, 9, 2, 5]
 SEQ_TWO = [2, 5, 4, 7, 7, 5, 4]
 
 def make_bars_four_four(parent_list: list[list[str]]) -> list[str]:
-    """  
+    """    
     takes in a raw sequence of music chunks (grouped in half note chunks)
     returns a flattened list of strings each containing a bar in four four 
     """
@@ -151,6 +151,27 @@ CLARINET_TWO = [["r4 a'4"] * SEQ_ONE[0],
 CLARINET_TWO_BARS = make_bars_four_four(CLARINET_TWO)
 
 
+BASSOON = ["r1",
+           "r1",
+           "r4 r8 e'8( a' e' a--) e'(",
+           "d'8 bf a e) a( e a4)",
+           "r1",
+           "r4 r8 e'8( a' e' a--) e'(",
+           "bf8 g a e) a( e a4)",
+           "r4 r8 e'8( a' e' a--) fs'(",
+           "ef'8 e') a( e a e a4)",
+           "r1",
+           "r4 r8 g8( c' g c--) a(",
+           "g8 c g,) c( g c c,4)",
+           "r4 r8 c'8( f' c' f) c'(",
+           "f8 e d f) c( f f,4)",
+           "r1",
+           "r4 r8 c'8( a d' a d)",
+           "d'8( c' b a) d( a, d,4)"
+           ]
+           
+
+
 # segment is 17 bars long
 
 CHORALE_PHRASES = {
@@ -229,7 +250,7 @@ CHORALE_PHRASES = {
 
 
 def get_wwind_section() -> dict:
-    """
+    """  
     does exactly what it says on the tin
     """
     chorale_Sa = create_voice(CHORALE_PHRASES["chorale_Sa"], 0)
@@ -334,6 +355,24 @@ def get_wwind_section() -> dict:
     orn_o =create_voice(OBOE_TWO[14], 0)
     orn_p =create_voice(OBOE_TWO[15], 0)
     orn_q =create_voice(OBOE_TWO[16], 0)
+    bsn_a = create_voice(BASSOON[0], 0)
+    bsn_b = create_voice(BASSOON[1], 0)
+    bsn_c = create_voice(BASSOON[2], 0)
+    bsn_d = create_voice(BASSOON[3], 0)
+    bsn_e = create_voice(BASSOON[4], 0)
+    bsn_f = create_voice(BASSOON[5], 0)
+    bsn_g = create_voice(BASSOON[6], 0)
+    bsn_h = create_voice(BASSOON[7], 0)
+    bsn_i = create_voice(BASSOON[8], 0)
+    bsn_j = create_voice(BASSOON[9], 0)
+    bsn_k = create_voice(BASSOON[10], 0)
+    bsn_l = create_voice(BASSOON[11], 0)
+    bsn_m = create_voice(BASSOON[12], 0)
+    bsn_n = create_voice(BASSOON[13], 0)
+    bsn_o = create_voice(BASSOON[14], 0)
+    bsn_p = create_voice(BASSOON[15], 0)
+    bsn_q = create_voice(BASSOON[16], 0)
+    
 
     wwinds = {
             "flOne": {
@@ -449,12 +488,31 @@ def get_wwind_section() -> dict:
                 "chorale_Bo": chorale_Bo,
                 "chorale_Bp": chorale_Bp,
                 "chorale_Bq": chorale_Bq
-                }
+                },
+            "bsn": {
+                "bsn_a": bsn_a,
+                "bsn_b": bsn_b,
+                "bsn_c": bsn_c,
+                "bsn_d": bsn_d,
+                "bsn_e": bsn_e,
+                "bsn_f": bsn_f,
+                "bsn_g": bsn_g,
+                "bsn_h": bsn_h,
+                "bsn_i": bsn_i,
+                "bsn_j": bsn_j,
+                "bsn_k": bsn_k,
+                "bsn_l": bsn_l,
+                "bsn_m": bsn_m,
+                "bsn_n": bsn_n,
+                "bsn_o": bsn_o,
+                "bsn_p": bsn_p,
+                "bsn_q": bsn_q,
+                    }
             }
     return wwinds
 
 if __name__ == '__main__':
     outputheader()
-    instruments = ["flOne", "flTwo", "obOne", "obTwo", "clOne", "clTwo"]
+    instruments = ["flOne", "flTwo", "obOne", "obTwo", "clOne", "clTwo", "bsn"]
     segment = "segment_chorale"
     generate_chunk(get_wwind_section, instruments, segment)

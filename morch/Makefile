@@ -10,40 +10,45 @@ SEGMENTS_DIR := $(BUILD_DIR)/segments
 
 SOURCES         := $(wildcard $(SRC_DIR)/*.py)
 SCORE_TEMPLATES := $(wildcard $(SCORE_DIR)/*.ly)
-SKETCHES        := $(addprefix $(SKETCH_DIR)/, $(notdir $(SOURCES:.py=.ly)))
+MUSIC_TEMPLATES := $(wildcard $(SCORE_DIR)/*.ily)
+SEGMENTS        := $(addprefix $(SEGMENTS_DIR)/, $(notdir $(SOURCES:.py=.ily)))
 
-default: scores
-setup: sketches copy_score_templates copy_segments 
 
-# Compile components ##########################################################
+PARTS := flute1 flute2 oboe1 oboe2 clarinet1 clarinet2 bassoon
+
+PARTS_PDF := $(foreach p, $(PARTS), parts-$(p).pdf)
+
+default: score
+
+# Generate segments ############################################################
 #
-sketches: $(SKETCHES)
+segments: setup $(SEGMENTS) 
 # compile sketches
-$(SKETCH_DIR)/%.ly: $(SRC_DIR)/%.py
+$(SEGMENTS_DIR)/%.ily: $(SRC_DIR)/%.py
 	@ printf "%8s %-40s %s\n" $(PYTHON) $<
-	@ mkdir -p $(SKETCH_DIR)
+	@ mkdir -p $(SEGMENTS_DIR)
 	@ $(PYTHON) $< > $@
 
 # Link step ###################################################################
-# 
 #
-SCORES          := $(addprefix $(BUILD_DIR)/, $(notdir $(SCORE_TEMPLATES:.ly=)))
-scores: setup $(SCORES)
+score: setup segments $(BUILD_DIR)/score
 # link the sketches (segments) to the scores
-$(BUILD_DIR)/%: $(BUILD_DIR)/%.ly
+$(BUILD_DIR)/score: $(BUILD_DIR)/score.ly
 	@ printf "%8s %-40s %s\n" lilypond $<
 	@ lilypond -o $@ $<
 
+
+
 # Setup scripts ##############################################################
 # Copy lilypond score to build_dir 
-copy_score_templates: build_dirs
-	@ $(foreach score,$(SCORE_TEMPLATES),$(shell cp $(score) ./build/))
+setup: cp_mutemplates 
+	@ cp score/score.ly $(BUILD_DIR)
 
-copy_segments: build_dirs
-	@ $(foreach sketch,$(SKETCHES),$(shell cp $(sketch) ./build/segments/))
+cp_mutemplates: build_dir
+	@ $(foreach ily,$(MUSIC_TEMPLATES),$(shell cp $(ily) $(BUILD_DIR)))
 
-build_dirs:
-	@ mkdir -p build build/segments
+build_dir:
+	@ mkdir -p build/segments
 
 clean: clean_sketches
 	rm -rf $(BUILD_DIR) 

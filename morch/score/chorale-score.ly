@@ -36,6 +36,7 @@ instrument = ""
 
 \new StaffGroup << %% wwinds
 
+  \tag #'flutes
   \new Staff \with {
     instrumentName = #"Flute 1, 2"
     shortInstrumentName = #"Fl. 1,2"
@@ -57,6 +58,7 @@ instrument = ""
     } % end of flute voice two
   >> %% end of flute staff
 
+  \tag #'oboes
   \new Staff \with {
     instrumentName = #"Oboe 1"
     shortInstrumentName = #"Ob. 1"
@@ -86,6 +88,7 @@ instrument = ""
 
 
 
+  \tag #'clarinets
   \new Staff \with {
     instrumentName = #"Clarinet in Bb 1, 2"
     shortInstrumentName = #"Cl. 1,2"
@@ -105,8 +108,24 @@ instrument = ""
       \clTwo_segment_chorale
     } % end of clarinet two notes
   } % end of clarinet 1, 2 voice two
-  >> %% wwind 
->> %% staff group
+
+
+  \tag #'bassoon
+  \new Staff \with {
+    instrumentName = #"Bassoon"
+    shortInstrumentName = #"Bsn."
+    midiInstrument = #"bassoon"
+  } <<
+    \accidentalStyle modern-cautionary 
+    \time 4/4
+    \clef "bass"
+  \new Voice {
+    \bsn_segment_chorale
+  } %% end of bsn notes
+>> %% end of bsn staff
+
+  >> %% end wwind 
+>> %% end wwind staff group
 
 >> % score
 
