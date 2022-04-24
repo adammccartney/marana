@@ -10,7 +10,9 @@ import random
 import heapq
 from operator import itemgetter
 
-from marana.tools import ( create_voice, outputheader, generate_chunk )
+from marana.tools import ( create_voice, 
+                           outputheader, 
+                           generate_chunk )
 
 items = { 2, 3 }
 total = 34
@@ -169,6 +171,8 @@ BASSOON = ["r1",
            "r4 r8 c'8( a d' a d)",
            "d'8( c' b a) d( a, d,4)"
            ]
+
+REST = ["r1" * 17]
            
 
 
@@ -249,7 +253,7 @@ CHORALE_PHRASES = {
     }
 
 
-def get_wwind_section() -> dict:
+def get_segment() -> dict:
     """  
     does exactly what it says on the tin
     """
@@ -372,6 +376,7 @@ def get_wwind_section() -> dict:
     bsn_o = create_voice(BASSOON[14], 0)
     bsn_p = create_voice(BASSOON[15], 0)
     bsn_q = create_voice(BASSOON[16], 0)
+    rest = create_voice(REST[0], 0)
     
 
     wwinds = {
@@ -507,12 +512,58 @@ def get_wwind_section() -> dict:
                 "bsn_o": bsn_o,
                 "bsn_p": bsn_p,
                 "bsn_q": bsn_q,
-                    }
+                    },
+            "hrnOneTwo": {
+                "rest": rest
+                },
+            "hrnThreeFour": {
+                "rest": rest
+                },
+            "trpOne": {
+                "rest": rest
+                },
+            "trpTwo": {
+                "rest": rest
+                },
+            "trb": {
+                "rest": rest
+                },
+            "btrb": {
+                "rest": rest
+                },
+            "tuba": {
+                "rest": rest
+                },
+            "harp": {
+                "rest": rest
+                },
+            "percussion": {
+                "rest": rest
+                },
+            "violinOne": {
+                "rest": rest
+                },
+            "violinTwo": {
+                "rest": rest
+                },
+            "viola": {
+                "rest": rest
+                },
+            "cello": {
+                "rest": rest
+                },
+            "contrabass": {
+                "rest": rest
+                }
             }
     return wwinds
 
 if __name__ == '__main__':
     outputheader()
-    instruments = ["flOne", "flTwo", "obOne", "obTwo", "clOne", "clTwo", "bsn"]
+    instruments = ["flOne", "flTwo", "obOne", "obTwo", "clOne", "clTwo", "bsn",
+                   "hrnOneTwo", "hrnThreeFour", "trpOne", "trpTwo", "trb", "btrb", "tuba",
+                   "harp", "percussion",
+                   "violinOne", "violinTwo", "viola", "cello", "contrabass"
+            ]
     segment = "segment_chorale"
-    generate_chunk(get_wwind_section, instruments, segment)
+    generate_chunk(get_segment, instruments, segment)

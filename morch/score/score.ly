@@ -60,6 +60,7 @@
       } % end of flute voice two
     >> %% end of flute staff
 
+    \tag #'oboeOne
     \new Staff \with {
       instrumentName = #"Oboe 1"
       shortInstrumentName = #"Ob. 1"
@@ -74,6 +75,7 @@
   >> %% end of oboe staff
 
 
+    \tag #'oboeTwo
     \new Staff \with {
       instrumentName = #"Oboe 2"
       shortInstrumentName = #"Ob. 2"
@@ -89,6 +91,7 @@
 
 
 
+    \tag #'clarinet
     \new Staff \with {
       instrumentName = #"Clarinet in Bb 1, 2"
       shortInstrumentName = #"Cl. 1,2"
@@ -110,6 +113,7 @@
     } % end of clarinet 1, 2 voice two
 
 
+    \tag #'bassoon
     \new Staff \with {
       instrumentName = #"Bassoon"
       shortInstrumentName = #"Bsn."
