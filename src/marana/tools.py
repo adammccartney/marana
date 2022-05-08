@@ -46,6 +46,20 @@ def strip_voice(voice: Voice) -> str:
     res = res.replace(INDENT, " ")
     return res
 
+
+def add_braces(voice: str) -> str:
+    """
+    performs a search and replace operation to wrap a voice in curly braces
+    """
+    spatt = "^"
+    epatt = "$"
+    srepl = " { "
+    erepl = " } "
+    fstr = re.sub(spatt, srepl, voice)
+    fstr = re.sub(epatt, erepl, fstr)
+    return fstr
+
+
 def strip_staff(staff: Staff) -> str:
     """
     same as above, designed to strip down a staff
@@ -85,14 +99,16 @@ def printf(voice, name):
     """
     prints a voice with name
     """
-    fstr = strip_voice(voice)
-    print(f"{name} = ", fstr)
-
+    if type(voice) == abjad.score.Voice:  # we're using abjad, so reformat
+        fstr = strip_voice(voice)
+    else:
+        fstr = add_braces(voice)
+    print(f"\"{name}\" = ", fstr)
+        
 
 def outputheader():
     print("\\version \"2.22.0\"")
     print("\\language \"english\"")
-
 
 def outputf(namedvoices: list[NamedVoice]) -> None:
     """
@@ -108,7 +124,7 @@ def outputf(namedvoices: list[NamedVoice]) -> None:
 
 
 def output_aggregate_voice(namedvoices: list[NamedVoice], segment: str) -> None:
-    """
+    """ 
     creates a context voice for the voices in the namedvoices list
     writes the format string to stdout
     """
@@ -117,7 +133,7 @@ def output_aggregate_voice(namedvoices: list[NamedVoice], segment: str) -> None:
     padding = " " * 4
     print(f"{parent}_{segment} = {{")
     for nv in namedvoices:
-        print(f"{padding}\\{nv.name}")
+        print(f"{padding}\\\"{nv.name}\"")
     print("}")
     print("%%" * 28)
 
@@ -174,7 +190,3 @@ def mapRests(idxs: list[int], phrases: list[str]) -> list[str]:
                 p[i] = rested
     result = [" ".join(p) for p in pharr]
     return result
-
-
-
-
