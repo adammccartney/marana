@@ -172,7 +172,7 @@ instrument = ""
           \consists "Staff_performer"      %  
                    }
 	  \tempo 4 = 60} 
-                    }
+        } %% score
   }
   
   

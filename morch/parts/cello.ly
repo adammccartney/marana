@@ -1,7 +1,7 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments/wwindChorale.ily"
+\include "../segments/stringcanon.ily"
 
 \book {
   
@@ -42,8 +42,9 @@
       \accidentalStyle modern-cautionary 
       \time 4/4
       \clef "bass"
+      \tempo 4 = 55
     \new Voice {
-      \cello_segment_chorale
+        \cello_segment_strings
     } %% end of cello notes
   >> %% end of cello staff
 

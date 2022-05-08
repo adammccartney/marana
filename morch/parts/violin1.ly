@@ -1,8 +1,8 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments/wwindChorale.ily"
 
+\include "../segments/stringcanon.ily"
 \book {
   
   \paper {
@@ -42,8 +42,9 @@
       \accidentalStyle modern-cautionary 
       \time 4/4
       \clef "treble"
+      \tempo 4 = 55
     \new Voice {
-      \violinOne_segment_chorale
+    \violinOne_segment_strings
     } %% end of vln notes
   >> %% end vln staff
 

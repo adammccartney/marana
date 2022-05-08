@@ -1,7 +1,7 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments/wwindChorale.ily"
+\include "../segments/stringcanon.ily"
 
 \book {
   
@@ -42,8 +42,9 @@
       \accidentalStyle modern-cautionary 
       \time 4/4
       \clef "bass"
+      \tempo 4 = 55
     \new Voice {
-      \contrabass_segment_chorale
+      \contrabass_segment_strings
     } %% end of bsn notes
   >> %% end of bsn staff
 

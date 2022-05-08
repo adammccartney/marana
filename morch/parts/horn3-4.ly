@@ -21,13 +21,13 @@
   system-system-spacing.stretchability = #15  %how flexible the spacing is
 
 
- myStaffSize = #20
+ myStaffSize = #19
   #(define fonts
     (make-pango-font-tree "Times New Roman"
                           "Nimbus Sans"
                           "Luxi Mono"
                           
-                           (/ myStaffSize 20))) 
+                           (/ myStaffSize 19))) 
   
   }
 
@@ -37,12 +37,12 @@
 
     \new Staff \with {
       instrumentName = #"Horn 3, 4"
-      shortInstrumentName = #"hrn 3,4"
+      shortInstrumentName = #"hn3,4"
       midiInstrument = #"horn"
     } <<
       \accidentalStyle modern-cautionary 
       \time 4/4
-      \clef "treble"
+      \clef "bass"
       \tempo 4 = 55
     \new Voice {
       \transpose f c'

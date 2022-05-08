@@ -63,11 +63,21 @@ def get_brass_section() -> dict:
     """  
     creates a dictionary of brass voices 
     """
+    call_aa_15ve = create_voice(IYGH_PHRASES["call_aa"], 24) # call aa up the 15ave
+    call_ab_15ve = create_voice(IYGH_PHRASES["call_ab"], 24) # call ab up the 15ave
+    call_ba_15ve = create_voice(IYGH_PHRASES["call_ba"], 24) # call ba up the 15ave
+    call_bb_15ve = create_voice(IYGH_PHRASES["call_bb"], 24) # call bb up the 15ave
+    call_bc_15ve = create_voice(IYGH_PHRASES["call_bc"], 24) # call bc up the 15ave
     call_aa_octve = create_voice(IYGH_PHRASES["call_aa"], 12) # call aa up the octave
     call_ab_octve = create_voice(IYGH_PHRASES["call_ab"], 12) # call ab up the octave
     call_ba_octve = create_voice(IYGH_PHRASES["call_ba"], 12) # call ba up the octave
     call_bb_octve = create_voice(IYGH_PHRASES["call_bb"], 12) # call bb up the octave
     call_bc_octve = create_voice(IYGH_PHRASES["call_bc"], 12) # call bc up the octave
+    call_aa_5ve = create_voice(IYGH_PHRASES["call_aa"], 7) # call aa
+    call_ab_5ve = create_voice(IYGH_PHRASES["call_ab"], 7) # call ab
+    call_ba_5ve = create_voice(IYGH_PHRASES["call_ba"], 7) # call ba
+    call_bb_5ve = create_voice(IYGH_PHRASES["call_bb"], 7) # call bb
+    call_bc_5ve = create_voice(IYGH_PHRASES["call_bc"], 7) # call bc
     call_aa = create_voice(IYGH_PHRASES["call_aa"], 0) # call aa
     call_ab = create_voice(IYGH_PHRASES["call_ab"], 0) # call ab
     call_ba = create_voice(IYGH_PHRASES["call_ba"], 0) # call ba
@@ -142,16 +152,16 @@ def get_brass_section() -> dict:
                 "chorus_ae": chorus_ae_octve,
                 },
             "trpThree": {
-                "call_aa": call_aa_octve, 
-                "call_ab": call_ab_octve,
-                "call_ba": call_ba,
-                "call_bb": call_bb,
-                "call_bc": call_bc,
-                "chorus_aa": chorus_aa,
-                "chorus_ab": chorus_ab,
-                "chorus_ac": chorus_ac,
-                "chorus_ad": chorus_ad,
-                "chorus_ae": chorus_ae,
+                "call_aa": call_aa_5ve, 
+                "call_ab": call_ab_5ve,
+                "call_ba": call_ba_5ve,
+                "call_bb": call_bb_5ve,
+                "call_bc": call_bc_5ve,
+                "chorus_aa": chorus_triplets_aa,
+                "chorus_ab": chorus_triplets_ab,
+                "chorus_ac": chorus_triplets_ac,
+                "chorus_ad": chorus_triplets_ad,
+                "chorus_ae": chorus_triplets_ae,
                 },
             "hrnOneTwo": {
                 "resp_aa": resp_aa_octve, 
