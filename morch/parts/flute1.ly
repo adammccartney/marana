@@ -1,7 +1,7 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments.ily"
+\include "../segments/wwindChorale.ily"
 
 \book {
   
@@ -31,7 +31,7 @@
   }
 
   \score {
-    \header {piece = "marana"}
+    \header {piece = "marana, wwindChorale sketch, flute 1"}
   <<
 
   \new StaffGroup << %% wwinds
@@ -44,11 +44,9 @@
       \accidentalStyle modern-cautionary 
       \clef "treble"
       \time 4/4
-
+      \tempo 4 = 55
       \new Voice { 
-        \voiceOne {
         \flOne_segment_chorale 
-        } % end of flute Voice one notes
       } % end of flute voice one 
     >> %% end of flute staff
   >> %% end wwind staff group

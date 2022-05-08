@@ -1,7 +1,7 @@
 \version "2.22.0"
 \language "english"
 
-\include "./segments/wwindChorale.ly"
+\include "./segments/wwindChorale.ily"
 
 instrument = ""
 \book {
@@ -35,6 +35,8 @@ instrument = ""
 <<
 
 \new StaffGroup << %% wwinds
+
+  \tempo 4 = 55
 
   \tag #'flutes
   \new Staff \with {

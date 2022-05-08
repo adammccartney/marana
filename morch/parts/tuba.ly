@@ -1,7 +1,8 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments.ily"
+\include "../segments/brassIYGH_A.ily"
+\include "../segments/brassIYGH_B.ily"
 
 \book {
   
@@ -31,19 +32,21 @@
   }
 
   \score {
-    \header {piece = "marana"}
+    \header {piece = "marana, if you get to heaven sketch, euphonium"}
   <<
 
     \new Staff \with {
-      instrumentName = #"Tuba"
-      shortInstrumentName = #"Tba"
+      instrumentName = #"Euphonium"
+      shortInstrumentName = #"Euph."
       midiInstrument = #"tuba"
     } <<
       \accidentalStyle modern-cautionary 
       \time 4/4
       \clef "bass"
+      \tempo 4 = 55
     \new Voice {
-      \tuba_segment_chorale
+      \tuba_segment_IYGH_A
+      \tuba_segment_IYGH_B
     } %% end of bsn notes
   >> %% end of bsn staff
 

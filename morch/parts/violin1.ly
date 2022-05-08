@@ -1,7 +1,7 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments.ily"
+\include "../segments/wwindChorale.ily"
 
 \book {
   
@@ -43,9 +43,9 @@
       \time 4/4
       \clef "treble"
     \new Voice {
-      \vlnOne_segment_chorale
+      \violinOne_segment_chorale
     } %% end of vln notes
-  >> %% end of bsn staff
+  >> %% end vln staff
 
   >> % score
  } % score

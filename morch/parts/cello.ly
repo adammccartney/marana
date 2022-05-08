@@ -1,7 +1,7 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments.ily"
+\include "../segments/wwindChorale.ily"
 
 \book {
   
@@ -44,8 +44,8 @@
       \clef "bass"
     \new Voice {
       \cello_segment_chorale
-    } %% end of bsn notes
-  >> %% end of bsn staff
+    } %% end of cello notes
+  >> %% end of cello staff
 
   >> % score
  } % score

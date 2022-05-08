@@ -1,7 +1,7 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments.ily"
+\include "../segments/wwindChorale.ily"
 
 \book {
   
@@ -31,10 +31,8 @@
   }
 
   \score {
-    \header {piece = "marana"}
+    \header {piece = "marana wwindChorale sketch, oboe 2"}
   <<
-
-  \new StaffGroup << %% wwinds
 
     \new Staff \with {
       instrumentName = #"Oboe 2"
@@ -44,12 +42,13 @@
       \accidentalStyle modern-cautionary 
       \time 4/4
       \clef "treble"
+      \tempo 4 = 55
     \new Voice {
       \obTwo_segment_chorale
     } %% end of oboe notes
   >> %% end of oboe staff
 
-  >> % score
+>>% score
  } % score
 } % book
  

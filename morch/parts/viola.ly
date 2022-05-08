@@ -1,7 +1,7 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments.ily"
+\include "../segments/wwindChorale.ily"
 
 \book {
   
@@ -43,9 +43,9 @@
       \time 4/4
       \clef "alto"
     \new Voice {
-      \vla_segment_chorale
-    } %% end of vln notes
-  >> %% end of bsn staff
+      \viola_segment_chorale
+    } %% end of vla notes
+  >> %% end of vla staff
 
   >> % score
  } % score

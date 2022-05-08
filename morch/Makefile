@@ -18,14 +18,14 @@ PARTS_PDF       := $(addprefix $(BUILD_DIR)/$(PARTS_DIR)/, $(notdir $(PARTS:.ly=
 
 .PHONY: parts segments clean
 
-all: score
+all: stringcanon wwindchorale iygh parts
 
-default: score
+default: all
 
 # Generate segments ############################################################
 #
 segments: setup $(SEGMENTS) 
-# compile sketches
+# compile segments
 $(SEGMENTS_DIR)/%.ily: $(SRC_DIR)/%.py
 	@ printf "%8s %-40s %s\n" $(PYTHON) $<
 	@ mkdir -p $(SEGMENTS_DIR)
@@ -38,6 +38,25 @@ score: setup segments $(BUILD_DIR)/score
 $(BUILD_DIR)/score: $(BUILD_DIR)/score.ly
 	@ printf "%8s %-40s %s\n" lilypond $<
 	@ lilypond -o $@ $<
+
+
+iygh: $(BUILD_DIR)/iygh-score segments
+$(BUILD_DIR)/iygh-score: $(BUILD_DIR)/iygh-score.ly
+	@ printf "%8s %-40s %s\n" lilypond $<
+	@ lilypond -o $@ $<
+
+
+stringcanon: $(BUILD_DIR)/stringcanon segments
+$(BUILD_DIR)/stringcanon: $(BUILD_DIR)/stringcanon.ly
+	@ printf "%8s %-40s %s\n" lilypond $<
+	@ lilypond -o $@ $<
+
+
+wwindchorale: $(BUILD_DIR)/wwindchorale segments
+$(BUILD_DIR)/wwindchorale: $(BUILD_DIR)/wwindchorale.ly
+	@ printf "%8s %-40s %s\n" lilypond $<
+	@ lilypond -o $@ $<
+
 
 parts: $(PARTS_PDF) score
 
@@ -57,9 +76,5 @@ cp_assets: build_dir
 build_dir:
 	@ mkdir -p build/segments build/parts
 
-clean: clean_sketches
+clean: 
 	rm -rf $(BUILD_DIR) 
-
-clean_sketches:
-	rm -rf $(SKETCH_DIR)
-

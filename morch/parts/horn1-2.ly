@@ -1,7 +1,8 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments.ily"
+\include "../segments/brassIYGH_A.ily"
+\include "../segments/brassIYGH_B.ily"
 
 \book {
   
@@ -31,19 +32,22 @@
   }
 
   \score {
-    \header {piece = "marana"}
+    \header {piece = "marana, if you get to heaven sketch, hrn1-2 (sounds 5vb)"}
   <<
 
     \new Staff \with {
       instrumentName = #"Horn 1, 2"
-      shortInstrumentName = #"hrn 1,2"
+      shortInstrumentName = #"hn1,2"
       midiInstrument = #"horn"
     } <<
       \accidentalStyle modern-cautionary 
       \time 4/4
       \clef "treble"
+      \tempo 4 = 55
     \new Voice {
-      \hrnOneTwo_segment_chorale
+      \transpose f c'
+      \hrnOneTwo_segment_IYGH_A
+      \hrnOneTwo_segment_IYGH_B
     } %% end of vln notes
   >> %% end of bsn staff
 

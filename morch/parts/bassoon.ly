@@ -1,7 +1,7 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments.ily"
+\include "../segments/wwindChorale.ily"
 
 \book {
   
@@ -31,7 +31,7 @@
   }
 
   \score {
-    \header {piece = "marana"}
+    \header {piece = "marana, wwindChorale sketch, bassoon"}
   <<
 
     \new Staff \with {
@@ -42,6 +42,7 @@
       \accidentalStyle modern-cautionary 
       \time 4/4
       \clef "bass"
+      \tempo 4 = 55
     \new Voice {
       \bsn_segment_chorale
     } %% end of bsn notes

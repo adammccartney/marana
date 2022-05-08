@@ -1,7 +1,8 @@
 \version "2.22.0"
 \language "english"
 
-\include "./segments/brass.ly"
+\include "./segments/brassIYGH_A.ily"
+\include "./segments/brassIYGH_B.ily"
 
 instrument = ""
 \book {
@@ -36,6 +37,8 @@ instrument = ""
 
 \new StaffGroup << %% brass
 
+  \tempo 4 = 55
+
   \new Staff \with {
     instrumentName = #"French Horn 1,2"
     shortInstrumentName = #"F Horn. 1,2"
@@ -44,7 +47,8 @@ instrument = ""
     \accidentalStyle modern-cautionary 
     \time 4/4
     \clef "treble"
-    \hrnOneTwo_verseOne
+    \hrnOneTwo_segment_IYGH_A
+    \hrnOneTwo_segment_IYGH_B
   } 
 
 
@@ -56,41 +60,45 @@ instrument = ""
     \accidentalStyle modern-cautionary 
     \time 4/4
     \clef "bass"
-    \hrnThreeFour_verseOne
+    \hrnThreeFour_segment_IYGH_A
+    \hrnThreeFour_segment_IYGH_B
   } 
 
 
   \new Staff \with {
-    instrumentName = #"Trumpet 1,2"
-    shortInstrumentName = #"Trp. 1,2"
+    instrumentName = #"Trumpet 1"
+    shortInstrumentName = #"Trp. 1"
     midiInstrument = #"trumpet"
   }{
     \accidentalStyle modern-cautionary 
     \time 4/4
     \clef "treble"
-    \trpOneTwo_verseOne
+    \trpOneTwo_segment_IYGH_A
+    \trpOneTwo_segment_IYGH_B
   } 
 
   \new Staff \with {
-    instrumentName = #"Trumpet 3"
-    shortInstrumentName = #"Trp. 3"
+    instrumentName = #"Trumpet 2"
+    shortInstrumentName = #"Trp. 2"
     midiInstrument = #"trumpet"
   }{
     \accidentalStyle modern-cautionary 
     \time 4/4
     \clef "treble"
-    \trpThree_verseOne
+    \trpThree_segment_IYGH_A
+    \trpThree_segment_IYGH_B
   } 
 
   \new Staff \with {
-    instrumentName = #"Trombone 1,2"
-    shortInstrumentName = #"Trb. 1,2"
+    instrumentName = #"Trombone 1"
+    shortInstrumentName = #"Trb. 1"
     midiInstrument = #"trombone"
   }{
     \accidentalStyle modern-cautionary 
     \time 4/4
     \clef "bass"
-    \trbOneTwo_verseOne
+    \trbOneTwo_segment_IYGH_A
+    \trbOneTwo_segment_IYGH_B
   }
 
   \new Staff \with {
@@ -101,18 +109,20 @@ instrument = ""
     \accidentalStyle modern-cautionary 
     \time 4/4
     \clef "bass"
-    \btrb_verseOne
+    \btrb_segment_IYGH_A
+    \btrb_segment_IYGH_B
   }
 
   \new Staff \with {
-    instrumentName = #"Tuba"
-    shortInstrumentName = #"Tb."
+    instrumentName = #"Euphonium"
+    shortInstrumentName = #"Euph."
     midiInstrument = #"tuba"
   }{
     \accidentalStyle modern-cautionary 
     \time 4/4
     \clef "bass"
-    \tuba_verseOne
+    \tuba_segment_IYGH_A
+    \tuba_segment_IYGH_B
   }
 
   >> %% brass

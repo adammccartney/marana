@@ -19,7 +19,7 @@ total = 34
 
 
 def createTraversal(items: set[int], total: int, seqlen: int) -> list[int] | int:
-    """  
+    """    
     create a sequence of numbers such that the sum of the elements is equal to
     the total. This is really a graph traversal:
         The specific use case being targeted is a sequence of seven integers,
@@ -64,29 +64,32 @@ def make_bars_four_four(parent_list: list[list[str]]) -> list[str]:
     return bars
 
 
-FLUTE_ONE = [["r4 a'4"] * SEQ_ONE[0],
-             ["r4 e''4"] * SEQ_ONE[1],
-             ["r4 e''4"] * SEQ_ONE[2],
-             ["r4 a'4"] * SEQ_ONE[3],
-             ["r4 c''4"] * SEQ_ONE[4],
-             ["r4 c''4"] * SEQ_ONE[5],
-             ["r4 b'4"] * SEQ_ONE[6]]
+FLUTE_ONE = [["r4 a'4--"] * SEQ_ONE[0], 
+             ["r4 e''4--"] * SEQ_ONE[1],
+             ["r4 e''4--"] * SEQ_ONE[2],
+             ["r4 a'4--"] * SEQ_ONE[3],
+             ["r4 c''4--"] * SEQ_ONE[4],
+             ["r4 c''4--"] * SEQ_ONE[5],
+             ["r4 b'4--"] * SEQ_ONE[6]]
 
 FLUTE_ONE_BARS = make_bars_four_four(FLUTE_ONE)
+# prepend dynamics to first bar
+FLUTE_ONE_BARS[0] = "r4 a'4--\\mp r4 a'4--"
 
-FLUTE_TWO = [["r4 a'4"] * SEQ_ONE[0],
-             ["r4 a'4"] * SEQ_ONE[1],
-             ["r4 a'4"] * SEQ_ONE[2],
-             ["r4 e'4"] * SEQ_ONE[3],
-             ["r4 f'4"] * SEQ_ONE[4],
-             ["r4 f'4"] * SEQ_ONE[5],
-             ["r4 a'4"] * SEQ_ONE[6]]
+FLUTE_TWO = [["r4 a'4--"] * SEQ_ONE[0], 
+             ["r4 a'4--"] * SEQ_ONE[1],
+             ["r4 a'4--"] * SEQ_ONE[2],
+             ["r4 e'4--"] * SEQ_ONE[3],
+             ["r4 f'4--"] * SEQ_ONE[4],
+             ["r4 f'4--"] * SEQ_ONE[5],
+             ["r4 a'4--"] * SEQ_ONE[6]]
 
 FLUTE_TWO_BARS = make_bars_four_four(FLUTE_TWO)
+FLUTE_TWO_BARS[0] = "r4 a'4--\\mp r4 a'4--"
 
 OB_SEQ = [7, 4, 8, 4, 4, 4, 4, 6, 6, 9, 4, 4, 4]
 OBOE_ONE = ["r1",
-            "r2. bf''4~",
+            "r2. bf''4~ \\ppp",
             "bf''2. a''4~",
             "a''1~",
             "a''2. r4", # end 8 start 4
@@ -107,7 +110,7 @@ OBOE_ONE = ["r1",
 OBOE_TWO_SEQ = [4, 2, 5, 4, 2]
 
 OBOE_TWO = ["r1",
-            "r2 bf'16( d'' bf' d'' bf' d'' bf' d''",
+            "r2 bf'16(\\ppp d'' bf' d'' bf' d'' bf' d''",
             """bf'16 d'' bf' d'' bf' d'' bf' d''
                bf'16 d'' bf' d'') r4""",
             "r2. bf'16( d'' bf' d''",
@@ -132,30 +135,31 @@ OBOE_TWO = ["r1",
             ]
 
 
-CLARINET_ONE = [["r4 a'4"] * SEQ_ONE[0],
-                ["r4 cs''4"] * SEQ_ONE[1],
-                ["r4 c''4"] * SEQ_ONE[2],
-                ["r4 g'4"] * SEQ_ONE[3],
-                ["r4 a'4"] * SEQ_ONE[4],
-                ["r4 a'4"] * SEQ_ONE[5],
-                ["r4 b'4"] * SEQ_ONE[6]]
+CLARINET_ONE = [["r4 a'4--"] * SEQ_ONE[0], 
+                ["r4 cs''4--"] * SEQ_ONE[1],
+                ["r4 c''4--"] * SEQ_ONE[2],
+                ["r4 g'4--"] * SEQ_ONE[3],
+                ["r4 a'4--"] * SEQ_ONE[4],
+                ["r4 a'4--"] * SEQ_ONE[5],
+                ["r4 b'4--"] * SEQ_ONE[6]]
 
 CLARINET_ONE_BARS = make_bars_four_four(CLARINET_ONE)
+CLARINET_ONE_BARS[0] = "r4 a'4--\\mp r4 a'4--"
 
-CLARINET_TWO = [["r4 a'4"] * SEQ_ONE[0],
-                ["r4 a4"] * SEQ_ONE[1],
-                ["r4 a4"] * SEQ_ONE[2],
-                ["r4 c'4"] * SEQ_ONE[3],
-                ["r4 e'4"] * SEQ_ONE[4],
-                ["r4 d'4"] * SEQ_ONE[5],
-                ["r4 a'4"] * SEQ_ONE[6]]
+CLARINET_TWO = [["r4 a'4--"] * SEQ_ONE[0], 
+                ["r4 a4--"] * SEQ_ONE[1],
+                ["r4 a4--"] * SEQ_ONE[2],
+                ["r4 c'4--"] * SEQ_ONE[3],
+                ["r4 e'4--"] * SEQ_ONE[4],
+                ["r4 d'4--"] * SEQ_ONE[5],
+                ["r4 a'4--"] * SEQ_ONE[6]]
 
 CLARINET_TWO_BARS = make_bars_four_four(CLARINET_TWO)
-
+CLARINET_ONE_BARS[0] = "r4 a'4--\\mp r4 a'4--"
 
 BASSOON = ["r1",
            "r1",
-           "r4 r8 e'8( a' e' a--) e'(",
+           "r4 r8 e'8(\\pp a' e' a--) e'(",
            "d'8 bf a e) a( e a4)",
            "r1",
            "r4 r8 e'8( a' e' a--) e'(",

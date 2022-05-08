@@ -1,7 +1,8 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments.ily"
+\include "../segments/brassIYGH_A.ily"
+\include "../segments/brassIYGH_B.ily"
 
 \book {
   
@@ -31,7 +32,7 @@
   }
 
   \score {
-    \header {piece = "marana"}
+    \header {piece = "marana, if your get to heaven sketch, trombone 1-2"}
   <<
 
     \new Staff \with {
@@ -42,8 +43,10 @@
       \accidentalStyle modern-cautionary 
       \time 4/4
       \clef "bass"
+      \tempo 4 = 55
     \new Voice {
-      \trb_segment_chorale
+      \trbOneTwo_segment_IYGH_A
+      \trbOneTwo_segment_IYGH_B
     } %% end of bsn notes
   >> %% end of bsn staff
 

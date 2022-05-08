@@ -7,16 +7,16 @@ usage: python3 brassIYGH_A.py > brassIYGH_A.ly
 """
 from marana.tools import ( create_voice, outputheader, generate_chunk, mapRests )
 
-CALLS = ["r8 bf8 d'8-. bf8 f2--",
-         "r8 bf8 g8-. bf8 f2--",
-         "r8 bf8 a8-. bf8 c'2--",
-         "r8 f8 bf8-. c'8 d'2--",
+CALLS = ["r8 bf8 d'8-.\\mp bf8 f2--",
+         "r8 bf8 g8-.\\mp bf8 f2--",
+         "r8 bf8 a8-.\\mp bf8 c'2--",
+         "r8 f8 bf8-.\\mp c'8 d'2--",
          "r1"]
 
-RESPS = ["r2 r8 bf8-. d'8 bf8",
-         "f2-- r8 bf8-. g'8 bf8", 
-         "f2-- r8 bf8-. a8 bf8",
-         "c'2-- r8 f8-. bf8 c'8", 
+RESPS = ["r2 r8 bf8-.\\pp d'8 bf8",
+         "f2-- r8 bf8-.\\pp g'8 bf8", 
+         "f2-- r8 bf8-.\\pp a8 bf8",
+         "c'2-- r8 f8-.\\pp bf8 c'8", 
          "d'2-- r2"]
 
 idx_odd = [1, 3]
@@ -39,25 +39,25 @@ IYGH_PHRASES = {
     "resp_ba": rested_resps[2],
     "resp_bb": rested_resps[3], 
     "resp_bc": rested_resps[4], 
-    "chorus_aa": "r8 d'8-. ef'16-. ef'-. ef'-. ef'-. ef'16-. ef'-. ef'-. ef'-. ef'16-. ef'-. ef'-. ef'-.",
-    "chorus_ab": "ef'16-. ef'-. ef'-. ef'-. d'16-. d'-. d'-. d'-. d'16-. d'-. d'-. d'-. d'16-. d'-. c'-. c'-.",
-    "chorus_ac": "bf16-. bf-. d'8 d'4 d'4 c'4 ~",
-    "chorus_ad": "c'4. ef'8 d'4 c'4",
+    "chorus_aa": "r8 d'8-.\\ppp ef'16-.( ef'-. ef'-. ef'-. ef'16-. ef'-. ef'-. ef'-. ef'16-. ef'-. ef'-. ef'-.",
+    "chorus_ab": "ef'16-. ef'-. ef'-. ef'-.) d'16-.( d'-. d'-. d'-. d'16-. d'-. d'-. d'-. d'16-. d'-. c'-. c'-.",
+    "chorus_ac": "bf16-. bf-.) d'8 d'4-- d'4-- c'4 ~",
+    "chorus_ad": "c'4. ef'8\\mp d'4 c'4",
     "chorus_ae": "bf4 f4 bf2",
-    "chorus_eights_aa": "r8 d'8-. ef'8-. ef'-. ef'8-. ef'-. ef'8-. ef'-.",
-    "chorus_eights_ab": "ef'8-. ef'-. d'8-. d'-. d'8-. d'-. d'8-. c'-.",
-    "chorus_eights_ac": "bf8-. d'8 d'4 d'4 c'4 ~",
+    "chorus_eights_aa": "r8 d'8-.\\p ef'8-.( ef'-. ef'8-. ef'-. ef'8-. ef'-.",
+    "chorus_eights_ab": "ef'8-. ef'-.) d'8-.( d'-. d'8-. d'-. d'8-. c'-.",
+    "chorus_eights_ac": "bf8-. d'8-.) d'4-- d'4-- c'4 ~",
     "chorus_eights_ad": "c'4. ef'8 d'4 c'4",
     "chorus_eights_ae": "bf4 f4 bf2",
-    "chorus_triplets_aa": """r4 \\tuplet 3/2 {ef'8 ef' ef'} \\tuplet 3/2 {ef'8 ef' ef'} 
-                             \\tuplet 3/2 {ef'8 ef' ef'}""",
-    "chorus_triplets_ab": """\\tuplet 3/2 {ef'8 ef' ef'} \\tuplet 3/2 {ef'8 ef' ef'} 
-                             \\tuplet 3/2 {d'8 d' d'} \\tuplet 3/2 {d'8 d' d'}""",
-    "chorus_triplets_ac": """\\tuplet 3/2 {bf8 bf bf} \\tuplet 3/2 {d'8 d' d'}
-                             \\tuplet 3/2 {d'8 d' d'} \\tuplet 3/2 {c'8 c' c'}""",
-    "chorus_triplets_ad": """\\tuplet 3/2 {c'8 c' c'} \\tuplet 3/2 {c'8 c' c'}
-                             \\tuplet 3/2 {d'8 d' d'} \\tuplet 3/2 {ef'8 ef' ef'}""",
-    "chorus_triplets_ae": """\\tuplet 3/2 {f'8 f' f'} \\tuplet 3/2 {f'8 f' f'} f'2""",
+    "chorus_triplets_aa": """r4 \\tuplet 3/2 {ef'8-.\\pp( ef'-. ef'-.} \\tuplet 3/2 {ef'8-. ef'-. ef'-.} 
+                             \\tuplet 3/2 {ef'8-. ef'-. ef'-.}""",
+    "chorus_triplets_ab": """\\tuplet 3/2 {ef'8-. ef'-. ef'-.} \\tuplet 3/2 {ef'8-. ef'-. ef'-.)} 
+                             \\tuplet 3/2 {d'8-.( d'-. d'-.} \\tuplet 3/2 {d'8-. d'-. d'-.)}""",
+    "chorus_triplets_ac": """\\tuplet 3/2 {bf8-.( bf-. bf-.} \\tuplet 3/2 {d'8-. d'-. d'-.}
+                             \\tuplet 3/2 {d'8-. d'-. d'-.)} \\tuplet 3/2 {c'8-.( c'-. c'-.}""",
+    "chorus_triplets_ad": """\\tuplet 3/2 {c'8-. c'-. c'-.} \\tuplet 3/2 {c'8-. c'-. c'-.)}
+                             \\tuplet 3/2 {d'8-.( d'-. d'-.} \\tuplet 3/2 {ef'8-. ef'-. ef'-.}""",
+    "chorus_triplets_ae": """\\tuplet 3/2 {f'8-. f'-. f'-.} \\tuplet 3/2 {f'8-. f'-. f'-.)} f'2\\mf""",
 }
 def get_brass_section() -> dict:
     """  
@@ -142,8 +142,8 @@ def get_brass_section() -> dict:
                 "chorus_ae": chorus_ae_octve,
                 },
             "trpThree": {
-                "call_aa": call_aa, 
-                "call_ab": call_ab,
+                "call_aa": call_aa_octve, 
+                "call_ab": call_ab_octve,
                 "call_ba": call_ba,
                 "call_bb": call_bb,
                 "call_bc": call_bc,
@@ -221,5 +221,5 @@ if __name__ == '__main__':
     outputheader()
     instruments = ["hrnOneTwo", "hrnThreeFour", "trpOneTwo", "trpThree",
                    "trbOneTwo", "btrb", "tuba"]
-    segment = "verseOne"
+    segment = "segment_IYGH_A"
     generate_chunk(get_brass_section, instruments, segment)

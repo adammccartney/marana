@@ -1,7 +1,7 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments.ily"
+\include "../segments/wwindChorale.ily"
 
 \book {
   
@@ -31,23 +31,22 @@
   }
 
   \score {
-    \header {piece = "marana"}
+    \header {piece = "marana, wwindChorale sketch, clarinet 1 (sounds 2vb)"}
   <<
 
     \tag #'clarinet
     \new Staff \with {
-      instrumentName = #"Clarinet in Bb 1"
+      instrumentName = #"Clarinet Bb 1"
       shortInstrumentName = #"Cl. 1"
       midiInstrument = #"clarinet"
     } <<
       \accidentalStyle modern-cautionary 
       \time 4/4
       \clef "treble"
+      \tempo 4 = 55
     \new Voice {
-      \transpose b c'
-      \voiceOne {
+      \transpose bf c'
         \clOne_segment_chorale 
-      } % end of clarinet one notes
     } % end of clarinet 1, 2 voice one
   >> %% end wwind staff group
 
