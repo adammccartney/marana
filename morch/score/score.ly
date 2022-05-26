@@ -8,7 +8,7 @@
 
 %% MACROS
 
-stringCanonGP = { R1*16 }
+stringCanonGP = { R1*66 }
 wwindChoraleGP = { R1*17 }
 iyghBrassGP = { R1*20 }
 
