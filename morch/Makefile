@@ -18,7 +18,7 @@ PARTS_PDF       := $(addprefix $(BUILD_DIR)/$(PARTS_DIR)/, $(notdir $(PARTS:.ly=
 
 .PHONY: parts segments clean
 
-all: stringcanon wwindchorale iygh parts
+all: score stringcanon wwindchorale iygh parts
 
 default: all
 

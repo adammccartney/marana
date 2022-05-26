@@ -4,6 +4,11 @@
 \include "./segments/stringcanon.ily"
 
 \book {
+
+    \header {
+      title = "marana, string sketch"
+      tagline = ""
+  }
   
   \paper {
     #(set-paper-size "a3")
@@ -99,7 +104,6 @@
 
   >> % score
 
-    \header {piece = "marana, string sketch"}
 \layout {
 	  
 	   indent = 1\cm

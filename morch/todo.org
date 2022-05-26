@@ -1,0 +1,11 @@
+* Finalize workshop edits [2/3]
+** TODO Brass edits [0/1]
+  - [ ] Rename horns
+  - [ ] Add tempo changes
+  - [ ] Thin out antiphonal section 
+  - [ ] Add final barlines
+** DONE Add percussion and harp parts
+** DONE String edits [2/2] 
+  - [X] Phrasing 
+  - [X] Meter 
+  
