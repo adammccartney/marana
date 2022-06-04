@@ -12,8 +12,8 @@ from marana.tools import ( generate_chunk,
 ##############################################################
 
 PITCHSETS = {
-        "FLUTE_BIS" : {
-                    0: ["bf''", "b''"],
+        "SOP_BISB" : {
+                    0: ["bf''", "c'''"],
                     1: ["g''", "a''"],
                     2: ["f''", "g''"],
                     3: ["a''", "bf''"],
@@ -24,15 +24,15 @@ PITCHSETS = {
                     8: ["c'''", "d'''"],
                     9: ["c'''", "d'''"]
             },
-        "HARP_BISB" : {
-                    0: ["bf'", "<e' b'>"],
+        "ALT_BISB" : {
+                    0: ["bf'", "<e' c''>"],
                     1: ["f'", "a'"],
                     2: ["g'", "g'"],
                     3: ["f'", "<a' bf'>"],
                     4: ["bf'", "<a' e''>"],
                     5: ["g'", "<g' d''>"],
                     6: ["a'", "<c'' f''>"],
-                    7: ["g'", "<b' e''>"],
+                    7: ["g'", "<c'' e''>"],
                     8: ["a'", "<c'' d''>"],
                     9: ["g'", "<c'' d''>"]
                     },
@@ -99,6 +99,10 @@ MODULES = {
              "kb":    (0, 0, 0)
              },
            "B" : {
+             "fluteOne": (0, 5),
+             "fluteTwo": (0, 9),
+             "vibes": (5, 6, 7),
+             "harp": (0, 6, 4),
              "vnone": (0, 5, 9, 0),
              "vntwo": (5, 6, 7),
              "vc":    (0, 6, 4)
@@ -113,9 +117,19 @@ TEMPLATES = {
         "kb": "r4 {0}4--\\p^\\tasto\\( {0}8-- {0}8--\\) {0}4--\\( {0}8-- {0}8--\\) {0}4--\\( {0}4--\\) r4"
     },
     "B": {
+      "fluteOne": "r1 {0}2.\\p {1}4 {1}1",
+      "fluteTwo": "r1 r2 {0}2\\p {1}1",
+      "vibes"   : "{0}1\\p^\\arco {1}1 {2}",
+      "harp": """\\repeat tremolo 8 {{ {0}16\\ppp\\< {1} }} |
+                 \\repeat tremolo 8 {{ {2}16\\!\\f\\> {3} }} | 
+                 \\repeat tremolo 8 {{ {4}16\\!\\ppp {5} }} |
+              """,
       "vnone": "r2. {0}8\\mp(^\\ord^\\espress {1}8 {2}2.)-- {3}4:16 ^\\ord\\> ~ {3}2.:16^\\pont\\ppp r4",
       "vntwo": "r2. r8 {0}8\\p~^\\ord^\\espress {0}2\\< {1}2\\> {2}2.:16\\ppp r4",
       "vc": "r2. {0}4\\mp~^\\ord^\\espress {0}4 {1}2\\> {2}4 ^\\ord ~ {2}2.:16^\\pont\\ppp r4"
+    },
+    # C phrases are phrases that link A and B
+    "C": {
     }
 }
 
@@ -135,7 +149,9 @@ MACROS = {
     "BEAM_NEUTRAL": "beamNeutral = { \\override Beam.grow-direction = #f }",
     "BOW_TREM": "bowTrem = \\markup{ bow tremolo }",
     "START_RIT": "startRit = { \\override TextSpanner.bound-details.left.text= \\markup { \\upright \"rit.\" } }",
-    "ESSPRESSIVO": "espress = \\markup { espressivo }"
+    "ESSPRESSIVO": "espress = \\markup { espressivo }",
+    "BOWED": "arco = \\markup { arco }",
+    "LV": "lv = \\markup {l.v.}"
     }
 
 ################################################################
@@ -172,19 +188,54 @@ def permute(pitchset: dict, pattern: tuple, increment: int) -> list[tuple]:
     return rsets
 
 
+def isPolyphonic(ptups: list[tuple]) -> bool:
+    """
+    Simply looks at the structure of the material in the list of pitch tuples
+    and decides if the content should be considered Polyphonic or not
+
+    Assumes that all values in a ptups list are of the same type
+    """
+    ret = False
+    sample = ptups[0][0] # use the first val in list as sample
+    if type(sample) is list:
+        ret = True
+    return ret
+
+def convertTuple(x: tuple[list]) -> tuple[str]:
+    """
+    converts a tuple containing a list of strings to a simple tuple containing
+    those strings. It basically takes all elements of the inner lists and
+    unifies them in a tuple by removing the list parenthesis.
+    """
+    flatlist = []
+    for innerlist in x: 
+        flatlist = flatlist + innerlist
+    return flatlist
+
 def createseqs(sequence: list[tuple], pitchset: dict) -> list[tuple]:
     """  
     function that takes the newly minted sets and turns them into pitches that we
     can use to perform a lookup in the pitchset dictionary 
+
+    guarantees to return a flat list of tuples that contain pitches
+    
+    otherwise for each melodic fragment in the sequence, perform a simple lookup 
+
+    if the instrument requires pitch material that is polyphonic, the lookup
+    function will need to further flatten the list that is returned on lookup 
     """
-    # for each melodic fragment in the sequence, perform a lookup 
     ptups = []
     for i in sequence:
         pset = []
         for j in i:
             pset.append(pitchset[j])
         ptups.append(tuple(pset))
-    return ptups 
+    ret = []
+    if isPolyphonic(ptups):
+        ret = [convertTuple(t) for t in ptups]
+    else:
+        ret = ptups
+    return ret 
 
 
 def filltemplates(template: str, pitchset: list[tuple]) -> list[str]:
@@ -195,32 +246,70 @@ def filltemplates(template: str, pitchset: list[tuple]) -> list[str]:
     # vacant slots in the template
     ret = []
     for item in pitchset:
-        ret.append(template.format(*item))
+        ret.append(template.format(*item)) # format string passed *args
     return ret
+
+def playsSoprano(instrument: str) -> bool:
+    """
+    checks if an instrument should be playing soprano
+    """
+    if instrument in {"vnone", "vntwo"}:
+        return True
+    else:
+        return False
+
+def playsSopranoBisbgl(instrument: str) -> bool:
+    """
+    checks if instrument should be playing soprano bisb figures
+    """
+    if instrument in {"fluteOne", "fluteTwo"}:
+        return True
+    else:
+        return False
+
+def playsAltoBisbgl(instrument: str) -> bool:
+    """
+    check if plays alto
+    """
+    if instrument in {"harp", "vibes"}:
+        return True
+    else:
+        return False
+
 
 
 def createMusicChunk(section: str, name: str, pamount: int) -> list[str]:
     """
     parse the section and (instrument) name
     populate set of templates based on musical logic of segment
+
+    pamaout is an integer value that dermines the level of increment per round
+    of permutation. e.g. a value of -1 means the set of integers being permuted
+    will be decremented by 1 on each iteration. This essentially amounts to
+    moving backwards or forwards (striding) through the sets.
     """
-    nameError =  "Name should be one of 'vnone', 'vntwo', 'va', 'vc', 'kb'"
-    assert name in {"vnone", "vntwo", "va", "vc", "kb"}, nameError
+    nameError =  """Name should be one of: 
+        ['fluteOne', 'fluteTwo', 'vibes', 'harp', 'vnone', 'vntwo', 'va', 'vc', 'kb']"""
+    assert name in {"fluteOne", "fluteTwo", "vibes", "harp", "vnone", "vntwo", "va", "vc", "kb"}, nameError
     sectionError = "Section should be one of 'A', 'B'"
     assert section in {"A", "B"}, sectionError
     if (section == "A") and (name == "va"):
         register = "TENOR"
     elif (section == "A") and ((name == "vc") or (name == "kb")):
         register = "BASS"
-    elif (section == "B") and ((name == "vnone") or (name == "vntwo")):
+    elif (section == "B") and playsSoprano(name):
         register = "SOPRANO"
+    elif (section == "B") and playsSopranoBisbgl(name):
+        register = "SOP_BISB"
+    elif (section == "B") and playsAltoBisbgl(name):
+        register = "ALT_BISB"
     elif (section == "B") and (name == "vc"):
         register = "TENOR"
     else:
         register = None  
     assert register is not None, "Error: register not defined"
-    mods = permute(PITCHSETS[register], MODULES[section][name], pamount)
-    seqs = createseqs(mods, PITCHSETS[register]) 
+    modes = permute(PITCHSETS[register], MODULES[section][name], pamount)
+    seqs = createseqs(modes, PITCHSETS[register]) 
     return filltemplates(TEMPLATES[section][name], seqs)
         
 
@@ -235,6 +324,10 @@ def get_segment() -> dict:
     vc_A = createMusicChunk("A", "vc", -1)
     kb_A = createMusicChunk("A", "kb", -1)
 
+    fluteOne_B = createMusicChunk("B", "fluteOne", 1)
+    fluteTwo_B = createMusicChunk("B", "fluteTwo", -1)
+    vibes_B = createMusicChunk("B", "vibes", 1)
+    harp_B = createMusicChunk("B", "harp", 1)
     vnone_B = createMusicChunk("B", "vnone", 1) 
     vntwo_B = createMusicChunk("B", "vntwo", 1)
     vc_B = createMusicChunk("B", "vc", -1)
@@ -247,6 +340,170 @@ def get_segment() -> dict:
 
     # periods are six bars long, alternate between section type A and B
     phrases = {
+            "fluteOne": {
+                "mm01": METER_2_4,
+                "mm01_02": SECT_A_REST,
+                "mm03_04": SECT_A_REST,
+                "mm05_06": SECT_A_REST,
+                "mm07": METER_4_4,
+                "mm07_09": SECT_B_REST,
+                "mm10_12": SECT_B_REST,
+                "mm13": METER_2_4,
+                "mm13_14": SECT_A_REST,
+                "mm15_16": SECT_A_REST,
+                "mm17_18": SECT_A_REST,
+                "mm19": METER_4_4,
+                "mm19_21": fluteOne_B[2],
+                "mm22_24": fluteOne_B[3],
+                "mm25": METER_2_4,
+                "mm25_26": SECT_A_REST,
+                "mm27_28": SECT_A_REST,
+                "mm29_30": SECT_A_REST,
+                "mm31": METER_4_4,
+                "mm31_33": fluteOne_B[4],
+                "mm34_36": fluteOne_B[5],
+                "mm37": METER_2_4,
+                "mm37_38": SECT_A_REST,
+                "mm39_40": SECT_A_REST,
+                "mm41_42": SECT_A_REST,
+                "mm43": METER_4_4,
+                "mm43_45": fluteOne_B[6],
+                "mm46_48": fluteOne_B[7],
+                "mm49": METER_2_4,
+                "mm49_50": SECT_A_REST,
+                "mm51_52": SECT_A_REST,
+                "mm53_54": SECT_A_REST,
+                "mm55": METER_4_4,
+                "mm55_57": fluteOne_B[8],
+                "mm58_60": fluteOne_B[9],
+                "mm61": METER_2_4,
+                "mm61_62": SECT_A_REST,
+                "mm63_64": SECT_A_REST,
+                "mm65_66": SECT_A_REST
+            },
+            "fluteTwo": {
+                "mm01": METER_2_4,
+                "mm01_02": SECT_A_REST,
+                "mm03_04": SECT_A_REST,
+                "mm05_06": SECT_A_REST,
+                "mm07": METER_4_4,
+                "mm07_09": SECT_B_REST,
+                "mm10_12": SECT_B_REST,
+                "mm13": METER_2_4,
+                "mm13_14": SECT_A_REST,
+                "mm15_16": SECT_A_REST,
+                "mm17_18": SECT_A_REST,
+                "mm19": METER_4_4,
+                "mm19_21": SECT_B_REST,
+                "mm22_24": fluteTwo_B[3],
+                "mm25": METER_2_4,
+                "mm25_26": SECT_A_REST,
+                "mm27_28": SECT_A_REST,
+                "mm29_30": SECT_A_REST,
+                "mm31": METER_4_4,
+                "mm31_33": fluteTwo_B[4],
+                "mm34_36": fluteTwo_B[5],
+                "mm37": METER_2_4,
+                "mm37_38": SECT_A_REST,
+                "mm39_40": SECT_A_REST,
+                "mm41_42": SECT_A_REST,
+                "mm43": METER_4_4,
+                "mm43_45": fluteTwo_B[6],
+                "mm46_48": fluteTwo_B[7],
+                "mm49": METER_2_4,
+                "mm49_50": SECT_A_REST,
+                "mm51_52": SECT_A_REST,
+                "mm53_54": SECT_A_REST,
+                "mm55": METER_4_4,
+                "mm55_57": fluteTwo_B[8],
+                "mm58_60": fluteTwo_B[9],
+                "mm61": METER_2_4,
+                "mm61_62": SECT_A_REST,
+                "mm63_64": SECT_A_REST,
+                "mm65_66": SECT_A_REST
+            },
+            "vibes": {
+                "mm01": METER_2_4,
+                "mm01_02": SECT_A_REST,
+                "mm03_04": SECT_A_REST,
+                "mm05_06": SECT_A_REST,
+                "mm07": METER_4_4,
+                "mm07_09": vibes_B[0],
+                "mm10_12": vibes_B[1],
+                "mm13": METER_2_4,
+                "mm13_14": SECT_A_REST,
+                "mm15_16": SECT_A_REST,
+                "mm17_18": SECT_A_REST,
+                "mm19": METER_4_4,
+                "mm19_21": vibes_B[2],
+                "mm22_24": vibes_B[3],
+                "mm25": METER_2_4,
+                "mm25_26": SECT_A_REST,
+                "mm27_28": SECT_A_REST,
+                "mm29_30": SECT_A_REST,
+                "mm31": METER_4_4,
+                "mm31_33": vibes_B[4],
+                "mm34_36": vibes_B[5],
+                "mm37": METER_2_4,
+                "mm37_38": SECT_A_REST,
+                "mm39_40": SECT_A_REST,
+                "mm41_42": SECT_A_REST,
+                "mm43": METER_4_4,
+                "mm43_45": vibes_B[6],
+                "mm46_48": vibes_B[7],
+                "mm49": METER_2_4,
+                "mm49_50": SECT_A_REST,
+                "mm51_52": SECT_A_REST,
+                "mm53_54": SECT_A_REST,
+                "mm55": METER_4_4,
+                "mm55_57": vibes_B[8],
+                "mm58_60": vibes_B[9],
+                "mm61": METER_2_4,
+                "mm61_62": SECT_A_REST,
+                "mm63_64": SECT_A_REST,
+                "mm65_66": SECT_A_REST
+            },
+            "harp": {
+                "mm01": METER_2_4,
+                "mm01_02": SECT_A_REST,
+                "mm03_04": SECT_A_REST,
+                "mm05_06": SECT_A_REST,
+                "mm07": METER_4_4,
+                "mm07_09": SECT_B_REST,
+                "mm10_12": harp_B[1],
+                "mm13": METER_2_4,
+                "mm13_14": SECT_A_REST,
+                "mm15_16": SECT_A_REST,
+                "mm17_18": SECT_A_REST,
+                "mm19": METER_4_4,
+                "mm19_21": harp_B[2],
+                "mm22_24": harp_B[3],
+                "mm25": METER_2_4,
+                "mm25_26": SECT_A_REST,
+                "mm27_28": SECT_A_REST,
+                "mm29_30": SECT_A_REST,
+                "mm31": METER_4_4,
+                "mm31_33": harp_B[4],
+                "mm34_36": harp_B[5],
+                "mm37": METER_2_4,
+                "mm37_38": SECT_A_REST,
+                "mm39_40": SECT_A_REST,
+                "mm41_42": SECT_A_REST,
+                "mm43": METER_4_4,
+                "mm43_45": harp_B[6],
+                "mm46_48": harp_B[7],
+                "mm49": METER_2_4,
+                "mm49_50": SECT_A_REST,
+                "mm51_52": SECT_A_REST,
+                "mm53_54": SECT_A_REST,
+                "mm55": METER_4_4,
+                "mm55_57": harp_B[8],
+                "mm58_60": harp_B[9],
+                "mm61": METER_2_4,
+                "mm61_62": SECT_A_REST,
+                "mm63_64": SECT_A_REST,
+                "mm65_66": SECT_A_REST
+            },
             "violinOne": {
                 "mm01": METER_2_4,
                 "mm01_02": SECT_A_REST,
@@ -475,7 +732,7 @@ if __name__ == '__main__':
 
     outputheader()
     printmacros()
-    instruments = ["violinOne", "violinTwo", "viola", "cello", "contrabass"]
+    instruments = ["fluteOne", "fluteTwo", "vibes", "harp", "violinOne", "violinTwo", "viola", "cello", "contrabass"]
     segment = "segment_strings"
     generate_chunk(get_segment, instruments, segment)
 

@@ -1,11 +1,24 @@
-* Finalize workshop edits [2/3]
+* Finalize workshop edits [2/5]
 ** TODO Brass edits [0/1]
-  - [ ] Rename horns
+  - [ ] Create higher / lower horn splits
   - [ ] Add tempo changes
   - [ ] Thin out antiphonal section 
   - [ ] Add final barlines
+  - [ ] Replace euphonium with tuba
+** TODO Woodwind edits [1/2]
+*** TODO Feathered beams [0/2]
+  - [ ] update oboe sections from chorale 
+  - [ ] decide where else this could work
+*** DONE Score edits [2/2]
+  - [X] give each flute a separate line
+  - [X] do the same for the clarines
 ** DONE Add percussion and harp parts
 ** DONE String edits [2/2] 
   - [X] Phrasing 
   - [X] Meter 
-  
+** TODO General dramatic evolution [0/5]
+  - [ ] introduce "filter chords" figure in segment 1
+  - [ ] add in gradual crescendo in terraced dynamics for segment 1
+  - [ ] develop "filter chords" figure in segment 2
+  - [ ] double bassoon line in segment 2
+  - [ ] recapitulate "filter chords" figure in segment 3 

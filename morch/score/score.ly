@@ -53,8 +53,8 @@ iyghBrassGP = { R1*20 }
 
     \tag #'flutes
     \new Staff \with {
-      instrumentName = #"Flute 1, 2"
-      shortInstrumentName = #"Fl. 1,2"
+      instrumentName = #"Flute 1"
+      shortInstrumentName = #"Fl. 1"
       midiInstrument = #"flute"
     } <<
       \accidentalStyle modern-cautionary 
@@ -62,19 +62,23 @@ iyghBrassGP = { R1*20 }
       \tempo 4 = 55
       
       \new Voice { 
-        \voiceOne {
-        \stringCanonGP
+        \fluteOne_segment_strings
         \flOne_segment_chorale 
         \iyghBrassGP
-        } % end of flute Voice one notes
       } % end of flute voice one 
+    >>
+    \new Staff \with {
+      instrumentName = #"Flute 2"
+      shortInstrumentName = #"Fl. 2"
+      midiInstrument = #"flute"
+    } <<
+      \accidentalStyle modern-cautionary 
+      \clef "treble"
+      \tempo 4 = 55
       \new Voice {
-        \voiceTwo {
-          \override Voice.DynamicText.stencil = ##f
-          \stringCanonGP
+          \fluteTwo_segment_strings
           \flTwo_segment_chorale
           \iyghBrassGP
-        } % end of flute two voice notes
       } % end of flute voice two
     >> %% end of flute staff
 
@@ -114,30 +118,28 @@ iyghBrassGP = { R1*20 }
 
     \tag #'clarinets
     \new Staff \with {
-      instrumentName = #"Clarinet in Bb 1, 2"
-      shortInstrumentName = #"Cl. 1,2"
+      instrumentName = #"Clarinet in Bb 1"
+      shortInstrumentName = #"Cl. 1"
       midiInstrument = #"clarinet"
     } <<
       \accidentalStyle modern-cautionary 
-      
-      
-      
       \tempo 4 = 55
       \clef "treble"
     \new Voice {
-      \voiceOne {
       \stringCanonGP
-        \clOne_segment_chorale 
+      \clOne_segment_chorale 
       \iyghBrassGP
-      } % end of clarinet one notes
     } % end of clarinet 1, 2 voice one
+  >>
+    \new Staff \with {
+      instrumentName = #"Clarinet in Bb 1"
+      shortInstrumentName = #"Cl. 1"
+      midiInstrument = #"clarinet"
+    } <<
     \new Voice {
-      \voiceTwo {
-        \override Voice.DynamicText.stencil = ##f
       \stringCanonGP
-        \clTwo_segment_chorale
+      \clTwo_segment_chorale
       \iyghBrassGP
-      } % end of clarinet two notes
     } % end of clarinet 1, 2 voice two
   >> %% end clarinets
 
@@ -277,7 +279,7 @@ iyghBrassGP = { R1*20 }
     \accidentalStyle modern-cautionary 
     \tempo 4 = 55
     \clef "treble"
-      \stringCanonGP
+      \vibes_segment_strings
       \wwindChoraleGP
       \iyghBrassGP
   }
@@ -304,8 +306,8 @@ iyghBrassGP = { R1*20 }
   }{
     \accidentalStyle modern-cautionary 
     \tempo 4 = 55 
-    \clef "bass"
-      \stringCanonGP
+    \clef "treble"
+      \harp_segment_strings
       \wwindChoraleGP
       \iyghBrassGP
   }
