@@ -92,7 +92,7 @@ iyghBrassGP = { R1*20 }
       \tempo 4 = 55
       \clef "treble"
     \new Voice {
-      \stringCanonGP
+      \obOne_segment_strings
       \obOne_segment_chorale
       \iyghBrassGP
     } %% end of oboe notes
@@ -108,7 +108,7 @@ iyghBrassGP = { R1*20 }
       \tempo 4 = 55
       \clef "treble"
     \new Voice {
-      \stringCanonGP
+      \obTwo_segment_strings
       \obTwo_segment_chorale
       \iyghBrassGP
     } %% end of oboe notes
@@ -126,18 +126,18 @@ iyghBrassGP = { R1*20 }
       \tempo 4 = 55
       \clef "treble"
     \new Voice {
-      \stringCanonGP
+      \clOne_segment_strings
       \clOne_segment_chorale 
       \iyghBrassGP
     } % end of clarinet 1, 2 voice one
   >>
     \new Staff \with {
-      instrumentName = #"Clarinet in Bb 1"
-      shortInstrumentName = #"Cl. 1"
+      instrumentName = #"Clarinet in Bb 2"
+      shortInstrumentName = #"Cl. 2"
       midiInstrument = #"clarinet"
     } <<
     \new Voice {
-      \stringCanonGP
+      \clTwo_segment_strings
       \clTwo_segment_chorale
       \iyghBrassGP
     } % end of clarinet 1, 2 voice two
@@ -154,7 +154,7 @@ iyghBrassGP = { R1*20 }
       \tempo 4 = 55
       \clef "bass"
     \new Voice {
-      \stringCanonGP
+      \bsn_segment_strings
       \bsn_segment_chorale
       \iyghBrassGP
     } %% end of bsn notes
@@ -169,32 +169,57 @@ iyghBrassGP = { R1*20 }
     instrumentName = #"French Horn 1,2"
     shortInstrumentName = #"F Horn. 1,2"
     midiInstrument = #"french horn"
-  }{
+  } <<
     \accidentalStyle modern-cautionary 
     \tempo 4 = 55
     \clef "treble"
-      \stringCanonGP
+    \new Voice {
+      \voiceOne {
+      \hnOne_segment_strings
       \wwindChoraleGP
-    \hrnOneTwo_segment_IYGH_A
-    \hrnOneTwo_segment_IYGH_B
-  } 
+      \hrnOneTwo_segment_IYGH_A
+      \hrnOneTwo_segment_IYGH_B
+    }
+    }
+    \new Voice {
+      \voiceTwo {
+        \override Voice.DynamicText.stencil = ##f
+      \hnTwo_segment_strings
+      \wwindChoraleGP
+      \hrnOneTwo_segment_IYGH_A
+      \hrnOneTwo_segment_IYGH_B
+    }
+  }
+>> %% end hn 1 2
 
 
   \new Staff \with {
     instrumentName = #"French Horn 3,4"
     shortInstrumentName = #"F Horn. 3,4"
     midiInstrument = #"french horn"
-  }{
+  } <<
     \accidentalStyle modern-cautionary 
     \tempo 4 = 55
-    \clef "bass"
-      \stringCanonGP
+    \clef "treble"
+    \new Voice {
+      \voiceThree {
+      \hnThree_segment_strings
       \wwindChoraleGP
-    \hrnThreeFour_segment_IYGH_A
-    \hrnThreeFour_segment_IYGH_B
+      \hrnThreeFour_segment_IYGH_A
+      \hrnThreeFour_segment_IYGH_B
+    }
+  }
+  \new Voice {
+    \voiceFour {
+
+        \override Voice.DynamicText.stencil = ##f
+      \hnFour_segment_strings
+      \wwindChoraleGP
+      \hrnThreeFour_segment_IYGH_A
+      \hrnThreeFour_segment_IYGH_B
+    }
   } 
-
-
+ >> %% end hn 3 4
   \new Staff \with {
     instrumentName = #"Trumpet 1"
     shortInstrumentName = #"Trp. 1"
@@ -203,8 +228,8 @@ iyghBrassGP = { R1*20 }
     \accidentalStyle modern-cautionary 
     \tempo 4 = 55
     \clef "treble"
-      \stringCanonGP
-      \wwindChoraleGP
+    \trpOne_segment_strings
+    \wwindChoraleGP
     \trpOneTwo_segment_IYGH_A
     \trpOneTwo_segment_IYGH_B
   } 
@@ -217,8 +242,8 @@ iyghBrassGP = { R1*20 }
     \accidentalStyle modern-cautionary 
     \tempo 4 = 55
     \clef "treble"
-      \stringCanonGP
-      \wwindChoraleGP
+    \trpTwo_segment_strings
+    \wwindChoraleGP
     \trpThree_segment_IYGH_A
     \trpThree_segment_IYGH_B
   } 
@@ -231,29 +256,15 @@ iyghBrassGP = { R1*20 }
     \accidentalStyle modern-cautionary 
     
     \clef "bass"
-      \stringCanonGP
-      \wwindChoraleGP
+    \trb_segment_strings
+    \wwindChoraleGP
     \trbOneTwo_segment_IYGH_A
     \trbOneTwo_segment_IYGH_B
   }
 
   \new Staff \with {
-    instrumentName = #"Bass Trombone"
-    shortInstrumentName = #"B.Trb."
-    midiInstrument = #"trombone"
-  }{
-    \accidentalStyle modern-cautionary 
-    
-    \clef "bass"
-      \stringCanonGP
-      \wwindChoraleGP
-    \btrb_segment_IYGH_A
-    \btrb_segment_IYGH_B
-  }
-
-  \new Staff \with {
-    instrumentName = #"Euphonium"
-    shortInstrumentName = #"Euph."
+    instrumentName = #"Tuba"
+    shortInstrumentName = #"Tb."
     midiInstrument = #"tuba"
   }{
     \accidentalStyle modern-cautionary 
@@ -292,7 +303,7 @@ iyghBrassGP = { R1*20 }
     \accidentalStyle modern-cautionary 
     \tempo 4 = 55 
     \clef "bass"
-      \stringCanonGP
+      \tmp_segment_strings
       \wwindChoraleGP
       \iyghBrassGP
   }
