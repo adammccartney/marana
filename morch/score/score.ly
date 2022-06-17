@@ -177,8 +177,8 @@ iyghBrassGP = { R1*20 }
       \voiceOne {
       \hnOne_segment_strings
       \wwindChoraleGP
-      \hrnOneTwo_segment_IYGH_A
-      \hrnOneTwo_segment_IYGH_B
+      \hrnOne_segment_IYGH_A
+      \hrnOne_segment_IYGH_B
     }
     }
     \new Voice {
@@ -186,8 +186,8 @@ iyghBrassGP = { R1*20 }
         \override Voice.DynamicText.stencil = ##f
       \hnTwo_segment_strings
       \wwindChoraleGP
-      \hrnOneTwo_segment_IYGH_A
-      \hrnOneTwo_segment_IYGH_B
+      \hrnTwo_segment_IYGH_A
+      \hrnTwo_segment_IYGH_B
     }
   }
 >> %% end hn 1 2
@@ -205,8 +205,8 @@ iyghBrassGP = { R1*20 }
       \voiceThree {
       \hnThree_segment_strings
       \wwindChoraleGP
-      \hrnThreeFour_segment_IYGH_A
-      \hrnThreeFour_segment_IYGH_B
+      \hrnThree_segment_IYGH_A
+      \hrnThree_segment_IYGH_B
     }
   }
   \new Voice {
@@ -215,8 +215,8 @@ iyghBrassGP = { R1*20 }
         \override Voice.DynamicText.stencil = ##f
       \hnFour_segment_strings
       \wwindChoraleGP
-      \hrnThreeFour_segment_IYGH_A
-      \hrnThreeFour_segment_IYGH_B
+      \hrnFour_segment_IYGH_A
+      \hrnFour_segment_IYGH_B
     }
   } 
  >> %% end hn 3 4
@@ -376,7 +376,7 @@ iyghBrassGP = { R1*20 }
         \tempo 4 = 55 
         \clef "bass"
         \cello_segment_strings
-      \wwindChoraleGP
+      \cello_segment_chorale
       \iyghBrassGP
       } %% end of cello notes
 
