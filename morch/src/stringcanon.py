@@ -1366,12 +1366,12 @@ def get_segment() -> dict:
 define printer
 """
 
-def printmacros():
+def printmacros(macros_dict):
     """
     outputs a selection of lilypond macro definitions to stdout
     """
     print("\n%% Macros " + "%" * 62 + "\n")
-    lines = [macro for macro in MACROS.values()]
+    lines = [macro for macro in macros_dict.values()]
     for l in lines:
         print(l)
     print("\n" + "%" * 72)
@@ -1380,7 +1380,7 @@ def printmacros():
 if __name__ == '__main__':
 
     outputheader()
-    printmacros()
+    printmacros(MACROS)
     instruments = ["fluteOne", 
                    "fluteTwo", 
                    "obOne",
