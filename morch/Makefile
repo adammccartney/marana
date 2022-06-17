@@ -18,7 +18,7 @@ PARTS_PDF       := $(addprefix $(BUILD_DIR)/$(PARTS_DIR)/, $(notdir $(PARTS:.ly=
 
 .PHONY: parts segments clean
 
-all: score stringcanon wwindchorale iygh parts
+all: score #parts 
 
 default: all
 
@@ -38,25 +38,6 @@ score: setup segments $(BUILD_DIR)/score
 $(BUILD_DIR)/score: $(BUILD_DIR)/score.ly
 	@ printf "%8s %-40s %s\n" lilypond $<
 	@ lilypond -o $@ $<
-
-
-iygh: $(BUILD_DIR)/iygh-score segments
-$(BUILD_DIR)/iygh-score: $(BUILD_DIR)/iygh-score.ly
-	@ printf "%8s %-40s %s\n" lilypond $<
-	@ lilypond -o $@ $<
-
-
-stringcanon: $(BUILD_DIR)/stringcanon segments
-$(BUILD_DIR)/stringcanon: $(BUILD_DIR)/stringcanon.ly
-	@ printf "%8s %-40s %s\n" lilypond $<
-	@ lilypond -o $@ $<
-
-
-wwindchorale: $(BUILD_DIR)/wwindchorale segments
-$(BUILD_DIR)/wwindchorale: $(BUILD_DIR)/wwindchorale.ly
-	@ printf "%8s %-40s %s\n" lilypond $<
-	@ lilypond -o $@ $<
-
 
 parts: $(PARTS_PDF) score
 
