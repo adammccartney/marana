@@ -7,23 +7,60 @@ usage: python3 brassIYGH_A.py > brassIYGH_A.ly
 """
 
 from marana.tools import ( create_voice, outputheader, generate_chunk, mapRests )
+from stringcanon import filltemplates
 
-CALLS = ["r8 bf8-.\\mp d'8 bf8-. f2",
-         "r8 bf8-.\\mp g8 bf8-. f2",
-         "r8 bf8-.\\mp a8 bf8-. c'2",
-         "r8 f8-.\\mp bf8 c'8-. d'2",
+CALL_ROOTS = ["bf", "bf", "bf", "f"]
+RESP_ROOTS = ["d", "g", "a,", "bf,", "d"]
+
+# we're going to create a pitch matrix for each of the tones we want to
+# articulate. 
+
+# Then the templates will be filled with a consistent call to
+# filltemplates(), which takes the newly created matrix as an arg
+
+TEMPLATES = {
+    "A": {
+        "obOne": "r4 {0}4--\\p {1}4 {2}4--~ {2}2 r2",
+        "obTwo": "r2 r4 {0}4--\\p {1}4 {2}4--~ {2}2",
+        "clOne": "r4 {0}4--\\p {1}4 {2}4--~ {2}2 r2",
+        "clTwo": "r2 r4 {0}4--\\p {1}4 {2}4--~ {2}2",
+        "tmp": "r4 {0}4--\\p {0}8-- {0}8-- {0}4-- {0}8-- {0}8-- {0}4-- {0}4-- r4",
+        "va": "r4 {0}4--\\p^\\tasto\\( {0}8-- {0}8--\\) {0}4--\\( {0}8-- {0}8--\\) {1}4--\\( {1}4--\\) r4",
+        "vc": "r4 {0}4--\\p^\\tasto\\( {0}8-- {0}8--\\) {1}4--\\( {1}8-- {1}8--\\) {2}4--\\( {2}4--\\) r4",
+        "kb": "r4 {0}4--\\p^\\tasto\\( {0}8-- {0}8--\\) {0}4--\\( {0}8-- {0}8--\\) {0}4--\\( {0}4--\\) r4"
+    },
+    "B": {
+      "fluteOne": "r1 {0}2.\\p {1}4 {1}1",
+      "fluteTwo": "r1 r2 {0}2\\p {1}1",
+      "bsn": """r2 \\repeat tremolo 8 {{ {0}32\\ppp\\< {1}\\! }}  |
+                r2 \\repeat tremolo 8 {{ {2}32\\f\\> {3}\\! }} |
+                r2 \\repeat tremolo 8 {{ {4}32\\ppp {5} }}  |""",
+      "vibes"   : "{0}1\\p^\\arco {1}1 {2}",
+      "harp": """\\repeat tremolo 8 {{ {0}16\\ppp\\< {1} }}  |
+                 \\repeat tremolo 8 {{ {2}16\\!\\f\\> {3} }} | 
+                 \\repeat tremolo 8 {{ {4}16\\!\\ppp {5} }}  |""",
+      "vnone": "r2. {0}8\\mp(^\\ord^\\espress {1}8 {2}2.)-- {3}4:16 ^\\ord\\> ~ {3}2.:16^\\pont\\ppp r4",
+      "vntwo": "r2. r8 {0}8\\p~^\\ord^\\espress {0}2\\< {1}2\\> {2}2.:16\\ppp r4",
+      "vc": "r2. {0}4\\mp~^\\ord^\\espress {0}4 {1}2\\> {2}4 ^\\ord ~ {2}2.:16^\\pont\\ppp r4"
+    }
+}
+
+CALLS = ["r8 bf8-.\\sfp d'8 bf8-. f2",
+         "r8 bf8-.\\sfp g8 bf8-. f2",
+         "r8 bf8-.\\sfp a8 bf8-. c'2",
+         "r8 f8-.\\sfp bf8 c'8-. d'2",
          "r1"]
 
-RESPS = ["r2 r8 bf8 d'8-.\\pp bf8",
-         "f2 r8 bf8 g'8-.\\pp bf8", 
-         "f2 r8 bf8 a8-.\\pp bf8",
-         "c'2 r8 f8 bf8-.\\pp c'8", 
+RESPS = ["r2 r8 bf8 d'8-.\\sfp bf8",
+         "f2 r8 bf8 g'8-.\\sfp bf8", 
+         "f2 r8 bf8 a8-.\\sfp bf8",
+         "c'2 r8 f8 bf8-.\\sfp c'8", 
          "d'2 r2"]
 
-idx_odd = [1, 3]
+idx_odd = [2, 3, 4]
 idx_even = [0, 2, 4]
 
-rested_calls = mapRests(idx_even, CALLS)
+rested_calls = mapRests(idx_odd, CALLS)
 rested_resps = mapRests(idx_even, RESPS)
 
 IYGH_PHRASES = {
@@ -95,11 +132,21 @@ def get_brass_section() -> dict:
     resp_ba_octve = create_voice(IYGH_PHRASES["resp_ba"], 12) # response up oct
     resp_bb_octve = create_voice(IYGH_PHRASES["resp_bb"], 12) # response up oct
     resp_bc_octve = create_voice(IYGH_PHRASES["resp_bc"], 12) # response up oct
+    resp_aa_fifve = create_voice(IYGH_PHRASES["resp_aa"], 7) # response up fifth
+    resp_ab_fifve = create_voice(IYGH_PHRASES["resp_ab"], 7) # response up fifth
+    resp_ba_fifve = create_voice(IYGH_PHRASES["resp_ba"], 7) # response up fifth
+    resp_bb_fifve = create_voice(IYGH_PHRASES["resp_bb"], 7) # response up fifth
+    resp_bc_fifve = create_voice(IYGH_PHRASES["resp_bc"], 7) # response up fifth
     resp_aa = create_voice(IYGH_PHRASES["resp_aa"], 0) # response up oct
     resp_ab = create_voice(IYGH_PHRASES["resp_ab"], 0) # response at pitch
     resp_ba = create_voice(IYGH_PHRASES["resp_ba"], 0) # response at pitch
     resp_bb = create_voice(IYGH_PHRASES["resp_bb"], 0) # response at pitch
     resp_bc = create_voice(IYGH_PHRASES["resp_bc"], 0) # response at pitch
+    resp_aa_fourvb = create_voice(IYGH_PHRASES["resp_aa"], -5) # response fourth below
+    resp_ab_fourvb = create_voice(IYGH_PHRASES["resp_ab"], -5) # response fourth below
+    resp_ba_fourvb = create_voice(IYGH_PHRASES["resp_ba"], -5) # response fourth below
+    resp_bb_fourvb = create_voice(IYGH_PHRASES["resp_bb"], -5) # response fourth below
+    resp_bc_fourvb = create_voice(IYGH_PHRASES["resp_bc"], -5) # response fourth below
     resp_aa_octvb = create_voice(IYGH_PHRASES["resp_aa"], -12) # response down oct
     resp_ab_octvb = create_voice(IYGH_PHRASES["resp_ab"], -12) # response down oct
     resp_ba_octvb = create_voice(IYGH_PHRASES["resp_ba"], -12) # response down oct
@@ -201,11 +248,11 @@ def get_brass_section() -> dict:
                 "final_barline": FINAL_BARLINE
                 },
             "hrnTwo": {
-                "resp_aa": resp_aa_octve, 
-                "resp_ab": resp_ab_octve,
-                "resp_ba": resp_ba_octve,
-                "resp_bb": resp_bb_octve,
-                "resp_bc": resp_bc_octve,
+                "resp_aa": resp_aa, 
+                "resp_ab": resp_ab,
+                "resp_ba": resp_ba,
+                "resp_bb": resp_bb,
+                "resp_bc": resp_bc,
                 "tempo_fast": TEMPO_FAST, 
                 "chorus_aa": chorus_triplets_aa_fifvb,
                 "chorus_ab": chorus_triplets_ab_fifvb,
@@ -215,11 +262,11 @@ def get_brass_section() -> dict:
                 "final_barline": FINAL_BARLINE
                 },
             "hrnThree": {
-                "resp_aa": resp_aa, 
-                "resp_ab": resp_ab,
-                "resp_ba": resp_ba,
-                "resp_bb": resp_bb,
-                "resp_bc": resp_bc,
+                "resp_aa": resp_aa_fifve, 
+                "resp_ab": resp_ab_fifve,
+                "resp_ba": resp_ba_fifve,
+                "resp_bb": resp_bb_fifve,
+                "resp_bc": resp_bc_fifve,
                 "tempo_fast": TEMPO_FAST, 
                 "chorus_aa": chorus_triplets_aa,
                 "chorus_ab": chorus_triplets_ab,
@@ -229,11 +276,11 @@ def get_brass_section() -> dict:
                 "final_barline": FINAL_BARLINE
                 },
             "hrnFour": {
-                "resp_aa": resp_aa, 
-                "resp_ab": resp_ab,
-                "resp_ba": resp_ba,
-                "resp_bb": resp_bb,
-                "resp_bc": resp_bc,
+                "resp_aa": resp_aa_fourvb, 
+                "resp_ab": resp_ab_fourvb,
+                "resp_ba": resp_ba_fourvb,
+                "resp_bb": resp_bb_fourvb,
+                "resp_bc": resp_bc_fourvb,
                 "tempo_fast": TEMPO_FAST, 
                 "chorus_aa": chorus_triplets_aa_octvb,
                 "chorus_ab": chorus_triplets_ab_octvb,

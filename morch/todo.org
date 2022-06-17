@@ -1,8 +1,8 @@
-* Finalize workshop edits [3/6]
-** TODO Brass edits [4/5]
+* Finalize workshop edits [4/6]
+** DONE Brass edits [5/5]
   - [X] Create higher / lower horn splits
   - [X] Add tempo changes
-  - [ ] Thin out antiphonal section 
+  - [X] Thin out antiphonal section 
   - [X] Add final barlines
   - [X] Replace euphonium with tuba
 ** DONE Woodwind edits [2/2]
