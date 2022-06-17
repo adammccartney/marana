@@ -123,7 +123,11 @@ def get_brass_section() -> dict:
     chorus_eights_ac_octvb = create_voice(IYGH_PHRASES["chorus_eights_ac"], -12) # chorus_eights down the octave
     chorus_eights_ad_octvb = create_voice(IYGH_PHRASES["chorus_eights_ad"], -12) # chorus_eights down the octave
     chorus_eights_ae_octvb = create_voice(IYGH_PHRASES["chorus_eights_ae"], -12) # chorus_eights down the octave
-
+    chorus_triplets_aa_fifve = create_voice(IYGH_PHRASES["chorus_triplets_aa"], 7) # chorus triplets 
+    chorus_triplets_ab_fifve = create_voice(IYGH_PHRASES["chorus_triplets_ab"], 7) # chorus triplets 
+    chorus_triplets_ac_fifve = create_voice(IYGH_PHRASES["chorus_triplets_ac"], 7) # chorus triplets 
+    chorus_triplets_ad_fifve = create_voice(IYGH_PHRASES["chorus_triplets_ad"], 7) # chorus triplets 
+    chorus_triplets_ae_fifve = create_voice(IYGH_PHRASES["chorus_triplets_ae"], 7) # chorus triplets 
     chorus_triplets_aa = create_voice(IYGH_PHRASES["chorus_triplets_aa"], 0) # chorus triplets 
 
     chorus_triplets_ab = create_voice(IYGH_PHRASES["chorus_triplets_ab"], 0) # chorus triplets 
@@ -131,11 +135,20 @@ def get_brass_section() -> dict:
     chorus_triplets_ac = create_voice(IYGH_PHRASES["chorus_triplets_ac"], 0) # chorus triplets 
     chorus_triplets_ad = create_voice(IYGH_PHRASES["chorus_triplets_ad"], 0) # chorus triplets 
     chorus_triplets_ae = create_voice(IYGH_PHRASES["chorus_triplets_ae"], 0) # chorus triplets 
+
+    chorus_triplets_aa_fifvb = create_voice(IYGH_PHRASES["chorus_triplets_aa"], -5) # chorus triplets 
+    chorus_triplets_ab_fifvb = create_voice(IYGH_PHRASES["chorus_triplets_ab"], -5) # chorus triplets 
+    chorus_triplets_ac_fifvb = create_voice(IYGH_PHRASES["chorus_triplets_ac"], -5) # chorus triplets 
+    chorus_triplets_ad_fifvb = create_voice(IYGH_PHRASES["chorus_triplets_ad"], -5) # chorus triplets 
+    chorus_triplets_ae_fifvb = create_voice(IYGH_PHRASES["chorus_triplets_ae"], -5) # chorus triplets 
     chorus_triplets_aa_octvb = create_voice(IYGH_PHRASES["chorus_triplets_aa"], -12) # chorus triplets 
     chorus_triplets_ab_octvb = create_voice(IYGH_PHRASES["chorus_triplets_ab"], -12) # chorus triplets 
     chorus_triplets_ac_octvb = create_voice(IYGH_PHRASES["chorus_triplets_ac"], -12) # chorus triplets 
     chorus_triplets_ad_octvb = create_voice(IYGH_PHRASES["chorus_triplets_ad"], -12) # chorus triplets 
     chorus_triplets_ae_octvb = create_voice(IYGH_PHRASES["chorus_triplets_ae"], -12) # chorus triplets 
+
+    TEMPO_FAST = "\\tempo 4 = 116"
+    ATEMPO = "\\tempo 4 = 55"
 
 
     brass = {
@@ -145,6 +158,7 @@ def get_brass_section() -> dict:
                 "call_ba": call_ba_octve,
                 "call_bb": call_bb_octve,
                 "call_bc": call_bc_octve,
+                "tempo_fast": TEMPO_FAST, 
                 "chorus_aa": chorus_aa_octve,
                 "chorus_ab": chorus_ab_octve,
                 "chorus_ac": chorus_ac_octve,
@@ -157,30 +171,59 @@ def get_brass_section() -> dict:
                 "call_ba": call_ba_5ve,
                 "call_bb": call_bb_5ve,
                 "call_bc": call_bc_5ve,
+                "tempo_fast": TEMPO_FAST, 
                 "chorus_aa": chorus_triplets_aa,
                 "chorus_ab": chorus_triplets_ab,
                 "chorus_ac": chorus_triplets_ac,
                 "chorus_ad": chorus_triplets_ad,
                 "chorus_ae": chorus_triplets_ae,
                 },
-            "hrnOneTwo": {
+            "hrnOne": {
                 "resp_aa": resp_aa_octve, 
                 "resp_ab": resp_ab_octve,
                 "resp_ba": resp_ba_octve,
                 "resp_bb": resp_bb_octve,
                 "resp_bc": resp_bc_octve,
+                "tempo_fast": TEMPO_FAST, 
+                "chorus_aa": chorus_triplets_aa_fifve,
+                "chorus_ab": chorus_triplets_ab_fifve,
+                "chorus_ac": chorus_triplets_ac_fifve,
+                "chorus_ad": chorus_triplets_ad_fifve,
+                "chorus_ae": chorus_triplets_ae_fifve,
+                },
+            "hrnTwo": {
+                "resp_aa": resp_aa_octve, 
+                "resp_ab": resp_ab_octve,
+                "resp_ba": resp_ba_octve,
+                "resp_bb": resp_bb_octve,
+                "resp_bc": resp_bc_octve,
+                "tempo_fast": TEMPO_FAST, 
+                "chorus_aa": chorus_triplets_aa_fifvb,
+                "chorus_ab": chorus_triplets_ab_fifvb,
+                "chorus_ac": chorus_triplets_ac_fifvb,
+                "chorus_ad": chorus_triplets_ad_fifvb,
+                "chorus_ae": chorus_triplets_ae_fifvb,
+                },
+            "hrnThree": {
+                "resp_aa": resp_aa, 
+                "resp_ab": resp_ab,
+                "resp_ba": resp_ba,
+                "resp_bb": resp_bb,
+                "resp_bc": resp_bc,
+                "tempo_fast": TEMPO_FAST, 
                 "chorus_aa": chorus_triplets_aa,
                 "chorus_ab": chorus_triplets_ab,
                 "chorus_ac": chorus_triplets_ac,
                 "chorus_ad": chorus_triplets_ad,
                 "chorus_ae": chorus_triplets_ae,
                 },
-            "hrnThreeFour": {
+            "hrnFour": {
                 "resp_aa": resp_aa, 
                 "resp_ab": resp_ab,
                 "resp_ba": resp_ba,
                 "resp_bb": resp_bb,
                 "resp_bc": resp_bc,
+                "tempo_fast": TEMPO_FAST, 
                 "chorus_aa": chorus_triplets_aa_octvb,
                 "chorus_ab": chorus_triplets_ab_octvb,
                 "chorus_ac": chorus_triplets_ac_octvb,
@@ -193,6 +236,7 @@ def get_brass_section() -> dict:
                 "resp_ba": resp_ba_octvb,
                 "resp_bb": resp_bb_octvb,
                 "resp_bc": resp_bc_octvb,
+                "tempo_fast": TEMPO_FAST, 
                 "chorus_aa": chorus_triplets_aa_octvb,
                 "chorus_ab": chorus_triplets_ab_octvb,
                 "chorus_ac": chorus_triplets_ac_octvb,
@@ -205,6 +249,7 @@ def get_brass_section() -> dict:
                 "call_ba": call_ba,
                 "call_bb": call_bb,
                 "call_bc": call_bc,
+                "tempo_fast": TEMPO_FAST, 
                 "chorus_eights_aa": chorus_eights_aa,
                 "chorus_eights_ab": chorus_eights_ab,
                 "chorus_eights_ac": chorus_eights_ac,
@@ -217,6 +262,7 @@ def get_brass_section() -> dict:
                 "call_ba_octvb": call_ba_octvb,
                 "call_bb_octvb": call_bb_octvb,
                 "call_bc_octvb": call_bc_octvb,
+                "tempo_fast": TEMPO_FAST, 
                 "chorus_eights_aa": chorus_eights_aa_octvb,
                 "chorus_eights_ab": chorus_eights_ab_octvb,
                 "chorus_eights_ac": chorus_eights_ac_octvb,
@@ -229,7 +275,7 @@ def get_brass_section() -> dict:
 
 if __name__ == '__main__':
     outputheader()
-    instruments = ["hrnOneTwo", "hrnThreeFour", "trpOneTwo", "trpThree",
+    instruments = ["hrnOne", "hrnTwo", "hrnThree", "hrnFour", "trpOneTwo", "trpThree",
                    "trbOneTwo", "btrb", "tuba"]
     segment = "segment_IYGH_A"
     generate_chunk(get_brass_section, instruments, segment)
