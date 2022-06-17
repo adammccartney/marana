@@ -13,9 +13,15 @@ from operator import itemgetter
 from marana.tools import ( create_voice, 
                            outputheader, 
                            generate_chunk )
+from stringcanon import printmacros
 
 items = { 2, 3 }
 total = 34
+
+MACROS = {
+        "FEATHERED_BEAM_RIGHT": "featheredBeamRight = { \\override Beam.grow-direction = #RIGHT }",
+        "FEATHERED_BEAM_LEFT": "featheredBeamLeft = { \\override Beam.grow-direction = #LEFT }"
+        }
 
 
 def createTraversal(items: set[int], total: int, seqlen: int) -> list[int] | int:
@@ -110,28 +116,104 @@ OBOE_ONE = ["r1",
 OBOE_TWO_SEQ = [4, 2, 5, 4, 2]
 
 OBOE_TWO = ["r1",
-            "r2 bf'16(\\ppp d'' bf' d'' bf' d'' bf' d''",
-            """bf'16 d'' bf' d'' bf' d'' bf' d''
-               bf'16 d'' bf' d'') r4""",
-            "r2. bf'16( d'' bf' d''",
-            "bf'16 d'' bf' d'') r2.",
-            "r4 g'16( a' g' a' g'16 a' g' a') r4",
+        #"r2 bf'16(\\ppp d'' bf' d'' bf' d'' bf' d''",
+            """
+                r4 
+                \\featheredBeamRight 
+                bf'16\\ppp[ d'' bf' d''
+                bf'32 d'' bf' d''
+                bf' d'' bf' d''
+                bf' d'' bf' d''
+                bf' d'' bf' d'']
+                \\featheredBeamLeft
+                bf'[ d'' bf' d''
+                bf' d'' bf' d''
+                bf' d'' bf' d''
+                bf' d'' bf' d''
+                bf'16 d'' bf' d'']
+                r4
+
+            """,
+            """
+                r2.
+                \\featheredBeamRight
+                bf'16[ d'' bf' d'']
+                \\featheredBeamLeft
+                bf'16[ d'' bf' d'']
+                r2.
+            """,
+            """
+                r4 
+                \\featheredBeamRight
+                g'16[ a' g' a'] 
+                \\featheredBeamLeft
+                g'16[ a' g' a'] 
+                r4
+            """,
             "r1",
-            """ef'16( fs' ef' fs' ef'16 fs' ef' fs' 
-               ef'16 fs' ef' fs' ef'16 fs' ef' fs')""",
-            "r2 a'16( c'' a' c'' a'16 c'' a' c''",
-            """a'16 c'' a' c'' a'16 c'' a' c'' 
-               a'16 c'' a' c'') r4""",
-            """r4 a'16( c'' a' c'' a'16 c'' a' c'' 
-                a'16 c'' a' c''""",
-            "a'16 c'' a' c'') r2 c''16( d'' c'' d''",
-            """c''16 d'' c'' d'' c''16 d'' c'' d''
-               c''16 d'' c'' d'' c''16 d'' c'' d'')""",
+            """
+               \\featheredBeamRight
+               ef'16[ fs' ef' fs' ef'16 fs' ef' fs']
+               \\featheredBeamLeft
+               ef'16[ fs' ef' fs' ef'16 fs' ef' fs']
+            """,
+            """
+               r2 
+               \\featheredBeamRight
+               a'16[ c'' a' c'' 
+               a'32 c'' a' c''
+               a' c'' a' c'']
+            """,
+            """
+               \\featheredBeamLeft
+               a'32[ c'' a' c'' 
+               a' c'' a' c'' 
+               a'16 c'' a' c'' 
+               a'16 c'' a' c''] r4
+            """,
+            """
+               r4 
+               \\featheredBeamRight
+               a'16[ c'' a' c'' a'16 c'' a' c'' 
+               a'32 c'' a' c''
+               a' c'' a' c'']
+            """,
+            """
+               \\featheredBeamLeft
+               a'16[ c'' a' c''] 
+               r2 
+               \\featheredBeamRight
+               c''32[ d'' c'' d''
+               c'' d'' c'' d'']
+            """,
+            """
+               \\featheredBeamLeft
+               c''32[ d'' c'' d'' 
+               c'' d'' c'' d''
+               c''16 d'' c'' d''
+               c''16 d'' c'' d'' c''16 d'' c'' d'']
+            """,
             "r1",
-            "bf'16( d'' bf' d'' bf'16 d'' bf' d'') r2",
-            "r2 b'16( d'' b' d'' b'16 d'' b' d'')",
-            """c''16( d'' c'' d'' c''16 d'' c'' d''
-               c''16 d'' c'' d'' c''16 d'' c'' d'')""",
+            """
+               \\featheredBeamRight
+               bf'16[ d'' bf' d''] 
+               \\featheredBeamLeft
+               bf'16[ d'' bf' d''] 
+               r2
+            """,
+            """
+               r2 
+               \\featheredBeamRight
+               b'16[ d'' b' d'']
+               \\featheredBeamLeft
+               b'16[ d'' b' d'']
+            """,
+            """
+               \\featheredBeamRight
+               c''16[ d'' c'' d'' c''16 d'' c'' d'']
+               \\featheredBeamLeft
+               c''16[ d'' c'' d'' c''16 d'' c'' d'']
+            """,
             ]
 
 
@@ -196,6 +278,8 @@ CELLO = ["r1",
          ]
 
 REST = ["r1" * 17]
+
+COMMON_TIME = "\\time 4/4"
            
 
 
@@ -286,6 +370,7 @@ def get_segment() -> dict:
 
     The whole section is laid out in a 17 bar chunk
     """
+    time_sig = COMMON_TIME
     chorale_Sa = create_voice(CHORALE_PHRASES["chorale_Sa"], 0)
     chorale_Sb = create_voice(CHORALE_PHRASES["chorale_Sb"], 0)
     chorale_Sc = create_voice(CHORALE_PHRASES["chorale_Sc"], 0)
@@ -371,23 +456,21 @@ def get_segment() -> dict:
     desc_o = create_voice(OBOE_ONE[14], 0)
     desc_p = create_voice(OBOE_ONE[15], 0)
     desc_q = create_voice(OBOE_ONE[16], 0)
-    orn_a =create_voice(OBOE_TWO[0], 0)
-    orn_b =create_voice(OBOE_TWO[1], 0)
-    orn_c =create_voice(OBOE_TWO[2], 0)
-    orn_d =create_voice(OBOE_TWO[3], 0)
-    orn_e =create_voice(OBOE_TWO[4], 0)
-    orn_f =create_voice(OBOE_TWO[5], 0)
-    orn_g =create_voice(OBOE_TWO[6], 0)
-    orn_h =create_voice(OBOE_TWO[7], 0)
-    orn_i =create_voice(OBOE_TWO[8], 0)
-    orn_j =create_voice(OBOE_TWO[9], 0)
-    orn_k =create_voice(OBOE_TWO[10], 0)
-    orn_l =create_voice(OBOE_TWO[11], 0)
-    orn_m =create_voice(OBOE_TWO[12], 0)
-    orn_n =create_voice(OBOE_TWO[13], 0)
-    orn_o =create_voice(OBOE_TWO[14], 0)
-    orn_p =create_voice(OBOE_TWO[15], 0)
-    orn_q =create_voice(OBOE_TWO[16], 0)
+    orn_a = OBOE_TWO[0]
+    orn_b = OBOE_TWO[1]
+    orn_c = OBOE_TWO[2]
+    orn_d = OBOE_TWO[3]
+    orn_e = OBOE_TWO[4]
+    orn_f = OBOE_TWO[5]
+    orn_g = OBOE_TWO[6]
+    orn_h = OBOE_TWO[7]
+    orn_i = OBOE_TWO[8]
+    orn_j = OBOE_TWO[9]
+    orn_k = OBOE_TWO[10]
+    orn_l = OBOE_TWO[11]
+    orn_m = OBOE_TWO[12]
+    orn_n = OBOE_TWO[13]
+    orn_o = OBOE_TWO[14]
     bsn_a = create_voice(BASSOON[0], 0)
     bsn_b = create_voice(BASSOON[1], 0)
     bsn_c = create_voice(BASSOON[2], 0)
@@ -427,6 +510,7 @@ def get_segment() -> dict:
 
     wwinds = {
             "flOne": {
+                "time_sig": time_sig,
                 "chorale_Sa": chorale_Sa,
                 "chorale_Sb": chorale_Sb,
                 "chorale_Sc": chorale_Sc,
@@ -446,6 +530,7 @@ def get_segment() -> dict:
                 "chorale_Sq": chorale_Sq,
                 },
             "flTwo": {
+                "time_sig": time_sig,
                 "chorale_Aa": chorale_Aa,
                 "chorale_Ab": chorale_Ab,
                 "chorale_Ac": chorale_Ac,
@@ -465,6 +550,7 @@ def get_segment() -> dict:
                 "chorale_Aq": chorale_Aq,
                 },
             "obOne": {
+                "time_sig": time_sig,
                 "desc_a": desc_a,
                 "desc_b": desc_b,
                 "desc_c": desc_c,
@@ -484,6 +570,7 @@ def get_segment() -> dict:
                 "desc_q": desc_q
                 },
             "obTwo": {
+                "time_sig": time_sig,
                 "orn_a": orn_a,
                 "orn_b": orn_b,
                 "orn_c": orn_c,
@@ -498,11 +585,10 @@ def get_segment() -> dict:
                 "orn_l": orn_l,
                 "orn_m": orn_m,
                 "orn_n": orn_n,
-                "orn_o": orn_o,
-                "orn_p": orn_p,
-                "orn_q": orn_q
+                "orn_o": orn_o
                 },
             "clOne": {
+                "time_sig": time_sig,
                 "chorale_Ta": chorale_Ta,
                 "chorale_Tb": chorale_Tb,
                 "chorale_Tc": chorale_Tc,
@@ -522,6 +608,7 @@ def get_segment() -> dict:
                 "chorale_Tq": chorale_Tq,
                 },
             "clTwo": {
+                "time_sig": time_sig,
                 "chorale_Ba": chorale_Ba,
                 "chorale_Bb": chorale_Bb,
                 "chorale_Bc": chorale_Bc,
@@ -541,6 +628,7 @@ def get_segment() -> dict:
                 "chorale_Bq": chorale_Bq
                 },
             "bsn": {
+                "time_sig": time_sig,
                 "bsn_a": bsn_a,
                 "bsn_b": bsn_b,
                 "bsn_c": bsn_c,
@@ -560,42 +648,55 @@ def get_segment() -> dict:
                 "bsn_q": bsn_q,
                     },
             "hrnOneTwo": {
+                "time_sig": time_sig,
                 "rest": rest
                 },
             "hrnThreeFour": {
+                "time_sig": time_sig,
                 "rest": rest
                 },
             "trpOne": {
+                "time_sig": time_sig,
                 "rest": rest
                 },
             "trpTwo": {
+                "time_sig": time_sig,
                 "rest": rest
                 },
             "trb": {
+                "time_sig": time_sig,
                 "rest": rest
                 },
             "btrb": {
+                "time_sig": time_sig,
                 "rest": rest
                 },
             "tuba": {
+                "time_sig": time_sig,
                 "rest": rest
                 },
             "harp": {
+                "time_sig": time_sig,
                 "rest": rest
                 },
             "percussion": {
+                "time_sig": time_sig,
                 "rest": rest
                 },
             "violinOne": {
+                "time_sig": time_sig,
                 "rest": rest
                 },
             "violinTwo": {
+                "time_sig": time_sig,
                 "rest": rest
                 },
             "viola": {
+                "time_sig": time_sig,
                 "rest": rest
                 },
             "cello": {
+                "time_sig": time_sig,
                 "vc_a": vc_a,
                 "vc_b": vc_b,
                 "vc_c": vc_c,
@@ -615,13 +716,16 @@ def get_segment() -> dict:
                 "vc_q": vc_q,
                 },
             "contrabass": {
+                "time_sig": time_sig,
                 "rest": rest
                 }
             }
     return wwinds
 
+
 if __name__ == '__main__':
     outputheader()
+    printmacros(MACROS)
     instruments = ["flOne", "flTwo", "obOne", "obTwo", "clOne", "clTwo", "bsn",
                    "hrnOneTwo", "hrnThreeFour", "trpOne", "trpTwo", "trb", "btrb", "tuba",
                    "harp", "percussion",
