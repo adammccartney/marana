@@ -176,6 +176,25 @@ BASSOON = ["r1",
            "d'8( c' b a) d( a, d,4)"
            ]
 
+CELLO = ["r1", 
+         "r1", 
+         "r1", 
+         "r1", 
+         "r1",
+         "r1", 
+         "r1",
+         "r4 r8 e'8( a' e' a--) fs'(",
+         "ef'8 e') a( e a e a4)",
+         "r1",
+         "r1",
+         "r1",
+         "r4 r8 c'8( f' c' f) c'(",
+         "f8 e d f) c( f f,4)",
+         "r1",
+         "r4 r8 c'8( a d' a d)",
+         "d'8( c' b a) d( a, d,4)"
+         ]
+
 REST = ["r1" * 17]
            
 
@@ -260,6 +279,12 @@ CHORALE_PHRASES = {
 def get_segment() -> dict:
     """  
     does exactly what it says on the tin
+
+    chorale := a fairly full chordal texture
+    desc    := descant melody
+    basn    := bassoon melody
+
+    The whole section is laid out in a 17 bar chunk
     """
     chorale_Sa = create_voice(CHORALE_PHRASES["chorale_Sa"], 0)
     chorale_Sb = create_voice(CHORALE_PHRASES["chorale_Sb"], 0)
@@ -380,6 +405,23 @@ def get_segment() -> dict:
     bsn_o = create_voice(BASSOON[14], 0)
     bsn_p = create_voice(BASSOON[15], 0)
     bsn_q = create_voice(BASSOON[16], 0)
+    vc_a = create_voice(CELLO[0], 0)
+    vc_b = create_voice(CELLO[1], 0)
+    vc_c = create_voice(CELLO[2], 0)
+    vc_d = create_voice(CELLO[3], 0)
+    vc_e = create_voice(CELLO[4], 0)
+    vc_f = create_voice(CELLO[5], 0)
+    vc_g = create_voice(CELLO[6], 0)
+    vc_h = create_voice(CELLO[7], 0)
+    vc_i = create_voice(CELLO[8], 0)
+    vc_j = create_voice(CELLO[9], 0)
+    vc_k = create_voice(CELLO[10], 0)
+    vc_l = create_voice(CELLO[11], 0)
+    vc_m = create_voice(CELLO[12], 0)
+    vc_n = create_voice(CELLO[13], 0)
+    vc_o = create_voice(CELLO[14], 0)
+    vc_p = create_voice(CELLO[15], 0)
+    vc_q = create_voice(CELLO[16], 0)
     rest = create_voice(REST[0], 0)
     
 
@@ -554,7 +596,23 @@ def get_segment() -> dict:
                 "rest": rest
                 },
             "cello": {
-                "rest": rest
+                "vc_a": vc_a,
+                "vc_b": vc_b,
+                "vc_c": vc_c,
+                "vc_d": vc_d,
+                "vc_e": vc_e,
+                "vc_f": vc_f,
+                "vc_g": vc_g,
+                "vc_h": vc_h,
+                "vc_i": vc_i,
+                "vc_j": vc_j,
+                "vc_k": vc_k,
+                "vc_l": vc_l,
+                "vc_m": vc_m,
+                "vc_n": vc_n,
+                "vc_o": vc_o,
+                "vc_p": vc_p,
+                "vc_q": vc_q,
                 },
             "contrabass": {
                 "rest": rest
