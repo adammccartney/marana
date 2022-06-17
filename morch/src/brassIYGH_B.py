@@ -6,44 +6,159 @@ brassIYGH_A.py: script to generate a segment for the brass
 usage: python3 brassIYGH_A.py > brassIYGH_A.ly
 """
 
-from marana.tools import ( create_voice, outputheader, generate_chunk, mapRests )
-from stringcanon import filltemplates
+from marana.tools import ( convert,
+                           create_voice, 
+                           create_pitch_map,
+                           fill_simple_template,
+                           generate_chunk, 
+                           outputheader, 
+                           mapRests )
 
 CALL_ROOTS = ["bf", "bf", "bf", "f"]
 RESP_ROOTS = ["d", "g", "a,", "bf,", "d"]
 
-# we're going to create a pitch matrix for each of the tones we want to
+
+# we're going to create a pitch map for each of the tones we want to
 # articulate. 
+
+atups = [
+    create_pitch_map("obOne", CALL_ROOTS, "1-1/7"), # seventh
+    create_pitch_map("obTwo", CALL_ROOTS, "1-1/3"), # fifth
+    create_pitch_map("clOne", CALL_ROOTS, "1-3/5"), # third
+    create_pitch_map("clTwo", CALL_ROOTS, "2"),
+    create_pitch_map("tmp", CALL_ROOTS, "16"),
+    create_pitch_map("va", CALL_ROOTS, "2-2/3"),  # fifth
+    create_pitch_map("vc", CALL_ROOTS, "4"),
+    create_pitch_map("kb", CALL_ROOTS, "8")
+    ]
+
+call_dict = convert(atups, {})
+
+btups = [
+    create_pitch_map("fluteOne", CALL_ROOTS, "1-1/7"),
+    create_pitch_map("fluteTwo", CALL_ROOTS, "1-1/3"),
+    create_pitch_map("bsn", CALL_ROOTS, "16"),
+    create_pitch_map("vibes", CALL_ROOTS, "1-3/5"),
+    create_pitch_map("vnone", CALL_ROOTS, "1-1/7"),
+    create_pitch_map("vntwo", CALL_ROOTS, "1-1/3")
+        ]
+
+resp_dict = convert(btups, {})
 
 # Then the templates will be filled with a consistent call to
 # filltemplates(), which takes the newly created matrix as an arg
 
-TEMPLATES = {
-    "A": {
-        "obOne": "r4 {0}4--\\p {1}4 {2}4--~ {2}2 r2",
-        "obTwo": "r2 r4 {0}4--\\p {1}4 {2}4--~ {2}2",
-        "clOne": "r4 {0}4--\\p {1}4 {2}4--~ {2}2 r2",
-        "clTwo": "r2 r4 {0}4--\\p {1}4 {2}4--~ {2}2",
-        "tmp": "r4 {0}4--\\p {0}8-- {0}8-- {0}4-- {0}8-- {0}8-- {0}4-- {0}4-- r4",
-        "va": "r4 {0}4--\\p^\\tasto\\( {0}8-- {0}8--\\) {0}4--\\( {0}8-- {0}8--\\) {1}4--\\( {1}4--\\) r4",
-        "vc": "r4 {0}4--\\p^\\tasto\\( {0}8-- {0}8--\\) {1}4--\\( {1}8-- {1}8--\\) {2}4--\\( {2}4--\\) r4",
-        "kb": "r4 {0}4--\\p^\\tasto\\( {0}8-- {0}8--\\) {0}4--\\( {0}8-- {0}8--\\) {0}4--\\( {0}4--\\) r4"
-    },
-    "B": {
-      "fluteOne": "r1 {0}2.\\p {1}4 {1}1",
-      "fluteTwo": "r1 r2 {0}2\\p {1}1",
-      "bsn": """r2 \\repeat tremolo 8 {{ {0}32\\ppp\\< {1}\\! }}  |
-                r2 \\repeat tremolo 8 {{ {2}32\\f\\> {3}\\! }} |
-                r2 \\repeat tremolo 8 {{ {4}32\\ppp {5} }}  |""",
-      "vibes"   : "{0}1\\p^\\arco {1}1 {2}",
-      "harp": """\\repeat tremolo 8 {{ {0}16\\ppp\\< {1} }}  |
-                 \\repeat tremolo 8 {{ {2}16\\!\\f\\> {3} }} | 
-                 \\repeat tremolo 8 {{ {4}16\\!\\ppp {5} }}  |""",
-      "vnone": "r2. {0}8\\mp(^\\ord^\\espress {1}8 {2}2.)-- {3}4:16 ^\\ord\\> ~ {3}2.:16^\\pont\\ppp r4",
-      "vntwo": "r2. r8 {0}8\\p~^\\ord^\\espress {0}2\\< {1}2\\> {2}2.:16\\ppp r4",
-      "vc": "r2. {0}4\\mp~^\\ord^\\espress {0}4 {1}2\\> {2}4 ^\\ord ~ {2}2.:16^\\pont\\ppp r4"
-    }
+TEMPLATE_MAP = {
+        "obOne": """
+                    r8 {0}8\\fp\\> ~ {0}8\\ppp r8 r2 
+                    r8 {1}8\\fp\\> ~ {1}8\\ppp r8 r2 
+                    r8 {2}8\\fp\\> ~ {2}8\\ppp r8 r2 
+                    r8 {3}8\\fp\\> ~ {3}8\\ppp r8 r2 
+                 """,
+        "obTwo": """
+                    r8 {0}8\\fp\\> ~ {0}4\\ppp r2 
+                    r8 {1}8\\fp\\> ~ {1}4\\ppp r2 
+                    r8 {2}8\\fp\\> ~ {2}4\\ppp r2 
+                    r8 {3}8\\fp\\> ~ {3}4\\ppp r2 
+                 """,
+        "clOne": """
+                    r8 {0}8\\fp\\> ~ {0}4.\\ppp r4. 
+                    r8 {1}8\\fp\\> ~ {1}4.\\ppp r4.
+                    r8 {2}8\\fp\\> ~ {2}4.\\ppp r4.
+                    r8 {3}8\\fp\\> ~ {3}4.\\ppp r4.
+                 """,
+        "clTwo": """
+                    r8 {0}8\\fp\\> ~ {0}2\\ppp r4 
+                    r8 {1}8\\fp\\> ~ {1}2\\ppp r4
+                    r8 {2}8\\fp\\> ~ {2}2\\ppp r4
+                    r8 {3}8\\fp\\> ~ {3}2\\ppp r4
+                 """,
+        "tmp": """
+                    r8 {0}8-.\\f r2.
+                    r8 {1}8-.\\f r2.
+                    r8 {2}8-.\\f r2.
+                    r8 {3}8-.\\f r2.
+                 """,
+        "va": """
+                    r8 {0}8\\fp\\> ~ {0}2. ~
+                    {0}8\\ppp {1}8\\fp\\> ~ {1}2. ~
+                    {1}8\\ppp {2}8\\fp\\> ~ {2}2
+                    {2}8\\ppp {3}8\\fp\\> ~ {3}2.\\ppp
+                 """,
+        "vc": """
+                    r8 {0}8\\fp\\> ~ {0}2. ~
+                    {0}8\\ppp {1}8\\fp\\> ~ {1}2. ~
+                    {1}8\\ppp {2}8\\fp\\> ~ {2}2
+                    {2}8\\ppp {3}8\\fp\\> ~ {3}2.\\ppp
+                 """,
+        "kb": """
+                    r8 {0}8\\fp\\> ~ {0}2. ~
+                    {0}8\\ppp {1}8\\fp\\> ~ {1}2. ~
+                    {1}8\\ppp {2}8\\fp\\> ~ {2}2
+                    {2}8\\ppp {3}8\\fp\\> ~ {3}2.\\ppp
+                 """,
+      "fluteOne": """
+                  r2. {0}4\\fp\\> ~ 
+                  {0}4\\ppp r2 {1}4\\fp\\> ~
+                  {1}4\\ppp r2 {2}4\\fp\\> ~
+                  {2}4\\ppp r2 {3}4\\fp\\> ~
+                  {3}4\\ppp r2.
+                  """,
+      "fluteTwo": """
+                  r2. {0}4\\fp\\> ~ 
+                  {0}4.\\ppp r4. {1}4\\fp\\> ~
+                  {1}4.\\ppp r4. {2}4\\fp\\> ~
+                  {2}4.\\ppp r4. {3}4\\fp\\> ~
+                  {3}4.\\ppp r2.
+                  """,
+      "bsn": """
+                  r2. {0}4\\fp\\> ~ 
+                  {0}2\\ppp r4 {1}4\\fp\\> ~
+                  {1}2\\ppp r4 {2}4\\fp\\> ~
+                  {2}2\\ppp r4 {3}4\\fp\\> ~
+                  {3}2\\ppp r2
+                  """,
+      "vibes"   : """
+                  r2. {0}4\\f ~ 
+                  {0}2. {1}4\\f ~
+                  {1}2. {2}4\\f ~
+                  {2}2. {3}4\\f ~
+                  {3}2 r2
+                  """,
+      "vnone":  """
+                  r2. {0}4\\fp\\> ~ 
+                  {0}2\\ppp r4 {1}4\\fp\\> ~
+                  {1}2\\ppp r4 {2}4\\fp\\> ~
+                  {2}2\\ppp r4 {3}4\\fp\\> ~
+                  {3}2\\ppp r2
+                  """,
+      "vntwo":  """
+                  r2. {0}4\\fp\\> ~ 
+                  {0}2\\ppp r4 {1}4\\fp\\> ~
+                  {1}2\\ppp r4 {2}4\\fp\\> ~
+                  {2}2\\ppp r4 {3}4\\fp\\> ~
+                  {3}2\\ppp r2
+                  """    
 }
+
+def generate_phrases(pitchmap: dict, templatemap: dict) -> dict:
+    """
+    uses key value pairing to populate templates with real pitches
+
+    returns a phrasemap
+
+    assumes pitchmap.keys() == templatemap.keys() == phrasemap.keys()
+    """
+    phrasemap = {}
+    for k in pitchmap.keys():
+        phrase = fill_simple_template(templatemap[k], pitchmap[k])
+        phrasemap.setdefault(k, phrase)
+    return phrasemap
+
+
+call_phrases = generate_phrases(call_dict, TEMPLATE_MAP)
+print(call_phrases)
+
 
 CALLS = ["r8 bf8-.\\sfp d'8 bf8-. f2",
          "r8 bf8-.\\sfp g8 bf8-. f2",
@@ -198,6 +313,7 @@ def get_brass_section() -> dict:
     chorus_triplets_ac_octvb = create_voice(IYGH_PHRASES["chorus_triplets_ac"], -12) # chorus triplets 
     chorus_triplets_ad_octvb = create_voice(IYGH_PHRASES["chorus_triplets_ad"], -12) # chorus triplets 
     chorus_triplets_ae_octvb = create_voice(IYGH_PHRASES["chorus_triplets_ae"], -12) # chorus triplets 
+
 
 
     TEMPO_FAST = "\\tempo 4 = 116"

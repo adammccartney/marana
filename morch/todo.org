@@ -1,10 +1,11 @@
-* Finalize workshop edits [4/6]
-** DONE Brass edits [5/5]
+* Finalize workshop edits [3/6]
+** TODO Brass edits [5/6]
   - [X] Create higher / lower horn splits
   - [X] Add tempo changes
   - [X] Thin out antiphonal section 
   - [X] Add final barlines
   - [X] Replace euphonium with tuba
+  - [ ] Debug fill_simple_template()
 ** DONE Woodwind edits [2/2]
 *** DONE Feathered beams [2/2]
   - [X] update oboe sections from chorale 
