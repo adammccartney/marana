@@ -320,13 +320,13 @@ def playsAlto(instrument: str) -> bool:
         return False
 
 def playsTenor(instrument: str) -> bool:
-    if instrument in {"va"}:
+    if instrument in {"hnTwo", "hnFour", "va"}:
         return True
     else:
         return False
 
 def playsBass(instrument: str) -> bool:
-    if instrument in {"hnTwo", "hnFour", "trb", "tmp", "vc", "kb"}:
+    if instrument in {"trb", "tmp", "vc", "kb"}:
         return True
     else:
         return False
@@ -1021,14 +1021,14 @@ def get_segment() -> dict:
                 "mm73": METER_2_4,
                 "mm73_76": SECT_A_REST,
                 "mm77_80": SECT_A_REST,
-                "mm81_84": SECT_B_REST,
+                "mm81_84": SECT_A_REST,
                 "mm85": METER_4_4,
                 "mm85_87": SECT_B_REST,
                 "mm88_90": SECT_B_REST,
                 "mm91": METER_2_4,
                 "mm91_94": SECT_A_REST,
                 "mm95_98": SECT_A_REST,
-                "mm99_102": SECT_B_REST
+                "mm99_102": SECT_A_REST
             },
             "vibes": {
                 "mm01": METER_2_4,
