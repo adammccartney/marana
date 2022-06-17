@@ -3,7 +3,7 @@
 marana.tools: a module containing some general tools for interfacing with abjad
 and lilypond 
 """
-
+import ast
 import re
 import abjad 
 
@@ -46,6 +46,15 @@ def strip_voice(voice: Voice) -> str:
     res = res.replace(INDENT, " ")
     return res
 
+
+def strip_braces(lystr: str) -> str:
+    """
+    designed to strip the curley braces from a string
+    """
+    assert lystr[0] == "{", "Expected string to start with '{'"
+    assert lystr[-1] == "}", "Expected string to end with '}'"
+    return lystr.lstrip("{").rstrip("}")
+    
 
 def add_braces(voice: str) -> str:
     """
@@ -190,3 +199,86 @@ def mapRests(idxs: list[int], phrases: list[str]) -> list[str]:
                 p[i] = rested
     result = [" ".join(p) for p in pharr]
     return result
+
+
+def strip_rhythm(rstr: str) -> str:
+    """
+    Another botchety function to get around abjad's API
+    This one simply strips the rhythm that is appended at the end of a voice
+    leaf each time one is created
+    """
+    assert rstr[-1] == "4", "Error: expected string to contain rvalue 4"
+    return rstr.rstrip("4")
+
+
+def get_registered_pitch(root: str, register: str) -> str:
+    """
+    Returns the sounding pitch by calcuating the transposition in semitones.
+    Number of semitones are calcuated using the lookup table below.
+    The keys in the lookup table essentially mean the same as the labels of
+    organ stops. The transpositions work in a similar way, but are equal
+    tempered.
+    """
+
+    assert register in {"32", "16", "8", "4", "2-2/3", "2", "1-3/5", "1-1/3",
+            "1-1/7"}, "Register not recognized"
+
+    REGISTERS = {
+            "32": -24,
+            "16": -12,
+            "8": 0,
+            "4": 12,
+            "2-2/3": 19,  # fifth
+            "2": 24,
+            "1-3/5": 28,  # third 
+            "1-1/3": 31,  # fifth
+            "1-1/7": 34   # seventh
+            }
+
+    x = create_voice(root, REGISTERS[register])
+    y = strip_voice(x)
+    z = strip_braces(y)
+    return strip_rhythm(z)
+
+
+def create_pitch_map(instrument: str, roots: list, register: str) -> tuple:
+    """
+    Creates a map of registered pitches to associate with a particular
+    instrumental voice within the context of a call to 'filltemplates'
+
+    assumes instrument is a valid instrument name, roots are a list of valid
+    pitch strings and register is a valid register
+    """
+    assert instrument in {"fluteOne", "fluteTwo", "obOne", "obTwo", "clOne",
+                          "clTwo", "bsn", "tmp", "vibes", "vnone", "vntwo", "va",
+                          "vc", "kb"}, "Instrument not recognized" 
+
+    assert register in {"32", "16", "8", "4", "2-2/3", "2", "1-3/5", "1-1/3",
+                        "1-1/7"}, "Register not recognized"
+
+    pitches = [get_registered_pitch(r, register) for r in roots]
+    return (instrument, pitches) 
+
+
+def convert(tup: list, di: dict) -> dict:
+    """
+    convert a list of tuples to a dictionary
+    """
+    for a, b in tup:
+        di.setdefault(a, b)
+    return di
+
+
+def fill_simple_template(template: str, pitchset: list[str]) -> str:
+    """
+    populates a template with pitches 
+
+    returns a tuple where the first arg is the instrument name and the second
+    is the lilypond string representing the evaluated template 
+    """
+    evalstr = ""
+    for p in pitchset:
+        print(p)
+        evalstr = template.format(*p)
+    return evalstr
+    

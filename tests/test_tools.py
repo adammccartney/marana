@@ -7,7 +7,15 @@ import pytest
 import abjad
 from abjad import Container, Dynamic, Voice, Staff
 
-from marana.tools import stringify_container, strip_container, strip_voice, strip_staff
+from marana.tools import ( 
+                          get_registered_pitch,
+                          create_pitch_map,
+                          stringify_container, 
+                          strip_container, 
+                          strip_voice,
+                          strip_staff, 
+                          strip_braces
+                          )
 
 
 @pytest.fixture
@@ -61,3 +69,76 @@ def test_strip_container(container):
     abjad.attach(dynamic, container[3])
     sstr = strip_container(container)
     assert sstr == "{r4 c'2. r4 d'2. \\f r4 e'2.}"
+
+
+def test_strip_braces_works():
+    """
+    checks that curley braces are stripped from beginning and end of string
+    """
+    f = "{a'}"
+    assert strip_braces(f) == "a'" 
+
+
+def test_strip_braces_rejects_malformed_start():
+    """
+    checks that function will only process strings with curley braces at
+    beginning and end
+    """
+    f = "a'}"
+    with pytest.raises(AssertionError) as excinfo:
+        _ = strip_braces(f)
+        assert "string to start with '{'" in str(excinfo)
+
+
+
+def test_strip_braces_rejects_malformed_end():
+    """
+    checks that function will only process strings ending in curley braces
+    """
+    g = "{a'"
+    with pytest.raises(AssertionError) as excinfo:
+        _ = strip_braces(g)
+        assert "string to end with '}'" in str(excinfo)
+
+@pytest.fixture
+def c():
+    "life is simpler when you think in c"
+    return "c"
+
+def test_registered_pitch_works(c):
+    """
+    makes sure that our get registered pitch function creates the right
+    transposition when it gets called and also returns a string with the
+    correct form
+    """
+    x = get_registered_pitch(c, "2-2/3")
+    assert x == "g'"
+
+
+def test_registered_pitch_raises(c):
+    """
+    test our assertion is getting raised
+    """
+    with pytest.raises(AssertionError) as excinfo:
+        _ = get_registered_pitch(c, "5-66")
+        assert "Register not recognized" in str(excinfo)
+
+
+@pytest.fixture
+def roots():
+    "life is simpler when you're connected to your roots"
+    return ["c", "d", "e"]
+
+
+def test_create_pitch_map(roots):
+    """
+    tests that a call to create pitch map returns a dict with the expected form
+    """
+    register = "2-2/3"  # fifth
+    pitches = ["g'", "a'", "b'"]
+    expected = ("fluteOne", pitches)
+    assert create_pitch_map("fluteOne", roots, register) == expected
+
+
+
+
