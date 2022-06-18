@@ -276,9 +276,19 @@ def fill_simple_template(template: str, pitchset: list[str]) -> str:
     returns a tuple where the first arg is the instrument name and the second
     is the lilypond string representing the evaluated template 
     """
-    evalstr = ""
-    for p in pitchset:
-        print(p)
-        evalstr = template.format(*p)
-    return evalstr
+    return template.format(*pitchset)
     
+
+def generate_phrases(pitchmap: dict, templatemap: dict) -> dict:
+    """
+    uses key value pairing to populate templates with real pitches
+
+    returns a phrasemap
+
+    assumes pitchmap.keys() == templatemap.keys() == phrasemap.keys()
+    """
+    phrasemap = {}
+    for k in pitchmap.keys():
+        phrase = fill_simple_template(templatemap[k], pitchmap[k])
+        phrasemap.setdefault(k, phrase)
+    return phrasemap
