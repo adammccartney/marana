@@ -1,4 +1,4 @@
-* Finalize workshop edits [4/6]
+* Finalize workshop edits [5/7]
 ** DONE Brass edits [6/6]
   - [X] Create higher / lower horn splits
   - [X] Add tempo changes
@@ -17,10 +17,11 @@
 ** DONE String edits [2/2] 
   - [X] Phrasing 
   - [X] Meter 
-** TODO General dramatic evolution [3/5]
+** DONE General dramatic evolution [5/5]
   - [X] introduce "filter chords" harp figure in segment 1
   - [X] add in gradual crescendo in terraced dynamics for segment 1
-  - [ ] develop "filter chords" harp figure in segment 2
+  - [X] develop "filter chords" harp figure in segment 2
   - [X] double bassoon line in segment 2
-  - [ ] recapitulate "filter chords" figure in segment 3 
+  - [X] recapitulate "filter chords" figure in segment 3 
+** TODO Harp pedaling
 ** TODO Parts

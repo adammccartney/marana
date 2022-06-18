@@ -10,22 +10,20 @@ import random
 import heapq
 from operator import itemgetter
 
-from marana.tools import ( create_voice, 
-                           outputheader, 
-                           generate_chunk )
+from marana.tools import create_voice, outputheader, generate_chunk
 from stringcanon import printmacros
 
-items = { 2, 3 }
+items = {2, 3}
 total = 34
 
 MACROS = {
-        "FEATHERED_BEAM_RIGHT": "featheredBeamRight = { \\override Beam.grow-direction = #RIGHT }",
-        "FEATHERED_BEAM_LEFT": "featheredBeamLeft = { \\override Beam.grow-direction = #LEFT }"
-        }
+    "FEATHERED_BEAM_RIGHT": "featheredBeamRight = { \\override Beam.grow-direction = #RIGHT }",
+    "FEATHERED_BEAM_LEFT": "featheredBeamLeft = { \\override Beam.grow-direction = #LEFT }",
+}
 
 
 def createTraversal(items: set[int], total: int, seqlen: int) -> list[int] | int:
-    """    
+    """
     create a sequence of numbers such that the sum of the elements is equal to
     the total. This is really a graph traversal:
         The specific use case being targeted is a sequence of seven integers,
@@ -37,18 +35,18 @@ def createTraversal(items: set[int], total: int, seqlen: int) -> list[int] | int
     seq = [0] * seqlen
     val = random.sample(items, 1)
     seq = [i + val[0] for i in seq]
-    result = sum(seq) 
-    while (result < total):
+    result = sum(seq)
+    while result < total:
         ridx = random.randrange(seqlen)
         val = random.sample(items, 1)
         seq[ridx] = seq[ridx] + val[0]
         result = sum(seq)
     # do some dirty tampering to round it down if we've overshot
-    if (result > total):
+    if result > total:
         # track the index of the largest value incase we need to decrement
         i_val = heapq.nlargest(1, enumerate(seq), key=itemgetter(1))
         idx = i_val[0][0]
-        while (result > total):
+        while result > total:
             seq[idx] = seq[idx] - 1
             result = sum(seq)
     return seq
@@ -58,236 +56,255 @@ def createTraversal(items: set[int], total: int, seqlen: int) -> list[int] | int
 SEQ_ONE = [8, 4, 4, 2, 9, 2, 5]
 SEQ_TWO = [2, 5, 4, 7, 7, 5, 4]
 
+
 def make_bars_four_four(parent_list: list[list[str]]) -> list[str]:
-    """    
+    """
     takes in a raw sequence of music chunks (grouped in half note chunks)
-    returns a flattened list of strings each containing a bar in four four 
+    returns a flattened list of strings each containing a bar in four four
     """
     flatlist = [item for child_list in parent_list for item in child_list]
-    # assume that we are dealing with chunks of halfnotes 
-    fours_chunks = [flatlist[x:x+2] for x in range(0, len(flatlist), 2)]
+    # assume that we are dealing with chunks of halfnotes
+    fours_chunks = [flatlist[x : x + 2] for x in range(0, len(flatlist), 2)]
     bars = [f"{x[0]} {x[1]}" for x in fours_chunks]
     return bars
 
 
-FLUTE_ONE = [["r4 a'4--"] * SEQ_ONE[0], 
-             ["r4 e''4--"] * SEQ_ONE[1],
-             ["r4 e''4--"] * SEQ_ONE[2],
-             ["r4 a'4--"] * SEQ_ONE[3],
-             ["r4 c''4--"] * SEQ_ONE[4],
-             ["r4 c''4--"] * SEQ_ONE[5],
-             ["r4 b'4--"] * SEQ_ONE[6]]
+FLUTE_ONE = [
+    ["r4 a'4--"] * SEQ_ONE[0],
+    ["r4 e''4--"] * SEQ_ONE[1],
+    ["r4 e''4--"] * SEQ_ONE[2],
+    ["r4 a'4--"] * SEQ_ONE[3],
+    ["r4 c''4--"] * SEQ_ONE[4],
+    ["r4 c''4--"] * SEQ_ONE[5],
+    ["r4 b'4--"] * SEQ_ONE[6],
+]
 
 FLUTE_ONE_BARS = make_bars_four_four(FLUTE_ONE)
 # prepend dynamics to first bar
 FLUTE_ONE_BARS[0] = "r4 a'4--\\mp r4 a'4--"
 
-FLUTE_TWO = [["r4 a'4--"] * SEQ_ONE[0], 
-             ["r4 a'4--"] * SEQ_ONE[1],
-             ["r4 a'4--"] * SEQ_ONE[2],
-             ["r4 e'4--"] * SEQ_ONE[3],
-             ["r4 f'4--"] * SEQ_ONE[4],
-             ["r4 f'4--"] * SEQ_ONE[5],
-             ["r4 a'4--"] * SEQ_ONE[6]]
+FLUTE_TWO = [
+    ["r4 a'4--"] * SEQ_ONE[0],
+    ["r4 a'4--"] * SEQ_ONE[1],
+    ["r4 a'4--"] * SEQ_ONE[2],
+    ["r4 e'4--"] * SEQ_ONE[3],
+    ["r4 f'4--"] * SEQ_ONE[4],
+    ["r4 f'4--"] * SEQ_ONE[5],
+    ["r4 a'4--"] * SEQ_ONE[6],
+]
 
 FLUTE_TWO_BARS = make_bars_four_four(FLUTE_TWO)
 FLUTE_TWO_BARS[0] = "r4 a'4--\\mp r4 a'4--"
 
 OB_SEQ = [7, 4, 8, 4, 4, 4, 4, 6, 6, 9, 4, 4, 4]
-OBOE_ONE = ["r1",
-            "r2. bf''4~ \\ppp",
-            "bf''2. a''4~",
-            "a''1~",
-            "a''2. r4", # end 8 start 4
-            "r2. g''4~",
-            "g''2. fs''4~",
-            "fs''2. ef''4~",
-            "ef''2. r4",
-            "r1",
-            "r4 d''2.~",
-            "d''2. c''4~",
-            "c''1",
-            "c''1",
-            "bf'1",
-            "a'1",
-            "g'1"
-            ] # should total 68 beats 
+OBOE_ONE = [
+    "r1",
+    "r2. bf''4~ \\ppp",
+    "bf''2. a''4~",
+    "a''1~",
+    "a''2. r4",  # end 8 start 4
+    "r2. g''4~",
+    "g''2. fs''4~",
+    "fs''2. ef''4~",
+    "ef''2. r4",
+    "r1",
+    "r4 d''2.~",
+    "d''2. c''4~",
+    "c''1",
+    "c''1",
+    "bf'1",
+    "a'1",
+    "g'1",
+]  # should total 68 beats
 
 OBOE_TWO_SEQ = [4, 2, 5, 4, 2]
 
-OBOE_TWO = ["r1",
-        #"r2 bf'16(\\ppp d'' bf' d'' bf' d'' bf' d''",
-            """
-                r4 
-                \\featheredBeamRight 
-                bf'16\\ppp[ d'' bf' d''
-                bf'32 d'' bf' d''
-                bf' d'' bf' d''
-                bf' d'' bf' d''
-                bf' d'' bf' d'']
-                \\featheredBeamLeft
-                bf'[ d'' bf' d''
-                bf' d'' bf' d''
-                bf' d'' bf' d''
-                bf' d'' bf' d''
-                bf'16 d'' bf' d'']
-                r4
-
+OBOE_TWO = [
+    "r1",
+    # "r2 bf'16(\\ppp d'' bf' d'' bf' d'' bf' d''",
+    """r4 
+               \\featheredBeamRight 
+               bf'16\\ppp[ d'' bf' d''
+               bf'32 d'' bf' d''
+               bf' d'' bf' d''
+               bf' d'' bf' d''
+               bf' d'' bf' d'']
+               \\featheredBeamLeft
+               bf'[ d'' bf' d''
+               bf' d'' bf' d''
+               bf' d'' bf' d''
+               bf' d'' bf' d''
+               bf'16 d'' bf' d'']
+               r4
             """,
-            """
-                r2.
-                \\featheredBeamRight
-                bf'16[ d'' bf' d'']
-                \\featheredBeamLeft
-                bf'16[ d'' bf' d'']
-                r2.
-            """,
-            """
-                r4 
-                \\featheredBeamRight
-                g'16[ a' g' a'] 
-                \\featheredBeamLeft
-                g'16[ a' g' a'] 
-                r4
-            """,
-            "r1",
-            """
+    """r2.
                \\featheredBeamRight
+               bf'16[ d'' bf' d'']
+               \\featheredBeamLeft
+               bf'16[ d'' bf' d'']
+               r2.
+            """,
+    """r4 
+               \\featheredBeamRight
+               g'16[ a' g' a'] 
+               \\featheredBeamLeft
+               g'16[ a' g' a'] 
+               r4
+            """,
+    "r1",
+    """\\featheredBeamRight
                ef'16[ fs' ef' fs' ef'16 fs' ef' fs']
                \\featheredBeamLeft
                ef'16[ fs' ef' fs' ef'16 fs' ef' fs']
             """,
-            """
-               r2 
+    """r2 
                \\featheredBeamRight
                a'16[ c'' a' c'' 
                a'32 c'' a' c''
                a' c'' a' c'']
             """,
-            """
-               \\featheredBeamLeft
+    """\\featheredBeamLeft
                a'32[ c'' a' c'' 
                a' c'' a' c'' 
                a'16 c'' a' c'' 
                a'16 c'' a' c''] r4
             """,
-            """
-               r4 
+    """r4 
                \\featheredBeamRight
                a'16[ c'' a' c'' a'16 c'' a' c'' 
                a'32 c'' a' c''
                a' c'' a' c'']
             """,
-            """
-               \\featheredBeamLeft
+    """\\featheredBeamLeft
                a'16[ c'' a' c''] 
                r2 
                \\featheredBeamRight
                c''32[ d'' c'' d''
                c'' d'' c'' d'']
             """,
-            """
-               \\featheredBeamLeft
+    """\\featheredBeamLeft
                c''32[ d'' c'' d'' 
                c'' d'' c'' d''
                c''16 d'' c'' d''
                c''16 d'' c'' d'' c''16 d'' c'' d'']
             """,
-            "r1",
-            """
-               \\featheredBeamRight
+    "r1",
+    """\\featheredBeamRight
                bf'16[ d'' bf' d''] 
                \\featheredBeamLeft
                bf'16[ d'' bf' d''] 
                r2
             """,
-            """
-               r2 
+    """r2 
                \\featheredBeamRight
                b'16[ d'' b' d'']
                \\featheredBeamLeft
                b'16[ d'' b' d'']
             """,
-            """
-               \\featheredBeamRight
+    """\\featheredBeamRight
                c''16[ d'' c'' d'' c''16 d'' c'' d'']
                \\featheredBeamLeft
                c''16[ d'' c'' d'' c''16 d'' c'' d'']
             """,
-            ]
+]
 
 
-CLARINET_ONE = [["r4 a'4--"] * SEQ_ONE[0], 
-                ["r4 cs''4--"] * SEQ_ONE[1],
-                ["r4 c''4--"] * SEQ_ONE[2],
-                ["r4 g'4--"] * SEQ_ONE[3],
-                ["r4 a'4--"] * SEQ_ONE[4],
-                ["r4 a'4--"] * SEQ_ONE[5],
-                ["r4 b'4--"] * SEQ_ONE[6]]
+CLARINET_ONE = [
+    ["r4 a'4--"] * SEQ_ONE[0],
+    ["r4 cs''4--"] * SEQ_ONE[1],
+    ["r4 c''4--"] * SEQ_ONE[2],
+    ["r4 g'4--"] * SEQ_ONE[3],
+    ["r4 a'4--"] * SEQ_ONE[4],
+    ["r4 a'4--"] * SEQ_ONE[5],
+    ["r4 b'4--"] * SEQ_ONE[6],
+]
 
 CLARINET_ONE_BARS = make_bars_four_four(CLARINET_ONE)
 CLARINET_ONE_BARS[0] = "r4 a'4--\\mp r4 a'4--"
 
-CLARINET_TWO = [["r4 a'4--"] * SEQ_ONE[0], 
-                ["r4 a4--"] * SEQ_ONE[1],
-                ["r4 a4--"] * SEQ_ONE[2],
-                ["r4 c'4--"] * SEQ_ONE[3],
-                ["r4 e'4--"] * SEQ_ONE[4],
-                ["r4 d'4--"] * SEQ_ONE[5],
-                ["r4 a'4--"] * SEQ_ONE[6]]
+CLARINET_TWO = [
+    ["r4 a'4--"] * SEQ_ONE[0],
+    ["r4 a4--"] * SEQ_ONE[1],
+    ["r4 a4--"] * SEQ_ONE[2],
+    ["r4 c'4--"] * SEQ_ONE[3],
+    ["r4 e'4--"] * SEQ_ONE[4],
+    ["r4 d'4--"] * SEQ_ONE[5],
+    ["r4 a'4--"] * SEQ_ONE[6],
+]
 
 CLARINET_TWO_BARS = make_bars_four_four(CLARINET_TWO)
 CLARINET_ONE_BARS[0] = "r4 a'4--\\mp r4 a'4--"
 
-BASSOON = ["r1",
-           "r1",
-           "r4 r8 e'8(\\pp a' e' a--) e'(",
-           "d'8 bf a e) a( e a4)",
-           "r1",
-           "r4 r8 e'8( a' e' a--) e'(",
-           "bf8 g a e) a( e a4)",
-           "r4 r8 e'8( a' e' a--) fs'(",
-           "ef'8 e') a( e a e a4)",
-           "r1",
-           "r4 r8 g8( c' g c--) a(",
-           "g8 c g,) c( g c c,4)",
-           "r4 r8 c'8( f' c' f) c'(",
-           "f8 e d f) c( f f,4)",
-           "r1",
-           "r4 r8 c'8( a d' a d)",
-           "d'8( c' b a) d( a, d,4)"
-           ]
+BASSOON = [
+    "r1",
+    "r1",
+    "r4 r8 e'8(\\pp a' e' a--) e'(",
+    "d'8 bf a e) a( e a4)",
+    "r1",
+    "r4 r8 e'8( a' e' a--) e'(",
+    "bf8 g a e) a( e a4)",
+    "r4 r8 e'8( a' e' a--) fs'(",
+    "ef'8 e') a( e a e a4)",
+    "r1",
+    "r4 r8 g8( c' g c--) a(",
+    "g8 c g,) c( g c c,4)",
+    "r4 r8 c'8( f' c' f) c'(",
+    "f8 e d f) c( f f,4)",
+    "r1",
+    "r4 r8 c'8( a d' a d)",
+    "d'8( c' b a) d( a, d,4)",
+]
 
-CELLO = ["r1", 
-         "r1", 
-         "r1", 
-         "r1", 
-         "r1",
-         "r1", 
-         "r1",
-         "r4 r8 e'8( a' e' a--) fs'(",
-         "ef'8 e') a( e a e a4)",
-         "r1",
-         "r1",
-         "r1",
-         "r4 r8 c'8( f' c' f) c'(",
-         "f8 e d f) c( f f,4)",
-         "r1",
-         "r4 r8 c'8( a d' a d)",
-         "d'8( c' b a) d( a, d,4)"
-         ]
+HARP = [
+    "r4 <a a'>4\\mp r4 <a' a''>4",
+    "r4 <a a'>4 r4 <a' a''>4",
+    "r4 <a a'>4 r4 <a' a''>4",
+    "r4 <a a'>4 r4 <a' a''>4",
+    "r4 <a a' cs'' e''>4 r4 <a' a'' cs''' e'''>4",
+    "r4 <a a' cs'' e''>4 r4 <a' a'' cs''' e'''>4",
+    "r4 <a a' c'' e''>4 r4 <a' a'' c''' e'''>4",
+    "r4 <a a' c'' e''>4 r4 <a' a'' c''' e'''>4",
+    "r4 <c'' e'' g'' a''>4 r4 <c'' e'' g'' a''>4",
+    "r4 <e'' f'' a'' c'''> r4 <e'' f'' a'' c'''>4",
+    "r4 <e'' f'' a'' c'''> r4 <e'' f'' a'' c'''>4",
+    "r4 <e'' f'' a'' c'''> r4 <e'' f'' a'' c'''>4",
+    "r4 <e'' f'' a'' c'''> r4 <e'' f'' a'' c'''>4",
+    "r4 <e'' f'' a'' c'''> r4 <d'' f'' a'' c'''>4",
+    "r4 <e'' f'' a'' c'''> r4 <a' b' a'' b''>4",
+    "r4 <a' b' a'' b''>4 r4 <a' b' a'' b''>4 ",
+    "r4 <a' b' a'' b''>4 r4 <a' b' a'' b''>4 ",
+]
+
+CELLO = [
+    "r1",
+    "r1",
+    "r1",
+    "r1",
+    "r1",
+    "r1",
+    "r1",
+    "r4 r8 e'8( a' e' a--) fs'(",
+    "ef'8 e') a( e a e a4)",
+    "r1",
+    "r1",
+    "r1",
+    "r4 r8 c'8( f' c' f) c'(",
+    "f8 e d f) c( f f,4)",
+    "r1",
+    "r4 r8 c'8( a d' a d)",
+    "d'8( c' b a) d( a, d,4)",
+]
 
 REST = ["r1" * 17]
 
 COMMON_TIME = "\\time 4/4"
-           
 
 
 # segment is 17 bars long
 
 CHORALE_PHRASES = {
     #######################################################################
-    # data 
+    # data
     #######################################################################
     "chorale_Sa": FLUTE_ONE_BARS[0],
     "chorale_Sb": FLUTE_ONE_BARS[1],
@@ -356,17 +373,18 @@ CHORALE_PHRASES = {
     "chorale_Bn": CLARINET_TWO_BARS[13],
     "chorale_Bo": CLARINET_TWO_BARS[14],
     "chorale_Bp": CLARINET_TWO_BARS[15],
-    "chorale_Bq": CLARINET_TWO_BARS[16]
-    }
+    "chorale_Bq": CLARINET_TWO_BARS[16],
+}
 
 
 def get_segment() -> dict:
-    """  
+    """
     does exactly what it says on the tin
 
     chorale := a fairly full chordal texture
     desc    := descant melody
     basn    := bassoon melody
+    chords  := chords
 
     The whole section is laid out in a 17 bar chunk
     """
@@ -488,6 +506,23 @@ def get_segment() -> dict:
     bsn_o = create_voice(BASSOON[14], 0)
     bsn_p = create_voice(BASSOON[15], 0)
     bsn_q = create_voice(BASSOON[16], 0)
+    chord_a = create_voice(HARP[0], 0)
+    chord_b = create_voice(HARP[1], 0)
+    chord_c = create_voice(HARP[2], 0)
+    chord_d = create_voice(HARP[3], 0)
+    chord_e = create_voice(HARP[4], 0)
+    chord_f = create_voice(HARP[5], 0)
+    chord_g = create_voice(HARP[6], 0)
+    chord_h = create_voice(HARP[7], 0)
+    chord_i = create_voice(HARP[8], 0)
+    chord_j = create_voice(HARP[9], 0)
+    chord_k = create_voice(HARP[10], 0)
+    chord_l = create_voice(HARP[11], 0)
+    chord_m = create_voice(HARP[12], 0)
+    chord_n = create_voice(HARP[13], 0)
+    chord_o = create_voice(HARP[14], 0)
+    chord_p = create_voice(HARP[15], 0)
+    chord_q = create_voice(HARP[16], 0)
     vc_a = create_voice(CELLO[0], 0)
     vc_b = create_voice(CELLO[1], 0)
     vc_c = create_voice(CELLO[2], 0)
@@ -506,230 +541,227 @@ def get_segment() -> dict:
     vc_p = create_voice(CELLO[15], 0)
     vc_q = create_voice(CELLO[16], 0)
     rest = create_voice(REST[0], 0)
-    
 
-    wwinds = {
-            "flOne": {
-                "time_sig": time_sig,
-                "chorale_Sa": chorale_Sa,
-                "chorale_Sb": chorale_Sb,
-                "chorale_Sc": chorale_Sc,
-                "chorale_Sd": chorale_Sd,
-                "chorale_Se": chorale_Se,
-                "chorale_Sf": chorale_Sf,
-                "chorale_Sg": chorale_Sg,
-                "chorale_Sh": chorale_Sh,
-                "chorale_Si": chorale_Si,
-                "chorale_Sj": chorale_Sj,
-                "chorale_Sk": chorale_Sk,
-                "chorale_Sl": chorale_Sl,
-                "chorale_Sm": chorale_Sm,
-                "chorale_Sn": chorale_Sn,
-                "chorale_So": chorale_So,
-                "chorale_Sp": chorale_Sp,
-                "chorale_Sq": chorale_Sq,
-                },
-            "flTwo": {
-                "time_sig": time_sig,
-                "chorale_Aa": chorale_Aa,
-                "chorale_Ab": chorale_Ab,
-                "chorale_Ac": chorale_Ac,
-                "chorale_Ad": chorale_Ad,
-                "chorale_Ae": chorale_Ae,
-                "chorale_Af": chorale_Af,
-                "chorale_Ag": chorale_Ag,
-                "chorale_Ah": chorale_Ah,
-                "chorale_Ai": chorale_Ai,
-                "chorale_Aj": chorale_Aj,
-                "chorale_Ak": chorale_Ak,
-                "chorale_Al": chorale_Al,
-                "chorale_Am": chorale_Am,
-                "chorale_An": chorale_An,
-                "chorale_Ao": chorale_Ao,
-                "chorale_Ap": chorale_Ap,
-                "chorale_Aq": chorale_Aq,
-                },
-            "obOne": {
-                "time_sig": time_sig,
-                "desc_a": desc_a,
-                "desc_b": desc_b,
-                "desc_c": desc_c,
-                "desc_d": desc_d,
-                "desc_e": desc_e,
-                "desc_f": desc_f,
-                "desc_g": desc_g,
-                "desc_h": desc_h,
-                "desc_i": desc_i,
-                "desc_j": desc_j,
-                "desc_k": desc_k,
-                "desc_l": desc_l,
-                "desc_m": desc_m,
-                "desc_n": desc_n,
-                "desc_o": desc_o,
-                "desc_p": desc_p,
-                "desc_q": desc_q
-                },
-            "obTwo": {
-                "time_sig": time_sig,
-                "orn_a": orn_a,
-                "orn_b": orn_b,
-                "orn_c": orn_c,
-                "orn_d": orn_d,
-                "orn_e": orn_e,
-                "orn_f": orn_f,
-                "orn_g": orn_g,
-                "orn_h": orn_h,
-                "orn_i": orn_i,
-                "orn_j": orn_j,
-                "orn_k": orn_k,
-                "orn_l": orn_l,
-                "orn_m": orn_m,
-                "orn_n": orn_n,
-                "orn_o": orn_o
-                },
-            "clOne": {
-                "time_sig": time_sig,
-                "chorale_Ta": chorale_Ta,
-                "chorale_Tb": chorale_Tb,
-                "chorale_Tc": chorale_Tc,
-                "chorale_Td": chorale_Td,
-                "chorale_Te": chorale_Te,
-                "chorale_Tf": chorale_Tf,
-                "chorale_Tg": chorale_Tg,
-                "chorale_Th": chorale_Th,
-                "chorale_Ti": chorale_Ti,
-                "chorale_Tj": chorale_Tj,
-                "chorale_Tk": chorale_Tk,
-                "chorale_Tl": chorale_Tl,
-                "chorale_Tm": chorale_Tm,
-                "chorale_Tn": chorale_Tn,
-                "chorale_To": chorale_To,
-                "chorale_Tp": chorale_Tp,
-                "chorale_Tq": chorale_Tq,
-                },
-            "clTwo": {
-                "time_sig": time_sig,
-                "chorale_Ba": chorale_Ba,
-                "chorale_Bb": chorale_Bb,
-                "chorale_Bc": chorale_Bc,
-                "chorale_Bd": chorale_Bd,
-                "chorale_Be": chorale_Be,
-                "chorale_Bf": chorale_Bf,
-                "chorale_Bg": chorale_Bg,
-                "chorale_Bh": chorale_Bh,
-                "chorale_Bi": chorale_Bi,
-                "chorale_Bj": chorale_Bj,
-                "chorale_Bk": chorale_Bk,
-                "chorale_Bl": chorale_Bl,
-                "chorale_Bm": chorale_Bm,
-                "chorale_Bn": chorale_Bn,
-                "chorale_Bo": chorale_Bo,
-                "chorale_Bp": chorale_Bp,
-                "chorale_Bq": chorale_Bq
-                },
-            "bsn": {
-                "time_sig": time_sig,
-                "bsn_a": bsn_a,
-                "bsn_b": bsn_b,
-                "bsn_c": bsn_c,
-                "bsn_d": bsn_d,
-                "bsn_e": bsn_e,
-                "bsn_f": bsn_f,
-                "bsn_g": bsn_g,
-                "bsn_h": bsn_h,
-                "bsn_i": bsn_i,
-                "bsn_j": bsn_j,
-                "bsn_k": bsn_k,
-                "bsn_l": bsn_l,
-                "bsn_m": bsn_m,
-                "bsn_n": bsn_n,
-                "bsn_o": bsn_o,
-                "bsn_p": bsn_p,
-                "bsn_q": bsn_q,
-                    },
-            "hrnOneTwo": {
-                "time_sig": time_sig,
-                "rest": rest
-                },
-            "hrnThreeFour": {
-                "time_sig": time_sig,
-                "rest": rest
-                },
-            "trpOne": {
-                "time_sig": time_sig,
-                "rest": rest
-                },
-            "trpTwo": {
-                "time_sig": time_sig,
-                "rest": rest
-                },
-            "trb": {
-                "time_sig": time_sig,
-                "rest": rest
-                },
-            "btrb": {
-                "time_sig": time_sig,
-                "rest": rest
-                },
-            "tuba": {
-                "time_sig": time_sig,
-                "rest": rest
-                },
-            "harp": {
-                "time_sig": time_sig,
-                "rest": rest
-                },
-            "percussion": {
-                "time_sig": time_sig,
-                "rest": rest
-                },
-            "violinOne": {
-                "time_sig": time_sig,
-                "rest": rest
-                },
-            "violinTwo": {
-                "time_sig": time_sig,
-                "rest": rest
-                },
-            "viola": {
-                "time_sig": time_sig,
-                "rest": rest
-                },
-            "cello": {
-                "time_sig": time_sig,
-                "vc_a": vc_a,
-                "vc_b": vc_b,
-                "vc_c": vc_c,
-                "vc_d": vc_d,
-                "vc_e": vc_e,
-                "vc_f": vc_f,
-                "vc_g": vc_g,
-                "vc_h": vc_h,
-                "vc_i": vc_i,
-                "vc_j": vc_j,
-                "vc_k": vc_k,
-                "vc_l": vc_l,
-                "vc_m": vc_m,
-                "vc_n": vc_n,
-                "vc_o": vc_o,
-                "vc_p": vc_p,
-                "vc_q": vc_q,
-                },
-            "contrabass": {
-                "time_sig": time_sig,
-                "rest": rest
-                }
-            }
-    return wwinds
+    instruments = {
+        "flOne": {
+            "time_sig": time_sig,
+            "chorale_Sa": chorale_Sa,
+            "chorale_Sb": chorale_Sb,
+            "chorale_Sc": chorale_Sc,
+            "chorale_Sd": chorale_Sd,
+            "chorale_Se": chorale_Se,
+            "chorale_Sf": chorale_Sf,
+            "chorale_Sg": chorale_Sg,
+            "chorale_Sh": chorale_Sh,
+            "chorale_Si": chorale_Si,
+            "chorale_Sj": chorale_Sj,
+            "chorale_Sk": chorale_Sk,
+            "chorale_Sl": chorale_Sl,
+            "chorale_Sm": chorale_Sm,
+            "chorale_Sn": chorale_Sn,
+            "chorale_So": chorale_So,
+            "chorale_Sp": chorale_Sp,
+            "chorale_Sq": chorale_Sq,
+        },
+        "flTwo": {
+            "time_sig": time_sig,
+            "chorale_Aa": chorale_Aa,
+            "chorale_Ab": chorale_Ab,
+            "chorale_Ac": chorale_Ac,
+            "chorale_Ad": chorale_Ad,
+            "chorale_Ae": chorale_Ae,
+            "chorale_Af": chorale_Af,
+            "chorale_Ag": chorale_Ag,
+            "chorale_Ah": chorale_Ah,
+            "chorale_Ai": chorale_Ai,
+            "chorale_Aj": chorale_Aj,
+            "chorale_Ak": chorale_Ak,
+            "chorale_Al": chorale_Al,
+            "chorale_Am": chorale_Am,
+            "chorale_An": chorale_An,
+            "chorale_Ao": chorale_Ao,
+            "chorale_Ap": chorale_Ap,
+            "chorale_Aq": chorale_Aq,
+        },
+        "obOne": {
+            "time_sig": time_sig,
+            "desc_a": desc_a,
+            "desc_b": desc_b,
+            "desc_c": desc_c,
+            "desc_d": desc_d,
+            "desc_e": desc_e,
+            "desc_f": desc_f,
+            "desc_g": desc_g,
+            "desc_h": desc_h,
+            "desc_i": desc_i,
+            "desc_j": desc_j,
+            "desc_k": desc_k,
+            "desc_l": desc_l,
+            "desc_m": desc_m,
+            "desc_n": desc_n,
+            "desc_o": desc_o,
+            "desc_p": desc_p,
+            "desc_q": desc_q,
+        },
+        "obTwo": {
+            "time_sig": time_sig,
+            "orn_a": orn_a,
+            "orn_b": orn_b,
+            "orn_c": orn_c,
+            "orn_d": orn_d,
+            "orn_e": orn_e,
+            "orn_f": orn_f,
+            "orn_g": orn_g,
+            "orn_h": orn_h,
+            "orn_i": orn_i,
+            "orn_j": orn_j,
+            "orn_k": orn_k,
+            "orn_l": orn_l,
+            "orn_m": orn_m,
+            "orn_n": orn_n,
+            "orn_o": orn_o,
+        },
+        "clOne": {
+            "time_sig": time_sig,
+            "chorale_Ta": chorale_Ta,
+            "chorale_Tb": chorale_Tb,
+            "chorale_Tc": chorale_Tc,
+            "chorale_Td": chorale_Td,
+            "chorale_Te": chorale_Te,
+            "chorale_Tf": chorale_Tf,
+            "chorale_Tg": chorale_Tg,
+            "chorale_Th": chorale_Th,
+            "chorale_Ti": chorale_Ti,
+            "chorale_Tj": chorale_Tj,
+            "chorale_Tk": chorale_Tk,
+            "chorale_Tl": chorale_Tl,
+            "chorale_Tm": chorale_Tm,
+            "chorale_Tn": chorale_Tn,
+            "chorale_To": chorale_To,
+            "chorale_Tp": chorale_Tp,
+            "chorale_Tq": chorale_Tq,
+        },
+        "clTwo": {
+            "time_sig": time_sig,
+            "chorale_Ba": chorale_Ba,
+            "chorale_Bb": chorale_Bb,
+            "chorale_Bc": chorale_Bc,
+            "chorale_Bd": chorale_Bd,
+            "chorale_Be": chorale_Be,
+            "chorale_Bf": chorale_Bf,
+            "chorale_Bg": chorale_Bg,
+            "chorale_Bh": chorale_Bh,
+            "chorale_Bi": chorale_Bi,
+            "chorale_Bj": chorale_Bj,
+            "chorale_Bk": chorale_Bk,
+            "chorale_Bl": chorale_Bl,
+            "chorale_Bm": chorale_Bm,
+            "chorale_Bn": chorale_Bn,
+            "chorale_Bo": chorale_Bo,
+            "chorale_Bp": chorale_Bp,
+            "chorale_Bq": chorale_Bq,
+        },
+        "bsn": {
+            "time_sig": time_sig,
+            "bsn_a": bsn_a,
+            "bsn_b": bsn_b,
+            "bsn_c": bsn_c,
+            "bsn_d": bsn_d,
+            "bsn_e": bsn_e,
+            "bsn_f": bsn_f,
+            "bsn_g": bsn_g,
+            "bsn_h": bsn_h,
+            "bsn_i": bsn_i,
+            "bsn_j": bsn_j,
+            "bsn_k": bsn_k,
+            "bsn_l": bsn_l,
+            "bsn_m": bsn_m,
+            "bsn_n": bsn_n,
+            "bsn_o": bsn_o,
+            "bsn_p": bsn_p,
+            "bsn_q": bsn_q,
+        },
+        "hrnOneTwo": {"time_sig": time_sig, "rest": rest},
+        "hrnThreeFour": {"time_sig": time_sig, "rest": rest},
+        "trpOne": {"time_sig": time_sig, "rest": rest},
+        "trpTwo": {"time_sig": time_sig, "rest": rest},
+        "trb": {"time_sig": time_sig, "rest": rest},
+        "btrb": {"time_sig": time_sig, "rest": rest},
+        "tuba": {"time_sig": time_sig, "rest": rest},
+        "harp": {
+            "time_sig": time_sig,
+            "chord_a": chord_a,
+            "chord_b": chord_b,
+            "chord_c": chord_c,
+            "chord_d": chord_d,
+            "chord_e": chord_e,
+            "chord_f": chord_f,
+            "chord_g": chord_g,
+            "chord_h": chord_h,
+            "chord_i": chord_i,
+            "chord_j": chord_j,
+            "chord_k": chord_k,
+            "chord_l": chord_l,
+            "chord_m": chord_m,
+            "chord_n": chord_n,
+            "chord_o": chord_o,
+            "chord_p": chord_p,
+            "chord_q": chord_q,
+        },
+        "percussion": {"time_sig": time_sig, "rest": rest},
+        "violinOne": {"time_sig": time_sig, "rest": rest},
+        "violinTwo": {"time_sig": time_sig, "rest": rest},
+        "viola": {"time_sig": time_sig, "rest": rest},
+        "cello": {
+            "time_sig": time_sig,
+            "vc_a": vc_a,
+            "vc_b": vc_b,
+            "vc_c": vc_c,
+            "vc_d": vc_d,
+            "vc_e": vc_e,
+            "vc_f": vc_f,
+            "vc_g": vc_g,
+            "vc_h": vc_h,
+            "vc_i": vc_i,
+            "vc_j": vc_j,
+            "vc_k": vc_k,
+            "vc_l": vc_l,
+            "vc_m": vc_m,
+            "vc_n": vc_n,
+            "vc_o": vc_o,
+            "vc_p": vc_p,
+            "vc_q": vc_q,
+        },
+        "contrabass": {"time_sig": time_sig, "rest": rest},
+    }
+    return instruments
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     outputheader()
     printmacros(MACROS)
-    instruments = ["flOne", "flTwo", "obOne", "obTwo", "clOne", "clTwo", "bsn",
-                   "hrnOneTwo", "hrnThreeFour", "trpOne", "trpTwo", "trb", "btrb", "tuba",
-                   "harp", "percussion",
-                   "violinOne", "violinTwo", "viola", "cello", "contrabass"
-            ]
+    instruments = [
+        "flOne",
+        "flTwo",
+        "obOne",
+        "obTwo",
+        "clOne",
+        "clTwo",
+        "bsn",
+        "hrnOneTwo",
+        "hrnThreeFour",
+        "trpOne",
+        "trpTwo",
+        "trb",
+        "btrb",
+        "tuba",
+        "harp",
+        "percussion",
+        "violinOne",
+        "violinTwo",
+        "viola",
+        "cello",
+        "contrabass",
+    ]
     segment = "segment_chorale"
     generate_chunk(get_segment, instruments, segment)

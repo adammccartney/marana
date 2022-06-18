@@ -169,7 +169,7 @@ fiveBarPause = { R1*5 }
     \new Voice {
       \bsn_segment_strings
       \bsn_segment_chorale
-      \bsn_segment_IYGH_B
+      \bsn_segment_IYGH_A
       \fiveBarPause
       \bsn_segment_IYGH_B
     } %% end of bsn notes
@@ -338,7 +338,7 @@ fiveBarPause = { R1*5 }
     \tempo 4 = 55 
     \clef "treble"
       \harp_segment_strings
-      \wwindChoraleGP
+      \harp_segment_chorale
       \iyghBrassGP
   }
 
