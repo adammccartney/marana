@@ -5,8 +5,138 @@ brassIYGH_A.py: script to generate a segment for the brass
 
 usage: python3 brassIYGH_A.py > brassIYGH_A.ly
 """
-from marana.tools import ( create_voice, outputheader, generate_chunk, mapRests )
+from marana.tools import ( convert,
+                           create_voice, 
+                           create_pitch_map,
+                           generate_chunk, 
+                           generate_phrases,
+                           outputheader, 
+                           mapRests )
+
+
 from stringcanon import printmacros
+
+CALL_ROOTS = ["bf", "bf", "bf", "f"]
+RESP_ROOTS = ["bf,", "bf,", "bf,", "f,", "d"]
+
+
+# we're going to create a pitch map for each of the tones we want to
+# articulate. 
+
+atups = [
+    create_pitch_map("obOne", CALL_ROOTS, "1-1/7"), # seventh
+    create_pitch_map("obTwo", CALL_ROOTS, "1-1/3"), # fifth
+    create_pitch_map("clOne", CALL_ROOTS, "1-3/5"), # third
+    create_pitch_map("clTwo", CALL_ROOTS, "2"),
+    create_pitch_map("tmp", CALL_ROOTS, "16"),
+    create_pitch_map("va", CALL_ROOTS, "2-2/3"),  # fifth
+    create_pitch_map("vc", CALL_ROOTS, "4"),
+    create_pitch_map("kb", CALL_ROOTS, "8")
+    ]
+
+call_dict = convert(atups, {})
+
+btups = [
+    create_pitch_map("fluteOne", CALL_ROOTS, "1-1/7"),
+    create_pitch_map("fluteTwo", CALL_ROOTS, "1-1/3"),
+    create_pitch_map("bsn", CALL_ROOTS, "16"),
+    create_pitch_map("vibes", CALL_ROOTS, "1-3/5"),
+    create_pitch_map("vnone", CALL_ROOTS, "1-1/7"),
+    create_pitch_map("vntwo", CALL_ROOTS, "1-1/3")
+        ]
+
+resp_dict = convert(btups, {})
+
+# Then the templates will be filled with a consistent call to
+# filltemplates(), which takes the newly created matrix as an arg
+
+TEMPLATE_MAP = {
+        "obOne": """r4 {0}4\\fp\\> ~ {0}8\\ppp r8 r4
+                    r4 {1}4\\fp\\> ~ {1}8\\ppp r8 r4
+                    r4 {2}4\\fp\\> ~ {2}8\\ppp r8 r4
+                    r4 {3}4\\fp\\> ~ {3}8\\ppp r8 r4
+                    r1
+                 """,
+        "obTwo": """r4 {0}4\\fp\\> ~ {0}8\\ppp r8 r4
+                    r4 {1}4\\fp\\> ~ {1}8\\ppp r8 r4
+                    r4 {2}4\\fp\\> ~ {2}8\\ppp r8 r4
+                    r4 {3}4\\fp\\> ~ {3}8\\ppp r8 r4
+                    r1
+                 """,
+        "clOne": """r4 {0}2\\fp\\> {0}4\\ppp
+                    r4 {1}2\\fp\\> {1}4\\ppp
+                    r4 {2}2\\fp\\> {2}4\\ppp
+                    r4 {3}2\\fp\\> {3}4\\ppp
+                    r1                 
+                 """,
+        "clTwo": """r4 {0}2\\fp\\> {0}4\\ppp
+                    r4 {1}2\\fp\\> {1}4\\ppp
+                    r4 {2}2\\fp\\> {2}4\\ppp
+                    r4 {3}2\\fp\\> {3}4\\ppp
+                    r1                 
+                 """,
+        "tmp": """r4 {0}8-.\\f r8 r2
+                  r4 {1}8-.\\f r8 r2
+                  r4 {2}8-.\\f r8 r2
+                  r4 {3}8-.\\f r8 r2
+                  r1
+                 """,
+        "va": """r4 {0}2.\\fp\\> ~
+                 {0}4\\ppp {1}2.\\fp\\> ~ 
+                 {1}4\\ppp {2}2.\\fp\\> ~ 
+                 {2}4\\ppp {3}2.\\fp\\> ~ 
+                 {3}1\\ppp
+                 """,
+        "vc": """r4 {0}2.\\fp\\> ~
+                 {0}4\\ppp {1}2.\\fp\\> ~ 
+                 {1}4\\ppp {2}2.\\fp\\> ~ 
+                 {2}4\\ppp {3}2.\\fp\\> ~ 
+                 {3}1\\ppp
+                 """,        
+        "kb": """r4 {0}2.\\fp\\> ~
+                 {0}4\\ppp {1}2.\\fp\\> ~ 
+                 {1}4\\ppp {2}2.\\fp\\> ~ 
+                 {2}4\\ppp {3}2.\\fp\\> ~ 
+                 {3}1\\ppp
+                 """,       
+      "fluteOne": """r2 r8 {0}8\\fp\\> ~ {0}4~ 
+                  {0}4\\ppp r4 r8 {1}8\\fp\\> ~ {1}4~
+                  {1}4\\ppp r4 r8 {2}8\\fp\\> ~ {2}4~
+                  {2}4\\ppp r4 r8 {3}8\\fp\\> ~ {3}4~
+                  {3}4\\ppp r2.
+                  """,
+      "fluteTwo": """r2 r8 {0}8\\fp\\> ~ {0}4~ 
+                  {0}4\\ppp r4 r8 {1}8\\fp\\> ~ {1}4~
+                  {1}4\\ppp r4 r8 {2}8\\fp\\> ~ {2}4~
+                  {2}4\\ppp r4 r8 {3}8\\fp\\> ~ {3}4~
+                  {3}4\\ppp r2.
+                  """,      
+      "bsn": """r2 r8 {0}8\\fp\\> ~ {0}4~ 
+                {0}2\\ppp r8 {1}8\\fp\\> ~ {1}4~
+                {1}2\\ppp r8 {2}8\\fp\\> ~ {2}4~
+                {2}2\\ppp r8 {3}8\\fp\\> ~ {3}4~
+                {3}4\\ppp r2.
+             """,      
+    "vibes"   : """r2 r8 {0}8\\fp\\> ~ {0}4~ 
+                {0}2\\ppp r8 {1}8\\fp\\> ~ {1}4~
+                {1}2\\ppp r8 {2}8\\fp\\> ~ {2}4~
+                {2}2\\ppp r8 {3}8\\fp\\> ~ {3}4~
+                {3}4\\ppp r2.
+             """, 
+      "vnone":  """r2 r8 {0}8\\fp\\> ~ {0}4~ 
+                {0}2\\ppp ~ {0}8 {1}8\\fp\\> ~ {1}4~
+                {1}2\\ppp ~ {1}8 {2}8\\fp\\> ~ {2}4~
+                {2}2\\ppp ~ {2}8 {3}8\\fp\\> ~ {3}4~
+                {3}1\\ppp 
+             """,
+      "vntwo":  """r2 r8 {0}8\\fp\\> ~ {0}4~ 
+                {0}2\\ppp ~ {0}8 {1}8\\fp\\> ~ {1}4~
+                {1}2\\ppp ~ {1}8 {2}8\\fp\\> ~ {2}4~
+                {2}2\\ppp ~ {2}8 {3}8\\fp\\> ~ {3}4~
+                {3}1\\ppp 
+             """    
+}
+
 
 MACROS = {
         "VIA_SORD": "viaSord = \\markup { via sord. }"
@@ -29,6 +159,9 @@ idx_even = [0, 2, 4]
 
 rested_calls = mapRests(idx_odd, CALLS)
 rested_resps = mapRests(idx_odd, RESPS)
+
+call_phrases = generate_phrases(call_dict, TEMPLATE_MAP)
+resp_phrases = generate_phrases(resp_dict, TEMPLATE_MAP)
 
 IYGH_PHRASES = {
     #######################################################################
@@ -169,15 +302,44 @@ def get_brass_section() -> dict:
     VIA_SORD = "^\\viaSord"
 
 
-    brass = {
+    instruments = {
+            "fluteOne": { 
+                "tempo_fast": TEMPO_FAST, 
+                "resp": resp_phrases["fluteOne"]
+                },
+            "fluteTwo": {
+                "tempo_fast": TEMPO_FAST, 
+                "resp": resp_phrases["fluteTwo"]
+                },
+            "clOne"   : {
+                "tempo_fast": TEMPO_FAST, 
+                "call": call_phrases["clOne"]
+                },
+            "clTwo"   : {
+                "tempo_fast": TEMPO_FAST, 
+                "call": call_phrases["clTwo"]
+                },
+            "obOne"   : {
+                "tempo_fast": TEMPO_FAST, 
+                "call": call_phrases["obOne"]
+                },
+            "obTwo"   : {
+                "tempo_fast": TEMPO_FAST, 
+                "call": call_phrases["obTwo"]
+                },
+            "bsn"     : {
+                "tempo_fast": TEMPO_FAST, 
+                "resp": resp_phrases["bsn"]
+                },
+
             "trpOneTwo": {
+                "tempo_fast": TEMPO_FAST, 
                 "via_sord": VIA_SORD,
                 "call_aa": call_aa_octve, 
                 "call_ab": call_ab_octve,
                 "call_ba": call_ba_octve,
                 "call_bb": call_bb_octve,
                 "call_bc": call_bc_octve,
-                "tempo_fast": TEMPO_FAST, 
                 "chorus_aa": chorus_aa_octve,
                 "chorus_ab": chorus_ab_octve,
                 "chorus_ac": chorus_ac_octve,
@@ -185,13 +347,13 @@ def get_brass_section() -> dict:
                 "chorus_ae": chorus_ae_octve,
                 },
             "trpThree": {
+                "tempo_fast": TEMPO_FAST, 
                 "via_sord": VIA_SORD,
                 "call_aa": call_aa_5ve, 
                 "call_ab": call_ab_5ve,
                 "call_ba": call_ba_5ve,
                 "call_bb": call_bb_5ve,
                 "call_bc": call_bc_5ve,
-                "tempo_fast": TEMPO_FAST, 
                 "chorus_aa": chorus_triplets_aa,
                 "chorus_ab": chorus_triplets_ab,
                 "chorus_ac": chorus_triplets_ac,
@@ -199,13 +361,13 @@ def get_brass_section() -> dict:
                 "chorus_ae": chorus_triplets_ae,
                 },
             "hrnOne": {
+                "tempo_fast": TEMPO_FAST, 
                 "via_sord": VIA_SORD,
                 "resp_aa": resp_aa_octve, 
                 "resp_ab": resp_ab_octve,
                 "resp_ba": resp_ba_octve,
                 "resp_bb": resp_bb_octve,
                 "resp_bc": resp_bc_octve,
-                "tempo_fast": TEMPO_FAST, 
                 "chorus_aa": chorus_triplets_aa_fifve,
                 "chorus_ab": chorus_triplets_ab_fifve,
                 "chorus_ac": chorus_triplets_ac_fifve,
@@ -213,13 +375,13 @@ def get_brass_section() -> dict:
                 "chorus_ae": chorus_triplets_ae_fifve,
                 },
             "hrnTwo": {
+                "tempo_fast": TEMPO_FAST, 
                 "via_sord": VIA_SORD,
                 "resp_aa": resp_aa, 
                 "resp_ab": resp_ab,
                 "resp_ba": resp_ba,
                 "resp_bb": resp_bb,
                 "resp_bc": resp_bc,
-                "tempo_fast": TEMPO_FAST, 
                 "chorus_aa": chorus_triplets_aa_fifvb,
                 "chorus_ab": chorus_triplets_ab_fifvb,
                 "chorus_ac": chorus_triplets_ac_fifvb,
@@ -227,13 +389,13 @@ def get_brass_section() -> dict:
                 "chorus_ae": chorus_triplets_ae_fifvb,
                 },
             "hrnThree": {
+                "tempo_fast": TEMPO_FAST, 
                 "via_sord": VIA_SORD,
                 "resp_aa": resp_aa_fifve, 
                 "resp_ab": resp_ab_fifve,
                 "resp_ba": resp_ba_fifve,
                 "resp_bb": resp_bb_fifve,
                 "resp_bc": resp_bc_fifve,
-                "tempo_fast": TEMPO_FAST, 
                 "chorus_aa": chorus_triplets_aa,
                 "chorus_ab": chorus_triplets_ab,
                 "chorus_ac": chorus_triplets_ac,
@@ -241,13 +403,13 @@ def get_brass_section() -> dict:
                 "chorus_ae": chorus_triplets_ae,
                 },
             "hrnFour": {
+                "tempo_fast": TEMPO_FAST, 
                 "via_sord": VIA_SORD,
                 "resp_aa": resp_aa_fourvb, 
                 "resp_ab": resp_ab_fourvb,
                 "resp_ba": resp_ba_fourvb,
                 "resp_bb": resp_bb_fourvb,
                 "resp_bc": resp_bc_fourvb,
-                "tempo_fast": TEMPO_FAST, 
                 "chorus_aa": chorus_triplets_aa_octvb,
                 "chorus_ab": chorus_triplets_ab_octvb,
                 "chorus_ac": chorus_triplets_ac_octvb,
@@ -255,13 +417,13 @@ def get_brass_section() -> dict:
                 "chorus_ae": chorus_triplets_ae_octvb,
                 },
             "tuba": {
+                "tempo_fast": TEMPO_FAST, 
                 "via_sord": VIA_SORD,
                 "resp_aa": resp_aa_octvb, 
                 "resp_ab": resp_ab_octvb,
                 "resp_ba": resp_ba_octvb,
                 "resp_bb": resp_bb_octvb,
                 "resp_bc": resp_bc_octvb,
-                "tempo_fast": TEMPO_FAST, 
                 "chorus_aa": chorus_triplets_aa_octvb,
                 "chorus_ab": chorus_triplets_ab_octvb,
                 "chorus_ac": chorus_triplets_ac_octvb,
@@ -269,13 +431,13 @@ def get_brass_section() -> dict:
                 "chorus_ae": chorus_triplets_ae_octvb,
                 },
             "trbOneTwo": {
+                "tempo_fast": TEMPO_FAST, 
                 "via_sord": VIA_SORD,
                 "call_aa": call_aa,
                 "call_ab": call_ab,
                 "call_ba": call_ba,
                 "call_bb": call_bb,
                 "call_bc": call_bc,
-                "tempo_fast": TEMPO_FAST, 
                 "chorus_eights_aa": chorus_eights_aa,
                 "chorus_eights_ab": chorus_eights_ab,
                 "chorus_eights_ac": chorus_eights_ac,
@@ -283,27 +445,58 @@ def get_brass_section() -> dict:
                 "chorus_eights_ae": chorus_eights_ae,
                 },
             "btrb": {
+                "tempo_fast": TEMPO_FAST, 
                 "via_sord": VIA_SORD,
                 "call_aa_octvb": call_aa_octvb,
                 "call_ab_octvb": call_ab_octvb,
                 "call_ba_octvb": call_ba_octvb,
                 "call_bb_octvb": call_bb_octvb,
                 "call_bc_octvb": call_bc_octvb,
-                "tempo_fast": TEMPO_FAST, 
                 "chorus_eights_aa": chorus_eights_aa_octvb,
                 "chorus_eights_ab": chorus_eights_ab_octvb,
                 "chorus_eights_ac": chorus_eights_ac_octvb,
                 "chorus_eights_ad": chorus_eights_ad_octvb,
                 "chorus_eights_ae": chorus_eights_ae_octvb,
-                }
+                },
+            "tmp"   : {
+                    "tempo_fast": TEMPO_FAST, 
+                    "call": call_phrases["tmp"]
+                    },
+            "vibes" : {
+                    "tempo_fast": TEMPO_FAST, 
+                    "resp": resp_phrases["vibes"]
+                    },
+            "vnone" : {
+                    "tempo_fast": TEMPO_FAST, 
+                    "resp": resp_phrases["vnone"]
+                    },
+            "vntwo" : {
+                    "tempo_fast": TEMPO_FAST, 
+                    "resp": resp_phrases["vntwo"]
+                    },
+            "va"    : {
+                    "tempo_fast": TEMPO_FAST, 
+                    "call": call_phrases["va"]
+                    },
+            "vc"    : {
+                    "tempo_fast": TEMPO_FAST, 
+                    "call": call_phrases["vc"]
+                    },
+            "kb"    : {
+                    "tempo_fast": TEMPO_FAST, 
+                    "call": call_phrases["kb"]
+                    }
             }
-    return brass
+    return instruments
 
 
 if __name__ == '__main__':
     outputheader()
     printmacros(MACROS)
-    instruments = ["hrnOne", "hrnTwo", "hrnThree", "hrnFour", "trpOneTwo", "trpThree",
-                   "trbOneTwo", "btrb", "tuba"]
+    instruments = ["fluteOne", "fluteTwo", "clOne", "clTwo", "obOne", "obTwo",
+                   "bsn", "hrnOne", "hrnTwo", "hrnThree", "hrnFour", "trpOneTwo", 
+                   "trpThree", "trbOneTwo", "btrb", "tuba", "tmp", "vibes",
+                   "vnone", "vntwo", "va", "vc", "kb"
+                   ]
     segment = "segment_IYGH_A"
     generate_chunk(get_brass_section, instruments, segment)

@@ -9,8 +9,8 @@ usage: python3 brassIYGH_A.py > brassIYGH_A.ly
 from marana.tools import ( convert,
                            create_voice, 
                            create_pitch_map,
-                           fill_simple_template,
                            generate_chunk, 
+                           generate_phrases,
                            outputheader, 
                            mapRests )
 
@@ -49,115 +49,91 @@ resp_dict = convert(btups, {})
 # filltemplates(), which takes the newly created matrix as an arg
 
 TEMPLATE_MAP = {
-        "obOne": """
-                    r8 {0}8\\fp\\> ~ {0}8\\ppp r8 r2 
-                    r8 {1}8\\fp\\> ~ {1}8\\ppp r8 r2 
-                    r8 {2}8\\fp\\> ~ {2}8\\ppp r8 r2 
-                    r8 {3}8\\fp\\> ~ {3}8\\ppp r8 r2 
+        "obOne": """r8 {0}8\\fp\\> ~ {0}4. r8\\ppp r4
+                    r8 {1}8\\fp\\> ~ {1}4. r8\\ppp r4
+                    r8 {2}8\\fp\\> ~ {2}4. r8\\ppp r4
+                    r8 {3}8\\fp\\> ~ {3}4. r8\\ppp r4
+                    r1
                  """,
-        "obTwo": """
-                    r8 {0}8\\fp\\> ~ {0}4\\ppp r2 
-                    r8 {1}8\\fp\\> ~ {1}4\\ppp r2 
-                    r8 {2}8\\fp\\> ~ {2}4\\ppp r2 
-                    r8 {3}8\\fp\\> ~ {3}4\\ppp r2 
+        "obTwo": """r8 {0}8\\fp\\> ~ {0}4. r8\\ppp r4
+                    r8 {1}8\\fp\\> ~ {1}4. r8\\ppp r4
+                    r8 {2}8\\fp\\> ~ {2}4. r8\\ppp r4
+                    r8 {3}8\\fp\\> ~ {3}4. r8\\ppp r4
+                    r1
                  """,
-        "clOne": """
-                    r8 {0}8\\fp\\> ~ {0}4.\\ppp r4. 
-                    r8 {1}8\\fp\\> ~ {1}4.\\ppp r4.
-                    r8 {2}8\\fp\\> ~ {2}4.\\ppp r4.
-                    r8 {3}8\\fp\\> ~ {3}4.\\ppp r4.
+        "clOne": """r8 {0}8\\fp\\> ~ {0}2~ {0}4\\ppp
+                    r8 {1}8\\fp\\> ~ {1}2~ {1}4\\ppp
+                    r8 {2}8\\fp\\> ~ {2}2~ {2}4\\ppp
+                    r8 {3}8\\fp\\> ~ {3}2~ {3}4\\ppp
+                    r1                 
                  """,
-        "clTwo": """
-                    r8 {0}8\\fp\\> ~ {0}2\\ppp r4 
-                    r8 {1}8\\fp\\> ~ {1}2\\ppp r4
-                    r8 {2}8\\fp\\> ~ {2}2\\ppp r4
-                    r8 {3}8\\fp\\> ~ {3}2\\ppp r4
+        "clTwo": """r8 {0}8\\fp\\> ~ {0}2~ {0}4\\ppp
+                    r8 {1}8\\fp\\> ~ {1}2~ {1}4\\ppp
+                    r8 {2}8\\fp\\> ~ {2}2~ {2}4\\ppp
+                    r8 {3}8\\fp\\> ~ {3}2~ {3}4\\ppp
+                    r1
                  """,
-        "tmp": """
-                    r8 {0}8-.\\f r2.
-                    r8 {1}8-.\\f r2.
-                    r8 {2}8-.\\f r2.
-                    r8 {3}8-.\\f r2.
+        "tmp": """r8 {0}8-.\\f r2.
+                 r8 {1}8-.\\f r2.
+                 r8 {2}8-.\\f r2.
+                 r8 {3}8-.\\f r2.
+                 r1
                  """,
-        "va": """
-                    r8 {0}8\\fp\\> ~ {0}2. ~
-                    {0}8\\ppp {1}8\\fp\\> ~ {1}2. ~
-                    {1}8\\ppp {2}8\\fp\\> ~ {2}2
-                    {2}8\\ppp {3}8\\fp\\> ~ {3}2.\\ppp
+        "va": """r8 {0}8\\fp\\> ~ {0}2. ~
+                 {0}8\\ppp {1}8\\fp\\> ~ {1}2. ~
+                 {1}8\\ppp {2}8\\fp\\> ~ {2}2. ~
+                 {2}8\\ppp {3}8\\fp\\> ~ {3}2. ~
+                 {3}1\\ppp
                  """,
-        "vc": """
-                    r8 {0}8\\fp\\> ~ {0}2. ~
-                    {0}8\\ppp {1}8\\fp\\> ~ {1}2. ~
-                    {1}8\\ppp {2}8\\fp\\> ~ {2}2
-                    {2}8\\ppp {3}8\\fp\\> ~ {3}2.\\ppp
+        "vc": """r8 {0}8\\fp\\> ~ {0}2. ~
+                 {0}8\\ppp {1}8\\fp\\> ~ {1}2. ~
+                 {1}8\\ppp {2}8\\fp\\> ~ {2}2. ~
+                 {2}8\\ppp {3}8\\fp\\> ~ {3}2. ~
+                 {3}1\\ppp
                  """,
-        "kb": """
-                    r8 {0}8\\fp\\> ~ {0}2. ~
-                    {0}8\\ppp {1}8\\fp\\> ~ {1}2. ~
-                    {1}8\\ppp {2}8\\fp\\> ~ {2}2
-                    {2}8\\ppp {3}8\\fp\\> ~ {3}2.\\ppp
+        "kb": """r8 {0}8\\fp\\> ~ {0}2. ~
+                 {0}8\\ppp {1}8\\fp\\> ~ {1}2. ~
+                 {1}8\\ppp {2}8\\fp\\> ~ {2}2. ~
+                 {2}8\\ppp {3}8\\fp\\> ~ {3}2. ~
+                 {3}1\\ppp
                  """,
-      "fluteOne": """
-                  r2. {0}4\\fp\\> ~ 
+      "fluteOne": """r2. {0}4\\fp\\> ~ 
                   {0}4\\ppp r2 {1}4\\fp\\> ~
                   {1}4\\ppp r2 {2}4\\fp\\> ~
                   {2}4\\ppp r2 {3}4\\fp\\> ~
                   {3}4\\ppp r2.
                   """,
-      "fluteTwo": """
-                  r2. {0}4\\fp\\> ~ 
-                  {0}4.\\ppp r4. {1}4\\fp\\> ~
-                  {1}4.\\ppp r4. {2}4\\fp\\> ~
-                  {2}4.\\ppp r4. {3}4\\fp\\> ~
-                  {3}4.\\ppp r2.
+      "fluteTwo": """r2. {0}4\\fp\\> ~ 
+                  {0}4.\\ppp r8 r4 {1}4\\fp\\> ~
+                  {1}4.\\ppp r8 r4 {2}4\\fp\\> ~
+                  {2}4.\\ppp r8 r4 {3}4\\fp\\> ~
+                  {3}4.\\ppp r8 r2
                   """,
-      "bsn": """
-                  r2. {0}4\\fp\\> ~ 
-                  {0}2\\ppp r4 {1}4\\fp\\> ~
-                  {1}2\\ppp r4 {2}4\\fp\\> ~
-                  {2}2\\ppp r4 {3}4\\fp\\> ~
-                  {3}2\\ppp r2
-                  """,
-      "vibes"   : """
-                  r2. {0}4\\f ~ 
+      "bsn": """r2. {0}4\\fp\\> ~ 
+                {0}2\\ppp r4 {1}4\\fp\\> ~
+                {1}2\\ppp r4 {2}4\\fp\\> ~
+                {2}2\\ppp r4 {3}4\\fp\\> ~
+                {3}2\\ppp r2
+                """,
+      "vibes"   : """r2. {0}4\\f ~ 
                   {0}2. {1}4\\f ~
                   {1}2. {2}4\\f ~
                   {2}2. {3}4\\f ~
                   {3}2 r2
                   """,
-      "vnone":  """
-                  r2. {0}4\\fp\\> ~ 
+      "vnone":  """r2. {0}4\\fp\\> ~ 
                   {0}2\\ppp r4 {1}4\\fp\\> ~
                   {1}2\\ppp r4 {2}4\\fp\\> ~
                   {2}2\\ppp r4 {3}4\\fp\\> ~
                   {3}2\\ppp r2
                   """,
-      "vntwo":  """
-                  r2. {0}4\\fp\\> ~ 
+      "vntwo":  """r2. {0}4\\fp\\> ~ 
                   {0}2\\ppp r4 {1}4\\fp\\> ~
                   {1}2\\ppp r4 {2}4\\fp\\> ~
                   {2}2\\ppp r4 {3}4\\fp\\> ~
                   {3}2\\ppp r2
                   """    
 }
-
-def generate_phrases(pitchmap: dict, templatemap: dict) -> dict:
-    """
-    uses key value pairing to populate templates with real pitches
-
-    returns a phrasemap
-
-    assumes pitchmap.keys() == templatemap.keys() == phrasemap.keys()
-    """
-    phrasemap = {}
-    for k in pitchmap.keys():
-        phrase = fill_simple_template(templatemap[k], pitchmap[k])
-        phrasemap.setdefault(k, phrase)
-    return phrasemap
-
-
-call_phrases = generate_phrases(call_dict, TEMPLATE_MAP)
-print(call_phrases)
 
 
 CALLS = ["r8 bf8-.\\sfp d'8 bf8-. f2",
@@ -177,6 +153,9 @@ idx_even = [0, 2, 4]
 
 rested_calls = mapRests(idx_odd, CALLS)
 rested_resps = mapRests(idx_even, RESPS)
+
+call_phrases = generate_phrases(call_dict, TEMPLATE_MAP)
+resp_phrases = generate_phrases(resp_dict, TEMPLATE_MAP)
 
 IYGH_PHRASES = {
     #######################################################################
@@ -211,13 +190,16 @@ IYGH_PHRASES = {
     "chorus_triplets_ad": """\\tuplet 3/2 {c'8-. c'-. c'-.} \\tuplet 3/2 {c'8-. c'-. c'-.)}
                              \\tuplet 3/2 {d'8-.( d'-. d'-.} \\tuplet 3/2 {ef'8-. ef'-. ef'-.}""",
     "chorus_triplets_ae": """\\tuplet 3/2 {f'8-. f'-. f'-.} \\tuplet 3/2 {f'8-. f'-. f'-.)} f'2\\mf""",
+
 }
 
 def get_brass_section() -> dict:
     """  
     creates a dictionary of brass voices 
     """
+
     call_aa_15ve = create_voice(IYGH_PHRASES["call_aa"], 24) # call aa up the 15ave
+    
     call_ab_15ve = create_voice(IYGH_PHRASES["call_ab"], 24) # call ab up the 15ave
     call_ba_15ve = create_voice(IYGH_PHRASES["call_ba"], 24) # call ba up the 15ave
     call_bb_15ve = create_voice(IYGH_PHRASES["call_bb"], 24) # call bb up the 15ave
@@ -318,16 +300,51 @@ def get_brass_section() -> dict:
 
     TEMPO_FAST = "\\tempo 4 = 116"
     FINAL_BARLINE = "\\bar \"|.\""
+    FIVE_BAR_REST = "r1 * 5"
 
 
-    brass = {
+    instruments = {
+            "fluteOne": { 
+                "resp": resp_phrases["fluteOne"],
+                "rest": FIVE_BAR_REST,
+                "final_barline": FINAL_BARLINE
+                },
+            "fluteTwo": {
+                "resp": resp_phrases["fluteTwo"],
+                "rest": FIVE_BAR_REST,
+                    "final_barline": FINAL_BARLINE
+                },
+            "clOne"   : {
+                "call": call_phrases["clOne"],
+                "rest": FIVE_BAR_REST,
+                "final_barline": FINAL_BARLINE
+                },
+            "clTwo"   : {
+                "call": call_phrases["clTwo"], 
+                "rest": FIVE_BAR_REST,
+                "final_barline": FINAL_BARLINE
+                },
+            "obOne"   : {
+                "call": call_phrases["obOne"],
+                "rest": FIVE_BAR_REST,
+                "final_barline": FINAL_BARLINE
+                },
+            "obTwo"   : {
+                "call": call_phrases["obTwo"],
+                "rest": FIVE_BAR_REST,
+                "final_barline": FINAL_BARLINE
+                },
+            "bsn"     : {
+                "resp": resp_phrases["bsn"],
+                "rest": FIVE_BAR_REST,
+                "final_barline": FINAL_BARLINE
+                },
             "trpOneTwo": {
                 "call_aa": call_aa_octve, 
                 "call_ab": call_ab_octve,
                 "call_ba": call_ba_octve,
                 "call_bb": call_bb_octve,
                 "call_bc": call_bc_octve,
-                "tempo_fast": TEMPO_FAST, 
                 "chorus_aa": chorus_aa_octve,
                 "chorus_ab": chorus_ab_octve,
                 "chorus_ac": chorus_ac_octve,
@@ -341,7 +358,6 @@ def get_brass_section() -> dict:
                 "call_ba": call_ba_5ve,
                 "call_bb": call_bb_5ve,
                 "call_bc": call_bc_5ve,
-                "tempo_fast": TEMPO_FAST, 
                 "chorus_aa": chorus_triplets_aa,
                 "chorus_ab": chorus_triplets_ab,
                 "chorus_ac": chorus_triplets_ac,
@@ -355,7 +371,6 @@ def get_brass_section() -> dict:
                 "resp_ba": resp_ba_octve,
                 "resp_bb": resp_bb_octve,
                 "resp_bc": resp_bc_octve,
-                "tempo_fast": TEMPO_FAST, 
                 "chorus_aa": chorus_triplets_aa_fifve,
                 "chorus_ab": chorus_triplets_ab_fifve,
                 "chorus_ac": chorus_triplets_ac_fifve,
@@ -369,7 +384,6 @@ def get_brass_section() -> dict:
                 "resp_ba": resp_ba,
                 "resp_bb": resp_bb,
                 "resp_bc": resp_bc,
-                "tempo_fast": TEMPO_FAST, 
                 "chorus_aa": chorus_triplets_aa_fifvb,
                 "chorus_ab": chorus_triplets_ab_fifvb,
                 "chorus_ac": chorus_triplets_ac_fifvb,
@@ -383,7 +397,6 @@ def get_brass_section() -> dict:
                 "resp_ba": resp_ba_fifve,
                 "resp_bb": resp_bb_fifve,
                 "resp_bc": resp_bc_fifve,
-                "tempo_fast": TEMPO_FAST, 
                 "chorus_aa": chorus_triplets_aa,
                 "chorus_ab": chorus_triplets_ab,
                 "chorus_ac": chorus_triplets_ac,
@@ -397,7 +410,6 @@ def get_brass_section() -> dict:
                 "resp_ba": resp_ba_fourvb,
                 "resp_bb": resp_bb_fourvb,
                 "resp_bc": resp_bc_fourvb,
-                "tempo_fast": TEMPO_FAST, 
                 "chorus_aa": chorus_triplets_aa_octvb,
                 "chorus_ab": chorus_triplets_ab_octvb,
                 "chorus_ac": chorus_triplets_ac_octvb,
@@ -411,7 +423,6 @@ def get_brass_section() -> dict:
                 "resp_ba": resp_ba_octvb,
                 "resp_bb": resp_bb_octvb,
                 "resp_bc": resp_bc_octvb,
-                "tempo_fast": TEMPO_FAST, 
                 "chorus_aa": chorus_triplets_aa_octvb,
                 "chorus_ab": chorus_triplets_ab_octvb,
                 "chorus_ac": chorus_triplets_ac_octvb,
@@ -425,7 +436,6 @@ def get_brass_section() -> dict:
                 "call_ba": call_ba,
                 "call_bb": call_bb,
                 "call_bc": call_bc,
-                "tempo_fast": TEMPO_FAST, 
                 "chorus_eights_aa": chorus_eights_aa,
                 "chorus_eights_ab": chorus_eights_ab,
                 "chorus_eights_ac": chorus_eights_ac,
@@ -439,20 +449,57 @@ def get_brass_section() -> dict:
                 "call_ba_octvb": call_ba_octvb,
                 "call_bb_octvb": call_bb_octvb,
                 "call_bc_octvb": call_bc_octvb,
-                "tempo_fast": TEMPO_FAST, 
                 "chorus_eights_aa": chorus_eights_aa_octvb,
                 "chorus_eights_ab": chorus_eights_ab_octvb,
                 "chorus_eights_ac": chorus_eights_ac_octvb,
                 "chorus_eights_ad": chorus_eights_ad_octvb,
                 "chorus_eights_ae": chorus_eights_ae_octvb,
                 "final_barline": FINAL_BARLINE
-                }
+                },
+            "tmp"   : {
+                    "call": call_phrases["tmp"],
+                    "rest": FIVE_BAR_REST,
+                    "final_barline": FINAL_BARLINE
+                    },
+            "vibes" : {
+                    "resp": resp_phrases["vibes"],
+                    "rest": FIVE_BAR_REST,
+                    "final_barline": FINAL_BARLINE
+                    },
+            "vnone" : {
+                    "resp": resp_phrases["vnone"],
+                    "rest": FIVE_BAR_REST,
+                    "final_barline": FINAL_BARLINE
+                    },
+            "vntwo" : {
+                    "resp": resp_phrases["vntwo"],
+                    "rest": FIVE_BAR_REST,
+                    "final_barline": FINAL_BARLINE
+                    },
+            "va"    : {
+                    "call": call_phrases["va"],
+                    "rest": FIVE_BAR_REST,
+                    "final_barline": FINAL_BARLINE
+                    },
+            "vc"    : {
+                    "call": call_phrases["vc"],
+                    "rest": FIVE_BAR_REST,
+                    "final_barline": FINAL_BARLINE
+                    },
+            "kb"    : {
+                    "call": call_phrases["kb"],
+                    "rest": FIVE_BAR_REST,
+                    "final_barline": FINAL_BARLINE
+                    }
             }
-    return brass
+    return instruments
 
 if __name__ == '__main__':
     outputheader()
-    instruments = ["hrnOne", "hrnTwo", "hrnThree", "hrnFour", "trpOneTwo", "trpThree",
-                   "trbOneTwo", "btrb", "tuba"]
+    instruments = ["fluteOne", "fluteTwo", "clOne", "clTwo", "obOne", "obTwo",
+                   "bsn", "hrnOne", "hrnTwo", "hrnThree", "hrnFour", "trpOneTwo", 
+                   "trpThree", "trbOneTwo", "btrb", "tuba", "tmp", "vibes",
+                   "vnone", "vntwo", "va", "vc", "kb"
+                   ]
     segment = "segment_IYGH_B"
     generate_chunk(get_brass_section, instruments, segment)

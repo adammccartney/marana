@@ -11,6 +11,7 @@
 stringCanonGP = { R1*66 }
 wwindChoraleGP = { R1*17 }
 iyghBrassGP = { R1*20 }
+fiveBarPause = { R1*5 }
 
 \book {
 
@@ -62,9 +63,11 @@ iyghBrassGP = { R1*20 }
       \tempo 4 = 55
       
       \new Voice { 
-        \fluteOne_segment_strings
-        \flOne_segment_chorale 
-        \iyghBrassGP
+      \fluteOne_segment_strings
+      \flOne_segment_chorale 
+      \fluteOne_segment_IYGH_A
+      \fiveBarPause 
+      \fluteOne_segment_IYGH_B
       } % end of flute voice one 
     >>
     \new Staff \with {
@@ -76,9 +79,11 @@ iyghBrassGP = { R1*20 }
       \clef "treble"
       \tempo 4 = 55
       \new Voice {
-          \fluteTwo_segment_strings
-          \flTwo_segment_chorale
-          \iyghBrassGP
+      \fluteTwo_segment_strings
+      \flTwo_segment_chorale
+      \fluteTwo_segment_IYGH_A
+      \fiveBarPause
+      \fluteTwo_segment_IYGH_B
       } % end of flute voice two
     >> %% end of flute staff
 
@@ -94,7 +99,9 @@ iyghBrassGP = { R1*20 }
     \new Voice {
       \obOne_segment_strings
       \obOne_segment_chorale
-      \iyghBrassGP
+      \obOne_segment_IYGH_A
+      \fiveBarPause
+      \obOne_segment_IYGH_B
     } %% end of oboe notes
   >> %% end of oboe staff
 
@@ -110,7 +117,9 @@ iyghBrassGP = { R1*20 }
     \new Voice {
       \obTwo_segment_strings
       \obTwo_segment_chorale
-      \iyghBrassGP
+      \obTwo_segment_IYGH_A
+      \fiveBarPause
+      \obTwo_segment_IYGH_B
     } %% end of oboe notes
   >> %% end of oboe two staff
 
@@ -128,7 +137,9 @@ iyghBrassGP = { R1*20 }
     \new Voice {
       \clOne_segment_strings
       \clOne_segment_chorale 
-      \iyghBrassGP
+      \clOne_segment_IYGH_A
+      \fiveBarPause
+      \clOne_segment_IYGH_B
     } % end of clarinet 1, 2 voice one
   >>
     \new Staff \with {
@@ -139,7 +150,9 @@ iyghBrassGP = { R1*20 }
     \new Voice {
       \clTwo_segment_strings
       \clTwo_segment_chorale
-      \iyghBrassGP
+      \clTwo_segment_IYGH_A
+      \fiveBarPause
+      \clTwo_segment_IYGH_B
     } % end of clarinet 1, 2 voice two
   >> %% end clarinets
 
@@ -156,7 +169,9 @@ iyghBrassGP = { R1*20 }
     \new Voice {
       \bsn_segment_strings
       \bsn_segment_chorale
-      \iyghBrassGP
+      \bsn_segment_IYGH_B
+      \fiveBarPause
+      \bsn_segment_IYGH_B
     } %% end of bsn notes
   >> %% end of bsn staff
 
@@ -292,7 +307,9 @@ iyghBrassGP = { R1*20 }
     \clef "treble"
       \vibes_segment_strings
       \wwindChoraleGP
-      \iyghBrassGP
+      \vibes_segment_IYGH_A
+      \fiveBarPause
+      \vibes_segment_IYGH_B
   }
 
   \new Staff \with {
@@ -305,7 +322,9 @@ iyghBrassGP = { R1*20 }
     \clef "bass"
       \tmp_segment_strings
       \wwindChoraleGP
-      \iyghBrassGP
+      \tmp_segment_IYGH_A
+      \fiveBarPause
+      \tmp_segment_IYGH_B
   }
 >> %% end perc 
 
@@ -336,7 +355,9 @@ iyghBrassGP = { R1*20 }
         \clef "treble"
         \violinOne_segment_strings
       \wwindChoraleGP
-      \iyghBrassGP
+      \vnone_segment_IYGH_A
+      \fiveBarPause
+      \vnone_segment_IYGH_B
       }
 
       \new Staff \with {
@@ -349,7 +370,9 @@ iyghBrassGP = { R1*20 }
         \clef "treble"
         \violinTwo_segment_strings
       \wwindChoraleGP
-      \iyghBrassGP
+      \vntwo_segment_IYGH_A
+      \fiveBarPause
+      \vntwo_segment_IYGH_B
       } %% end of vln two notes
 
 
@@ -363,7 +386,9 @@ iyghBrassGP = { R1*20 }
         \clef "alto"
         \viola_segment_strings
       \wwindChoraleGP
-      \iyghBrassGP
+      \va_segment_IYGH_A
+      \fiveBarPause
+      \va_segment_IYGH_B
       } %% end of vla notes
 
 
@@ -377,7 +402,9 @@ iyghBrassGP = { R1*20 }
         \clef "bass"
         \cello_segment_strings
       \cello_segment_chorale
-      \iyghBrassGP
+      \vc_segment_IYGH_A
+      \fiveBarPause
+      \vc_segment_IYGH_B
       } %% end of cello notes
 
 
@@ -391,7 +418,9 @@ iyghBrassGP = { R1*20 }
         \clef "bass"
         \contrabass_segment_strings
       \wwindChoraleGP
-      \iyghBrassGP
+      \kb_segment_IYGH_A
+      \fiveBarPause
+      \kb_segment_IYGH_B
       } %% end of bsn notes
 
     >> %% end strings 
