@@ -8,7 +8,7 @@ import re
 import abjad 
 
 from collections import namedtuple
-from typing import Callable
+from typing import Callable, Tuple
 from abjad import Container, lilypond, Voice, Staff
 
 def stringify_container(container: Container) -> str:
