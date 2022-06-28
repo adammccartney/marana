@@ -1,4 +1,4 @@
-* Finalize workshop edits [5/7]
+* Finalize workshop edits [7/7]
 ** DONE Brass edits [6/6]
   - [X] Create higher / lower horn splits
   - [X] Add tempo changes
@@ -23,5 +23,36 @@
   - [X] develop "filter chords" harp figure in segment 2
   - [X] double bassoon line in segment 2
   - [X] recapitulate "filter chords" figure in segment 3 
-** TODO Harp pedaling
-** TODO Parts
+** DONE Harp pedaling
+** DONE Parts
+
+** TODO Proof Read
+*** Woodwinds
+  - [ ] fl 1
+  - [ ] fl 2
+  - [ ] ob 1
+  - [ ] ob 2
+  - [ ] cl 1
+  - [ ] cl 2
+  - [ ] bsn
+*** Brass
+  - [ ] hrn 1
+  - [ ] hrn 2
+  - [ ] hrn 3
+  - [ ] hrn 4
+  - [ ] trp 1
+  - [ ] trp 2
+  - [ ] trb
+  - [ ] tuba
+*** Perc
+  - [ ] timps
+  - [ ] vibes
+*** Strings
+  - [ ] harp
+  - [ ] vln1
+  - [ ] vln2
+  - [ ] vla
+  - [ ] vlc
+  - [ ] cb
+
+  
