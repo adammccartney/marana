@@ -1,7 +1,8 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments/stringcanon.ily"
+\include "./segments.ily"
+\include "../macros.ily"
 
 \book {
   
@@ -29,9 +30,16 @@
                            (/ myStaffSize 20))) 
   
   }
+  \header {
+      title = "marana"
+      instrument = "cello"
+      subtitle = ""
+      composer = "Adam McCartney"
+      tagline = ""
+    }
+
 
   \score {
-    \header {piece = "marana"}
   <<
 
     \new Staff \with {
@@ -45,10 +53,23 @@
       \tempo 4 = 55
     \new Voice {
         \cello_segment_strings
+        \cello_segment_chorale
+        \vc_segment_IYGH_A
+        \fiveBarPause
+        \vc_segment_IYGH_B
     } %% end of cello notes
   >> %% end of cello staff
 
   >> % score
+  \layout {
+           indent = 1\cm
+           % Increase the size of the bar number by 2
+           \override Score.BarNumber.font-size = #2
+           \set Score.markFormatter = #format-mark-box-alphabet
+           \override Score.RehearsalMark.font-size = #5 
+           \set Staff.barAlways = ##t
+           \set Staff.defaultBarType = ""  
+  }
  } % score
 } % book
  

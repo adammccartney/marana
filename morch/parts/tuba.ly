@@ -1,8 +1,8 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments/brassIYGH_A.ily"
-\include "../segments/brassIYGH_B.ily"
+\include "./segments.ily"
+\include "../macros.ily"
 
 \book {
   
@@ -31,13 +31,20 @@
   
   }
 
+  \header {
+      title = "marana"
+      instrument = "tuba"
+      subtitle = ""
+      composer = "Adam McCartney"
+      tagline = ""
+    }
+
   \score {
-    \header {piece = "marana, if you get to heaven sketch, euphonium"}
   <<
 
     \new Staff \with {
-      instrumentName = #"Euphonium"
-      shortInstrumentName = #"Euph."
+      instrumentName = #"Tuba"
+      shortInstrumentName = #"tb"
       midiInstrument = #"tuba"
     } <<
       \accidentalStyle modern-cautionary 
@@ -45,12 +52,23 @@
       \clef "bass"
       \tempo 4 = 55
     \new Voice {
-      \tuba_segment_IYGH_A
-      \tuba_segment_IYGH_B
+    \stringCanonGP
+    \wwindChoraleGP
+    \tuba_segment_IYGH_A
+    \tuba_segment_IYGH_B
     } %% end of bsn notes
   >> %% end of bsn staff
 
   >> % score
+  \layout {
+           indent = 1\cm
+           % Increase the size of the bar number by 2
+           \override Score.BarNumber.font-size = #2
+           \set Score.markFormatter = #format-mark-box-alphabet
+           \override Score.RehearsalMark.font-size = #5 
+           \set Staff.barAlways = ##t
+           \set Staff.defaultBarType = ""  
+  }
  } % score
 } % book
  

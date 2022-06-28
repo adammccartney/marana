@@ -1,23 +1,16 @@
 \version "2.22.0"
 \language "english"
 
-\include "./segments/stringcanon.ily"
-\include "./segments/wwindChorale.ily"
-\include "./segments/brassIYGH_A.ily"
-\include "./segments/brassIYGH_B.ily"
-
-%% MACROS
-
-stringCanonGP = { R1*66 }
-wwindChoraleGP = { R1*17 }
-iyghBrassGP = { R1*20 }
-fiveBarPause = { R1*5 }
+\include "./segments.ily"
+\include "./macros.ily"
 
 \book {
 
 
     \header {
       title = "marana"
+      subtitle = "score in c"
+      composer = "Adam McCartney"
       tagline = ""
   }
   
@@ -123,8 +116,6 @@ fiveBarPause = { R1*5 }
     } %% end of oboe notes
   >> %% end of oboe two staff
 
-
-
     \tag #'clarinets
     \new Staff \with {
       instrumentName = #"Clarinet in Bb 1"
@@ -198,7 +189,8 @@ fiveBarPause = { R1*5 }
     }
     \new Voice {
       \voiceTwo {
-        \override Voice.DynamicText.stencil = ##f
+      \override Voice.DynamicText.stencil = ##f
+      \override Voice.TextScript.stencil = ##f
       \hnTwo_segment_strings
       \wwindChoraleGP
       \hrnTwo_segment_IYGH_A
@@ -226,8 +218,8 @@ fiveBarPause = { R1*5 }
   }
   \new Voice {
     \voiceFour {
-
-        \override Voice.DynamicText.stencil = ##f
+      \override Voice.DynamicText.stencil = ##f
+      \override Voice.TextScript.stencil = ##f
       \hnFour_segment_strings
       \wwindChoraleGP
       \hrnFour_segment_IYGH_A
@@ -285,8 +277,8 @@ fiveBarPause = { R1*5 }
     \accidentalStyle modern-cautionary 
     \tempo 4 = 55
     \clef "bass"
-      \stringCanonGP
-      \wwindChoraleGP
+    \stringCanonGP
+    \wwindChoraleGP
     \tuba_segment_IYGH_A
     \tuba_segment_IYGH_B
   }
@@ -339,7 +331,8 @@ fiveBarPause = { R1*5 }
     \clef "treble"
       \harp_segment_strings
       \harp_segment_chorale
-      \iyghBrassGP
+      \harp_segment_IYGH_A
+      \harp_segment_IYGH_B
   }
 
 
@@ -354,10 +347,10 @@ fiveBarPause = { R1*5 }
         \tempo 4 = 55 
         \clef "treble"
         \violinOne_segment_strings
-      \wwindChoraleGP
-      \vnone_segment_IYGH_A
-      \fiveBarPause
-      \vnone_segment_IYGH_B
+        \wwindChoraleGP
+        \vnone_segment_IYGH_A
+        \fiveBarPause
+        \vnone_segment_IYGH_B
       }
 
       \new Staff \with {
@@ -369,10 +362,10 @@ fiveBarPause = { R1*5 }
         \tempo 4 = 55 
         \clef "treble"
         \violinTwo_segment_strings
-      \wwindChoraleGP
-      \vntwo_segment_IYGH_A
-      \fiveBarPause
-      \vntwo_segment_IYGH_B
+        \wwindChoraleGP
+        \vntwo_segment_IYGH_A
+        \fiveBarPause
+        \vntwo_segment_IYGH_B
       } %% end of vln two notes
 
 
@@ -385,10 +378,10 @@ fiveBarPause = { R1*5 }
         \tempo 4 = 55 
         \clef "alto"
         \viola_segment_strings
-      \wwindChoraleGP
-      \va_segment_IYGH_A
-      \fiveBarPause
-      \va_segment_IYGH_B
+        \wwindChoraleGP
+        \va_segment_IYGH_A
+        \fiveBarPause
+        \va_segment_IYGH_B
       } %% end of vla notes
 
 
@@ -401,10 +394,10 @@ fiveBarPause = { R1*5 }
         \tempo 4 = 55 
         \clef "bass"
         \cello_segment_strings
-      \cello_segment_chorale
-      \vc_segment_IYGH_A
-      \fiveBarPause
-      \vc_segment_IYGH_B
+        \cello_segment_chorale
+        \vc_segment_IYGH_A
+        \fiveBarPause
+        \vc_segment_IYGH_B
       } %% end of cello notes
 
 
@@ -417,20 +410,19 @@ fiveBarPause = { R1*5 }
        \tempo 4 = 55 
         \clef "bass"
         \contrabass_segment_strings
-      \wwindChoraleGP
-      \kb_segment_IYGH_A
-      \fiveBarPause
-      \kb_segment_IYGH_B
+        \wwindChoraleGP
+        \kb_segment_IYGH_A
+        \fiveBarPause
+        \kb_segment_IYGH_B
       } %% end of bsn notes
 
     >> %% end strings 
   >> %% end score
 	\layout {
 	  
-	   indent = 1\cm
+           indent = 1\cm
            % Increase the size of the bar number by 2
            \override Score.BarNumber.font-size = #2
-        
            \set Score.markFormatter = #format-mark-box-alphabet
            \override Score.RehearsalMark.font-size = #5 
            \set Staff.barAlways = ##t
@@ -445,7 +437,6 @@ fiveBarPause = { R1*5 }
                      \Staff
 
      % To use the setting globally, uncomment the following line:
-
      \override VerticalAxisGroup #'remove-first = ##t
                     }
           

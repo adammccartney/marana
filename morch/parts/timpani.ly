@@ -1,7 +1,8 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments/wwindChorale.ily"
+\include "./segments.ily"
+\include "../macros.ily"
 
 \book {
   
@@ -29,25 +30,45 @@
                            (/ myStaffSize 20))) 
   
   }
+  \header {
+      title = "marana"
+      instrument = "timpani"
+      subtitle = ""
+      composer = "Adam McCartney"
+      tagline = ""
+    }
+
 
   \score {
-    \header {piece = "marana"}
   <<
 
     \new Staff \with {
-      instrumentName = #"Percussion"
-      shortInstrumentName = #"perc"
-      midiInstrument = #"woodblock"
+      instrumentName = #"Timpani"
+      shortInstrumentName = #"timp"
+      midiInstrument = #"timpani"
     } <<
       \accidentalStyle modern-cautionary 
       \time 4/4
-      \clef "percussion"
+      \clef "bass"
     \new Voice {
-      \percussion_segment_chorale
+      \tmp_segment_strings
+      \wwindChoraleGP
+      \tmp_segment_IYGH_A
+      \fiveBarPause
+      \tmp_segment_IYGH_B
     } %% end of bsn notes
   >> %% end of bsn staff
 
   >> % score
+  \layout {
+           indent = 1\cm
+           % Increase the size of the bar number by 2
+           \override Score.BarNumber.font-size = #2
+           \set Score.markFormatter = #format-mark-box-alphabet
+           \override Score.RehearsalMark.font-size = #5 
+           \set Staff.barAlways = ##t
+           \set Staff.defaultBarType = ""  
+  }
  } % score
 } % book
  

@@ -15,10 +15,11 @@ MUSIC_TEMPLATES := $(wildcard $(SCORE_DIR)/*.ily)
 PARTS           := $(wildcard $(PARTS_DIR)/*.ly)
 SEGMENTS        := $(addprefix $(SEGMENTS_DIR)/, $(notdir $(SOURCES:.py=.ily)))
 PARTS_PDF       := $(addprefix $(BUILD_DIR)/$(PARTS_DIR)/, $(notdir $(PARTS:.ly=)))
+PARTS_INCLUDE   := $(PARTS_DIR)/segments.ily
 
 .PHONY: parts segments clean
 
-all: score #parts 
+all: score parts 
 
 default: all
 
@@ -52,6 +53,7 @@ setup: cp_assets
 cp_assets: build_dir
 	@ $(foreach ily,$(MUSIC_TEMPLATES),$(shell cp $(ily) $(BUILD_DIR)))
 	@ $(foreach p,$(PARTS),$(shell cp $(p) $(BUILD_DIR)/parts))
+	@ cp $(PARTS_INCLUDE) $(BUILD_DIR)/parts
 	@ cp scripts/lilypond.sh $(BUILD_DIR)
 
 build_dir:

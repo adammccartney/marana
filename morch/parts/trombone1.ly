@@ -1,8 +1,8 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments/brassIYGH_A.ily"
-\include "../segments/brassIYGH_B.ily"
+\include "./segments.ily"
+\include "../macros.ily"
 
 \book {
   
@@ -31,13 +31,21 @@
   
   }
 
+  \header {
+      title = "marana"
+      instrument = "trombone 1"
+      subtitle = ""
+      composer = "Adam McCartney"
+      tagline = ""
+    }
+
+
   \score {
-    \header {piece = "marana, if your get to heaven sketch, bass trombone"}
   <<
 
     \new Staff \with {
-      instrumentName = #"Bass Trombone"
-      shortInstrumentName = #"B Trb"
+      instrumentName = #"Trombone"
+      shortInstrumentName = #"Trb"
       midiInstrument = #"trombone"
     } <<
       \accidentalStyle modern-cautionary 
@@ -45,12 +53,23 @@
       \clef "bass"
       \tempo 4 = 55
     \new Voice {
-      \btrb_segment_IYGH_A
-      \btrb_segment_IYGH_B
+    \trb_segment_strings
+    \wwindChoraleGP
+    \trbOneTwo_segment_IYGH_A
+    \trbOneTwo_segment_IYGH_B
     } %% end of bsn notes
   >> %% end of bsn staff
 
   >> % score
+  \layout {
+           indent = 1\cm
+           % Increase the size of the bar number by 2
+           \override Score.BarNumber.font-size = #2
+           \set Score.markFormatter = #format-mark-box-alphabet
+           \override Score.RehearsalMark.font-size = #5 
+           \set Staff.barAlways = ##t
+           \set Staff.defaultBarType = ""  
+  }
  } % score
 } % book
  

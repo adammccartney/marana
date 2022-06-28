@@ -33,33 +33,31 @@
 
   \header {
       title = "marana"
-      instrument = "violin 1"
+      instrument = "vibraphone"
       subtitle = ""
       composer = "Adam McCartney"
       tagline = ""
     }
 
-
   \score {
   <<
 
     \new Staff \with {
-      instrumentName = #"Violin 1"
-      shortInstrumentName = #"vln1"
-      midiInstrument = #"violin"
+      instrumentName = #"Vibraphone"
+      shortInstrumentName = #"vibes"
+      midiInstrument = #"vibraphone"
     } <<
       \accidentalStyle modern-cautionary 
       \time 4/4
       \clef "treble"
-      \tempo 4 = 55
     \new Voice {
-        \violinOne_segment_strings
-        \wwindChoraleGP
-        \vnone_segment_IYGH_A
-        \fiveBarPause
-        \vnone_segment_IYGH_B
-    } %% end of vln notes
-  >> %% end vln staff
+      \vibes_segment_strings
+      \wwindChoraleGP
+      \vibes_segment_IYGH_A
+      \fiveBarPause
+      \vibes_segment_IYGH_B
+    } %% end of bsn notes
+  >> %% end of bsn staff
 
   >> % score
   \layout {

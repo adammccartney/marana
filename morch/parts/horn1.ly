@@ -1,8 +1,8 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments/brassIYGH_A.ily"
-\include "../segments/brassIYGH_B.ily"
+\include "./segments.ily"
+\include "../macros.ily"
 
 \book {
   
@@ -21,37 +21,54 @@
   system-system-spacing.stretchability = #15  %how flexible the spacing is
 
 
- myStaffSize = #19
+ myStaffSize = #20
   #(define fonts
     (make-pango-font-tree "Times New Roman"
                           "Nimbus Sans"
                           "Luxi Mono"
                           
-                           (/ myStaffSize 19))) 
+                           (/ myStaffSize 20))) 
   
   }
 
+  \header {
+      title = "marana"
+      instrument = "horn in f one"
+      subtitle = "transposing part, sounds 5vb"
+      composer = "Adam McCartney"
+      tagline = ""
+    }
   \score {
-    \header {piece = "marana, if you get to heaven sketch, hrn1-2 (sounds 5vb)"}
   <<
 
     \new Staff \with {
-      instrumentName = #"Horn 3, 4"
-      shortInstrumentName = #"hn3,4"
+      instrumentName = #"Horn 1"
+      shortInstrumentName = #"hn1"
       midiInstrument = #"horn"
     } <<
       \accidentalStyle modern-cautionary 
       \time 4/4
-      \clef "bass"
+      \clef "treble"
       \tempo 4 = 55
     \new Voice {
       \transpose f c'
-      \hrnThreeFour_segment_IYGH_A
-      \hrnThreeFour_segment_IYGH_B
+      \hnOne_segment_strings
+      \wwindChoraleGP
+      \hrnOne_segment_IYGH_A
+      \hrnOne_segment_IYGH_B
     } %% end of vln notes
   >> %% end of bsn staff
 
   >> % score
+  \layout {
+           indent = 1\cm
+           % Increase the size of the bar number by 2
+           \override Score.BarNumber.font-size = #2
+           \set Score.markFormatter = #format-mark-box-alphabet
+           \override Score.RehearsalMark.font-size = #5 
+           \set Staff.barAlways = ##t
+           \set Staff.defaultBarType = ""  
+  }
  } % score
 } % book
  

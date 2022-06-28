@@ -1,7 +1,8 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments/wwindChorale.ily"
+\include "./segments.ily"
+\include "../macros.ily"
 
 \book {
   
@@ -29,12 +30,15 @@
                            (/ myStaffSize 20))) 
   
   }
+  \header {
+      title = "marana"
+      instrument = "flute one"
+      composer = "Adam McCartney"
+      tagline = ""
+    }
 
   \score {
-    \header {piece = "marana, wwindChorale sketch, flute 1"}
-  <<
-
-  \new StaffGroup << %% wwinds
+      <<
 
     \new Staff \with {
       instrumentName = #"Flute 1"
@@ -46,13 +50,24 @@
       \time 4/4
       \tempo 4 = 55
       \new Voice { 
+        \fluteOne_segment_strings
         \flOne_segment_chorale 
+        \fluteOne_segment_IYGH_A
+        \fiveBarPause 
+        \fluteOne_segment_IYGH_B
       } % end of flute voice one 
     >> %% end of flute staff
-  >> %% end wwind staff group
 
   >> % score
-
+  \layout {
+           indent = 1\cm
+           % Increase the size of the bar number by 2
+           \override Score.BarNumber.font-size = #2
+           \set Score.markFormatter = #format-mark-box-alphabet
+           \override Score.RehearsalMark.font-size = #5 
+           \set Staff.barAlways = ##t
+           \set Staff.defaultBarType = ""  
+  }
 } % score
 } % book
  

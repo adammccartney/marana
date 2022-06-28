@@ -51,28 +51,28 @@ resp_dict = convert(btups, {})
 # filltemplates(), which takes the newly created matrix as an arg
 
 TEMPLATE_MAP = {
-    "obOne": """r8 {0}8\\fp\\> ~ {0}4. r8\\ppp r4
-                    r8 {1}8\\fp\\> ~ {1}4. r8\\ppp r4
-                    r8 {2}8\\fp\\> ~ {2}4. r8\\ppp r4
-                    r8 {3}8\\fp\\> ~ {3}4. r8\\ppp r4
+    "obOne": """r8 {0}8\\fp ~ {0}4. r8\\ppp r4
+                    r8 {1}8\\fp ~ {1}4. r8\\ppp r4
+                    r8 {2}8\\fp ~ {2}4. r8\\ppp r4
+                    r8 {3}8\\fp ~ {3}4. r8\\ppp r4
                     r1
                  """,
-    "obTwo": """r8 {0}8\\fp\\> ~ {0}4. r8\\ppp r4
-                    r8 {1}8\\fp\\> ~ {1}4. r8\\ppp r4
-                    r8 {2}8\\fp\\> ~ {2}4. r8\\ppp r4
-                    r8 {3}8\\fp\\> ~ {3}4. r8\\ppp r4
+    "obTwo": """r8 {0}8\\fp ~ {0}4. r8\\ppp r4
+                    r8 {1}8\\fp ~ {1}4. r8\\ppp r4
+                    r8 {2}8\\fp ~ {2}4. r8\\ppp r4
+                    r8 {3}8\\fp ~ {3}4. r8\\ppp r4
                     r1
                  """,
-    "clOne": """r8 {0}8\\fp\\> ~ {0}2~ {0}4\\ppp
-                    r8 {1}8\\fp\\> ~ {1}2~ {1}4\\ppp
-                    r8 {2}8\\fp\\> ~ {2}2~ {2}4\\ppp
-                    r8 {3}8\\fp\\> ~ {3}2~ {3}4\\ppp
+    "clOne": """r8 {0}8\\fp ~ {0}2~ {0}4\\ppp
+                    r8 {1}8\\fp ~ {1}2~ {1}4\\ppp
+                    r8 {2}8\\fp ~ {2}2~ {2}4\\ppp
+                    r8 {3}8\\fp ~ {3}2~ {3}4\\ppp
                     r1                 
                  """,
-    "clTwo": """r8 {0}8\\fp\\> ~ {0}2~ {0}4\\ppp
-                    r8 {1}8\\fp\\> ~ {1}2~ {1}4\\ppp
-                    r8 {2}8\\fp\\> ~ {2}2~ {2}4\\ppp
-                    r8 {3}8\\fp\\> ~ {3}2~ {3}4\\ppp
+    "clTwo": """r8 {0}8\\fp ~ {0}2~ {0}4\\ppp
+                    r8 {1}8\\fp ~ {1}2~ {1}4\\ppp
+                    r8 {2}8\\fp ~ {2}2~ {2}4\\ppp
+                    r8 {3}8\\fp ~ {3}2~ {3}4\\ppp
                     r1
                  """,
     "tmp": """r8 {0}8-.\\f r2.
@@ -81,40 +81,40 @@ TEMPLATE_MAP = {
                  r8 {3}8-.\\f r2.
                  r1
                  """,
-    "va": """r8 {0}8\\fp\\> ~ {0}2. ~
-                 {0}8\\ppp {1}8\\fp\\> ~ {1}2. ~
-                 {1}8\\ppp {2}8\\fp\\> ~ {2}2. ~
-                 {2}8\\ppp {3}8\\fp\\> ~ {3}2. ~
+    "va": """r8 {0}8\\fp ~ {0}2. ~
+                 {0}8\\ppp {1}8\\fp ~ {1}2. ~
+                 {1}8\\ppp {2}8\\fp ~ {2}2. ~
+                 {2}8\\ppp {3}8\\fp ~ {3}2. ~
                  {3}1\\ppp
                  """,
-    "vc": """r8 {0}8\\fp\\> ~ {0}2. ~
-                 {0}8\\ppp {1}8\\fp\\> ~ {1}2. ~
-                 {1}8\\ppp {2}8\\fp\\> ~ {2}2. ~
-                 {2}8\\ppp {3}8\\fp\\> ~ {3}2. ~
+    "vc": """r8 {0}8\\fp ~ {0}2. ~
+                 {0}8\\ppp {1}8\\fp ~ {1}2. ~
+                 {1}8\\ppp {2}8\\fp ~ {2}2. ~
+                 {2}8\\ppp {3}8\\fp ~ {3}2. ~
                  {3}1\\ppp
                  """,
-    "kb": """r8 {0}8\\fp\\> ~ {0}2. ~
-                 {0}8\\ppp {1}8\\fp\\> ~ {1}2. ~
-                 {1}8\\ppp {2}8\\fp\\> ~ {2}2. ~
-                 {2}8\\ppp {3}8\\fp\\> ~ {3}2. ~
+    "kb": """r8 {0}8\\fp ~ {0}2. ~
+                 {0}8\\ppp {1}8\\fp ~ {1}2. ~
+                 {1}8\\ppp {2}8\\fp ~ {2}2. ~
+                 {2}8\\ppp {3}8\\fp ~ {3}2. ~
                  {3}1\\ppp
                  """,
-    "fluteOne": """r2. {0}4\\fp\\> ~ 
-                  {0}4\\ppp r2 {1}4\\fp\\> ~
-                  {1}4\\ppp r2 {2}4\\fp\\> ~
-                  {2}4\\ppp r2 {3}4\\fp\\> ~
+    "fluteOne": """r2. {0}4\\fp ~ 
+                  {0}4\\ppp r2 {1}4\\fp ~
+                  {1}4\\ppp r2 {2}4\\fp ~
+                  {2}4\\ppp r2 {3}4\\fp ~
                   {3}4\\ppp r2.
                   """,
-    "fluteTwo": """r2. {0}4\\fp\\> ~ 
-                  {0}4.\\ppp r8 r4 {1}4\\fp\\> ~
-                  {1}4.\\ppp r8 r4 {2}4\\fp\\> ~
-                  {2}4.\\ppp r8 r4 {3}4\\fp\\> ~
+    "fluteTwo": """r2. {0}4\\fp ~ 
+                  {0}4.\\ppp r8 r4 {1}4\\fp ~
+                  {1}4.\\ppp r8 r4 {2}4\\fp ~
+                  {2}4.\\ppp r8 r4 {3}4\\fp ~
                   {3}4.\\ppp r8 r2
                   """,
-    "bsn": """r2. {0}4\\fp\\> ~ 
-                {0}2\\ppp r4 {1}4\\fp\\> ~
-                {1}2\\ppp r4 {2}4\\fp\\> ~
-                {2}2\\ppp r4 {3}4\\fp\\> ~
+    "bsn": """r2. {0}4\\fp ~ 
+                {0}2\\ppp r4 {1}4\\fp ~
+                {1}2\\ppp r4 {2}4\\fp ~
+                {2}2\\ppp r4 {3}4\\fp ~
                 {3}2\\ppp r2
                 """,
     "vibes": """r2. {0}4\\f ~ 
@@ -123,16 +123,16 @@ TEMPLATE_MAP = {
                   {2}2. {3}4\\f ~
                   {3}2 r2
                   """,
-    "vnone": """r2. {0}4\\fp\\> ~ 
-                  {0}2\\ppp r4 {1}4\\fp\\> ~
-                  {1}2\\ppp r4 {2}4\\fp\\> ~
-                  {2}2\\ppp r4 {3}4\\fp\\> ~
+    "vnone": """r2. {0}4\\fp ~ 
+                  {0}2\\ppp r4 {1}4\\fp ~
+                  {1}2\\ppp r4 {2}4\\fp ~
+                  {2}2\\ppp r4 {3}4\\fp ~
                   {3}2\\ppp r2
                   """,
-    "vntwo": """r2. {0}4\\fp\\> ~ 
-                  {0}2\\ppp r4 {1}4\\fp\\> ~
-                  {1}2\\ppp r4 {2}4\\fp\\> ~
-                  {2}2\\ppp r4 {3}4\\fp\\> ~
+    "vntwo": """r2. {0}4\\fp ~ 
+                  {0}2\\ppp r4 {1}4\\fp ~
+                  {1}2\\ppp r4 {2}4\\fp ~
+                  {2}2\\ppp r4 {3}4\\fp ~
                   {3}2\\ppp r2
                   """,
 }
@@ -374,7 +374,7 @@ def get_brass_section() -> dict:
 
     TEMPO_FAST = "\\tempo 4 = 116"
     FINAL_BARLINE = '\\bar "|."'
-    FIVE_BAR_REST = "r1 * 5"
+    FIVE_BAR_REST = "r1 r1 r1 r1 r1"
 
     instruments = {
         "fluteOne": {
@@ -539,6 +539,11 @@ def get_brass_section() -> dict:
             "rest": FIVE_BAR_REST,
             "final_barline": FINAL_BARLINE,
         },
+        "harp": {
+                "rest_i": FIVE_BAR_REST,
+                "rest_ii": FIVE_BAR_REST,
+                "final_barline": FINAL_BARLINE,
+        },
         "vnone": {
             "resp": resp_phrases["vnone"],
             "rest": FIVE_BAR_REST,
@@ -588,6 +593,7 @@ if __name__ == "__main__":
         "btrb",
         "tuba",
         "tmp",
+        "harp",
         "vibes",
         "vnone",
         "vntwo",

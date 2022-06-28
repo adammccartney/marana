@@ -1,7 +1,9 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments/stringcanon.ily"
+\include "./segments.ily"
+\include "../macros.ily"
+
 \book {
   
   \paper {
@@ -28,9 +30,16 @@
                            (/ myStaffSize 20))) 
   
   }
+  \header {
+      title = "marana"
+      instrument = "viola"
+      subtitle = ""
+      composer = "Adam McCartney"
+      tagline = ""
+    }
+
 
   \score {
-    \header {piece = "marana"}
   <<
 
     \new Staff \with {
@@ -43,11 +52,24 @@
       \clef "alto"
       \tempo 4 = 55
     \new Voice {
-      \viola_segment_strings
+        \viola_segment_strings
+        \wwindChoraleGP
+        \va_segment_IYGH_A
+        \fiveBarPause
+        \va_segment_IYGH_B
     } %% end of vla notes
   >> %% end of vla staff
 
   >> % score
+  \layout {
+           indent = 1\cm
+           % Increase the size of the bar number by 2
+           \override Score.BarNumber.font-size = #2
+           \set Score.markFormatter = #format-mark-box-alphabet
+           \override Score.RehearsalMark.font-size = #5 
+           \set Staff.barAlways = ##t
+           \set Staff.defaultBarType = ""  
+  }
  } % score
 } % book
  

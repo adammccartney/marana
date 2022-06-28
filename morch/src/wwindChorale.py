@@ -256,13 +256,13 @@ BASSOON = [
 ]
 
 HARP = [
-    "r4 <a a'>4\\mp r4 <a' a''>4",
+    "<a a'>4\\f r4 <a' a''>4",
     "r4 <a a'>4 r4 <a' a''>4",
     "r4 <a a'>4 r4 <a' a''>4",
     "r4 <a a'>4 r4 <a' a''>4",
     "r4 <a a' cs'' e''>4 r4 <a' a'' cs''' e'''>4",
     "r4 <a a' cs'' e''>4 r4 <a' a'' cs''' e'''>4",
-    "r4 <a a' c'' e''>4 r4 <a' a'' c''' e'''>4",
+    "<a a' c'' e''>4 r4 <a' a'' c''' e'''>4",
     "r4 <a a' c'' e''>4 r4 <a' a'' c''' e'''>4",
     "r4 <c'' e'' g'' a''>4 r4 <c'' e'' g'' a''>4",
     "r4 <e'' f'' a'' c'''> r4 <e'' f'' a'' c'''>4",
@@ -542,9 +542,15 @@ def get_segment() -> dict:
     vc_q = create_voice(CELLO[16], 0)
     rest = create_voice(REST[0], 0)
 
+    rmark = "\\mark #6"
+
+    harp_ped_one = "r4^\\markup \"with levity\"_\\markup { \\harp-pedal #\"-ovo-|----\" }" 
+    harp_ped_two = "r4_\\markup { \\harp-pedal #\"-o--|----\" }" 
+
     instruments = {
         "flOne": {
             "time_sig": time_sig,
+            "rmark": rmark,
             "chorale_Sa": chorale_Sa,
             "chorale_Sb": chorale_Sb,
             "chorale_Sc": chorale_Sc,
@@ -565,6 +571,7 @@ def get_segment() -> dict:
         },
         "flTwo": {
             "time_sig": time_sig,
+            "rmark": rmark,
             "chorale_Aa": chorale_Aa,
             "chorale_Ab": chorale_Ab,
             "chorale_Ac": chorale_Ac,
@@ -585,6 +592,7 @@ def get_segment() -> dict:
         },
         "obOne": {
             "time_sig": time_sig,
+            "rmark": rmark,
             "desc_a": desc_a,
             "desc_b": desc_b,
             "desc_c": desc_c,
@@ -605,6 +613,7 @@ def get_segment() -> dict:
         },
         "obTwo": {
             "time_sig": time_sig,
+            "rmark": rmark,
             "orn_a": orn_a,
             "orn_b": orn_b,
             "orn_c": orn_c,
@@ -623,6 +632,7 @@ def get_segment() -> dict:
         },
         "clOne": {
             "time_sig": time_sig,
+            "rmark": rmark,
             "chorale_Ta": chorale_Ta,
             "chorale_Tb": chorale_Tb,
             "chorale_Tc": chorale_Tc,
@@ -643,6 +653,7 @@ def get_segment() -> dict:
         },
         "clTwo": {
             "time_sig": time_sig,
+            "rmark": rmark,
             "chorale_Ba": chorale_Ba,
             "chorale_Bb": chorale_Bb,
             "chorale_Bc": chorale_Bc,
@@ -663,6 +674,7 @@ def get_segment() -> dict:
         },
         "bsn": {
             "time_sig": time_sig,
+            "rmark": rmark,
             "bsn_a": bsn_a,
             "bsn_b": bsn_b,
             "bsn_c": bsn_c,
@@ -690,12 +702,15 @@ def get_segment() -> dict:
         "tuba": {"time_sig": time_sig, "rest": rest},
         "harp": {
             "time_sig": time_sig,
+            "rmark": rmark,
+            "harp_ped_one": harp_ped_one,
             "chord_a": chord_a,
             "chord_b": chord_b,
             "chord_c": chord_c,
             "chord_d": chord_d,
             "chord_e": chord_e,
             "chord_f": chord_f,
+            "harp_ped_two": harp_ped_two,
             "chord_g": chord_g,
             "chord_h": chord_h,
             "chord_i": chord_i,
@@ -708,12 +723,29 @@ def get_segment() -> dict:
             "chord_p": chord_p,
             "chord_q": chord_q,
         },
-        "percussion": {"time_sig": time_sig, "rest": rest},
-        "violinOne": {"time_sig": time_sig, "rest": rest},
-        "violinTwo": {"time_sig": time_sig, "rest": rest},
-        "viola": {"time_sig": time_sig, "rest": rest},
+        "percussion": {
+                "time_sig": time_sig, 
+                "rmark": rmark,
+                "rest": rest
+                },
+        "violinOne": {
+                "time_sig": time_sig, 
+                "rmark": rmark,
+                "rest": rest
+                },
+        "violinTwo": {
+                "time_sig": time_sig, 
+                "rmark": rmark,
+                "rest": rest
+                },
+        "viola": {
+                "time_sig": time_sig, 
+                "rmark": rmark,
+                "rest": rest,
+                },
         "cello": {
             "time_sig": time_sig,
+            "rmark": rmark,
             "vc_a": vc_a,
             "vc_b": vc_b,
             "vc_c": vc_c,
@@ -732,8 +764,11 @@ def get_segment() -> dict:
             "vc_p": vc_p,
             "vc_q": vc_q,
         },
-        "contrabass": {"time_sig": time_sig, "rest": rest},
-    }
+        "contrabass": {
+                "time_sig": time_sig,
+                "rmark": rmark,
+                "rest": rest},
+        }
     return instruments
 
 

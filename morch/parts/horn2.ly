@@ -33,33 +33,31 @@
 
   \header {
       title = "marana"
-      instrument = "violin 1"
-      subtitle = ""
+      instrument = "horn in f two"
+      subtitle = "transposing part, sounds 5vb"
       composer = "Adam McCartney"
       tagline = ""
     }
-
-
   \score {
   <<
 
     \new Staff \with {
-      instrumentName = #"Violin 1"
-      shortInstrumentName = #"vln1"
-      midiInstrument = #"violin"
+      instrumentName = #"Horn 2"
+      shortInstrumentName = #"hn2"
+      midiInstrument = #"horn"
     } <<
       \accidentalStyle modern-cautionary 
       \time 4/4
       \clef "treble"
       \tempo 4 = 55
     \new Voice {
-        \violinOne_segment_strings
-        \wwindChoraleGP
-        \vnone_segment_IYGH_A
-        \fiveBarPause
-        \vnone_segment_IYGH_B
+      \transpose f c'
+      \hnTwo_segment_strings
+      \wwindChoraleGP
+      \hrnTwo_segment_IYGH_A
+      \hrnTwo_segment_IYGH_B
     } %% end of vln notes
-  >> %% end vln staff
+  >> %% end of bsn staff
 
   >> % score
   \layout {

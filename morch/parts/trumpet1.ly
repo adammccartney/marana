@@ -1,8 +1,8 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments/brassIYGH_A.ily"
-\include "../segments/brassIYGH_B.ily"
+\include "./segments.ily"
+\include "../macros.ily"
 
 \book {
   
@@ -31,8 +31,16 @@
   
   }
 
+  \header {
+      title = "marana"
+      instrument = "trumpet 1"
+      subtitle = "transposing part, sounds 2vb"
+      composer = "Adam McCartney"
+      tagline = ""
+    }
+
+
   \score {
-    \header {piece = "marana, if you get to heaven sketch, trumpet 1 (sounds 2vb)"}
   <<
 
     \new Staff \with {
@@ -46,12 +54,23 @@
       \tempo 4 = 55
     \new Voice {
       \transpose bf c'
+      \trpOne_segment_strings
+      \wwindChoraleGP
       \trpOneTwo_segment_IYGH_A
       \trpOneTwo_segment_IYGH_B
     } %% end of vln notes
   >> %% end of bsn staff
 
   >> % score
+  \layout {
+           indent = 1\cm
+           % Increase the size of the bar number by 2
+           \override Score.BarNumber.font-size = #2
+           \set Score.markFormatter = #format-mark-box-alphabet
+           \override Score.RehearsalMark.font-size = #5 
+           \set Staff.barAlways = ##t
+           \set Staff.defaultBarType = ""  
+  }
  } % score
 } % book
  

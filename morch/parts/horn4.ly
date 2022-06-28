@@ -1,8 +1,8 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments/brassIYGH_A.ily"
-\include "../segments/brassIYGH_B.ily"
+\include "./segments.ily"
+\include "../macros.ily"
 
 \book {
   
@@ -31,13 +31,20 @@
   
   }
 
+  \header {
+      title = "marana"
+      instrument = "horn in f four"
+      subtitle = "transposing part, sounds 5vb"
+      composer = "Adam McCartney"
+      tagline = ""
+    }
+
   \score {
-    \header {piece = "marana, if you get to heaven sketch, hrn1-2 (sounds 5vb)"}
   <<
 
     \new Staff \with {
-      instrumentName = #"Horn 1, 2"
-      shortInstrumentName = #"hn1,2"
+      instrumentName = #"Horn 4"
+      shortInstrumentName = #"hn4"
       midiInstrument = #"horn"
     } <<
       \accidentalStyle modern-cautionary 
@@ -46,12 +53,23 @@
       \tempo 4 = 55
     \new Voice {
       \transpose f c'
-      \hrnOneTwo_segment_IYGH_A
-      \hrnOneTwo_segment_IYGH_B
+      \hnFour_segment_strings
+      \wwindChoraleGP
+      \hrnFour_segment_IYGH_A
+      \hrnFour_segment_IYGH_B
     } %% end of vln notes
   >> %% end of bsn staff
 
   >> % score
+  \layout {
+           indent = 1\cm
+           % Increase the size of the bar number by 2
+           \override Score.BarNumber.font-size = #2
+           \set Score.markFormatter = #format-mark-box-alphabet
+           \override Score.RehearsalMark.font-size = #5 
+           \set Staff.barAlways = ##t
+           \set Staff.defaultBarType = ""  
+  }
  } % score
 } % book
  

@@ -1,7 +1,8 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments/wwindChorale.ily"
+\include "./segments.ily"
+\include "../macros.ily"
 
 \book {
   
@@ -29,9 +30,14 @@
                            (/ myStaffSize 20))) 
   
   }
-
+ \header {
+      title = "marana"
+      instrument = "Bassoon"
+      subtitle = ""
+      composer = "Adam McCartney"
+      tagline = ""
+    }
   \score {
-    \header {piece = "marana, wwindChorale sketch, bassoon"}
   <<
 
     \new Staff \with {
@@ -44,11 +50,25 @@
       \clef "bass"
       \tempo 4 = 55
     \new Voice {
+      \bsn_segment_strings
       \bsn_segment_chorale
+      \bsn_segment_IYGH_A
+      \fiveBarPause
+      \bsn_segment_IYGH_B
     } %% end of bsn notes
   >> %% end of bsn staff
 
   >> % score
+  \layout {
+           indent = 1\cm
+           % Increase the size of the bar number by 2
+           \override Score.BarNumber.font-size = #2
+           \set Score.markFormatter = #format-mark-box-alphabet
+           \override Score.RehearsalMark.font-size = #5 
+           \set Staff.barAlways = ##t
+           \set Staff.defaultBarType = ""  
+  }
+
  } % score
 } % book
  

@@ -1,7 +1,8 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments/wwindChorale.ily"
+\include "./segments.ily"
+\include "../macros.ily"
 
 \book {
   
@@ -30,11 +31,16 @@
   
   }
 
+    \header {
+      title = "marana"
+      instrument = "clarinet in Bb one"
+      subtitle = "transposing part, sounds 2vb"
+      composer = "Adam McCartney"
+      tagline = ""
+    }
   \score {
-    \header {piece = "marana, wwindChorale sketch, clarinet 1 (sounds 2vb)"}
   <<
 
-    \tag #'clarinet
     \new Staff \with {
       instrumentName = #"Clarinet Bb 1"
       shortInstrumentName = #"Cl. 1"
@@ -46,11 +52,24 @@
       \tempo 4 = 55
     \new Voice {
       \transpose bf c'
-        \clOne_segment_chorale 
+      \obOne_segment_strings
+      \obOne_segment_chorale
+      \obOne_segment_IYGH_A
+      \fiveBarPause
+      \obOne_segment_IYGH_B
     } % end of clarinet 1, 2 voice one
-  >> %% end wwind staff group
+  >> 
 
   >> % score
+  \layout {
+           indent = 1\cm
+           % Increase the size of the bar number by 2
+           \override Score.BarNumber.font-size = #2
+           \set Score.markFormatter = #format-mark-box-alphabet
+           \override Score.RehearsalMark.font-size = #5 
+           \set Staff.barAlways = ##t
+           \set Staff.defaultBarType = ""  
+  }
  } % score
 } % book
  

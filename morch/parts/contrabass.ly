@@ -1,6 +1,10 @@
 \version "2.22.0"
 \language "english"
 
+\include "./segments.ily"
+\include "../macros.ily"
+
+
 \include "../segments/stringcanon.ily"
 
 \book {
@@ -29,9 +33,16 @@
                            (/ myStaffSize 20))) 
   
   }
+  \header {
+      title = "marana"
+      instrument = "contrabass"
+      subtitle = "sounds 8vb"
+      composer = "Adam McCartney"
+      tagline = ""
+    }
+
 
   \score {
-    \header {piece = "marana"}
   <<
 
     \new Staff \with {
@@ -44,11 +55,24 @@
       \clef "bass"
       \tempo 4 = 55
     \new Voice {
-      \contrabass_segment_strings
+        \contrabass_segment_strings
+        \wwindChoraleGP
+        \kb_segment_IYGH_A
+        \fiveBarPause
+        \kb_segment_IYGH_B
     } %% end of bsn notes
   >> %% end of bsn staff
 
   >> % score
+  \layout {
+           indent = 1\cm
+           % Increase the size of the bar number by 2
+           \override Score.BarNumber.font-size = #2
+           \set Score.markFormatter = #format-mark-box-alphabet
+           \override Score.RehearsalMark.font-size = #5 
+           \set Staff.barAlways = ##t
+           \set Staff.defaultBarType = ""  
+  }
  } % score
 } % book
  

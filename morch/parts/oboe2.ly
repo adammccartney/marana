@@ -1,7 +1,8 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments/wwindChorale.ily"
+\include "./segments.ily"
+\include "../macros.ily"
 
 \book {
   
@@ -29,9 +30,14 @@
                            (/ myStaffSize 20))) 
   
   }
-
+ \header {
+      title = "marana"
+      instrument = "oboe two"
+      subtitle = ""
+      composer = "Adam McCartney"
+      tagline = ""
+    }
   \score {
-    \header {piece = "marana wwindChorale sketch, oboe 2"}
   <<
 
     \new Staff \with {
@@ -44,11 +50,25 @@
       \clef "treble"
       \tempo 4 = 55
     \new Voice {
+      \obTwo_segment_strings
       \obTwo_segment_chorale
+      \obTwo_segment_IYGH_A
+      \fiveBarPause
+      \obTwo_segment_IYGH_B
+
     } %% end of oboe notes
   >> %% end of oboe staff
 
 >>% score
+  \layout {
+           indent = 1\cm
+           % Increase the size of the bar number by 2
+           \override Score.BarNumber.font-size = #2
+           \set Score.markFormatter = #format-mark-box-alphabet
+           \override Score.RehearsalMark.font-size = #5 
+           \set Staff.barAlways = ##t
+           \set Staff.defaultBarType = ""  
+  }
  } % score
 } % book
  

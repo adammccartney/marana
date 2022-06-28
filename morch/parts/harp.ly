@@ -1,7 +1,8 @@
 \version "2.22.0"
 \language "english"
 
-\include "../segments/wwindChorale.ily"
+\include "./segments.ily"
+\include "../macros.ily"
 
 \book {
   
@@ -29,9 +30,16 @@
                            (/ myStaffSize 20))) 
   
   }
+  \header {
+      title = "marana"
+      instrument = "harp"
+      subtitle = ""
+      composer = "Adam McCartney"
+      tagline = ""
+    }
+
 
   \score {
-    \header {piece = "marana"}
   <<
 
     \new Staff \with {
@@ -43,11 +51,23 @@
       \time 4/4
       \clef "treble"
     \new Voice {
+      \harp_segment_strings
       \harp_segment_chorale
+      \harp_segment_IYGH_A
+      \harp_segment_IYGH_B
     } %% end of vln notes
   >> %% end of bsn staff
 
   >> % score
+  \layout {
+           indent = 1\cm
+           % Increase the size of the bar number by 2
+           \override Score.BarNumber.font-size = #2
+           \set Score.markFormatter = #format-mark-box-alphabet
+           \override Score.RehearsalMark.font-size = #5 
+           \set Staff.barAlways = ##t
+           \set Staff.defaultBarType = ""  
+  }
  } % score
 } % book
  
