@@ -60,7 +60,7 @@
 
   >> % score
   \layout {
-           indent = 1\cm
+           indent = 2\cm
            % Increase the size of the bar number by 2
            \override Score.BarNumber.font-size = #2
            \set Score.markFormatter = #format-mark-box-alphabet

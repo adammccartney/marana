@@ -32,7 +32,8 @@
   }
   \header {
       title = "marana"
-      instrument = "flute one"
+      instrument = "flute one, piccolo"
+      subtitle = "transposing part - piccolo sounds 8ve"
       composer = "Adam McCartney"
       tagline = ""
     }
@@ -52,9 +53,12 @@
       \new Voice { 
         \fluteOne_segment_strings
         \flOne_segment_chorale 
-        \fluteOne_segment_IYGH_A
-        \fiveBarPause 
-        \fluteOne_segment_IYGH_B
+        \transpose c' c {
+          \piccoloChange
+          \fluteOne_segment_IYGH_A
+          \fiveBarPause 
+          \fluteOne_segment_IYGH_B
+        }
       } % end of flute voice one 
     >> %% end of flute staff
 

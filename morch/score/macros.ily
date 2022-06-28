@@ -5,4 +5,7 @@ wwindChoraleGP = { R1*17 }
 iyghBrassGP = { R1*20 }
 fiveBarPause = { R1 R1 R1 R1 R1 }
 
-
+piccoloChange = {
+      \set Staff.InstrumentName = "Piccolo"
+      \set Staff.shortInstrumentName = "Picc."
+    }

@@ -53,7 +53,7 @@
       \tempo 4 = 55
     \new Voice {
         \viola_segment_strings
-        \wwindChoraleGP
+        \viola_segment_chorale
         \va_segment_IYGH_A
         \fiveBarPause
         \va_segment_IYGH_B

@@ -26,10 +26,10 @@ RESP_ROOTS = ["bf,", "bf,", "bf,", "f,", "d"]
 # articulate.
 
 atups = [
-    create_pitch_map("obOne", CALL_ROOTS, "1-1/7"),  # seventh
-    create_pitch_map("obTwo", CALL_ROOTS, "1-1/3"),  # fifth
-    create_pitch_map("clOne", CALL_ROOTS, "1-3/5"),  # third
-    create_pitch_map("clTwo", CALL_ROOTS, "2"),
+    create_pitch_map("obOne", CALL_ROOTS, "2"),  
+    create_pitch_map("obTwo", CALL_ROOTS, "2-2/3"),  
+    create_pitch_map("clOne", CALL_ROOTS, "2"),  
+    create_pitch_map("clTwo", CALL_ROOTS, "4"),
     create_pitch_map("tmp", CALL_ROOTS, "16"),
     create_pitch_map("va", CALL_ROOTS, "2-2/3"),  # fifth
     create_pitch_map("vc", CALL_ROOTS, "4"),
@@ -39,10 +39,10 @@ atups = [
 call_dict = convert(atups, {})
 
 btups = [
-    create_pitch_map("fluteOne", CALL_ROOTS, "1-1/7"),
+    create_pitch_map("fluteOne", CALL_ROOTS, "1-1/7"),# seventh
     create_pitch_map("fluteTwo", CALL_ROOTS, "1-1/3"),
     create_pitch_map("bsn", CALL_ROOTS, "16"),
-    create_pitch_map("vibes", CALL_ROOTS, "1-3/5"),
+    create_pitch_map("vibes", CALL_ROOTS, "1-3/5"), # third
     create_pitch_map("vnone", CALL_ROOTS, "1-1/7"),
     create_pitch_map("vntwo", CALL_ROOTS, "1-1/3"),
 ]
@@ -101,13 +101,13 @@ TEMPLATE_MAP = {
                  {2}4\\ppp {3}2.\\fp ~ 
                  {3}1\\ppp
                  """,
-    "fluteOne": """r2 r8 {0}8\\fp ~ {0}4~ 
+    "fluteOne": """r8 {0}8\\fp ~ {0}4~ 
                   {0}4\\ppp r4 r8 {1}8\\fp ~ {1}4~
                   {1}4\\ppp r4 r8 {2}8\\fp ~ {2}4~
                   {2}4\\ppp r4 r8 {3}8\\fp ~ {3}4~
                   {3}4\\ppp r2.
                   """,
-    "fluteTwo": """r2 r8 {0}8\\fp ~ {0}4~ 
+    "fluteTwo": """r8 {0}8\\fp ~ {0}4~ 
                   {0}4\\ppp r4 r8 {1}8\\fp ~ {1}4~
                   {1}4\\ppp r4 r8 {2}8\\fp ~ {2}4~
                   {2}4\\ppp r4 r8 {3}8\\fp ~ {3}4~
@@ -143,7 +143,7 @@ TEMPLATE_MAP = {
 MACROS = {"VIA_SORD": "viaSord = \\markup \"via sord.\""}
 
 CALLS = [
-    "r8 bf8 d'8-.\\sfp bf8 f2--",
+    "r16 bf8 d'8-.\\sfp bf8 f2--",
     "r8 bf8 g8-.\\sfp bf8 f2--",
     "r8 bf8 a8-.\\sfp bf8 c'2--",
     "r8 f8 bf8-.\\sfp c'8 d'2--",
@@ -151,7 +151,7 @@ CALLS = [
 ]
 
 RESPS = [
-    "r2 r8 bf8-.\\sfp d'8 bf8",
+    "r4 r8 bf8-.\\sfp d'8 bf8",
     "f2-- r8 bf8-.\\sfp g'8 bf8",
     "f2-- r8 bf8-.\\sfp a8 bf8",
     "c'2-- r8 f8-.\\sfp bf8 c'8",
@@ -375,13 +375,24 @@ def get_brass_section() -> dict:
     TSIG_FF = "\\time 4/4"
     FIVE_BAR_REST = "r1 r1 r1 r1 r1"
 
-    VIA_SORD = "\\tempo \\markup \"via sord.\""
+    PICCOLO = "r2^\\markup { piccolo }"
+
+    VIA_SORD_HORN = "r4^\\markup { via sord. }"
+    VIA_SORD_TR = "r16^\\markup { via sord. }"
 
     rmark = "\\mark #7"
 
     instruments = {
-            "fluteOne": {"tempo_fast": TEMPO_FAST, "rmark": rmark, "resp": resp_phrases["fluteOne"]},
-        "fluteTwo": {"tempo_fast": TEMPO_FAST, "rmark": rmark, "resp": resp_phrases["fluteTwo"]},
+            "fluteOne": {"tempo_fast": TEMPO_FAST, 
+                         "rmark": rmark, 
+                         "instr": PICCOLO, 
+                         "resp": resp_phrases["fluteOne"]
+                         },
+            "fluteTwo": {"tempo_fast": TEMPO_FAST, 
+                         "rmark": rmark, 
+                         "instr": PICCOLO, 
+                         "resp": resp_phrases["fluteTwo"]
+                         },
         "clOne": {"tempo_fast": TEMPO_FAST, "rmark": rmark, "call": call_phrases["clOne"]},
         "clTwo": {"tempo_fast": TEMPO_FAST, "rmark": rmark, "call": call_phrases["clTwo"]},
         "obOne": {"tempo_fast": TEMPO_FAST, "rmark": rmark, "call": call_phrases["obOne"]},
@@ -389,9 +400,9 @@ def get_brass_section() -> dict:
         "bsn": {"tempo_fast": TEMPO_FAST, "rmark": rmark, "resp": resp_phrases["bsn"]},
         "trpOneTwo": {
             "tempo_fast": TEMPO_FAST,
-            "via_sord": VIA_SORD,
-            "tsig": TSIG_FF,
             "rmark": rmark,
+            "tsig": TSIG_FF,
+            "via_sord": VIA_SORD_TR,
             "call_aa": call_aa_octve,
             "call_ab": call_ab_octve,
             "call_ba": call_ba_octve,
@@ -405,9 +416,9 @@ def get_brass_section() -> dict:
         },
         "trpThree": {
             "tempo_fast": TEMPO_FAST,
-            "via_sord": VIA_SORD,
-            "tsig": TSIG_FF,
             "rmark": rmark,
+            "tsig": TSIG_FF,
+            "via_sord": VIA_SORD_TR,
             "call_aa": call_aa_5ve,
             "call_ab": call_ab_5ve,
             "call_ba": call_ba_5ve,
@@ -421,9 +432,9 @@ def get_brass_section() -> dict:
         },
         "hrnOne": {
             "tempo_fast": TEMPO_FAST,
-            "via_sord": VIA_SORD,
-            "tsig": TSIG_FF,
             "rmark": rmark,
+            "tsig": TSIG_FF,
+            "via_sord": VIA_SORD_HORN,
             "resp_aa": resp_aa_octve,
             "resp_ab": resp_ab_octve,
             "resp_ba": resp_ba_octve,
@@ -437,9 +448,9 @@ def get_brass_section() -> dict:
         },
         "hrnTwo": {
             "tempo_fast": TEMPO_FAST,
-            "via_sord": VIA_SORD,
-            "tsig": TSIG_FF,
             "rmark": rmark,
+            "tsig": TSIG_FF,
+            "via_sord": VIA_SORD_HORN,
             "resp_aa": resp_aa,
             "resp_ab": resp_ab,
             "resp_ba": resp_ba,
@@ -453,9 +464,9 @@ def get_brass_section() -> dict:
         },
         "hrnThree": {
             "tempo_fast": TEMPO_FAST,
-            "via_sord": VIA_SORD,
-            "tsig": TSIG_FF,
             "rmark": rmark,
+            "tsig": TSIG_FF,
+            "via_sord": VIA_SORD_HORN,
             "resp_aa": resp_aa_fifve,
             "resp_ab": resp_ab_fifve,
             "resp_ba": resp_ba_fifve,
@@ -469,9 +480,9 @@ def get_brass_section() -> dict:
         },
         "hrnFour": {
             "tempo_fast": TEMPO_FAST,
-            "via_sord": VIA_SORD,
-            "tsig": TSIG_FF,
             "rmark": rmark,
+            "tsig": TSIG_FF,
+            "via_sord": VIA_SORD_HORN,
             "resp_aa": resp_aa_fourvb,
             "resp_ab": resp_ab_fourvb,
             "resp_ba": resp_ba_fourvb,
@@ -485,9 +496,9 @@ def get_brass_section() -> dict:
         },
         "tuba": {
             "tempo_fast": TEMPO_FAST,
-            "via_sord": VIA_SORD,
-            "tsig": TSIG_FF,
             "rmark": rmark,
+            "tsig": TSIG_FF,
+            "via_sord": VIA_SORD_HORN,
             "resp_aa": resp_aa_octvb,
             "resp_ab": resp_ab_octvb,
             "resp_ba": resp_ba_octvb,
@@ -500,10 +511,10 @@ def get_brass_section() -> dict:
             "chorus_ae": chorus_triplets_ae_octvb,
         },
         "trbOneTwo": {
-            "tempo_fast": TEMPO_FAST,
-            "via_sord": VIA_SORD,
-            "tsig": TSIG_FF,
             "rmark": rmark,
+            "tempo_fast": TEMPO_FAST,
+            "tsig": TSIG_FF,
+            "via_sord": VIA_SORD_TR,
             "call_aa": call_aa,
             "call_ab": call_ab,
             "call_ba": call_ba,
@@ -514,22 +525,6 @@ def get_brass_section() -> dict:
             "chorus_eights_ac": chorus_eights_ac,
             "chorus_eights_ad": chorus_eights_ad,
             "chorus_eights_ae": chorus_eights_ae,
-        },
-        "btrb": {
-            "tempo_fast": TEMPO_FAST,
-            "via_sord": VIA_SORD,
-            "tsig": TSIG_FF,
-            "rmark": rmark,
-            "call_aa_octvb": call_aa_octvb,
-            "call_ab_octvb": call_ab_octvb,
-            "call_ba_octvb": call_ba_octvb,
-            "call_bb_octvb": call_bb_octvb,
-            "call_bc_octvb": call_bc_octvb,
-            "chorus_eights_aa": chorus_eights_aa_octvb,
-            "chorus_eights_ab": chorus_eights_ab_octvb,
-            "chorus_eights_ac": chorus_eights_ac_octvb,
-            "chorus_eights_ad": chorus_eights_ad_octvb,
-            "chorus_eights_ae": chorus_eights_ae_octvb,
         },
         "tmp": {"tempo_fast": TEMPO_FAST,"tsig": TSIG_FF, "rmark": rmark, "call": call_phrases["tmp"]},
         "vibes": {"tempo_fast": TEMPO_FAST,"tsig": TSIG_FF, "rmark": rmark, "resp": resp_phrases["vibes"]},
@@ -565,7 +560,6 @@ if __name__ == "__main__":
         "trpOneTwo",
         "trpThree",
         "trbOneTwo",
-        "btrb",
         "tuba",
         "tmp",
         "vibes",

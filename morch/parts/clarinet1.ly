@@ -52,17 +52,17 @@
       \tempo 4 = 55
     \new Voice {
       \transpose bf c'
-      \obOne_segment_strings
-      \obOne_segment_chorale
-      \obOne_segment_IYGH_A
+      \clOne_segment_strings
+      \clOne_segment_chorale
+      \clOne_segment_IYGH_A
       \fiveBarPause
-      \obOne_segment_IYGH_B
+      \clOne_segment_IYGH_B
     } % end of clarinet 1, 2 voice one
   >> 
 
   >> % score
   \layout {
-           indent = 1\cm
+           indent = 2\cm
            % Increase the size of the bar number by 2
            \override Score.BarNumber.font-size = #2
            \set Score.markFormatter = #format-mark-box-alphabet

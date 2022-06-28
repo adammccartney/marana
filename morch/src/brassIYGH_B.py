@@ -24,10 +24,10 @@ RESP_ROOTS = ["d", "g", "a,", "bf,", "d"]
 # articulate.
 
 atups = [
-    create_pitch_map("obOne", CALL_ROOTS, "1-1/7"),  # seventh
-    create_pitch_map("obTwo", CALL_ROOTS, "1-1/3"),  # fifth
-    create_pitch_map("clOne", CALL_ROOTS, "1-3/5"),  # third
-    create_pitch_map("clTwo", CALL_ROOTS, "2"),
+    create_pitch_map("obOne", CALL_ROOTS, "2"), 
+    create_pitch_map("obTwo", CALL_ROOTS, "2-2/3"),  
+    create_pitch_map("clOne", CALL_ROOTS, "2"),  # third
+    create_pitch_map("clTwo", CALL_ROOTS, "4"),
     create_pitch_map("tmp", CALL_ROOTS, "16"),
     create_pitch_map("va", CALL_ROOTS, "2-2/3"),  # fifth
     create_pitch_map("vc", CALL_ROOTS, "4"),
@@ -37,7 +37,7 @@ atups = [
 call_dict = convert(atups, {})
 
 btups = [
-    create_pitch_map("fluteOne", CALL_ROOTS, "1-1/7"),
+    create_pitch_map("fluteOne", CALL_ROOTS, "1-1/7"), # seventh
     create_pitch_map("fluteTwo", CALL_ROOTS, "1-1/3"),
     create_pitch_map("bsn", CALL_ROOTS, "16"),
     create_pitch_map("vibes", CALL_ROOTS, "1-3/5"),

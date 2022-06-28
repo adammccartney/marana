@@ -26,28 +26,28 @@
 ** DONE Harp pedaling
 ** DONE Parts
 
-** TODO Proof Read
-*** Woodwinds
-  - [ ] fl 1
-  - [ ] fl 2
-  - [ ] ob 1
-  - [ ] ob 2
-  - [ ] cl 1
-  - [ ] cl 2
-  - [ ] bsn
-*** Brass
-  - [ ] hrn 1
-  - [ ] hrn 2
-  - [ ] hrn 3
-  - [ ] hrn 4
-  - [ ] trp 1
-  - [ ] trp 2
-  - [ ] trb
-  - [ ] tuba
-*** Perc
+** TODO Proof Read [2/4]
+*** DONE Woodwinds [7/7]
+  - [X] fl 1
+  - [X] fl 2
+  - [X] ob 1
+  - [X] ob 2
+  - [X] cl 1
+  - [X] cl 2
+  - [X] bsn
+*** DONE Brass [8/8]
+  - [X] hrn 1
+  - [X] hrn 2
+  - [X] hrn 3
+  - [X] hrn 4
+  - [X] trp 1
+  - [X] trp 2
+  - [X] trb
+  - [X] tuba
+*** TODO Perc [0/2]
   - [ ] timps
   - [ ] vibes
-*** Strings
+*** TODO Strings [0/6]
   - [ ] harp
   - [ ] vln1
   - [ ] vln2

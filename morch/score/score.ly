@@ -58,6 +58,7 @@
       \new Voice { 
       \fluteOne_segment_strings
       \flOne_segment_chorale 
+      \piccoloChange
       \fluteOne_segment_IYGH_A
       \fiveBarPause 
       \fluteOne_segment_IYGH_B
@@ -74,6 +75,7 @@
       \new Voice {
       \fluteTwo_segment_strings
       \flTwo_segment_chorale
+      \piccoloChange
       \fluteTwo_segment_IYGH_A
       \fiveBarPause
       \fluteTwo_segment_IYGH_B
@@ -181,6 +183,7 @@
     \clef "treble"
     \new Voice {
       \voiceOne {
+      \override Voice.RehearsalMark.stencil = ##f
       \hnOne_segment_strings
       \wwindChoraleGP
       \hrnOne_segment_IYGH_A
@@ -191,6 +194,7 @@
       \voiceTwo {
       \override Voice.DynamicText.stencil = ##f
       \override Voice.TextScript.stencil = ##f
+      \override Voice.RehearsalMark.stencil = ##f
       \hnTwo_segment_strings
       \wwindChoraleGP
       \hrnTwo_segment_IYGH_A
@@ -210,6 +214,7 @@
     \clef "treble"
     \new Voice {
       \voiceThree {
+      \override Voice.RehearsalMark.stencil = ##f
       \hnThree_segment_strings
       \wwindChoraleGP
       \hrnThree_segment_IYGH_A
@@ -220,6 +225,7 @@
     \voiceFour {
       \override Voice.DynamicText.stencil = ##f
       \override Voice.TextScript.stencil = ##f
+      \override Voice.RehearsalMark.stencil = ##f
       \hnFour_segment_strings
       \wwindChoraleGP
       \hrnFour_segment_IYGH_A
@@ -235,6 +241,7 @@
     \accidentalStyle modern-cautionary 
     \tempo 4 = 55
     \clef "treble"
+    \override Voice.RehearsalMark.stencil = ##f
     \trpOne_segment_strings
     \wwindChoraleGP
     \trpOneTwo_segment_IYGH_A
@@ -249,6 +256,7 @@
     \accidentalStyle modern-cautionary 
     \tempo 4 = 55
     \clef "treble"
+    \override Voice.RehearsalMark.stencil = ##f
     \trpTwo_segment_strings
     \wwindChoraleGP
     \trpThree_segment_IYGH_A
@@ -263,6 +271,7 @@
     \accidentalStyle modern-cautionary 
     
     \clef "bass"
+    \override Voice.RehearsalMark.stencil = ##f
     \trb_segment_strings
     \wwindChoraleGP
     \trbOneTwo_segment_IYGH_A
@@ -277,6 +286,7 @@
     \accidentalStyle modern-cautionary 
     \tempo 4 = 55
     \clef "bass"
+    \override Voice.RehearsalMark.stencil = ##f
     \stringCanonGP
     \wwindChoraleGP
     \tuba_segment_IYGH_A
@@ -378,7 +388,7 @@
         \tempo 4 = 55 
         \clef "alto"
         \viola_segment_strings
-        \wwindChoraleGP
+        \viola_segment_chorale
         \va_segment_IYGH_A
         \fiveBarPause
         \va_segment_IYGH_B

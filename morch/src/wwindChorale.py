@@ -70,31 +70,29 @@ def make_bars_four_four(parent_list: list[list[str]]) -> list[str]:
 
 
 FLUTE_ONE = [
-    ["r4 a'4--"] * SEQ_ONE[0],
-    ["r4 e''4--"] * SEQ_ONE[1],
-    ["r4 e''4--"] * SEQ_ONE[2],
-    ["r4 a'4--"] * SEQ_ONE[3],
-    ["r4 c''4--"] * SEQ_ONE[4],
-    ["r4 c''4--"] * SEQ_ONE[5],
-    ["r4 b'4--"] * SEQ_ONE[6],
+    ["r4 a'8-.\\fp\\pp r8"] * SEQ_ONE[0],  # 8
+    ["r4 e''8-.\\fp\\pp r8"] * SEQ_ONE[1], # 4
+    ["r4 e''8-.\\fp\\pp r8"] * SEQ_ONE[2], # 4
+    ["r4 a'8-.\\fp\\pp r8"] * SEQ_ONE[3],  # 2 
+    ["r4 c''8-.\\fp\\pp r8"] * SEQ_ONE[4], # 9 
+    ["r4 c''8-.\\fp\\pp r8"] * SEQ_ONE[5], # 2
+    ["r4 b'8-.\\fp\\pp r8"] * SEQ_ONE[6],  # 5
 ]
 
 FLUTE_ONE_BARS = make_bars_four_four(FLUTE_ONE)
 # prepend dynamics to first bar
-FLUTE_ONE_BARS[0] = "r4 a'4--\\mp r4 a'4--"
 
 FLUTE_TWO = [
-    ["r4 a'4--"] * SEQ_ONE[0],
-    ["r4 a'4--"] * SEQ_ONE[1],
-    ["r4 a'4--"] * SEQ_ONE[2],
-    ["r4 e'4--"] * SEQ_ONE[3],
-    ["r4 f'4--"] * SEQ_ONE[4],
-    ["r4 f'4--"] * SEQ_ONE[5],
-    ["r4 a'4--"] * SEQ_ONE[6],
+    ["r4 a'8-.\\fp\\pp r8"] * SEQ_ONE[0],
+    ["r4 a'8-.\\fp\\pp r8"] * SEQ_ONE[1],
+    ["r4 a'8-.\\fp\\pp r8"] * SEQ_ONE[2],
+    ["r4 e'8-.\\fp\\pp r8"] * SEQ_ONE[3],
+    ["r4 f'8-.\\fp\\pp r8"] * SEQ_ONE[4],
+    ["r4 f'8-.\\fp\\pp r8"] * SEQ_ONE[5],
+    ["r4 a'8-.\\fp\\pp r8"] * SEQ_ONE[6],
 ]
 
 FLUTE_TWO_BARS = make_bars_four_four(FLUTE_TWO)
-FLUTE_TWO_BARS[0] = "r4 a'4--\\mp r4 a'4--"
 
 OB_SEQ = [7, 4, 8, 4, 4, 4, 4, 6, 6, 9, 4, 4, 4]
 OBOE_ONE = [
@@ -210,30 +208,28 @@ OBOE_TWO = [
 
 
 CLARINET_ONE = [
-    ["r4 a'4--"] * SEQ_ONE[0],
-    ["r4 cs''4--"] * SEQ_ONE[1],
-    ["r4 c''4--"] * SEQ_ONE[2],
-    ["r4 g'4--"] * SEQ_ONE[3],
-    ["r4 a'4--"] * SEQ_ONE[4],
-    ["r4 a'4--"] * SEQ_ONE[5],
-    ["r4 b'4--"] * SEQ_ONE[6],
+    ["r4 a'8-.\\fp\\pp r8"] * SEQ_ONE[0],
+    ["r4 cs''8-.\\fp\\pp r8"] * SEQ_ONE[1],
+    ["r4 c''8-.\\fp\\pp r8"] * SEQ_ONE[2],
+    ["r4 g'8-.\\fp\\pp r8"] * SEQ_ONE[3],
+    ["r4 a'8-.\\fp\\pp r8"] * SEQ_ONE[4],
+    ["r4 a'8-.\\fp\\pp r8"] * SEQ_ONE[5],
+    ["r4 b'8-.\\fp\\pp r8"] * SEQ_ONE[6],
 ]
 
 CLARINET_ONE_BARS = make_bars_four_four(CLARINET_ONE)
-CLARINET_ONE_BARS[0] = "r4 a'4--\\mp r4 a'4--"
 
 CLARINET_TWO = [
-    ["r4 a'4--"] * SEQ_ONE[0],
-    ["r4 a4--"] * SEQ_ONE[1],
-    ["r4 a4--"] * SEQ_ONE[2],
-    ["r4 c'4--"] * SEQ_ONE[3],
-    ["r4 e'4--"] * SEQ_ONE[4],
-    ["r4 d'4--"] * SEQ_ONE[5],
-    ["r4 a'4--"] * SEQ_ONE[6],
+    ["r4 a'8-.\\fp\\pp r8"] * SEQ_ONE[0],
+    ["r4 a8-.\\fp\\pp r8"] * SEQ_ONE[1],
+    ["r4 a8-.\\fp\\pp r8"] * SEQ_ONE[2],
+    ["r4 c'8-.\\fp\\pp r8"] * SEQ_ONE[3],
+    ["r4 e'8-.\\fp\\pp r8"] * SEQ_ONE[4],
+    ["r4 d'8-.\\fp\\pp r8"] * SEQ_ONE[5],
+    ["r4 a'8-.\\fp\\pp r8"] * SEQ_ONE[6],
 ]
 
 CLARINET_TWO_BARS = make_bars_four_four(CLARINET_TWO)
-CLARINET_ONE_BARS[0] = "r4 a'4--\\mp r4 a'4--"
 
 BASSOON = [
     "r1",
@@ -275,24 +271,47 @@ HARP = [
     "r4 <a' b' a'' b''>4 r4 <a' b' a'' b''>4 ",
 ]
 
+VIOLA = [
+    "r1",
+    "r1",
+    "r1",
+    "r1",
+    "r1",
+    "r4 r8 e''8(\\pp a'' e'' a'--) e''(",
+    "bf'8 g' a' e') a'( e' a'4)",
+    "r4 r8 e''8( a'' e'' a'--) fs''(",
+    "ef''8 e'') a'( e' a' e' a'4)",
+    "r1",
+    "r1",
+    "r1",
+    "r4 r8 c''8(\\pp f'' c'' f') c''(",
+    "f'8 e' d' f') c'( f' f4)",
+    "r1",
+    "r4 r8 c''8( a' d'' a' d')",
+    "d''8( c'' b' a') d'( a d4)",
+    ]
+
+
 CELLO = [
-    "r1",
-    "r1",
-    "r1",
-    "r1",
-    "r1",
-    "r1",
-    "r1",
-    "r4 r8 e'8( a' e' a--) fs'(",
-    "ef'8 e') a( e a e a4)",
-    "r1",
-    "r1",
-    "r1",
-    "r4 r8 c'8( f' c' f) c'(",
-    "f8 e d f) c( f f,4)",
-    "r1",
-    "r4 r8 c'8( a d' a d)",
-    "d'8( c' b a) d( a, d,4)",
+        "r1",
+        "r1",
+        "r1",
+        "r1",
+        "r1",
+        "r1",
+        "r1",
+        "r2 r4 e'4(\\pp",
+        "a' e' a--) fs'(",
+        "ef'4 e') a( e",
+        "a4 e a2)",
+        "r1",
+        "r1",
+        "r2 r4 c'4(",
+        "f'4 c' f) c'(",
+        "f4 e d f)",
+        "c4( f f,2)",
+        "r1",
+        "r1",
 ]
 
 REST = ["r1" * 17]
@@ -523,6 +542,23 @@ def get_segment() -> dict:
     chord_o = create_voice(HARP[14], 0)
     chord_p = create_voice(HARP[15], 0)
     chord_q = create_voice(HARP[16], 0)
+    va_a = create_voice(VIOLA[0], 0)
+    va_b = create_voice(VIOLA[1], 0)
+    va_c = create_voice(VIOLA[2], 0)
+    va_d = create_voice(VIOLA[3], 0)
+    va_e = create_voice(VIOLA[4], 0)
+    va_f = create_voice(VIOLA[5], 0)
+    va_g = create_voice(VIOLA[6], 0)
+    va_h = create_voice(VIOLA[7], 0)
+    va_i = create_voice(VIOLA[8], 0)
+    va_j = create_voice(VIOLA[9], 0)
+    va_k = create_voice(VIOLA[10], 0)
+    va_l = create_voice(VIOLA[11], 0)
+    va_m = create_voice(VIOLA[12], 0)
+    va_n = create_voice(VIOLA[13], 0)
+    va_o = create_voice(VIOLA[14], 0)
+    va_p = create_voice(VIOLA[15], 0)
+    va_q = create_voice(VIOLA[16], 0)
     vc_a = create_voice(CELLO[0], 0)
     vc_b = create_voice(CELLO[1], 0)
     vc_c = create_voice(CELLO[2], 0)
@@ -741,8 +777,24 @@ def get_segment() -> dict:
         "viola": {
                 "time_sig": time_sig, 
                 "rmark": rmark,
-                "rest": rest,
-                },
+                "va_a": va_a,
+                "va_b": va_b,
+                "va_c": va_c,
+                "va_d": va_d,
+                "va_e": va_e,
+                "va_f": va_f,
+                "va_g": va_g,
+                "va_h": va_h,
+                "va_i": va_i,
+                "va_j": va_j,
+                "va_k": va_k,
+                "va_l": va_l,
+                "va_m": va_m,
+                "va_n": va_n,
+                "va_o": va_o,
+                "va_p": va_p,
+                "va_q": va_q,
+        },
         "cello": {
             "time_sig": time_sig,
             "rmark": rmark,
