@@ -19,7 +19,10 @@ from marana.tools import (
 from stringcanon import printmacros
 
 CALL_ROOTS = ["bf", "bf", "bf", "f"]
-RESP_ROOTS = ["bf,", "bf,", "bf,", "f,", "d"]
+RESP_ROOTS = ["<bf,, bf, d>", "<bf,, bf, d>", "<bf,, bf, d>", "<f,, f, a,>",
+              "<d, d fs>"]
+HARP_ROOTS = ["<bf,, bf, f>", "<bf,, bf, f>", "<bf,, bf, f>", "<f,, f, c>",
+              "<d, d a>"]
 
 
 # we're going to create a pitch map for each of the tones we want to
@@ -42,7 +45,8 @@ btups = [
     create_pitch_map("fluteOne", CALL_ROOTS, "1-1/7"),# seventh
     create_pitch_map("fluteTwo", CALL_ROOTS, "1-1/3"),
     create_pitch_map("bsn", CALL_ROOTS, "16"),
-    create_pitch_map("vibes", CALL_ROOTS, "1-3/5"), # third
+    create_pitch_map("vibes", RESP_ROOTS, "1-3/5"), # third
+    create_pitch_map("harp", HARP_ROOTS, "2-2/3"),
     create_pitch_map("vnone", CALL_ROOTS, "1-1/7"),
     create_pitch_map("vntwo", CALL_ROOTS, "1-1/3"),
 ]
@@ -77,11 +81,11 @@ TEMPLATE_MAP = {
                     r4 {3}2\\fp {3}4\\ppp
                     r1                 
                  """,
-    "tmp": """r4 {0}8-.\\f r8 r2
-                  r4 {1}8-.\\f r8 r2
-                  r4 {2}8-.\\f r8 r2
-                  r4 {3}8-.\\f r8 r2
-                  r1
+    "tmp": """r4 {0}8-.\\f r8 r8 {0}8-. r4
+              r4 {1}8-. r8 r8 {1}8-. r4
+              r4 {2}8-. r8 r8 {2}8-. r4
+              r4 {3}8-. r8 r8 {3}8-. r4
+              r1
                  """,
     "va": """r4 {0}2.\\fp ~
                  {0}4\\ppp {1}2.\\fp ~ 
@@ -96,34 +100,40 @@ TEMPLATE_MAP = {
                  {3}1\\ppp
                  """,
     "kb": """r4 {0}2.\\fp ~
-                 {0}4\\ppp {1}2.\\fp ~ 
-                 {1}4\\ppp {2}2.\\fp ~ 
-                 {2}4\\ppp {3}2.\\fp ~ 
-                 {3}1\\ppp
+                 {0}4 {1}2.\\fp ~ 
+                 {1}4 {2}2.\\fp ~ 
+                 {2}4 {3}2.\\fp ~ 
+                 {3}1
                  """,
     "fluteOne": """r8 {0}8\\fp ~ {0}4~ 
-                  {0}4\\ppp r4 r8 {1}8\\fp ~ {1}4~
-                  {1}4\\ppp r4 r8 {2}8\\fp ~ {2}4~
-                  {2}4\\ppp r4 r8 {3}8\\fp ~ {3}4~
-                  {3}4\\ppp r2.
+                  {0}4 r4 r8 {1}8\\fp ~ {1}4~
+                  {1}4 r4 r8 {2}8\\fp ~ {2}4~
+                  {2}4 r4 r8 {3}8\\fp ~ {3}4~
+                  {3}4 r2.
                   """,
     "fluteTwo": """r8 {0}8\\fp ~ {0}4~ 
-                  {0}4\\ppp r4 r8 {1}8\\fp ~ {1}4~
-                  {1}4\\ppp r4 r8 {2}8\\fp ~ {2}4~
-                  {2}4\\ppp r4 r8 {3}8\\fp ~ {3}4~
-                  {3}4\\ppp r2.
+                  {0}4 r4 r8 {1}8\\fp ~ {1}4~
+                  {1}4 r4 r8 {2}8\\fp ~ {2}4~
+                  {2}4 r4 r8 {3}8\\fp ~ {3}4~
+                  {3}4 r2.
                   """,
     "bsn": """r2 r8 {0}8\\fp ~ {0}4~ 
-                {0}2\\ppp r8 {1}8\\fp ~ {1}4~
-                {1}2\\ppp r8 {2}8\\fp ~ {2}4~
-                {2}2\\ppp r8 {3}8\\fp ~ {3}4~
-                {3}4\\ppp r2.
+                {0}2 r8 {1}8\\fp ~ {1}4~
+                {1}2 r8 {2}8\\fp ~ {2}4~
+                {2}2 r8 {3}8\\fp ~ {3}4~
+                {3}4 r2.
              """,
-    "vibes": """r2 r8 {0}8\\fp ~ {0}4~ 
-                {0}2\\ppp r8 {1}8\\fp ~ {1}4~
-                {1}2\\ppp r8 {2}8\\fp ~ {2}4~
-                {2}2\\ppp r8 {3}8\\fp ~ {3}4~
-                {3}4\\ppp r2.
+    "vibes": """r2^\\ord^\\mmallets r8 {0}8\\p ~ {0}4~ 
+                {0}2 r8 {1}8 ~ {1}4~
+                {1}2 r8 {2}8 ~ {2}4~
+                {2}2 r8 {3}8 ~ {3}4~
+                {3}4 r2.
+             """,
+    "harp": """r2 r8 {0}8\\f ~ {0}4~ 
+               {0}2 r8 {1}8 ~ {1}4~
+               {1}2 r8 {2}8 ~ {2}4~
+               {2}2 r8 {3}8 ~ {3}4~
+               {3}4 r2.
              """,
     "vnone": """r2 r8 {0}8\\fp ~ {0}4~ 
                 {0}2\\ppp ~ {0}8 {1}8\\fp ~ {1}4~
@@ -140,7 +150,10 @@ TEMPLATE_MAP = {
 }
 
 
-MACROS = {"VIA_SORD": "viaSord = \\markup \"via sord.\""}
+MACROS = {"VIA_SORD": "viaSord = \\markup \"via sord.\"",
+          "ORD": "ord = \\markup { ord. }",
+          "MEDMALLETS": "mmallets = \\markup { med. mallets }",
+        }
 
 CALLS = [
     "r16 bf8 d'8-.\\sfp bf8 f2--",
@@ -386,18 +399,40 @@ def get_brass_section() -> dict:
             "fluteOne": {"tempo_fast": TEMPO_FAST, 
                          "rmark": rmark, 
                          "instr": PICCOLO, 
-                         "resp": resp_phrases["fluteOne"]
+                         "resp": resp_phrases["fluteOne"],
+                         "rest": FIVE_BAR_REST,
                          },
             "fluteTwo": {"tempo_fast": TEMPO_FAST, 
                          "rmark": rmark, 
                          "instr": PICCOLO, 
-                         "resp": resp_phrases["fluteTwo"]
+                         "resp": resp_phrases["fluteTwo"],
+                         "rest": FIVE_BAR_REST,
                          },
-        "clOne": {"tempo_fast": TEMPO_FAST, "rmark": rmark, "call": call_phrases["clOne"]},
-        "clTwo": {"tempo_fast": TEMPO_FAST, "rmark": rmark, "call": call_phrases["clTwo"]},
-        "obOne": {"tempo_fast": TEMPO_FAST, "rmark": rmark, "call": call_phrases["obOne"]},
-        "obTwo": {"tempo_fast": TEMPO_FAST, "rmark": rmark, "call": call_phrases["obTwo"]},
-        "bsn": {"tempo_fast": TEMPO_FAST, "rmark": rmark, "resp": resp_phrases["bsn"]},
+        "clOne": {"tempo_fast": TEMPO_FAST, 
+                   "rmark": rmark, 
+                   "call": call_phrases["clOne"],
+                   "rest": FIVE_BAR_REST,
+                   },
+        "clTwo": {"tempo_fast": TEMPO_FAST, 
+                  "rmark": rmark, 
+                  "call": call_phrases["clTwo"],
+                  "rest": FIVE_BAR_REST,
+                  },
+        "obOne": {"tempo_fast": TEMPO_FAST, 
+                  "rmark": rmark, 
+                  "call": call_phrases["obOne"],
+                   "rest": FIVE_BAR_REST,
+                  },
+        "obTwo": {"tempo_fast": TEMPO_FAST, 
+                  "rmark": rmark, 
+                  "call": call_phrases["obTwo"],
+                   "rest": FIVE_BAR_REST,
+                  },
+        "bsn": {"tempo_fast": TEMPO_FAST, 
+                "rmark": rmark, 
+                "resp": resp_phrases["bsn"],
+                "rest": FIVE_BAR_REST,
+                },
         "trpOneTwo": {
             "tempo_fast": TEMPO_FAST,
             "rmark": rmark,
@@ -526,18 +561,55 @@ def get_brass_section() -> dict:
             "chorus_eights_ad": chorus_eights_ad,
             "chorus_eights_ae": chorus_eights_ae,
         },
-        "tmp": {"tempo_fast": TEMPO_FAST,"tsig": TSIG_FF, "rmark": rmark, "call": call_phrases["tmp"]},
-        "vibes": {"tempo_fast": TEMPO_FAST,"tsig": TSIG_FF, "rmark": rmark, "resp": resp_phrases["vibes"]},
-        "harp": {
-                "rest_i": FIVE_BAR_REST,
-                "rest_ii": FIVE_BAR_REST,
+        "tmp": {"tempo_fast": TEMPO_FAST,
+                "tsig": TSIG_FF, 
+                "rmark": rmark, 
+                "call": call_phrases["tmp"],
+                "rest": FIVE_BAR_REST,
                 },
+        "vibes": {"tempo_fast": TEMPO_FAST,
+                  "tsig": TSIG_FF, 
+                  "rmark": rmark, 
+                  "resp": resp_phrases["vibes"],
+                "rest": FIVE_BAR_REST,
+                  },
+        "harp": {
+                "tempo_fast": TEMPO_FAST,
+                "tsig": TSIG_FF,
+                "resp": resp_phrases["harp"],
+                "rest": FIVE_BAR_REST,
+                },
+        "vnone": {"tempo_fast": TEMPO_FAST,
+                  "tsig": TSIG_FF, 
+                  "rmark": rmark, 
+                  "resp": resp_phrases["vnone"],
+                  "rest": FIVE_BAR_REST,
+                  },
+        "vntwo": {"tempo_fast": TEMPO_FAST,
+                  "tsig": TSIG_FF, 
+                  "rmark": rmark, 
+                  "resp": resp_phrases["vntwo"],
+                  "rest": FIVE_BAR_REST,
+                  },
+        "va": {"tempo_fast": TEMPO_FAST,
+               "tsig": TSIG_FF, 
+               "rmark": rmark, 
+               "call": call_phrases["va"],
+               "rest": FIVE_BAR_REST,
+               },
+        "vc": {"tempo_fast": TEMPO_FAST,
+                "tsig": TSIG_FF, 
+                "rmark": rmark, 
+                "call": call_phrases["vc"],
+               "rest": FIVE_BAR_REST,
+                },
+        "kb": {"tempo_fast": TEMPO_FAST,
+                "tsig": TSIG_FF, 
+                "rmark": rmark, 
+                "call": call_phrases["kb"],
+               "rest": FIVE_BAR_REST,
 
-        "vnone": {"tempo_fast": TEMPO_FAST,"tsig": TSIG_FF, "rmark": rmark, "resp": resp_phrases["vnone"]},
-        "vntwo": {"tempo_fast": TEMPO_FAST,"tsig": TSIG_FF, "rmark": rmark, "resp": resp_phrases["vntwo"]},
-        "va": {"tempo_fast": TEMPO_FAST,"tsig": TSIG_FF, "rmark": rmark, "call": call_phrases["va"]},
-        "vc": {"tempo_fast": TEMPO_FAST,"tsig": TSIG_FF, "rmark": rmark, "call": call_phrases["vc"]},
-        "kb": {"tempo_fast": TEMPO_FAST,"tsig": TSIG_FF, "rmark": rmark, "call": call_phrases["kb"]},
+                },
     }
     return instruments
 

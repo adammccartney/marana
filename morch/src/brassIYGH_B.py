@@ -16,9 +16,7 @@ from marana.tools import (
     mapRests,
 )
 
-CALL_ROOTS = ["bf", "bf", "bf", "f"]
-RESP_ROOTS = ["d", "g", "a,", "bf,", "d"]
-
+from brassIYGH_A import CALL_ROOTS, RESP_ROOTS, HARP_ROOTS
 
 # we're going to create a pitch map for each of the tones we want to
 # articulate.
@@ -40,7 +38,8 @@ btups = [
     create_pitch_map("fluteOne", CALL_ROOTS, "1-1/7"), # seventh
     create_pitch_map("fluteTwo", CALL_ROOTS, "1-1/3"),
     create_pitch_map("bsn", CALL_ROOTS, "16"),
-    create_pitch_map("vibes", CALL_ROOTS, "1-3/5"),
+    create_pitch_map("vibes", RESP_ROOTS, "1-3/5"),
+    create_pitch_map("harp", HARP_ROOTS, "2-2/3"),
     create_pitch_map("vnone", CALL_ROOTS, "1-1/7"),
     create_pitch_map("vntwo", CALL_ROOTS, "1-1/3"),
 ]
@@ -75,11 +74,11 @@ TEMPLATE_MAP = {
                     r8 {3}8\\fp ~ {3}2~ {3}4\\ppp
                     r1
                  """,
-    "tmp": """r8 {0}8-.\\f r2.
-                 r8 {1}8-.\\f r2.
-                 r8 {2}8-.\\f r2.
-                 r8 {3}8-.\\f r2.
-                 r1
+    "tmp": """r8 {0}8-.\\f r2 {0}8-. r8
+              r8 {1}8-. r2 {1}8-. r8
+              r8 {2}8-. r2 {2}8-. r8
+              r8 {3}8-. r2 {3}8-. r8
+              r1
                  """,
     "va": """r8 {0}8\\fp ~ {0}2. ~
                  {0}8\\ppp {1}8\\fp ~ {1}2. ~
@@ -100,29 +99,35 @@ TEMPLATE_MAP = {
                  {3}1\\ppp
                  """,
     "fluteOne": """r2. {0}4\\fp ~ 
-                  {0}4\\ppp r2 {1}4\\fp ~
-                  {1}4\\ppp r2 {2}4\\fp ~
-                  {2}4\\ppp r2 {3}4\\fp ~
-                  {3}4\\ppp r2.
+                  {0}4 r2 {1}4\\fp ~
+                  {1}4 r2 {2}4\\fp ~
+                  {2}4 r2 {3}4\\fp ~
+                  {3}4 r2.
                   """,
     "fluteTwo": """r2. {0}4\\fp ~ 
-                  {0}4.\\ppp r8 r4 {1}4\\fp ~
-                  {1}4.\\ppp r8 r4 {2}4\\fp ~
-                  {2}4.\\ppp r8 r4 {3}4\\fp ~
-                  {3}4.\\ppp r8 r2
+                  {0}4. r8 r4 {1}4\\fp ~
+                  {1}4. r8 r4 {2}4\\fp ~
+                  {2}4. r8 r4 {3}4\\fp ~
+                  {3}4. r8 r2
                   """,
     "bsn": """r2. {0}4\\fp ~ 
-                {0}2\\ppp r4 {1}4\\fp ~
-                {1}2\\ppp r4 {2}4\\fp ~
-                {2}2\\ppp r4 {3}4\\fp ~
-                {3}2\\ppp r2
+                {0}2 r4 {1}4\\fp ~
+                {1}2 r4 {2}4\\fp ~
+                {2}2 r4 {3}4\\fp ~
+                {3}2 r2
                 """,
-    "vibes": """r2. {0}4\\f ~ 
-                  {0}2. {1}4\\f ~
-                  {1}2. {2}4\\f ~
-                  {2}2. {3}4\\f ~
-                  {3}2 r2
-                  """,
+    "vibes": """r2 r8 {0}8\\p ~ {0}4~ 
+                {0}2 r8 {1}8 ~ {1}4~
+                {1}2 r8 {2}8 ~ {2}4~
+                {2}2 r8 {3}8 ~ {3}4~
+                {3}4 r2.
+             """,
+    "harp": """r2 r8 {0}8\\f ~ {0}4~ 
+               {0}2 r8 {1}8 ~ {1}4~
+               {1}2 r8 {2}8 ~ {2}4~
+               {2}2 r8 {3}8 ~ {3}4~
+               {3}4 r2.
+             """,
     "vnone": """r2. {0}4\\fp ~ 
                   {0}2\\ppp r4 {1}4\\fp ~
                   {1}2\\ppp r4 {2}4\\fp ~
@@ -540,8 +545,8 @@ def get_brass_section() -> dict:
             "final_barline": FINAL_BARLINE,
         },
         "harp": {
-                "rest_i": FIVE_BAR_REST,
-                "rest_ii": FIVE_BAR_REST,
+                "resp": resp_phrases["harp"],
+                "rest": FIVE_BAR_REST,
                 "final_barline": FINAL_BARLINE,
         },
         "vnone": {

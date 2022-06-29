@@ -60,7 +60,7 @@
       \flOne_segment_chorale 
       \piccoloChange
       \fluteOne_segment_IYGH_A
-      \fiveBarPause 
+       
       \fluteOne_segment_IYGH_B
       } % end of flute voice one 
     >>
@@ -77,7 +77,7 @@
       \flTwo_segment_chorale
       \piccoloChange
       \fluteTwo_segment_IYGH_A
-      \fiveBarPause
+      
       \fluteTwo_segment_IYGH_B
       } % end of flute voice two
     >> %% end of flute staff
@@ -95,7 +95,7 @@
       \obOne_segment_strings
       \obOne_segment_chorale
       \obOne_segment_IYGH_A
-      \fiveBarPause
+      
       \obOne_segment_IYGH_B
     } %% end of oboe notes
   >> %% end of oboe staff
@@ -113,7 +113,7 @@
       \obTwo_segment_strings
       \obTwo_segment_chorale
       \obTwo_segment_IYGH_A
-      \fiveBarPause
+      
       \obTwo_segment_IYGH_B
     } %% end of oboe notes
   >> %% end of oboe two staff
@@ -131,7 +131,7 @@
       \clOne_segment_strings
       \clOne_segment_chorale 
       \clOne_segment_IYGH_A
-      \fiveBarPause
+      
       \clOne_segment_IYGH_B
     } % end of clarinet 1, 2 voice one
   >>
@@ -144,7 +144,7 @@
       \clTwo_segment_strings
       \clTwo_segment_chorale
       \clTwo_segment_IYGH_A
-      \fiveBarPause
+      
       \clTwo_segment_IYGH_B
     } % end of clarinet 1, 2 voice two
   >> %% end clarinets
@@ -163,7 +163,7 @@
       \bsn_segment_strings
       \bsn_segment_chorale
       \bsn_segment_IYGH_A
-      \fiveBarPause
+      
       \bsn_segment_IYGH_B
     } %% end of bsn notes
   >> %% end of bsn staff
@@ -310,7 +310,6 @@
       \vibes_segment_strings
       \wwindChoraleGP
       \vibes_segment_IYGH_A
-      \fiveBarPause
       \vibes_segment_IYGH_B
   }
 
@@ -325,7 +324,6 @@
       \tmp_segment_strings
       \wwindChoraleGP
       \tmp_segment_IYGH_A
-      \fiveBarPause
       \tmp_segment_IYGH_B
   }
 >> %% end perc 
@@ -359,7 +357,7 @@
         \violinOne_segment_strings
         \wwindChoraleGP
         \vnone_segment_IYGH_A
-        \fiveBarPause
+        
         \vnone_segment_IYGH_B
       }
 
@@ -374,7 +372,7 @@
         \violinTwo_segment_strings
         \wwindChoraleGP
         \vntwo_segment_IYGH_A
-        \fiveBarPause
+        
         \vntwo_segment_IYGH_B
       } %% end of vln two notes
 
@@ -390,7 +388,7 @@
         \viola_segment_strings
         \viola_segment_chorale
         \va_segment_IYGH_A
-        \fiveBarPause
+        
         \va_segment_IYGH_B
       } %% end of vla notes
 
@@ -406,7 +404,7 @@
         \cello_segment_strings
         \cello_segment_chorale
         \vc_segment_IYGH_A
-        \fiveBarPause
+        
         \vc_segment_IYGH_B
       } %% end of cello notes
 
@@ -422,7 +420,7 @@
         \contrabass_segment_strings
         \wwindChoraleGP
         \kb_segment_IYGH_A
-        \fiveBarPause
+        
         \kb_segment_IYGH_B
       } %% end of bsn notes
 

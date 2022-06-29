@@ -171,7 +171,7 @@ TEMPLATES = {
         "bsn": """r2 \\repeat tremolo 8 {{ {0}32\\ppp {1} }}  |
                 r2 \\repeat tremolo 8 {{ {2}32\\f {3} }} |
                 r2 \\repeat tremolo 8 {{ {4}32\\ppp {5} }}  |""",
-        "vibes": "{0}1\\p^\\arco {1}1 {2}",
+        "vibes": "{0}1^\\markup {{ sim. }} {1}1 {2}",
         "harp": """\\repeat tremolo 8 {{ {0}16\\ppp {1} }}  |
                  \\repeat tremolo 8 {{ {2}16\\f {3} }} | 
                  \\repeat tremolo 8 {{ {4}16\\ppp {5} }}  |""",
@@ -201,7 +201,9 @@ MACROS = {
     "START_RIT": 'startRit = { \\override TextSpanner.bound-details.left.text= \\markup { \\upright "rit." } }',
     "ESSPRESSIVO": "espress = \\markup { espressivo }",
     "BOWED": "arco = \\markup { arco }",
-    "LV": "lv = \\markup {l.v.}",
+    "MOT": "motoron = \\markup { motor on }",
+    "LV": "lv = \\markup { l.v.}",
+    "PED": "ped = \\markup { pedal depressed }",
     "CON_SORD": "consord = \\markup {con sord.}",
     "VIA_SORD": "viasord = \\markup {via sord.}",
 }
@@ -460,6 +462,7 @@ def get_segment() -> dict:
     fluteTwo_B = createMusicChunk("B", "fluteTwo", -1)
     bsn_B = createMusicChunk("B", "bsn", 1)
     vibes_B = createMusicChunk("B", "vibes", 1)
+    vibes_B[0] = "g'1\\p^\\arco^\\ped^\\motoron <g' d''>1 a'1" # once override
     harp_B = createMusicChunk("B", "harp", 1)
     vnone_B = createMusicChunk("B", "vnone", 1)
     vntwo_B = createMusicChunk("B", "vntwo", 1)

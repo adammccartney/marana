@@ -26,7 +26,7 @@
 ** DONE Harp pedaling
 ** DONE Parts
 
-** TODO Proof Read [2/4]
+** TODO Proof Read [3/4]
 *** DONE Woodwinds [7/7]
   - [X] fl 1
   - [X] fl 2
@@ -44,11 +44,11 @@
   - [X] trp 2
   - [X] trb
   - [X] tuba
-*** TODO Perc [0/2]
-  - [ ] timps
-  - [ ] vibes
-*** TODO Strings [0/6]
-  - [ ] harp
+*** DONE Perc [2/2]
+  - [X] timps
+  - [X] vibes
+*** TODO Strings [1/6]
+  - [X] harp
   - [ ] vln1
   - [ ] vln2
   - [ ] vla
