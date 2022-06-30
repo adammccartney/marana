@@ -1,0 +1,47 @@
+#+LATEX_CLASS: report
+#+LATEX_CLASS_OPTIONS: [a3paper]
+#+LATEX_HEADER: \usepackage{times}
+#+LATEX_HEADER: \usepackage{pdfpages}
+
+#+OPTIONS: toc:nil
+#+BEGIN_EXPORT latex
+\newcommand*{\titleTH}{\begingroup % Create the command for including the title page in the document
+\raggedleft % Right-align all text
+\vspace*{\baselineskip} % Whitespace at the top of the page
+
+{\LARGE\bfseries marana}\\[\baselineskip] % First part of the title, if it is unimportant consider making the font size smaller to accentuate the main title
+
+{{\Huge for symphony orchestra}}\\[\baselineskip] % Main title which draws the focus of the reader
+
+\vfill % Whitespace between the title block and the publisher
+
+{\large Adam McCartney}  % Publisher and logo
+
+\vspace*{3\baselineskip} % Whitespace at the bottom of the page
+\endgroup}
+
+%----------------------------------------------------------------------------------------
+%	BLANK DOCUMENT
+%----------------------------------------------------------------------------------------
+
+\begin{document} 
+
+
+\frontmatter
+\begin{titlepage}
+\begin{center}
+\pagestyle{plain} % Removes page numbers
+\titleTH % This command includes the title page
+\end{center}
+\end{titlepage}
+
+\mainmatter
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\newpage
+
+\includepdf[pages=-]{./build/score.pdf}
+\end{document}
+#+END_EXPORT

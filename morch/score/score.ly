@@ -29,13 +29,13 @@
   system-system-spacing.stretchability = #15  %how flexible the spacing is
 
 
- myStaffSize = #20
+  myStaffSize = #17
   #(define fonts
     (make-pango-font-tree "Times New Roman"
                           "Nimbus Sans"
                           "Luxi Mono"
                           
-                           (/ myStaffSize 20))) 
+                           (/ myStaffSize 19))) 
   
   }
 

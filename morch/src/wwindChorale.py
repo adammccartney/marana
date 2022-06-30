@@ -11,15 +11,10 @@ import heapq
 from operator import itemgetter
 
 from marana.tools import create_voice, outputheader, generate_chunk
-from stringcanon import printmacros
+from stringcanon import MACROS, printmacros
 
 items = {2, 3}
 total = 34
-
-MACROS = {
-    "FEATHERED_BEAM_RIGHT": "featheredBeamRight = { \\override Beam.grow-direction = #RIGHT }",
-    "FEATHERED_BEAM_LEFT": "featheredBeamLeft = { \\override Beam.grow-direction = #LEFT }",
-}
 
 
 def createTraversal(items: set[int], total: int, seqlen: int) -> list[int] | int:
@@ -70,26 +65,26 @@ def make_bars_four_four(parent_list: list[list[str]]) -> list[str]:
 
 
 FLUTE_ONE = [
-    ["r4 a'8-.\\fp\\pp r8"] * SEQ_ONE[0],  # 8
-    ["r4 e''8-.\\fp\\pp r8"] * SEQ_ONE[1], # 4
-    ["r4 e''8-.\\fp\\pp r8"] * SEQ_ONE[2], # 4
-    ["r4 a'8-.\\fp\\pp r8"] * SEQ_ONE[3],  # 2 
-    ["r4 c''8-.\\fp\\pp r8"] * SEQ_ONE[4], # 9 
-    ["r4 c''8-.\\fp\\pp r8"] * SEQ_ONE[5], # 2
-    ["r4 b'8-.\\fp\\pp r8"] * SEQ_ONE[6],  # 5
+    ["r4 a'8-.\\fp r8"] * SEQ_ONE[0],  # 8
+    ["r4 e''8-.\\fp r8"] * SEQ_ONE[1], # 4
+    ["r4 e''8-.\\fp r8"] * SEQ_ONE[2], # 4
+    ["r4 a'8-.\\fp r8"] * SEQ_ONE[3],  # 2 
+    ["r4 c''8-.\\fp r8"] * SEQ_ONE[4], # 9 
+    ["r4 c''8-.\\fp r8"] * SEQ_ONE[5], # 2
+    ["r4 b'8-.\\fp r8"] * SEQ_ONE[6],  # 5
 ]
 
 FLUTE_ONE_BARS = make_bars_four_four(FLUTE_ONE)
 # prepend dynamics to first bar
 
 FLUTE_TWO = [
-    ["r4 a'8-.\\fp\\pp r8"] * SEQ_ONE[0],
-    ["r4 a'8-.\\fp\\pp r8"] * SEQ_ONE[1],
-    ["r4 a'8-.\\fp\\pp r8"] * SEQ_ONE[2],
-    ["r4 e'8-.\\fp\\pp r8"] * SEQ_ONE[3],
-    ["r4 f'8-.\\fp\\pp r8"] * SEQ_ONE[4],
-    ["r4 f'8-.\\fp\\pp r8"] * SEQ_ONE[5],
-    ["r4 a'8-.\\fp\\pp r8"] * SEQ_ONE[6],
+    ["r4 a'8-.\\fp r8"] * SEQ_ONE[0],
+    ["r4 a'8-.\\fp r8"] * SEQ_ONE[1],
+    ["r4 a'8-.\\fp r8"] * SEQ_ONE[2],
+    ["r4 e'8-.\\fp r8"] * SEQ_ONE[3],
+    ["r4 f'8-.\\fp r8"] * SEQ_ONE[4],
+    ["r4 f'8-.\\fp r8"] * SEQ_ONE[5],
+    ["r4 a'8-.\\fp r8"] * SEQ_ONE[6],
 ]
 
 FLUTE_TWO_BARS = make_bars_four_four(FLUTE_TWO)
@@ -208,25 +203,25 @@ OBOE_TWO = [
 
 
 CLARINET_ONE = [
-    ["r4 a'8-.\\fp\\pp r8"] * SEQ_ONE[0],
-    ["r4 cs''8-.\\fp\\pp r8"] * SEQ_ONE[1],
-    ["r4 c''8-.\\fp\\pp r8"] * SEQ_ONE[2],
-    ["r4 g'8-.\\fp\\pp r8"] * SEQ_ONE[3],
-    ["r4 a'8-.\\fp\\pp r8"] * SEQ_ONE[4],
-    ["r4 a'8-.\\fp\\pp r8"] * SEQ_ONE[5],
-    ["r4 b'8-.\\fp\\pp r8"] * SEQ_ONE[6],
+    ["r4 a'8-.\\fp r8"] * SEQ_ONE[0],
+    ["r4 cs''8-.\\fp r8"] * SEQ_ONE[1],
+    ["r4 c''8-.\\fp r8"] * SEQ_ONE[2],
+    ["r4 g'8-.\\fp r8"] * SEQ_ONE[3],
+    ["r4 a'8-.\\fp r8"] * SEQ_ONE[4],
+    ["r4 a'8-.\\fp r8"] * SEQ_ONE[5],
+    ["r4 b'8-.\\fp r8"] * SEQ_ONE[6],
 ]
 
 CLARINET_ONE_BARS = make_bars_four_four(CLARINET_ONE)
 
 CLARINET_TWO = [
-    ["r4 a'8-.\\fp\\pp r8"] * SEQ_ONE[0],
-    ["r4 a8-.\\fp\\pp r8"] * SEQ_ONE[1],
-    ["r4 a8-.\\fp\\pp r8"] * SEQ_ONE[2],
-    ["r4 c'8-.\\fp\\pp r8"] * SEQ_ONE[3],
-    ["r4 e'8-.\\fp\\pp r8"] * SEQ_ONE[4],
-    ["r4 d'8-.\\fp\\pp r8"] * SEQ_ONE[5],
-    ["r4 a'8-.\\fp\\pp r8"] * SEQ_ONE[6],
+    ["r4 a'8-.\\fp r8"] * SEQ_ONE[0],
+    ["r4 a8-.\\fp r8"] * SEQ_ONE[1],
+    ["r4 a8-.\\fp r8"] * SEQ_ONE[2],
+    ["r4 c'8-.\\fp r8"] * SEQ_ONE[3],
+    ["r4 e'8-.\\fp r8"] * SEQ_ONE[4],
+    ["r4 d'8-.\\fp r8"] * SEQ_ONE[5],
+    ["r4 a'8-.\\fp r8"] * SEQ_ONE[6],
 ]
 
 CLARINET_TWO_BARS = make_bars_four_four(CLARINET_TWO)

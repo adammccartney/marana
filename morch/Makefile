@@ -19,10 +19,23 @@ PARTS_INCLUDE   := $(PARTS_DIR)/segments.ily
 
 .PHONY: parts segments clean
 
-all: score parts 
+all: dist 
 
 default: all
 
+dist: score parts score-dist
+	rm $(BUILD_DIR)/parts/*.ly
+	rm $(BUILD_DIR)/*.ly
+	rm $(BUILD_DIR)/*.ily
+	rm -rf $(BUILD_DIR)/segments
+	rm $(BUILD_DIR)/lilypond.sh
+	rm $(BUILD_DIR)/parts/*.ily
+	rm $(BUILD_DIR)/score.pdf
+
+score-dist: dist.org
+	@ emacs $< --batch -f org-latex-export-to-pdf 
+	@ mv dist.pdf $(BUILD_DIR)/marana-score.pdf
+	@ rm dist.tex*
 # Generate segments ############################################################
 #
 segments: setup $(SEGMENTS) 
@@ -61,3 +74,4 @@ build_dir:
 
 clean: 
 	rm -rf $(BUILD_DIR) 
+	rm dist.tex dist.pdf

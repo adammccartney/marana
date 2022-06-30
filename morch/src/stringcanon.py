@@ -161,9 +161,9 @@ TEMPLATES = {
         "trb": "r2 {0}8-.\\fp^\\consord {0}-. r4 {1}8-. {1}-. r4 r2",
         "tuba": "r2 {0}8-.\\fp^\\consord {0}-. r4 {1}8-. {1}-. r4 r2",
         "tmp": "r4 {0}4--\\p {0}8-- {0}8-- {0}4-- {0}8-- {0}8-- {0}4-- {0}4-- r4",
-        "va": "r4 {0}4--\\p^\\tasto\\( {0}8-- {0}8--\\) {0}4--\\( {0}8-- {0}8--\\) {1}4--\\( {1}4--\\) r4",
-        "vc": "r4 {0}4--\\p^\\tasto\\( {0}8-- {0}8--\\) {1}4--\\( {1}8-- {1}8--\\) {2}4--\\( {2}4--\\) r4",
-        "kb": "r4 {0}4--\\p^\\tasto\\( {0}8-- {0}8--\\) {0}4--\\( {0}8-- {0}8--\\) {0}4--\\( {0}4--\\) r4",
+        "va": "r4 {0}4--\\p\\(^\\tasto {0}8-- {0}8--\\) {0}4--\\( {0}8-- {0}8--\\) {1}4--\\( {1}4--\\) r4",
+        "vc": "r4 {0}4--\\p\\(^\\tasto {0}8-- {0}8--\\) {1}4--\\( {1}8-- {1}8--\\) {2}4--\\( {2}4--\\) r4",
+        "kb": "r4 {0}4--\\p\\(^\\tasto {0}8-- {0}8--\\) {0}4--\\( {0}8-- {0}8--\\) {0}4--\\( {0}4--\\) r4",
     },
     "B": {
         "fluteOne": "r1 {0}2.\\p {1}4 {1}1",
@@ -175,9 +175,9 @@ TEMPLATES = {
         "harp": """\\repeat tremolo 8 {{ {0}16\\ppp {1} }}  |
                  \\repeat tremolo 8 {{ {2}16\\f {3} }} | 
                  \\repeat tremolo 8 {{ {4}16\\ppp {5} }}  |""",
-        "vnone": "r2. {0}8\\mp(^\\ord^\\espress {1}8 {2}2.)-- {3}4:16 ^\\ord\\> ~ {3}2.:16^\\pont\\ppp r4",
-        "vntwo": "r2. r8 {0}8\\p~^\\ord^\\espress {0}2\\< {1}2\\> {2}2.:16\\ppp r4",
-        "vc": "r2. {0}4\\mp~^\\ord^\\espress {0}4 {1}2\\> {2}4 ^\\ord ~ {2}2.:16^\\pont\\ppp r4",
+        "vnone": "r2. {0}8\\mp(^\\ord {1}8 {2}2.)-- {3}4:16 ^\\ord\\> ~ {3}2.:16^\\pont\\ppp r4",
+        "vntwo": "r2. r8 {0}8\\p~^\\ord {0}2\\< {1}2\\> {2}2.:16\\ppp^\\pont r4",
+        "vc": "r2. {0}4\\mp~^\\ord {0}4 {1}2\\> {2}4 ^\\ord ~ {2}2.:16^\\pont\\ppp r4",
     },
     # C phrases are phrases that link A and B
     "C": {},
@@ -206,6 +206,10 @@ MACROS = {
     "PED": "ped = \\markup { pedal depressed }",
     "CON_SORD": "consord = \\markup {con sord.}",
     "VIA_SORD": "viasord = \\markup {via sord.}",
+    "FEATHERED_BEAM_RIGHT": "featheredBeamRight = { \\override Beam.grow-direction = #RIGHT }",
+    "FEATHERED_BEAM_LEFT": "featheredBeamLeft = { \\override Beam.grow-direction = #LEFT }",
+    "VIA_SORD": "viaSord = \\markup \"via sord.\"",
+    "MEDMALLETS": "mmallets = \\markup { med. mallets }",
 }
 
 ################################################################
@@ -473,6 +477,8 @@ def get_segment() -> dict:
 
     INIT_HARP_PEDAL = "r2_\\markup { \\harp-pedal #\"--^|----\" } r2 r2 r2"
 
+    PAGE_BREAK = "\\break"
+
     METER_2_4 = "\\time 2/4"
     METER_4_4 = "\\time 4/4"
 
@@ -491,6 +497,7 @@ def get_segment() -> dict:
             "mm01_04": SECT_A_REST,
             "mm05_08": SECT_A_REST,
             "mm09_12": SECT_A_REST,
+            "break": PAGE_BREAK,
             "mm13": METER_4_4,
             "rmark1": RMARKS[0],
             "mm13_15": SECT_B_REST,
@@ -499,6 +506,7 @@ def get_segment() -> dict:
             "mm19_22": SECT_A_REST,
             "mm23_26": SECT_A_REST,
             "mm27_30": SECT_A_REST,
+            "break": PAGE_BREAK,
             "mm31": METER_4_4,
             "rmark2": RMARKS[1],
             "mm31_33": fluteOne_B[2],
@@ -507,6 +515,7 @@ def get_segment() -> dict:
             "mm37_40": SECT_A_REST,
             "mm41_44": SECT_A_REST,
             "mm45_48": SECT_A_REST,
+            "break": PAGE_BREAK,
             "mm49": METER_4_4,
             "rmark3": RMARKS[2],
             "mm49_51": fluteOne_B[4],
@@ -515,6 +524,7 @@ def get_segment() -> dict:
             "mm55_58": SECT_A_REST,
             "mm59_62": SECT_A_REST,
             "mm63_66": SECT_A_REST,
+            "break": PAGE_BREAK,
             "mm67": METER_4_4,
             "rmark4": RMARKS[3],
             "mm67_69": fluteOne_B[6],
@@ -523,14 +533,17 @@ def get_segment() -> dict:
             "mm73_76": SECT_A_REST,
             "mm77_80": SECT_A_REST,
             "mm81_84": SECT_A_REST,
+            "break": PAGE_BREAK,
             "mm85": METER_4_4,
             "rmark5": RMARKS[4],
             "mm85_87": fluteOne_B[8],
             "mm88_90": fluteOne_B[9],
+            "break": PAGE_BREAK,
             "mm91": METER_2_4,
             "mm91_94": SECT_A_REST,
             "mm95_98": SECT_A_REST,
             "mm99_102": SECT_A_REST,
+            "break": PAGE_BREAK,
         },
         "fluteTwo": {
             "mm01": METER_2_4,
