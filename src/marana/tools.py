@@ -250,7 +250,7 @@ def create_pitch_map(instrument: str, roots: list, register: str) -> tuple:
     pitch strings and register is a valid register
     """
     assert instrument in {"fluteOne", "fluteTwo", "obOne", "obTwo", "clOne",
-                          "clTwo", "bsn", "tmp", "vibes", "vnone", "vntwo", "va",
+                          "clTwo", "bsn", "tmp", "vibes", "harp", "vnone", "vntwo", "va",
                           "vc", "kb"}, "Instrument not recognized" 
 
     assert register in {"32", "16", "8", "4", "2-2/3", "2", "1-3/5", "1-1/3",
