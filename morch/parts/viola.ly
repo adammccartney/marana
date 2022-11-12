@@ -52,12 +52,13 @@
       \clef "alto"
       \tempo 4 = 55
     \new Voice {
+    \compressMMRests {
         \viola_segment_strings
         \viola_segment_chorale
         \va_segment_IYGH_A
-        \fiveBarPause
         \va_segment_IYGH_B
-    } %% end of vla notes
+        }
+        } %% end of vla notes
   >> %% end of vla staff
 
   >> % score

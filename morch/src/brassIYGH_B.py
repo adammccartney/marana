@@ -98,23 +98,23 @@ TEMPLATE_MAP = {
                  {2}8\\ppp {3}8\\f\\> ~ {3}2. ~
                  {3}1\\ppp
                  """,
-    "fluteOne": """r2. {0}4\\f\\> ~ 
-                  {0}4\\ppp r2 {1}4\\f\\> ~
-                  {1}4\\ppp r2 {2}4\\f\\> ~
-                  {2}4\\ppp r2 {3}4\\f\\> ~
-                  {3}4\\ppp r2.
+    "fluteOne": """r2. {0}4\\pp ~ 
+                  {0}4 r2 {1}4
+                  {1}4 r2 {2}4
+                  {2}4 r2 {3}4
+                  {3}4 r2.
                   """,
-    "fluteTwo": """r2. {0}4\\f\\> ~ 
-                  {0}4.\\ppp r8 r4 {1}4\\f\\> ~
-                  {1}4.\\ppp r8 r4 {2}4\\f\\> ~
-                  {2}4.\\ppp r8 r4 {3}4\\f\\> ~
-                  {3}4.\\ppp r8 r2
+    "fluteTwo": """r2. {0}4\\pp ~ 
+                  {0}4. r8 r4 {1}4 ~
+                  {1}4. r8 r4 {2}4 ~
+                  {2}4. r8 r4 {3}4 ~
+                  {3}4. r8 r2
                   """,
-    "bsn": """r2. {0}4\\f\\> ~ 
-                {0}2\\ppp r4 {1}4\\f\\> ~
-                {1}2\\ppp r4 {2}4\\f\\> ~
-                {2}2\\ppp r4 {3}4\\f\\> ~
-                {3}2\\ppp r2
+    "bsn": """r2. {0}4\\pp ~ 
+                {0}2 r4 {1}4 ~
+                {1}2 r4 {2}4 ~
+                {2}2 r4 {3}4 ~
+                {3}2 r2
                 """,
     "vibes": """r2 r8 {0}8\\p ~ {0}4~ 
                 {0}2 r8 {1}8 ~ {1}4~
@@ -182,25 +182,25 @@ IYGH_PHRASES = {
     "resp_ba": rested_resps[2],
     "resp_bb": rested_resps[3],
     "resp_bc": rested_resps[4],
-    "chorus_aa": "r8 d'8-.\\ppp ef'16-.( ef'-. ef'-. ef'-. ef'16-. ef'-. ef'-. ef'-. ef'16-. ef'-. ef'-. ef'-.",
-    "chorus_ab": "ef'16-. ef'-. ef'-. ef'-.) d'16-.( d'-. d'-. d'-. d'16-. d'-. d'-. d'-. d'16-. d'-. c'-. c'-.",
-    "chorus_ac": "bf16-. bf-.) d'8 d'4-- d'4-- c'4 ~",
+    "chorus_aa": "r8 d'8-.\\ppp ef'16-. ef'-. ef'-. ef'-. ef'16-. ef'-. ef'-. ef'-. ef'16-. ef'-. ef'-. ef'-.",
+    "chorus_ab": "ef'16-. ef'-. ef'-. ef'-. d'16-. d'-. d'-. d'-. d'16-. d'-. d'-. d'-. d'16-. d'-. c'-. c'-.",
+    "chorus_ac": "bf16-. bf-. d'8 d'4-- d'4-- c'4 ~",
     "chorus_ad": "c'4. ef'8\\mp d'4 c'4",
     "chorus_ae": "bf4 f4 bf2",
-    "chorus_eights_aa": "r8 d'8-.\\p ef'8-.( ef'-. ef'8-. ef'-. ef'8-. ef'-.",
-    "chorus_eights_ab": "ef'8-. ef'-.) d'8-.( d'-. d'8-. d'-. d'8-. c'-.",
-    "chorus_eights_ac": "bf8-. d'8-.) d'4-- d'4-- c'4 ~",
+    "chorus_eights_aa": "r8 d'8-.\\p ef'8-. ef'-. ef'8-. ef'-. ef'8-. ef'-.",
+    "chorus_eights_ab": "ef'8-. ef'-. d'8-. d'-. d'8-. d'-. d'8-. c'-.",
+    "chorus_eights_ac": "bf8-. d'8-. d'4-- d'4-- c'4 ~",
     "chorus_eights_ad": "c'4. ef'8 d'4 c'4",
     "chorus_eights_ae": "bf4 f4 bf2",
-    "chorus_triplets_aa": """r4 \\tuplet 3/2 {ef'8-.\\pp( ef'-. ef'-.} \\tuplet 3/2 {ef'8-. ef'-. ef'-.} 
+    "chorus_triplets_aa": """r4 \\tuplet 3/2 {ef'8-.\\pp ef'-. ef'-.} \\tuplet 3/2 {ef'8-. ef'-. ef'-.} 
                              \\tuplet 3/2 {ef'8-. ef'-. ef'-.}""",
-    "chorus_triplets_ab": """\\tuplet 3/2 {ef'8-. ef'-. ef'-.} \\tuplet 3/2 {ef'8-. ef'-. ef'-.)} 
-                             \\tuplet 3/2 {d'8-.( d'-. d'-.} \\tuplet 3/2 {d'8-. d'-. d'-.)}""",
-    "chorus_triplets_ac": """\\tuplet 3/2 {bf8-.( bf-. bf-.} \\tuplet 3/2 {d'8-. d'-. d'-.}
-                             \\tuplet 3/2 {d'8-. d'-. d'-.)} \\tuplet 3/2 {c'8-.( c'-. c'-.}""",
-    "chorus_triplets_ad": """\\tuplet 3/2 {c'8-. c'-. c'-.} \\tuplet 3/2 {c'8-. c'-. c'-.)}
-                             \\tuplet 3/2 {d'8-.( d'-. d'-.} \\tuplet 3/2 {ef'8-. ef'-. ef'-.}""",
-    "chorus_triplets_ae": """\\tuplet 3/2 {f'8-. f'-. f'-.} \\tuplet 3/2 {f'8-. f'-. f'-.)} f'2\\mf""",
+    "chorus_triplets_ab": """\\tuplet 3/2 {ef'8-. ef'-. ef'-.} \\tuplet 3/2 {ef'8-. ef'-. ef'-.} 
+                             \\tuplet 3/2 {d'8-. d'-. d'-.} \\tuplet 3/2 {d'8-. d'-. d'-.}""",
+    "chorus_triplets_ac": """\\tuplet 3/2 {bf8-. bf-. bf-.} \\tuplet 3/2 {d'8-. d'-. d'-.}
+                             \\tuplet 3/2 {d'8-. d'-. d'-.} \\tuplet 3/2 {c'8-. c'-. c'-.}""",
+    "chorus_triplets_ad": """\\tuplet 3/2 {c'8-. c'-. c'-.} \\tuplet 3/2 {c'8-. c'-. c'-.}
+                             \\tuplet 3/2 {d'8-. d'-. d'-.} \\tuplet 3/2 {ef'8-. ef'-. ef'-.}""",
+    "chorus_triplets_ae": """\\tuplet 3/2 {f'8-. f'-. f'-.} \\tuplet 3/2 {f'8-. f'-. f'-.} f'2\\mf""",
 }
 
 
@@ -379,7 +379,7 @@ def get_brass_section() -> dict:
 
     TEMPO_FAST = "\\tempo 4 = 116"
     FINAL_BARLINE = '\\bar "|."'
-    FIVE_BAR_REST = "r1 r1 r1 r1 r1"
+    FIVE_BAR_REST = "R1*5"
 
     instruments = {
         "fluteOne": {

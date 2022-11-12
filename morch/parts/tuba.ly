@@ -52,10 +52,12 @@
       \clef "bass"
       \tempo 4 = 55
     \new Voice {
+     \compressMMRests {
     \stringCanonGP
-    \wwindChoraleGP
+    \tuba_segment_chorale
     \tuba_segment_IYGH_A
     \tuba_segment_IYGH_B
+    }
     } %% end of bsn notes
   >> %% end of bsn staff
 

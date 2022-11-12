@@ -51,10 +51,12 @@
       \time 4/4
       \clef "treble"
     \new Voice {
+     \compressMMRests {
       \harp_segment_strings
       \harp_segment_chorale
       \harp_segment_IYGH_A
       \harp_segment_IYGH_B
+      }
     } %% end of vln notes
   >> %% end of bsn staff
 

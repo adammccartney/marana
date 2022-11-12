@@ -55,11 +55,12 @@
       \clef "bass"
       \tempo 4 = 55
     \new Voice {
+     \compressMMRests {
         \contrabass_segment_strings
-        \wwindChoraleGP
+        \contrabass_segment_chorale
         \kb_segment_IYGH_A
-        \fiveBarPause
         \kb_segment_IYGH_B
+        }
     } %% end of bsn notes
   >> %% end of bsn staff
 

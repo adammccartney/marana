@@ -52,11 +52,12 @@
       \clef "bass"
       \tempo 4 = 55
     \new Voice {
+     \compressMMRests {
         \cello_segment_strings
         \cello_segment_chorale
         \vc_segment_IYGH_A
-        \fiveBarPause
         \vc_segment_IYGH_B
+        }
     } %% end of cello notes
   >> %% end of cello staff
 

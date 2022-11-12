@@ -53,11 +53,12 @@
       \clef "treble"
       \tempo 4 = 55
     \new Voice {
+     \compressMMRests {
         \violinTwo_segment_strings
-        \wwindChoraleGP
+        \violinTwo_segment_chorale
         \vntwo_segment_IYGH_A
-        \fiveBarPause
         \vntwo_segment_IYGH_B
+        }
     } %% end of vln two notes
   >> %% end of vln two staff
 

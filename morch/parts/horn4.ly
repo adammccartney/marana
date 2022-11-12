@@ -52,11 +52,13 @@
       \clef "treble"
       \tempo 4 = 55
     \new Voice {
+     \compressMMRests {
       \transpose f c'
       \hnFour_segment_strings
-      \wwindChoraleGP
+      \hrnFour_segment_chorale
       \hrnFour_segment_IYGH_A
       \hrnFour_segment_IYGH_B
+      }
     } %% end of vln notes
   >> %% end of bsn staff
 

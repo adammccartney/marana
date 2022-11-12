@@ -51,12 +51,13 @@
       \clef "treble"
       \tempo 4 = 55
     \new Voice {
+    \compressMMRests {
       \transpose bf c'
       \clOne_segment_strings
       \clOne_segment_chorale
       \clOne_segment_IYGH_A
-      \fiveBarPause
       \clOne_segment_IYGH_B
+      }
     } % end of clarinet 1, 2 voice one
   >> 
 

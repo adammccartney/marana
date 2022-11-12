@@ -51,14 +51,15 @@
       \time 4/4
       \tempo 4 = 55
       \new Voice { 
+        \compressMMRests {
         \fluteOne_segment_strings
         \flOne_segment_chorale 
         \transpose c' c {
           \piccoloChange
           \fluteOne_segment_IYGH_A
-          \fiveBarPause 
           \fluteOne_segment_IYGH_B
         }
+       }
       } % end of flute voice one 
     >> %% end of flute staff
 

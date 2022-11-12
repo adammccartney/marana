@@ -185,7 +185,7 @@
       \voiceOne {
       \override Voice.RehearsalMark.stencil = ##f
       \hnOne_segment_strings
-      \wwindChoraleGP
+      \hrnOne_segment_chorale
       \hrnOne_segment_IYGH_A
       \hrnOne_segment_IYGH_B
     }
@@ -196,7 +196,7 @@
       \override Voice.TextScript.stencil = ##f
       \override Voice.RehearsalMark.stencil = ##f
       \hnTwo_segment_strings
-      \wwindChoraleGP
+      \hrnTwo_segment_chorale
       \hrnTwo_segment_IYGH_A
       \hrnTwo_segment_IYGH_B
     }
@@ -216,7 +216,7 @@
       \voiceThree {
       \override Voice.RehearsalMark.stencil = ##f
       \hnThree_segment_strings
-      \wwindChoraleGP
+      \hrnThree_segment_chorale
       \hrnThree_segment_IYGH_A
       \hrnThree_segment_IYGH_B
     }
@@ -227,7 +227,7 @@
       \override Voice.TextScript.stencil = ##f
       \override Voice.RehearsalMark.stencil = ##f
       \hnFour_segment_strings
-      \wwindChoraleGP
+      \hrnFour_segment_chorale
       \hrnFour_segment_IYGH_A
       \hrnFour_segment_IYGH_B
     }
@@ -243,7 +243,7 @@
     \clef "treble"
     \override Voice.RehearsalMark.stencil = ##f
     \trpOne_segment_strings
-    \wwindChoraleGP
+    \trpOne_segment_chorale
     \trpOneTwo_segment_IYGH_A
     \trpOneTwo_segment_IYGH_B
   } 
@@ -258,7 +258,7 @@
     \clef "treble"
     \override Voice.RehearsalMark.stencil = ##f
     \trpTwo_segment_strings
-    \wwindChoraleGP
+    \trpTwo_segment_chorale
     \trpThree_segment_IYGH_A
     \trpThree_segment_IYGH_B
   } 
@@ -273,7 +273,7 @@
     \clef "bass"
     \override Voice.RehearsalMark.stencil = ##f
     \trb_segment_strings
-    \wwindChoraleGP
+    \trb_segment_chorale
     \trbOneTwo_segment_IYGH_A
     \trbOneTwo_segment_IYGH_B
   }
@@ -288,7 +288,7 @@
     \clef "bass"
     \override Voice.RehearsalMark.stencil = ##f
     \stringCanonGP
-    \wwindChoraleGP
+    \tuba_segment_chorale
     \tuba_segment_IYGH_A
     \tuba_segment_IYGH_B
   }
@@ -308,7 +308,7 @@
     \tempo 4 = 55
     \clef "treble"
       \vibes_segment_strings
-      \wwindChoraleGP
+      \vibes_segment_chorale
       \vibes_segment_IYGH_A
       \vibes_segment_IYGH_B
   }
@@ -322,7 +322,7 @@
     \tempo 4 = 55 
     \clef "bass"
       \tmp_segment_strings
-      \wwindChoraleGP
+      \timp_segment_chorale
       \tmp_segment_IYGH_A
       \tmp_segment_IYGH_B
   }
@@ -355,7 +355,7 @@
         \tempo 4 = 55 
         \clef "treble"
         \violinOne_segment_strings
-        \wwindChoraleGP
+        \violinOne_segment_chorale
         \vnone_segment_IYGH_A
         
         \vnone_segment_IYGH_B
@@ -370,7 +370,7 @@
         \tempo 4 = 55 
         \clef "treble"
         \violinTwo_segment_strings
-        \wwindChoraleGP
+        \violinTwo_segment_chorale
         \vntwo_segment_IYGH_A
         
         \vntwo_segment_IYGH_B
@@ -418,7 +418,7 @@
        \tempo 4 = 55 
         \clef "bass"
         \contrabass_segment_strings
-        \wwindChoraleGP
+        \contrabass_segment_chorale
         \kb_segment_IYGH_A
         
         \kb_segment_IYGH_B

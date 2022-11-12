@@ -51,14 +51,15 @@
       \clef "treble"
       \time 4/4
       \tempo 4 = 55
-      \new Voice { 
+      \new Voice {
+       \compressMMRests {
         \fluteTwo_segment_strings
         \flTwo_segment_chorale 
         \transpose c' c {
           \piccoloChange
           \fluteTwo_segment_IYGH_A
-          \fiveBarPause 
           \fluteTwo_segment_IYGH_B
+        }
         }
       } % end of flute voice one 
     >> %% end of flute staff

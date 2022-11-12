@@ -1,4 +1,4 @@
-* Finalize workshop edits [7/7]
+* Finalize workshop edits [8/8]
 ** DONE Brass edits [6/6]
   - [X] Create higher / lower horn splits
   - [X] Add tempo changes
@@ -26,7 +26,7 @@
 ** DONE Harp pedaling
 ** DONE Parts
 
-** TODO Proof Read [4/4]
+** DONE Proof Read [5/5]
 *** DONE Woodwinds [7/7]
   - [X] fl 1
   - [X] fl 2
@@ -54,6 +54,35 @@
   - [X] vla
   - [X] vlc
   - [X] cb
-*** TODO Cover & dist
+*** DONE Cover & dist
 
-  
+* RC 2.0 Final broadcast version
+
+
+
+| Instrument       | barcount | rmarks | layout |
+|------------------+----------+--------+--------|
+| Score            |      139 | A-G    | OK     |
+| Flute 1          |      139 | A-G    | OK     |
+| Flute 2          |      139 | A-G    | OK     |
+| Oboe 1           |      139 | A-G    | OK     |
+| Oboe 2           |      139 | A-G    | OK     |
+| Clarinet in Bb 1 |      139 | A-G    | OK     |
+| Clarinet in Bb 2 |      139 | A-G    | OK     |
+| Bassoon          |      139 | A-G    | OK     |
+| Horn in F 1      |      139 | A-G    | OK     |
+| horn 2           |      139 | A-G    | OK     |
+| horn 3           |      139 | A-G    | OK     |
+| horn4            |      139 | A-G    | OK     |
+| Trumpet 1        |      139 | A-G    | OK     |
+| trp 2            |      139 | A-G    | OK     |
+| Trombone         |      139 | A-G    | OK     |
+| Tuba             |      139 | A-G    | OK     |
+| Vibraphone       |      139 | A-G    | OK     |
+| Timpani          |      139 | A-G    | OK     |
+| Harp             |      139 | A-G    | OK     |
+| Violin 1         |      139 | A-G    | OK     |
+| Violin 2         |      139 | A-G    | OK     |
+| Viola            |      139 | A-G    | OK     |
+| Cello            |      139 | A-G    | OK     |
+| Contrabass       |      139 | A-G    | OK     |

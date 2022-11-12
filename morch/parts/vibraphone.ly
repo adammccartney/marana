@@ -51,11 +51,12 @@
       \time 4/4
       \clef "treble"
     \new Voice {
+     \compressMMRests {
       \vibes_segment_strings
-      \wwindChoraleGP
+      \vibes_segment_chorale
       \vibes_segment_IYGH_A
-      \fiveBarPause
       \vibes_segment_IYGH_B
+      }
     } %% end of bsn notes
   >> %% end of bsn staff
 

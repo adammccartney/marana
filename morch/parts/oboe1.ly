@@ -50,11 +50,12 @@
       \clef "treble"
       \tempo 4 = 55
     \new Voice {
+    \compressMMRests {
       \obOne_segment_strings
       \obOne_segment_chorale
       \obOne_segment_IYGH_A
-      \fiveBarPause
       \obOne_segment_IYGH_B
+      }
     } %% end of oboe notes
   >> %% end of oboe staff
 

@@ -11,7 +11,7 @@
 
 {\LARGE\bfseries marana}\\[\baselineskip] % First part of the title, if it is unimportant consider making the font size smaller to accentuate the main title
 
-{{\Huge for symphony orchestra}}\\[\baselineskip] % Main title which draws the focus of the reader
+{{\Huge for orchestra}}\\[\baselineskip] % Main title which draws the focus of the reader
 
 \vfill % Whitespace between the title block and the publisher
 
@@ -36,6 +36,31 @@
 \end{titlepage}
 
 \mainmatter
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\newpage
+
+\newpage
+\begin{center}
+Flute 1, 2, Piccolo 1,2\\
+Oboe 1, 2\\
+Clarinet in Bb 1, 2\\
+Bassoon\\
+Horn in F 1, 2, 3, 4\\
+Trumpet 1, 2\\
+Trombone\\
+Tuba\\
+Vibraphone\\
+Timpani\\
+Harp\\
+Violin 1, 2\\
+Viola\\
+Cello\\
+Contrabass
+\end{center}
+\newpage
 
 \newpage
 \thispagestyle{empty}

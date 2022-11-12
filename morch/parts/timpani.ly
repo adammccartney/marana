@@ -51,11 +51,12 @@
       \time 4/4
       \clef "bass"
     \new Voice {
+     \compressMMRests {
       \tmp_segment_strings
-      \wwindChoraleGP
+      \timp_segment_chorale
       \tmp_segment_IYGH_A
-      \fiveBarPause
       \tmp_segment_IYGH_B
+      }
     } %% end of bsn notes
   >> %% end of bsn staff
 

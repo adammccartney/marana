@@ -53,10 +53,12 @@
       \clef "bass"
       \tempo 4 = 55
     \new Voice {
+     \compressMMRests {
     \trb_segment_strings
-    \wwindChoraleGP
+    \trb_segment_chorale
     \trbOneTwo_segment_IYGH_A
     \trbOneTwo_segment_IYGH_B
+    }
     } %% end of bsn notes
   >> %% end of bsn staff
 
