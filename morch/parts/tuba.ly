@@ -53,7 +53,9 @@
       \tempo 4 = 55
     \new Voice {
      \compressMMRests {
-    \stringCanonGP
+     \transpose c' c {
+       \tuba_segment_strings
+    }
     \tuba_segment_chorale
     \tuba_segment_IYGH_A
     \tuba_segment_IYGH_B

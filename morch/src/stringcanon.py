@@ -54,7 +54,7 @@ PITCHSETS = {
         4: "e''",
         5: "d''",
         6: "c''",
-        7: "b'",
+        7: "b'!",
         8: "a'",
         9: "g'",
     },
@@ -66,7 +66,7 @@ PITCHSETS = {
         4: "e'",
         5: "d''",
         6: "c''",
-        7: "b'",
+        7: "b'!",
         8: "a'",
         9: "g'",
     },
@@ -78,7 +78,7 @@ PITCHSETS = {
         4: "e'",
         5: "d'",
         6: "c'",
-        7: "b",
+        7: "b!",
         8: "a",
         9: "g",
     },
@@ -90,7 +90,7 @@ PITCHSETS = {
         4: "e",
         5: "d",
         6: "c",
-        7: "b,",
+        7: "b,!",
         8: "a,",
         9: "g,",
     },
@@ -102,7 +102,7 @@ PITCHSETS = {
         4: "e,",
         5: "d,",
         6: "c,",
-        7: "b,,",
+        7: "b,,!",
         8: "a,,",
         9: "g,,",
     },
@@ -127,7 +127,7 @@ MODULES = {
         "trpOne": (3, 3, 5),
         "trpTwo": (0, 1, 2),
         "trb": (0, 0, 0),
-        "tb": (0, 0, 0),
+        "tuba": (0, 1, 2),
         "tmp": (0, 0, 0),
         "va": (3, 3, 5),
         "vc": (0, 1, 2),
@@ -152,29 +152,29 @@ TEMPLATES = {
         "obTwo": "r2 r4 {0}4--\\p {1}4 {2}4--~ {2}2",
         "clOne": "r4 {0}4--\\p~ {1}4 {2}4--~ {2}2 r2",
         "clTwo": "r2 r4 {0}4--\\p {1}4 {2}4--~ {2}2",
-        "trpOne": "r2 {0}8-.\\fp^\\consord {0}-. r4 {1}8-. {1}-. r4 r2",
-        "trpTwo": "r2 {0}8-.\\fp^\\consord {0}-. r4 {1}8-. {1}-. r4 r2",
-        "hnOne": "r2 {0}8-.\\fp^\\consord {0}-. r4 {1}8-. {1}-. r4 r2",
-        "hnTwo": "r2 {0}8-.\\fp^\\consord {0}-. r4 {1}8-. {1}-. r4 r2",
-        "hnThree": "r2 {0}8-.\\fp^\\consord {0}-. r4 {1}8-. {1}-. r4 r2",
-        "hnFour": "r2 {0}8-.\\fp^\\consord {0}-. r4 {1}8-. {1}-. r4 r2",
-        "trb": "r2 {0}8-.\\fp^\\consord {0}-. r4 {1}8-. {1}-. r4 r2",
-        "tuba": "r2 {0}8-.\\fp^\\consord {0}-. r4 {1}8-. {1}-. r4 r2",
+        "trpOne": "r2 {0}8-.\\fp {0}-. r4 {1}8-. {1}-. r4 r2",
+        "trpTwo": "r2 {0}8-.\\fp {0}-. r4 {1}8-. {1}-. r4 r2",
+        "hnOne": "r2 {0}8-. {0}-. r4 {1}8-. {1}-. r4 r2",
+        "hnTwo": "r2 {0}8-. {0}-. r4 {1}8-. {1}-. r4 r2",
+        "hnThree": "r2 {0}8-. {0}-. r4 {1}8-. {1}-. r4 r2",
+        "hnFour": "r2 {0}8-. {0}-. r4 {1}8-. {1}-. r4 r2",
+        "trb": "r2 {0}8-.\\fp {0}-. r4 {1}8-. {1}-. r4 r2",
+        "tuba": "r2 {0}8-.\\fp {0}-. r4 {1}8-. {1}-. r4 r2",
         "tmp": "r4 {0}4--\\p {0}8-- {0}8-- {0}4-- {0}8-- {0}8-- {0}4-- {0}4-- r4",
-        "va": "r4 {0}4--\\p\\( {0}8-- {0}8--\\) {0}4--\\( {0}8-- {0}8--\\) {1}4--\\( {1}4--\\) r4",
-        "vc": "r4 {0}4--\\p\\( {0}8-- {0}8--\\) {1}4--\\( {1}8-- {1}8--\\) {2}4--\\( {2}4--\\) r4",
-        "kb": "r4 {0}4--\\p\\( {0}8-- {0}8--\\) {0}4--\\( {0}8-- {0}8--\\) {0}4--\\( {0}4--\\) r4",
+        "va": "r4 {0}4--\\(\\pp {0}8-- {0}8--\\) {0}4--\\( {0}8-- {0}8--\\) {1}4--\\( {1}4--\\) r4",
+        "vc": "r4 {0}4--\\(\\pp {0}8-- {0}8--\\) {1}4--\\( {1}8-- {1}8--\\) {2}4--\\( {2}4--\\) r4",
+        "kb": "r4 {0}4--\\(\\pp {0}8-- {0}8--\\) {0}4--\\( {0}8-- {0}8--\\) {0}4--\\( {0}4--\\) r4",
     },
     "B": {
         "fluteOne": "r1 {0}2.\\p {1}4 {1}1",
         "fluteTwo": "r1 r2 {0}2\\p {1}1",
-        "bsn": """r2 \\repeat tremolo 8 {{ {0}32\\p {1} }}  |
-                  r2 \\repeat tremolo 8 {{ {2}32 {3} }} |
-                  r2 \\repeat tremolo 8 {{ {4}32 {5} }}  |""",
+        "bsn": """\\repeat tremolo 16 {{ {0}32\\(\\pp\\< {1}\\) }}  |
+                  \\repeat tremolo 16 {{ {2}32\\(\\f\\> {3}\\) }} |
+                  \\repeat tremolo 16 {{ {4}32\\( {5}\\pp\\) }}  |""",
         "vibes": "{0}1^\\markup {{ sim. }} {1}1 {2}",
-        "harp": """\\repeat tremolo 16 {{ {0}32\\p {1} }}  |
-                 \\repeat tremolo 16 {{ {2}32 {3} }} | 
-                 \\repeat tremolo 16 {{ {4}32 {5} }}  |""",
+        "harp": """\\repeat tremolo 16 {{ {0}32\\(\\pp\\< {1}\\) }}  |
+                   \\repeat tremolo 16 {{ {2}32\\(\\f\\> {3}\\) }} | 
+                   \\repeat tremolo 16 {{ {4}32\\( {5}\\)\\pp }}  |""",
         "vnone": "r2. {0}8\\mp(^\\ord {1}8 {2}2.)-- {3}4:32 ^\\ord\\> ~ {3}2.:32^\\pont\\ppp r4",
         "vntwo": "r2. r8 {0}8\\p~^\\ord {0}2\\< {1}2\\> {2}2.:32\\ppp^\\pont r4",
         "vc": "r2. {0}4\\mp~^\\ord {0}4 {1}2\\> {2}4 ^\\ord ~ {2}2.:32^\\pont\\ppp r4",
@@ -339,7 +339,7 @@ def playsAlto(instrument: str) -> bool:
 
 
 def playsTenor(instrument: str) -> bool:
-    if instrument in {"hnTwo", "hnFour", "va"}:
+    if instrument in {"hnTwo", "hnFour", "tuba", "va"}:
         return True
     else:
         return False
@@ -449,13 +449,10 @@ def get_segment() -> dict:
     clOne_A = createMusicChunk("A", "clOne", -1)
     clTwo_A = createMusicChunk("A", "clTwo", -1)
 
-    hnOne_A = createMusicChunk("A", "hnOne", -1)
-    hnTwo_A = createMusicChunk("A", "hnTwo", -1)
-    hnThree_A = createMusicChunk("A", "hnThree", -1)
-    hnFour_A = createMusicChunk("A", "hnFour", -1)
     trpOne_A = createMusicChunk("A", "trpOne", -1)
     trpTwo_A = createMusicChunk("A", "trpTwo", -1)
     trb_A = createMusicChunk("A", "trb", -1)
+    tuba_A = createMusicChunk("A", "tuba", -1)
 
     tmp_A = createMusicChunk("A", "tmp", -1)
     va_A = createMusicChunk("A", "va", -1)
@@ -877,7 +874,7 @@ def get_segment() -> dict:
             "mm13_15": SECT_B_REST,
             "mm16_18": SECT_B_REST,
             "mm19": METER_2_4,
-            "mm19_22": "g'2\\pp^\\markup\"Con sord.\"~ g'~ g' ~ g'",
+            "mm19_22": "g'2\\ppp^\\markup\"Con sord.\"~ g'~ g' ~ g'",
             "mm23_26": "g'2~ g'2 ~ g'2 ~g'2",
             "mm27_30": "g'2~ g'2 ~ g'2 ~g'2",
             "mm31": METER_4_4,
@@ -1015,7 +1012,8 @@ def get_segment() -> dict:
             "mm13_15": SECT_B_REST,
             "mm16_18": SECT_B_REST,
             "mm19": METER_2_4,
-            "mm19_22": trpOne_A[1],
+            "mm19_22": """r2 | g''8-.\\fp^\\consord g''8-. r4 | 
+                          g''8-. g''-. r4 | r2""",
             "mm23_26": trpOne_A[1],
             "mm27_30": trpOne_A[2],
             "mm31": METER_4_4,
@@ -1061,7 +1059,8 @@ def get_segment() -> dict:
             "mm13_15": SECT_B_REST,
             "mm16_18": SECT_B_REST,
             "mm19": METER_2_4,
-            "mm19_22": trpTwo_A[1],
+            "mm19_22": """r2 | g'8-.\\fp^\\consord g'-. r4 |
+                          bf''8-. bf''8-. r4 | r2""",
             "mm23_26": trpTwo_A[1],
             "mm27_30": trpTwo_A[2],
             "mm31": METER_4_4,
@@ -1107,7 +1106,8 @@ def get_segment() -> dict:
             "mm13_15": SECT_B_REST,
             "mm16_18": SECT_B_REST,
             "mm19": METER_2_4,
-            "mm19_22": trb_A[1],
+            "mm19_22": """r2 | g,8-.\\fp^\\consord g,8-. r4 |
+                          g,8-. g,8 r4 | r2""",
             "mm23_26": trb_A[1],
             "mm27_30": trb_A[2],
             "mm31": METER_4_4,
@@ -1142,6 +1142,53 @@ def get_segment() -> dict:
             "mm91_94": trb_A[8],
             "mm95_98": trb_A[9],
             "mm99_102": trb_A[9],
+        },
+        "tuba": {
+            "mm01": METER_2_4,
+            "mm01_04": SECT_A_REST,
+            "mm05_08": SECT_A_REST,
+            "mm09_12": SECT_A_REST,
+            "mm13": METER_4_4,
+            "rmark1": RMARKS[0],
+            "mm13_15": SECT_B_REST,
+            "mm16_18": SECT_B_REST,
+            "mm19": METER_2_4,
+            "mm19_22": """r2 | g8-.\\fp^\\consord g8-. r4 |
+                          g8-. g8 r4 | r2""",
+            "mm23_26": tuba_A[1],
+            "mm27_30": tuba_A[2],
+            "mm31": METER_4_4,
+            "rmark2": RMARKS[1],
+            "mm31_33": SECT_B_REST,
+            "mm34_36": SECT_B_REST,
+            "mm37": METER_2_4,
+            "mm37_40": tuba_A[3],
+            "mm41_44": tuba_A[3],
+            "mm45_48": tuba_A[4],
+            "mm49": METER_4_4,
+            "rmark3": RMARKS[2],
+            "mm49_51": SECT_B_REST,
+            "mm52_54": SECT_B_REST,
+            "mm55": METER_2_4,
+            "mm55_58": tuba_A[5],
+            "mm59_62": tuba_A[5],
+            "mm63_66": tuba_A[6],
+            "mm67": METER_4_4,
+            "rmark4": RMARKS[3],
+            "mm67_69": SECT_B_REST,
+            "mm70_72": SECT_B_REST,
+            "mm73": METER_2_4,
+            "mm73_76": tuba_A[7],
+            "mm77_80": tuba_A[7],
+            "mm81_84": tuba_A[8],
+            "mm85": METER_4_4,
+            "rmark5": RMARKS[4],
+            "mm85_87": SECT_B_REST,
+            "mm88_90": SECT_B_REST,
+            "mm91": METER_2_4,
+            "mm91_94": tuba_A[8],
+            "mm95_98": tuba_A[9],
+            "mm99_102": tuba_A[9],
         },
         "vibes": {
             "mm01": METER_2_4,
@@ -1375,7 +1422,11 @@ def get_segment() -> dict:
         },
         "viola": {
             "mm01": METER_2_4,
-            "mm01_04": va_A[0],
+            "mm01_04": """r4 g'4--\\(\\p^\\tasto |
+                          g'8-- g'--\\) g'4--\\( |
+                          g'8-- g'8--\\) g'4--\\( |
+                          g'4-- r4\\)
+                       """,
             "mm05_08": va_A[0],
             "mm09_12": va_A[0],
             "mm13": METER_4_4,
@@ -1421,7 +1472,10 @@ def get_segment() -> dict:
         },
         "cello": {
             "mm01": METER_2_4,
-            "mm01_04": vc_A[0],
+            "mm01_04": """r4 bf4--\\(\\p^\\tasto |
+                          bf8-- bf--\\) a4--\\( |
+                          a8-- a8--\\) g4--\\( |
+                          g4-- r4\\)""",
             "mm05_08": vc_A[0],
             "mm09_12": vc_A[0],
             "mm13": METER_4_4,
@@ -1467,7 +1521,10 @@ def get_segment() -> dict:
         },
         "contrabass": {
             "mm01": METER_2_4,
-            "mm01_04": kb_A[0],
+            "mm01_04": """r4 bf4--\\(\\p^\\tasto |
+                          bf8-- bf--\\) bf4--\\( |
+                          bf8-- bf8--\\) bf4--\\( |
+                          bf4-- r4\\)""",
             "mm05_08": kb_A[0],
             "mm09_12": kb_A[0],
             "mm13": METER_4_4,
@@ -1550,7 +1607,7 @@ if __name__ == "__main__":
         "trpOne",
         "trpTwo",
         "trb",
-        # "tb",
+        "tuba",
         "vibes",
         "tmp",
         "harp",

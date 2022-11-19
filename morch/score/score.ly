@@ -287,7 +287,9 @@
     \tempo 4 = 55
     \clef "bass"
     \override Voice.RehearsalMark.stencil = ##f
-    \stringCanonGP
+    \transpose c' c {
+      \tuba_segment_strings
+    }
     \tuba_segment_chorale
     \tuba_segment_IYGH_A
     \tuba_segment_IYGH_B
@@ -450,7 +452,8 @@
           
                 
 	        }
-
+            \midi {}
 } % score
 } % book
+
   

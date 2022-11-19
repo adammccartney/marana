@@ -23,6 +23,8 @@ all: dist
 
 default: all
 
+debug: score parts score-dist
+
 dist: score parts score-dist
 	rm $(BUILD_DIR)/parts/*.ly
 	rm $(BUILD_DIR)/*.ly

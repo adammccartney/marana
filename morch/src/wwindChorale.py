@@ -117,87 +117,87 @@ OBOE_TWO = [
     # "r2 bf'16(\\ppp d'' bf' d'' bf' d'' bf' d''",
     """r4 
                \\featheredBeamRight 
-               bf'16\\ppp[ d'' bf' d''
+               bf'16\\ppp[( d'' bf' d''
                bf'32 d'' bf' d''
                bf' d'' bf' d''
                bf' d'' bf' d''
-               bf' d'' bf' d'']
+               bf' d'' bf' d'')]
                \\featheredBeamLeft
-               bf'[ d'' bf' d''
+               bf'[( d'' bf' d''
                bf' d'' bf' d''
                bf' d'' bf' d''
                bf' d'' bf' d''
-               bf'16 d'' bf' d'']
+               bf'16 d'' bf' d'')]
                r4
             """,
     """r2.
                \\featheredBeamRight
-               bf'16[ d'' bf' d'']
+               bf'16[( d'' bf' d'')]
                \\featheredBeamLeft
-               bf'16[ d'' bf' d'']
+               bf'16[( d'' bf' d'')]
                r2.
             """,
     """r4 
                \\featheredBeamRight
-               g'16[ a' g' a'] 
+               g'16[( a' g' a')] 
                \\featheredBeamLeft
-               g'16[ a' g' a'] 
+               g'16[( a' g' a')] 
                r4
             """,
     "r1",
     """\\featheredBeamRight
-               ef'16[ fs' ef' fs' ef'16 fs' ef' fs']
+               ef'16[( fs' ef' fs' ef'16 fs' ef' fs')]
                \\featheredBeamLeft
-               ef'16[ fs' ef' fs' ef'16 fs' ef' fs']
+               ef'16[( fs' ef' fs' ef'16 fs' ef' fs')]
             """,
     """r2 
                \\featheredBeamRight
-               a'16[ c'' a' c'' 
+               a'16[( c'' a' c'' 
                a'32 c'' a' c''
-               a' c'' a' c'']
+               a' c'' a' c'')]
             """,
     """\\featheredBeamLeft
-               a'32[ c'' a' c'' 
+               a'32[( c'' a' c'' 
                a' c'' a' c'' 
                a'16 c'' a' c'' 
-               a'16 c'' a' c''] r4
+               a'16 c'' a' c'')] r4
             """,
     """r4 
                \\featheredBeamRight
-               a'16[ c'' a' c'' a'16 c'' a' c'' 
+               a'16[( c'' a' c'' a'16 c'' a' c'' 
                a'32 c'' a' c''
-               a' c'' a' c'']
+               a' c'' a' c'')]
             """,
     """\\featheredBeamLeft
-               a'16[ c'' a' c''] 
+               a'16[( c'' a' c'')] 
                r2 
                \\featheredBeamRight
-               c''32[ d'' c'' d''
-               c'' d'' c'' d'']
+               c''32[( d'' c'' d''
+               c'' d'' c'' d'')]
             """,
     """\\featheredBeamLeft
-               c''32[ d'' c'' d'' 
+               c''32[( d'' c'' d'' 
                c'' d'' c'' d''
                c''16 d'' c'' d''
-               c''16 d'' c'' d'' c''16 d'' c'' d'']
+               c''16 d'' c'' d'' c''16 d'' c'' d'')]
             """,
     "r1",
     """\\featheredBeamRight
-               bf'16[ d'' bf' d''] 
+               bf'16[( d'' bf' d'')] 
                \\featheredBeamLeft
-               bf'16[ d'' bf' d''] 
+               bf'16[( d'' bf' d'')] 
                r2
             """,
     """r2 
                \\featheredBeamRight
-               b'16[ d'' b' d'']
+               b'16[( d'' b' d'')]
                \\featheredBeamLeft
-               b'16[ d'' b' d'']
+               b'16[( d'' b' d'')]
             """,
     """\\featheredBeamRight
-               c''16[ d'' c'' d'' c''16 d'' c'' d'']
+               c''16[( d'' c'' d'' c''16 d'' c'' d'')]
                \\featheredBeamLeft
-               c''16[ d'' c'' d'' c''16 d'' c'' d'']
+               c''16[( d'' c'' d'' c''16 d'' c'' d'')]
             """,
 ]
 
